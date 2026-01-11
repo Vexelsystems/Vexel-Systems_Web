@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  /* Core Theme Colors */
+  --background: #ffffff;
+  --foreground: #1D1D1F;
+  --primary: #0077ED;
+
+  /* Additional Palette Variables required by tailwind.config.ts */
+  --background-light: #ffffff;
+  --background-dark: #0a0a0a;
+  --ui-background: #ffffff;
+
+  --text-light: #1D1D1F;
+  --text-dark: #ffffff;
+
+  --nav-light: #F5F5F7;
+  --nav-dark: #1a1a1a;
+
+  --card: #F5F5F7;
+  --card-light: #F5F5F7;
+  --card-dark: #121212;
+
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  /* Helper variables for easy overriding if needed */
+  --nav-bg: #F5F5F7;
+  --text-secondary: #4b5563;
+  --inner-box: var(--nav-bg);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-inner-box: var(--inner-box);
+  --color-card: var(--card);
+  --color-nav-bg: var(--nav-bg);
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-weight: 400;
+
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ffffff;
+    --card: #121212;
+    --nav-bg: #1a1a1a;
+    --ui-background: #0a0a0a;
+  }
+
+  /* Specific overrides for dark mode */
+  .text-primary {
+    color: var(--primary);
+  }
+
+  .bg-white {
+    background-color: var(--background);
+  }
+
+  /* Scrollbar override */
+  ::-webkit-scrollbar-thumb {
+    background: #374151;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+}
+
+/* 
+ * Utility aliases / overrides that apply globally or help with specificity
+ */
+
+/* Primary color enforcement */
+.text-primary {
+  color: var(--primary);
+}
+
+/* Preloader protection */
+.bg-white {
+  background-color: var(--background);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+/* Global cursor pointer for all interactive elements */
+a, 
+button, 
+[role="button"], 
+[onclick], 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+select, 
+label[for], 
+summary {
+  cursor: pointer !important;
+}
+
+/* Ensure disabled elements don't show pointer */
+a[disabled], 
+button:disabled, 
+[disabled] {
+  cursor: not-allowed !important;
+}
