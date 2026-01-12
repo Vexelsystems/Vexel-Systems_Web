@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Rocket, Eye, Lightbulb, ShieldCheck, Users, ArrowRight, Share2, MapPin } from "lucide-react";
 import { generatePageMetadata } from "@/lib/seo";
 
@@ -20,7 +21,7 @@ export const metadata = generatePageMetadata({
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-background pt-24 lg:pt-32">
+    <main className="min-h-screen pt-24 lg:pt-32">
       {/* Hero Section */}
       <section className="mb-24">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
@@ -42,7 +43,7 @@ export default function About() {
                 Our Story
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight text-foreground">
-                Pioneering Digital <br /><span className="text-primary">Global Excellence</span>
+                Pioneering Digital <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Global Excellence</span>
                 </h1>
                 <p className="text-lg text-foreground/60 leading-relaxed max-w-xl">
                 A premier software and technology solutions provider, bridging the gap between Sri Lankan innovation and global business needs. We empower enterprises with future-ready digital transformations.
@@ -64,11 +65,11 @@ export default function About() {
       <section className="mb-24">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
             <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Purpose Driven Innovation</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">Purpose Driven <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Innovation</span></h2>
             <div className="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-xl bg-white shadow-sm border border-gray-200 hover:border-primary transition-colors group">
+            <div className="p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
                 <div className="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <Rocket size={32} />
                 </div>
@@ -77,7 +78,7 @@ export default function About() {
                 To empower businesses through digital excellence and innovative software solutions that drive sustainable growth, efficiency, and competitive advantage in a fast-evolving global market.
                 </p>
             </div>
-            <div className="p-8 rounded-xl bg-white shadow-sm border border-gray-200 hover:border-primary transition-colors group">
+            <div className="p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
                 <div className="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <Eye size={32} />
                 </div>
@@ -91,11 +92,11 @@ export default function About() {
       </section>
 
       {/* Company Timeline */}
-      <section className="mb-24 py-16 bg-inner-box/50">
+      <section className="mb-24 py-16 bg-transparent">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
             <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground">Our Journey</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Journey</span></h2>
                 <p className="text-foreground/60 mt-2">From Sri Lanka to the global stage</p>
             </div>
             <div className="relative">
@@ -154,11 +155,11 @@ export default function About() {
       <section className="mb-24">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
             <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Core Values</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">Core <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Values</span></h2>
             <p className="text-foreground/60 mt-2">The principles that guide every line of code we write.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-2">
+            <div className="flex flex-col items-center text-center p-8 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl shadow-sm border border-gray-100 dark:border-white/10 transition-transform hover:-translate-y-2">
                 <div className="mb-6 p-4 bg-primary/5 text-primary rounded-full">
                 <Lightbulb size={40} />
                 </div>
@@ -188,18 +189,26 @@ export default function About() {
       {/* Final CTA */}
       <section className="mb-12">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-            <div className="relative bg-primary rounded-2xl p-12 overflow-hidden">
+          <div className="relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-2xl p-12 overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm">
             {/* Abstract Background Elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+            
             <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto gap-8">
-                <h2 className="text-3xl lg:text-4xl font-black text-white leading-tight">Ready to build the future of your business with Vexel?</h2>
-                <p className="text-white/80 text-lg">Join dozens of global enterprises that have trusted us with their digital evolution.</p>
-                <button className="bg-white text-primary px-10 py-4 rounded-lg font-black text-lg hover:bg-gray-100 transition-all shadow-xl">
+              <h2 className="text-3xl lg:text-5xl font-black text-foreground leading-tight tracking-tight">
+                Ready to build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">future</span> of your business?
+              </h2>
+              <p className="text-foreground/60 text-lg">
+                Join dozens of global enterprises that have trusted us with their digital evolution.
+              </p>
+              <Link 
+                href="/consultation" 
+                className="bg-primary text-white px-10 py-5 rounded-xl font-black text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-105"
+              >
                 Schedule a Consultation
-                </button>
+              </Link>
             </div>
-            </div>
+          </div>
         </div>
       </section>
     </main>

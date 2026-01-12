@@ -14,6 +14,7 @@ export interface PricingPackage {
   priceLKR: string;
   priceUSD: string;
   features: string[]; // Detailed list for the card
+  detailedFeatures?: { title: string; description: string; icon?: string }[]; // New: Deeper explanations
   description: string; // Beautiful, interactive description
   deliverables: string[]; // What the client actually gets (checklist)
   idealFor: string[]; // Detailed target audience
@@ -48,6 +49,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 40,000 – 75,000",
         priceUSD: "$130 – $250",
         features: ["Hero & About Sections", "Contact Form Integration", "Social Media Links", "Fully Mobile Responsive"],
+        detailedFeatures: [
+          { title: "Landing Page Excellence", description: "Specifically designed for single-goal conversion. We optimize the focal points of your page to ensure visitors take action immediately." },
+          { title: "Mobile-First DNA", description: "Over 60% of your traffic will be on mobile. We build from the small screen up, ensuring perfect performance on every device." },
+          { title: "Seamless Integration", description: "Connect your site directly to your email, WhatsApp, or CRM to never miss a new lead." }
+        ],
         description: "A beautifully crafted digital business card that establishes your presence online instantly. Perfect for showcasing your portfolio or launching a one-time event with style.",
         deliverables: [
           "Fully Responsive Single Page Website",
@@ -73,6 +79,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 120,000 – 200,000",
         priceUSD: "$400 – $670",
         features: ["3D Parallax Animations", "Interactive Scrolling", "Custom Cursor Effects", "Advanced Motion Graphics"],
+        detailedFeatures: [
+          { title: "GSAP Immersive Motion", description: "We use high-performance GSAP animations to create a fluid, cinematic scrolling experience that keeps users engaged longer." },
+          { title: "WebGL & Canvas", description: "Utilize the browser's GPU for complex 3D visual effects that aren't possible with standard HTML and CSS." },
+          { title: "Bespoke Design System", description: "Zero templates. Every pixel is custom-designed to match your brand's unique philosophy and luxury positioning." }
+        ],
         description: "An award-winning visual experience designed to captivate your audience. We use cutting-edge WebGL and motion graphics to turn your story into an interactive journey.",
         deliverables: [
           "Custom WebGL/3D Elements",
@@ -105,6 +116,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 85,000 – 140,000",
         priceUSD: "$280 – $470",
         features: ["5 Core Pages", "Google Maps Integration", "WhatsApp Chat Button", "Basic SEO Setup"],
+        detailedFeatures: [
+          { title: "Structured Navigation", description: "A logical 5-page architecture (Home, About, Services, Projects, Contact) that provides a comprehensive overview of your business trust." },
+          { title: "Local SEO Edge", description: "We optimize your site specifically for local search results and Google Maps, helping physical customers find you easily." },
+          { title: "Engagement Ready", description: "Built-in WhatsApp and click-to-call integration ensures there's no friction between a visitor and a sales conversation." }
+        ],
         description: "The digital foundation for your business. A professional, multi-page website that builds trust and provides all the essential information your customers need.",
         deliverables: [
           "Home, About, Services, Projects, Contact Pages",
@@ -128,6 +144,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 160,000 – 220,000",
         priceUSD: "$530 – $730",
         features: ["Animated Home Page", "4 Inner Pages", "CMS Integration", "Performance Optimization"],
+        detailedFeatures: [
+          { title: "Dynamic CMS Power", description: "Take full control of your content. Easily add blog posts, update your portfolio, and manage team members without touching a single line of code." },
+          { title: "Visual Storytelling", description: "We use subtle animations and high-end transitions to tell your brand story in a way that captures and holds attention." },
+          { title: "Growth Architecture", description: "Built on a scalable foundation that allows you to add features like e-commerce or booking systems as your business evolves." }
+        ],
         description: "A dynamic platform that grows with you. Featuring a powerful Content Management System (CMS), you can easily update your blog, projects, and team members without any coding.",
         deliverables: [
             "Custom Animated Homepage",
@@ -151,6 +172,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 300,000 – 500,000+",
         priceUSD: "$1,000 – $1,670+",
         features: ["Full Site Animations", "Smooth Page Transitions", "Custom UI/UX Design", "Advanced Analytics"],
+        detailedFeatures: [
+          { title: "Bespoke Design System", description: "We create a unique visual language for your brand, ensuring your digital presence is as premium as your corporate identity." },
+          { title: "Fluid User Experience", description: "Advanced page transitions and motion graphics create a seamless, app-like feel that exudes authority and professionalism." },
+          { title: "Enterprise-Grade Analytics", description: "Deep insights into user behavior and conversion paths to help you make data-driven decisions at a high level." }
+        ],
         description: "The pinnacle of corporate digital identity. Bespoke design, fluid animations, and enterprise-grade security come together to represent your brand's authority and excellence.",
         deliverables: [
             "Bespoke UI/UX Design System",
@@ -182,6 +208,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 180,000 – 350,000",
         priceUSD: "$600 – $1,170",
         features: ["Product Filters & Search", "Cart & Checkout Flow", "Payment Gateway Setup", "Admin Dashboard"],
+        detailedFeatures: [
+          { title: "Conversion Optimized Checkout", description: "A friction-less 3-step checkout process designed specifically to reduce cart abandonment and increase sales." },
+          { title: "Smart Inventory Management", description: "Easily track stock levels, manage variations (size/color), and get automated low-stock alerts from your dashboard." },
+          { title: "Secure Payment Ecosystem", description: "Seamless integration with local and international gateways like PayHere, Stripe, and PayPal for safe transactions." }
+        ],
         description: "Your shop, open 24/7. A robust online store equipped with inventory management, secure payments, and marketing tools to convert visitors into loyal customers.",
         deliverables: [
             "Unlimited Product Categories",
@@ -204,6 +235,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 120,000 – 200,000",
         priceUSD: "$400 – $670",
         features: ["Digital QR Menu", "Table Booking System", "Time-based Ordering", "Delivery Integration"],
+        detailedFeatures: [
+          { title: "Interactive Digital Menu", description: "A beautiful, mobile-first QR menu that allows customers to browse with high-quality images and real-time availability updates." },
+          { title: "Smart Booking Engine", description: "Automated table reservations with SMS confirmations, helping you manage floor capacity and reduce no-shows." },
+          { title: "Direct Order Pipeline", description: "Accept orders for delivery or pickup directly through your site, saving you from high commission fees of third-party apps." }
+        ],
         description: "Digitize your dining experience. From QR code menus to table reservations, smooth out your front-of-house operations and delight your guests.",
         deliverables: [
             "Mobile-first Digital Menu",
@@ -226,6 +262,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 250,000 – 400,000",
         priceUSD: "$830 – $1,330",
         features: ["Advanced Property Filters", "Interactive Map View", "Agent Profiles", "Lead Capture Forms"],
+        detailedFeatures: [
+          { title: "Search Architecture", description: "Advanced filtering by location, price, property type, and amenities, giving buyers exactly what they're looking for instantly." },
+          { title: "Interactive Geo-Mapping", description: "Integrated Google Maps view with custom markers, allowing users to explore property surroundings and neighborhoods." },
+          { title: "High-Intent Lead Capture", description: "Strategic call-to-actions and property-specific inquiry forms that funnel leads directly to the assigned agent's dashboard." }
+        ],
         description: "The ultimate property marketplace. Allow users to search, filter, and view properties on an interactive map, while you manage leads and agents from the backend.",
         deliverables: [
             "Advanced Search & Filter Engine",
@@ -257,6 +298,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 90,000 – 160,000",
         priceUSD: "$300 – $530",
         features: ["Admin CMS", "AdSense Ready", "Breaking News Ticker", "WhatsApp Sharing"],
+        detailedFeatures: [
+          { title: "High-Performance Publishing", description: "Built for massive traffic and viral news spikes. Our caching architecture ensures your site stays fast even with thousands of concurrent readers." },
+          { title: "Monetization Ready", description: "Strategic ad placements and AdSense integration spots designed for maximum revenue without compromising user experience." },
+          { title: "Social Amplification", description: "One-click WhatsApp and social sharing tools integrated globally across all articles to drive organic engagement." }
+        ],
         description: "Broadcast your voice to the world. A high-performance media platform handling thousands of concurrent readers, complete with monetization ready architecture.",
         deliverables: [
             "Category-based News Layout",
@@ -288,6 +334,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 200,000 – 350,000",
         priceUSD: "$670 – $1,170",
         features: ["Student Logins", "Protected Video Content", "Online MCQ Exams", "Payment Slip Upload"],
+        detailedFeatures: [
+          { title: "Anti-Piracy Video Protection", description: "Secure your valuable course content with encrypted streaming and DRM-level protection that prevents unauthorized downloads and screen recording." },
+          { title: "Automated MCQ Examination", description: "Create complex quizzes with automated grading, instant results, and performance tracking for every student." },
+          { title: "Unified Student Portal", description: "A clean dashboard where students can access their courses, track progress, and upload payment slips for easy verification." }
+        ],
         description: "Your own digital campus. Securely host video lessons, conduct exams, and manage payments in one unified learning management system.",
         deliverables: [
             "Secure Student Portal",
@@ -319,6 +370,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 140,000 – 220,000",
         priceUSD: "$470 – $730",
         features: ["Availability Calendar", "WhatsApp Booking", "Multi-language Support", "Luxury UI animations"],
+        detailedFeatures: [
+          { title: "Immersive UI Flow", description: "Bespoke hotel and trip views with luxury animations that inspire and lead guests through a seamless booking journey." },
+          { title: "Real-Time Availability", description: "Intelligent calendar system that syncs across devices, preventing double-bookings and allowing direct reservations." },
+          { title: "Global Reach Toolkit", description: "Integrated multi-currency and multi-language support to cater to international tourists and boost global sales." }
+        ],
         description: "Sell experiences, not just rooms. A stunning booking engine that inspires wanderlust and simplifies the reservation process for international travelers.",
         deliverables: [
             "Date-based Booking Engine",
@@ -350,6 +406,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 180,000 – 280,000",
         priceUSD: "$600 – $930",
         features: ["Time Slot Booking", "SMS Reminders", "Customer CRM", "Staff Management"],
+        detailedFeatures: [
+          { title: "Automated Staff Roster", description: "Easily manage staff availability and individual service durations to maximize your billable hours and prevent scheduling conflicts." },
+          { title: "Intelligent SMS Reminders", description: "Automated appointment reminders and follow-ups reduced no-shows by up to 40%, ensuring your business runs at full capacity." },
+          { title: "Integrated Customer CRM", description: "Detailed customer histories and preference tracking so you can provide personalized service that keeps clients coming back." }
+        ],
         description: "Eliminate no-shows and phone tag. An intelligent scheduling assistant that works 24/7 to fill your calendar and remind your clients.",
         deliverables: [
             "Interactive Calendar Booking",
@@ -381,6 +442,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         priceLKR: "LKR 100,000 – 180,000",
         priceUSD: "$330 – $600",
         features: ["Donation System", "Transparency Dashboards", "Monthly Giving", "Volunteer Signups"],
+        detailedFeatures: [
+          { title: "Transparency Driven UX", description: "Integrated impact dashboards show donors exactly how their money is being used, significantly increasing trust and recurring donation volumes." },
+          { title: "Seamless Monthly Giving", description: "Empower donors to support your cause with automated monthly contributions, providing your NGO with stable, predictable funding." },
+          { title: "Volunteer Management Hub", description: "Easily recruit, organize, and communicate with your volunteers through a centralized database and impact tracking system." }
+        ],
         description: "Empower your cause. A transparent, storytelling-driven platform to attract donors, recruit volunteers, and showcase the impact of your work.",
         deliverables: [
             "Secure Donation Gateway",

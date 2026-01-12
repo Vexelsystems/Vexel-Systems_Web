@@ -9,18 +9,10 @@ import { motion } from 'framer-motion';
 import { services } from '@/lib/services';
 import { companyDetails } from '@/lib/companydetails';
 
-// Helper to format slug to title (e.g., "web-development" -> "Web Development")
-const formatSlug = (slug: string) => {
-  return slug 
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-};
-
 // Mega Menu Data Structure
 const navigation = {
   services: services.map(service => ({
-    name: formatSlug(service.slug),
+    name: service.title,
     href: `/services/${service.slug}`
   })),
   products: [
@@ -29,16 +21,8 @@ const navigation = {
     { name: "Vexel Hire", href: "/products/vexel-hire" },
   ],
   company: [
-    { name: "About Us", href: "/about" },
     { name: "Our Team", href: "/team" },
-    { name: "Our Process", href: "/process" },
     { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
-  ],
-  resources: [
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Success Stories", href: "/testimonials" },
-    { name: "Tech Stack", href: "/tech-stack" },
     { name: "Events", href: "/events" },
     { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
@@ -59,29 +43,33 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navContainerClasses = `flex items-center justify-between rounded-4xl transition-all duration-300 backdrop-blur-md border border-primary/10 shadow-lg px-6 py-3 ${
-    isScrolled ? 'bg-inner-box/95' : 'bg-inner-box/80'
+  const navContainerClasses = `flex items-center justify-between rounded-4xl transition-all duration-300 backdrop-blur-xl border border-primary/20 shadow-lg shadow-primary/10 px-6 py-3 ${
+    isScrolled ? 'bg-white/95 dark:bg-zinc-900/95' : 'bg-white/90 dark:bg-zinc-900/90'
   }`;
 
   // Shared Dropdown Content Component
   const DropdownContent = ({ items, width = "w-[200px]", columns = 1, viewAllLink }: { items: { name: string, href: string }[], width?: string, columns?: number, viewAllLink?: { text: string, href: string } }) => (
     <div className={`absolute top-full left-1/2 -translate-x-1/2 ${width} bg-white dark:bg-card rounded-2xl shadow-xl border border-primary/10 p-4 animate-in fade-in slide-in-from-top-2 duration-200 z-50`}>
        <div className={`grid ${columns === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-2`}>
-        {items.map((item) => {
+        {items.map((item, index) => {
             const isActive = pathname === item.href;
             return (
-                <Link 
-                key={item.name} 
-                href={item.href} 
-                className={`flex items-center justify-between px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
-                    isActive 
-                    ? 'bg-primary/10 text-primary' 
-                    : 'text-foreground/80 hover:text-primary hover:bg-primary/5'
-                }`}
-                >
-                {item.name}
-                {isActive && <div className="size-1.5 rounded-full bg-primary" />}
-                </Link>
+                <div key={item.name}>
+                    <Link 
+                        href={item.href} 
+                        className={`flex items-center justify-between px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
+                            isActive 
+                            ? 'bg-primary/10 text-primary' 
+                            : 'text-foreground/80 hover:text-primary hover:bg-primary/5'
+                        }`}
+                    >
+                        {item.name}
+                        {isActive && <div className="size-1.5 rounded-full bg-primary" />}
+                    </Link>
+                    {index < items.length - 1 && (
+                        <div className="h-px bg-primary/5 mx-2 my-1" />
+                    )}
+                </div>
             );
         })}
        </div>
@@ -109,11 +97,11 @@ export default function Navbar() {
      if (navigation.services.some(item => pathname === item.href)) return 'services';
      if (navigation.products.some(item => pathname === item.href)) return 'products';
      if (navigation.company.some(item => pathname === item.href)) return 'company';
-     if (navigation.resources.some(item => pathname === item.href)) return 'resources';
 
      // Fallback for sub-routes or unmatched exact paths (e.g. /services/web-development/something)
      if (pathname.startsWith('/services')) return 'services';
      if (pathname.startsWith('/products')) return 'products';
+     if (pathname.startsWith('/portfolio')) return 'portfolio';
      
      return null;
   };
@@ -124,29 +112,32 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto w-[80%] px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-24 rounded-full blur-3xl pointer-events-none -z-10 bg-primary/15 transition-colors duration-300"></div>
 
         <div className={navContainerClasses}>
           {/* Logo */}
           {/* Logo */}
           <Link className="flex items-center gap-3 shrink-0" href="/" aria-label="Vexel Systems Home">
-            <div className="relative h-9 w-9 overflow-hidden rounded-full border border-primary/20">
-              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-cover" />
+            <div className="relative h-10 w-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.6)] border border-primary rounded-full p-0.5">
+              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" />
             </div>
             <span className="text-lg font-bold text-primary tracking-tight hidden sm:block">{companyDetails.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-2" onMouseLeave={() => setActiveDropdown(null)}>
+          <div className="hidden lg:flex items-center gap-1" onMouseLeave={() => setActiveDropdown(null)}>
             {/* Navigation Items Wrapper */}
              {[
                 { id: 'home', label: 'Home', href: '/' },
+                { id: 'about', label: 'About Us', href: '/about' },
                 { id: 'services', label: 'Services', href: '/services', isDropdown: true, hasPage: true },
                 { id: 'products', label: 'Products', href: '/products', isDropdown: true, hasPage: true },
                 { id: 'pricing', label: 'Pricing', href: '/pricing' },
-                { id: 'resources', label: 'Resources', href: '/resources', isDropdown: true },
+                { id: 'portfolio', label: 'Portfolio', href: '/portfolio' },
                 { id: 'company', label: 'Company', href: '/company', isDropdown: true },
+                
+                { id: 'contact', label: 'Contact Us', href: '/contact' },
              ].map((item) => (
                 <div 
                    key={item.id}
@@ -184,16 +175,13 @@ export default function Navbar() {
 
                    {/* Dropdown Portals */}
                    {item.id === 'services' && activeDropdown === 'services' && (
-                      <DropdownContent items={navigation.services} width="w-[600px]" columns={2} viewAllLink={{ text: 'View All Services', href: '/services' }} />
+                      <DropdownContent items={navigation.services} width="w-[320px]" columns={1} viewAllLink={{ text: 'Explore All Services', href: '/services' }} />
                    )}
                    {item.id === 'products' && activeDropdown === 'products' && (
                       <DropdownContent items={navigation.products} width="w-[240px]" viewAllLink={{ text: 'View All Products', href: '/products' }} />
                    )}
-                   {item.id === 'resources' && activeDropdown === 'resources' && (
-                      <DropdownContent items={navigation.resources} width="w-[240px]" />
-                   )}
-                   {item.id === 'company' && activeDropdown === 'company' && (
-                      <DropdownContent items={navigation.company} width="w-[240px]" />
+                    {item.id === 'company' && activeDropdown === 'company' && (
+                      <DropdownContent items={navigation.company} width="w-[240px]" columns={1} />
                    )}
                 </div>
              ))}
@@ -201,20 +189,24 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <Link href="/quote" className="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-primary/20 hover:bg-primary/90">
-              Get Started
-            </Link>
-            <button className="hidden md:flex items-center gap-2 rounded-full border border-gray-200 bg-white dark:bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-                <Lock className="h-4 w-4 text-primary" />
-                <span>Login</span>
-            </button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+               <Link href="/quote" className="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-primary/20 hover:bg-primary/90 block">
+                 Get Started
+               </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+               <Link href="/login" className="hidden md:flex items-center gap-2 rounded-full border border-gray-200 bg-white dark:bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                   <Lock className="h-4 w-4 text-primary" />
+                   <span>Login</span>
+               </Link>
+            </motion.div>
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-foreground hover:bg-black/5 transition-colors"
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
+               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+               className="lg:hidden flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-foreground hover:bg-black/5 transition-colors"
+               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+               {isMobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -266,7 +258,10 @@ export default function Navbar() {
                
                {/* Other Links */}
                <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-                  {navigation.company.concat(navigation.resources).map(item => (
+                   <Link href="/portfolio" className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-3 py-1.5 rounded-lg ${pathname === '/portfolio' ? 'text-primary border border-primary/20' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+                     Portfolio
+                   </Link>
+                   {navigation.company.map(item => (
                      <Link 
                         key={item.name} 
                         href={item.href} 

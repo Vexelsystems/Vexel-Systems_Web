@@ -61,8 +61,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-20 bg-background-light dark:bg-background-dark">
-        <div className="top-24 left-6 md:left-10 z-20 sticky self-start ml-10">
-            <Link href="/#services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-colors bg-white/50 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-foreground/5">
+        <div className="absolute top-24 left-6 md:left-10 z-20">
+            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-all hover:gap-3 bg-white/50 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-foreground/5 shadow-sm">
                 <ArrowRight className="rotate-180" size={16} /> Back to Services
             </Link>
         </div>

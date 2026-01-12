@@ -3,38 +3,39 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, ArrowRight, Activity, TrendingUp, Zap, Server, Shield } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star, ArrowRight, Activity, TrendingUp, Zap, Server, Shield, CheckCircle2 } from 'lucide-react';
 
 const categories = ["All", "Fintech", "Retail & AI", "Healthcare", "Logistics"];
 
 const projects = [
   {
     id: 1,
-    title: "Project Alpha: Global Payments",
+    title: "SecurePay Dashboard",
     category: "Fintech",
     problem: "High latency in cross-border settlements.",
     solution: "A blockchain-powered real-time tracking engine reducing settlement time from days to seconds.",
     tech: ["React", "Node.js", "AWS"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA5_YRwEcsX9HN0wtK2iIzLeCVlkIWuSYeKQQGmAfp9jtCFg2IMk6qis_hNrii3PB4c14_LpxR81YVOv--zRKcc9LvOHiPAIDVCjkqU2he6XA5JDODU4JoK7JAoQuoCxV6BTxUMBGNvqUEMeNgR9bU23Q6EGkO0wq2d5Clzo6ckQhW7_lnjwCJJRKD5ne8QihrqTVHZUX03nqtrFyagj7TFGr7Bfk0cDJPZcBO4Kp8MxPgKXei5ihUAsrlLBrDyegEPZmmnp9TCRzoh",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     isLive: true
   },
   {
     id: 2,
-    title: "Project Beta: Smart Inventory",
+    title: "ShopFlow Mobile",
     category: "Retail & AI",
     problem: "Manual stock counting leading to 15% wastage.",
     solution: "ML-driven predictive analytics that automates supply chain restocking for 200+ outlets.",
     tech: ["Python", "PostgreSQL", "TensorFlow"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCRzflq0_Xt5mayIu7lKy5gPUdeaNRNJegerPcreiZmeLCsOSRR8M3RwQF4KdYM_XrPp9YK1AZIm9vR8G9l8g4Fqs9Cj9RKp8Iba_wT1lRpPk49a6LnSkMHJNWmlY8ryU1RQOGyf8rIcKO_GNf_dTieVyHxJV0J9sixrBdaD-MgEuEnVNBaVCe9T8QysjFJuXuHJLd05m4IgJDTgZWvDAl-cqkS-v33AbYz8LDoElLtFjZBDLv4c6ehjXawfdF0QASI7sRMK6jNIvLM"
+    image: "https://images.unsplash.com/photo-1512428559087-560fa5ce7d87?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 3,
-    title: "Project Gamma: Telemed Connect",
-    category: "Healthcare",
-    problem: "Limited medical access in rural regions.",
+    title: "Insight Engine Pro",
+    category: "SaaS",
+    problem: "Limited market intelligence in rural regions.",
     solution: "Video-consultation platform with low-bandwidth optimization for rural connectivity.",
     tech: ["Flutter", "WebRTC", "Docker"],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1vuqG7HuTWeTcYJFKR-SzppxQXQFOx6PUj1Zl7Xi3vaPGZIj494W-hza1BpYfia2qqd3VzTiuTKfQRStzcXpecBrFeBvpZUjqJevKZNF-WijHiq_ZiO00qj_FpSZDiZRrhm6dUS-hWuUVP3J6xvmwhWL7ObhYCVUs98hiwx-IJAA3Q71wpyMBIIa0Brrf6-qJ0p8P-XRNY4qi9pwB3986w7dmJGroa3bJIEO0TBZzRnF4VJ-8yykyC2oPxOm7QLNO6cezwUBjCnSF",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     isLive: true
   }
 ];
@@ -47,145 +48,236 @@ export default function PortfolioPage() {
   );
 
   return (
-    <div className="flex flex-col py-10">
-      {/* Page Heading */}
-      <div className="mb-10 px-4">
-        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-foreground">Our Portfolio</h2>
-        <p className="text-foreground/60 text-lg max-w-2xl">
-          We design, build, and scale world-class digital products. From Sri Lanka to global markets, we turn complex problems into seamless software solutions.
-        </p>
-      </div>
-
-      {/* Filters */}
-      <div className="flex flex-wrap gap-2 mb-10 overflow-x-auto pb-4 px-4 scrollbar-hide">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-2 rounded-full text-sm font-semibold transition-all whitespace-nowrap ${
-              activeCategory === cat 
-                ? 'bg-primary text-white shadow-lg shadow-primary/20' 
-                : 'bg-foreground/5 hover:bg-primary/10 hover:text-primary text-foreground/60'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 px-4">
-        {filteredProjects.map((project) => (
-          <div key={project.id} className="group flex flex-col bg-card rounded-xl overflow-hidden border border-primary/10 hover:shadow-xl transition-all">
-            <div className="relative overflow-hidden aspect-16/10">
-              <Image 
-                src={project.image} 
-                alt={project.title} 
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-105" 
-              />
-              <div className="absolute top-4 left-4">
-                <span className="bg-primary/90 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">
-                  {project.category}
-                </span>
-              </div>
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{project.title}</h3>
-                {project.isLive && (
-                  <span className="bg-green-500/10 text-green-500 text-[10px] px-2 py-0.5 rounded font-bold uppercase shrink-0 flex items-center gap-1">
-                    <Activity size={10} /> LIVE
-                  </span>
-                )}
-              </div>
-              <p className="text-foreground/60 text-sm leading-relaxed mb-4 flex-1">
-                <span className="font-bold text-foreground">Problem:</span> {project.problem}<br/>
-                <span className="font-bold text-foreground">Solution:</span> {project.solution}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map(t => (
-                  <span key={t} className="text-[11px] px-2 py-0.5 rounded border border-primary/10 text-foreground/50">{t}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Featured Case Study Detailed Section */}
-      <div className="bg-card rounded-2xl border border-primary/10 overflow-hidden mb-20 mx-4">
-        <div className="grid lg:grid-cols-2">
-          <div className="p-10 lg:p-16 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 w-fit uppercase tracking-widest">
-              <Star size={14} /> Featured Case Study
-            </div>
-            <h3 className="text-3xl font-extrabold mb-6">Detailed View: Project Alpha Transformation</h3>
-            <div className="space-y-6 mb-8">
-              <div>
-                <h4 className="text-sm font-bold opacity-40 uppercase tracking-widest mb-2">Technologies Used</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["React Native", "GraphQL", "Node.js", "Redis", "Kubernetes"].map(t => (
-                    <span key={t} className="px-3 py-1 bg-primary/5 rounded-lg text-sm font-medium">{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-sm font-bold opacity-40 uppercase tracking-widest mb-4">Measurable Results</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { val: "70%", label: "Efficiency Increase", icon: <TrendingUp size={16} /> },
-                    { val: "50k+", label: "Active Users", icon: <Zap size={16} /> },
-                    { val: "<2s", label: "Tx Latency", icon: <Server size={16} /> },
-                    { val: "$10M+", label: "Processed Daily", icon: <Shield size={16} /> }
-                  ].map(res => (
-                    <div key={res.label} className="p-4 rounded-xl bg-primary/5 border border-primary/10">
-                      <p className="text-2xl font-black text-primary flex items-center gap-2">
-                          {res.val}
-                      </p>
-                      <p className="text-xs opacity-50 uppercase font-bold flex items-center gap-1 mt-1">
-                          {res.icon} {res.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <button className="bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform w-fit flex items-center gap-2">
-              Read Full Case Study <ArrowRight size={16} />
-            </button>
-          </div>
-          <div className="relative bg-primary/5 min-h-[400px]">
-            <Image 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnloahKUvFQRZsdEeDhYsLIn4pawIGiJZtXXZSzqhfEOvL1TPv41YUhq_jgVLvYcFUzW0f2rhu34aoxtvKgXLtAD_NciQ7fumhkyDr9aPIzG0oL0BFpWgeYozm6SmrgJ7L1CSGlDO-lRpeq64N6zrk7Ccr_PNfN4d3k6o-4TRE-IxuOJVnE9LnMyvM1jm3N5RMUWI-8DF7mTWmU8amMBgAct8xBK_li_vknTt0Mcf-bfoyw57fM2N1spo9Q3qCBvc4ijosuY20GiXA" 
-              alt="Dashboard" 
-              fill 
-              className="object-cover opacity-90"
-            />
-            <div className="absolute inset-0 bg-linear-to-r from-card to-transparent lg:block hidden"></div>
-          </div>
+    <div className="flex flex-col min-h-screen">
+      
+      {/* 1. Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-transparent">
+        
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10 text-center flex flex-col items-center">
+            <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6 }}
+               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest mb-6"
+            >
+                <Star size={12} className="fill-primary" /> Curated Work
+            </motion.div>
+            <motion.h1 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6, delay: 0.1 }}
+               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground mb-8 leading-[0.9]"
+            >
+              We Build <br className="hidden md:block"/>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-primary bg-size-[200%_auto] animate-gradient">
+                Digital Futures
+              </span>
+            </motion.h1>
+            <motion.p 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6, delay: 0.2 }}
+               className="text-foreground/60 text-lg md:text-xl max-w-2xl leading-relaxed"
+            >
+              Explore how we've helped ambitious brands transform complex challenges into elegant, scalable software solutions.
+            </motion.p>
         </div>
-      </div>
-
-      {/* CTA Section */}
-      <section className="bg-foreground text-background dark:bg-primary/10 dark:text-foreground rounded-3xl p-12 text-center relative overflow-hidden mx-4">
-        <div className="relative z-10">
-          <h3 className="text-4xl font-black mb-4">Ready to build your next big idea?</h3>
-          <p className="opacity-70 mb-8 max-w-xl mx-auto">
-            Whether it's a fintech startup or a large-scale enterprise system, our experts are ready to take you from concept to launch.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary text-white font-bold py-4 px-10 rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2">
-              Start a Project <ArrowRight size={18} />
-            </button>
-            <button className="bg-background/10 text-background border border-background/20 dark:bg-primary/10 dark:text-foreground dark:border-primary/20 font-bold py-4 px-10 rounded-xl transition-all">
-              View Our Services
-            </button>
-          </div>
-        </div>
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
       </section>
+
+      {/* 2. Filters */}
+      <section className="mb-16 sticky top-24 z-30">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+          <div className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-full w-fit mx-auto flex flex-wrap justify-center gap-1 shadow-xl">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`relative px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                  activeCategory === cat 
+                    ? 'text-white' 
+                    : 'text-foreground/60 hover:text-foreground hover:bg-white/10 dark:hover:bg-white/5'
+                }`}
+              >
+                {activeCategory === cat && (
+                  <motion.div 
+                    layoutId="activeFilter"
+                    className="absolute inset-0 bg-primary rounded-full shadow-lg shadow-primary/30"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{cat}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Filtered Grid (Existing Premium Design) */}
+      <section className="mb-32">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+           <motion.div 
+              layout 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+           >
+            {filteredProjects.map((project, idx) => (
+              <motion.div 
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                key={project.id} 
+                className="group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
+              >
+                <Image 
+                  src={project.image} 
+                  alt={project.title} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  unoptimized
+                />
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
+
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="overflow-hidden">
+                      <span className="text-primary font-bold text-xs uppercase tracking-widest mb-2 block transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-75">{project.category}</span>
+                  </div>
+                  <h4 className="text-white text-2xl font-bold mb-3">{project.title}</h4>
+                  <p className="text-white/70 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-150 transform translate-y-4 group-hover:translate-y-0">
+                    {project.problem}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      {project.tech.map(t => (
+                        <span key={t} className="text-[10px] px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium">{t}</span>
+                      ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          {filteredProjects.length === 0 && (
+             <div className="text-center py-20 text-foreground/40">No projects found in this category.</div>
+          )}
+        </div>
+      </section>
+
+      {/* 4. Immersive Featured Case Study */}
+      <section className="mb-32">
+         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+            <div className="relative rounded-[3rem] overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl">
+               <div className="absolute inset-0">
+                  <Image 
+                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000"
+                     alt="Project Alpha Background"
+                     fill
+                     className="object-cover opacity-40"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-r from-black via-black/80 to-transparent"></div>
+               </div>
+
+               <div className="relative z-10 grid lg:grid-cols-2 gap-12 p-12 lg:p-24 items-center">
+                  <div className="flex flex-col gap-8">
+                     <div className="flex items-center gap-3">
+                        <div className="h-px w-12 bg-primary"></div>
+                        <span className="text-primary font-bold tracking-widest uppercase text-xs">Featured Case Study</span>
+                     </div>
+                     <h2 className="text-4xl lg:text-5xl font-black text-white leading-tight">
+                        Project Alpha: <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-500">Global Payments Solved</span>
+                     </h2>
+                     <p className="text-white/70 text-lg leading-relaxed max-w-xl">
+                        A revolutionary blockchain-powered tracking engine that reduced settlement times by 99%, handling over $10M in daily transaction volume with zero downtime.
+                     </p>
+                     
+                     <div className="grid grid-cols-2 gap-4">
+                        {[
+                            { value: "48h → 3s", label: "Settlement Time" },
+                            { value: "$50M+", label: "Processed Monthly" },
+                            { value: "100k", label: "Active Merchants" },
+                            { value: "99.99%", label: "Uptime" },
+                        ].map((stat, i) => (
+                           <div key={i} className="bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+                              <h4 className="text-2xl font-bold text-white mb-1">{stat.value}</h4>
+                              <p className="text-xs text-white/50 uppercase tracking-wider font-bold">{stat.label}</p>
+                           </div>
+                        ))}
+                     </div>
+
+                     <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-fit bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-all mt-4"
+                     >
+                        Read Full Case Study <ArrowRight size={18} />
+                     </motion.button>
+                  </div>
+                  
+                  {/* Right Side Visual/Abstract */}
+                  <div className="hidden lg:flex justify-center items-center">
+                     <div className="relative w-full aspect-square max-w-md">
+                        {/* Abstract floating cards effect */}
+                         <motion.div 
+                           animate={{ y: [0, -20, 0] }}
+                           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                           className="absolute top-0 right-0 w-3/4 aspect-video bg-gray-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-20"
+                         >
+                            <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="UI 1" fill className="object-cover" />
+                         </motion.div>
+                         <motion.div 
+                           animate={{ y: [0, 30, 0] }}
+                           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                           className="absolute bottom-10 left-0 w-3/4 aspect-video bg-gray-800 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-10 opacity-60"
+                         >
+                            <Image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="UI 2" fill className="object-cover" />
+                         </motion.div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      {/* 5. Premium CTA */}
+      <section className="pb-32 bg-transparent">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+           <div className="relative rounded-[2.5rem] bg-white/40 dark:bg-white/5 backdrop-blur-md overflow-hidden px-6 py-24 text-center">
+               <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_top,var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent -z-10 opacity-50" />
+               <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-black/50 to-transparent"></div>
+               
+               <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
+                  <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+                     Ready to start your <br/>
+                     <span className="text-primary">Success Story?</span>
+                  </h2>
+                  <p className="text-white/60 text-xl">
+                     Whether you need a full-scale platform or a high-performance mobile app, our team is ready to deliver excellence.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                     <Link href="/consultation">
+                        <motion.button 
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-2xl shadow-white/10"
+                        >
+                           Schedule Consultation
+                        </motion.button>
+                     </Link>
+                     <Link href="/services">
+                        <motion.button 
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                           className="bg-white/5 border border-white/10 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm"
+                        >
+                           Explore Services
+                        </motion.button>
+                     </Link>
+                  </div>
+               </div>
+           </div>
+        </div>
+      </section>
+
     </div>
   );
 }

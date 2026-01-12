@@ -20,7 +20,7 @@ export default function BlogListingPage() {
   });
 
   return (
-    <div className="flex flex-col gap-16 pb-20">
+    <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col gap-16 pb-20">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden rounded-[40px] bg-black text-white">
         <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-transparent"></div>
@@ -33,7 +33,7 @@ export default function BlogListingPage() {
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-bold mb-6 border border-primary/30 uppercase tracking-widest">
               Knowledge Hub
             </span>
-            <h1 className="text-6xl font-bold mb-6 leading-tight">Insights for the <span className="text-primary">Next Generation</span> of Business.</h1>
+            <h1 className="text-6xl font-bold mb-6 leading-tight">Insights for the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Next Generation</span> of Business.</h1>
             <p className="text-xl text-white/60 leading-relaxed mb-8">
               Explore the latest trends in POS technology, retail growth strategies, and digital transformation tailored for the modern entrepreneur.
             </p>

@@ -23,9 +23,6 @@ export const navigation = {
     { name: "Our Process", href: "/process" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
-  ],
-  resources: [
-    { name: "Portfolio", href: "/portfolio" },
     { name: "Success Stories", href: "/testimonials" },
     { name: "Tech Stack", href: "/tech-stack" },
     { name: "Events", href: "/events" },
@@ -39,6 +36,6 @@ export const navLinks = [
     { id: 'services', label: 'Services', href: '/services', isDropdown: true, hasPage: true },
     { id: 'products', label: 'Products', href: '/products', isDropdown: true, hasPage: true },
     { id: 'pricing', label: 'Pricing', href: '/pricing' },
-    { id: 'resources', label: 'Resources', href: '/resources', isDropdown: true },
+    { id: 'portfolio', label: 'Portfolio', href: '/portfolio' },
     { id: 'company', label: 'Company', href: '/company', isDropdown: true },
 ];

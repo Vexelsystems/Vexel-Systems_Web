@@ -1,19 +1,36 @@
 "use client";
 
-import { MapPin, Phone, Mail, Send, ChevronsUpDown, Facebook, Twitter, Linkedin, Clock, ExternalLink, MessageSquare } from "lucide-react";
+import { MapPin, Phone, Mail, Send, ChevronsUpDown, Facebook, Twitter, Linkedin, Clock, ExternalLink, MessageSquare, Calendar } from "lucide-react";
 import { toast } from "sonner";
 import { companyDetails } from "@/lib/companydetails";
+import Link from "next/link";
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-transparent">
       {/* Page Heading */}
-      <section className="bg-white dark:bg-zinc-950 py-12 lg:py-20 border-b border-gray-100 dark:border-gray-800">
+      <section className="bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md py-12 lg:py-20 border-b border-gray-100 dark:border-gray-800">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-          <h1 className="text-foreground text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">Talk to an Expert</h1>
+          <h1 className="text-foreground text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">Talk to an <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Expert</span></h1>
           <p className="text-foreground/60 text-lg max-w-2xl">
             Partner with {companyDetails.name} for global technology solutions and innovative software development. We're here to turn your vision into reality.
           </p>
+          
+          {/* New Consultation Link */}
+          <div className="mt-8 p-6 bg-primary/5 border border-primary/10 rounded-2xl inline-flex flex-col sm:flex-row sm:items-center gap-4">
+             <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary text-white rounded-lg">
+                    <Calendar size={20} />
+                </div>
+                <div>
+                    <h3 className="font-bold text-foreground">Need a deep dive?</h3>
+                    <p className="text-sm text-foreground/60">Schedule a dedicated strategy session with our leads.</p>
+                </div>
+             </div>
+             <Link href="/consultation" className="px-6 py-3 bg-primary text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all whitespace-nowrap text-sm">
+                Book Consultation
+             </Link>
+          </div>
         </div>
       </section>
 
@@ -21,7 +38,7 @@ export default function Contact() {
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left Column: Contact Form */}
-            <section className="bg-white dark:bg-black p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 h-fit">
+            <section className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 h-fit">
               <form className="space-y-6" onSubmit={(e) => {
                 e.preventDefault();
                 toast.success("Message sent successfully!", {
@@ -167,13 +184,13 @@ export default function Contact() {
               <div className="mt-12 lg:mt-0 pt-10 border-t border-gray-200 dark:border-gray-800">
                 <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6">Connect with us</h3>
                 <div className="flex gap-4">
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all text-foreground/60" href={companyDetails.socialLinks.facebook} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.facebook} target="_blank">
                     <Facebook size={20} />
                   </a>
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all text-foreground/60" href={companyDetails.socialLinks.twitter} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#1DA1F2] hover:shadow-[0_0_15px_rgba(29,161,242,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.twitter} target="_blank">
                     <Twitter size={20} />
                   </a>
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all text-foreground/60" href={companyDetails.socialLinks.linkedin} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#0077B5] hover:shadow-[0_0_15px_rgba(0,119,181,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.linkedin} target="_blank">
                     <Linkedin size={20} />
                   </a>
                 </div>

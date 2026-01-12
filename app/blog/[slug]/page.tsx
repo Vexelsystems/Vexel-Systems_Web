@@ -54,7 +54,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     .slice(0, 3);
 
   return (
-    <div className="flex flex-col gap-12 pb-20">
+    <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col gap-12 pb-20">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"

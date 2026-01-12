@@ -1,0 +1,20 @@
+import { generatePageMetadata } from "@/lib/seo";
+import ConsultationClient from "./ConsultationClient";
+
+export const metadata = generatePageMetadata({
+  title: "Schedule a Consultation - Let's Build Your Future",
+  description: "Book a strategic consultation with Vexel Systems experts. Discuss your project requirements, technology needs, and digital transformation goals with our team.",
+  keywords: [
+    "Schedule Consultation",
+    "Book a Meeting",
+    "Digital Strategy Consultation",
+    "Tech Consulting Sri Lanka",
+    "Vexel Systems Appointment",
+    "Software Project Discovery",
+  ],
+  path: "/consultation",
+});
+
+export default function ConsultationPage() {
+  return <ConsultationClient />;
+}

@@ -50,7 +50,7 @@ export default function FAQPage() {
         >
           <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col items-center">
             <div className="text-center max-w-2xl">
-                <h1 className="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Master FAQ Center</h1>
+                <h1 className="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Master <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">FAQ</span> Center</h1>
                 <p className="text-primary text-lg md:text-xl font-medium mb-8">Empowering your business with instant software & POS solutions</p>
             </div>
             <div className="w-full max-w-2xl bg-white dark:bg-card rounded-xl shadow-2xl overflow-hidden p-1 flex">
@@ -69,7 +69,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[1920px] flex flex-col lg:flex-row gap-8 mb-20">
+      <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row gap-8 mb-20">
         {/* Sidebar Navigation */}
         <aside className="w-full lg:w-72 shrink-0">
           <div className="sticky top-24 space-y-4">
@@ -121,7 +121,7 @@ export default function FAQPage() {
                     {categories.find(c => c.id === activeCategory)?.icon}
                 </span>
               </div>
-              <h2 className="text-2xl font-bold">{categories.find(c => c.id === activeCategory)?.label}</h2>
+              <h2 className="text-2xl font-bold">{categories.find(c => c.id === activeCategory)?.label?.split(' ')[0]} <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">{categories.find(c => c.id === activeCategory)?.label?.split(' ')[1] || ''}</span></h2>
             </div>
 
             <div className="space-y-4">
@@ -204,7 +204,7 @@ export default function FAQPage() {
 
           {/* Global CTA */}
           <div className="pt-8 border-t border-primary/10 flex flex-col items-center text-center">
-            <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
+            <h2 className="text-2xl font-bold mb-4">Still have <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">questions?</span></h2>
             <p className="opacity-60 mb-8 max-w-lg">If you couldn't find what you were looking for, our expert team is ready to help you optimize your business operations.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <button 

@@ -41,7 +41,7 @@ export default function CompanyPolicy() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-20">
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-black mb-4 tracking-tight">Our Company Policy</h1>
+        <h1 className="text-5xl font-black mb-4 tracking-tight">Our Company <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Policy</span></h1>
         <p className="text-primary uppercase tracking-widest text-sm">
           The Vexel Standard of Excellence
         </p>

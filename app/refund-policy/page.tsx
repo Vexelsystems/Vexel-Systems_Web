@@ -16,7 +16,7 @@ export default function RefundPolicy() {
       {/* Page Heading */}
       <section className="mb-10">
         <div className="flex flex-col gap-3">
-          <h1 className="text-foreground text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Refund & Cancellation Policy</h1>
+          <h1 className="text-foreground text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Refund & Cancellation <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Policy</span></h1>
           <p className="text-foreground/60 text-lg font-normal leading-normal max-w-2xl">
             Last Updated: October 2023. At Vexel Systems, we strive to maintain transparency and fairness in our billing and service delivery.
           </p>

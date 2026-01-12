@@ -6,13 +6,32 @@ import { companyDetails } from "@/lib/companydetails";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Increment progress from 0 to 100 over 900ms
+    const duration = 900;
+    const interval = 10; // Update every 10ms
+    const step = 100 / (duration / interval);
+    
+    const progressTimer = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(progressTimer);
+          return 100;
+        }
+        return Math.min(prev + step, 100);
+      });
+    }, interval);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, duration + 100); // Small buffer
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(progressTimer);
+    };
   }, []);
 
   if (!isLoading) return null;
@@ -25,28 +44,41 @@ export default function Preloader() {
       {/* Centered Logo with Pulse Animation */}
       <div className="relative flex flex-col items-center gap-6 z-10">
          {/* Logo Container */}
-         <div className="relative flex items-center justify-center">
+         <div className="relative flex items-center justify-center scale-90 sm:scale-100">
              {/* Outer Ping Ring */}
-             <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping"></div>
-             <div className="relative h-24 w-24 rounded-full overflow-hidden border-2 border-primary/20 bg-white p-2 z-10">
+             <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping duration-1000"></div>
+             <div className="relative h-28 w-28 z-10 filter drop-shadow-[0_0_15px_rgba(0,119,237,0.6)] border border-primary rounded-full p-1 bg-background">
                 <Image
                     src={companyDetails.logos.main}
                     alt="Vexel Systems Logo"
                     fill
-                    className="object-cover"
+                    className="object-contain p-2"
                     priority
                 />
              </div>
          </div>
 
          {/* Brand Name */}
-         <h1 className="text-3xl font-black text-foreground tracking-tighter">
+         <h1 className="text-3xl font-black text-foreground tracking-widest uppercase">
              Vexel Systems
          </h1>
 
-         {/* Loading Bar */}
-         <div className="w-48 h-1 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-            <div className="h-full bg-primary animate-pulse rounded-full" style={{ width: '100%' }}></div>
+         <div className="flex flex-col items-center gap-3">
+            {/* Loading Bar */}
+            <div className="w-64 h-1.5 bg-gray-100 dark:bg-zinc-800 rounded-full overflow-hidden relative shadow-inner">
+                <div 
+                    className="absolute left-0 top-0 h-full bg-primary rounded-full transition-all duration-100 ease-linear"
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
+            
+            {/* Percentage Counter */}
+            <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-black text-primary tabular-nums tracking-tighter">
+                    {Math.round(progress)}
+                </span>
+                <span className="text-sm font-bold text-foreground/40 lowercase">%</span>
+            </div>
          </div>
       </div>
     </div>

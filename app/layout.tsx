@@ -5,9 +5,10 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import LiveChat from "@/components/LiveChat";
 import CookieConsent from "@/components/CookieConsent";
-import SeasonalPromo from "@/components/SeasonalPromo";
+
 import Link from "next/link";
 import { Toaster } from "sonner";
+import { GlowingBackground } from "@/components/GlowingBackground";
 import { companyDetails } from "@/lib/companydetails";
 import { DEFAULT_SEO, BASE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -123,14 +124,15 @@ export default function RootLayout({
           }}
         />
         <Preloader />
+        <GlowingBackground />
         <Navbar />
-        <div className="pt-24 min-h-screen flex flex-col w-[80%] mx-auto">
+        <div className="pt-24 min-h-screen flex flex-col  mx-auto">
           {children}
         </div>
         <Footer />
         <LiveChat />
         <CookieConsent />
-        <SeasonalPromo />
+
         <Toaster position="bottom-right" richColors />
       </body>
     </html>

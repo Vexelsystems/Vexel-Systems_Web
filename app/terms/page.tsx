@@ -34,9 +34,9 @@ export default function Terms() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-3xl mx-auto w-full">
+      <main className="flex-1 w-[90%] md:w-[80%] mx-auto max-w-4xl">
         {/* HeadlineText */}
-        <h1 className="text-foreground tracking-tight text-[32px] font-bold leading-tight px-4 text-left pb-1 pt-6">Terms of Service</h1>
+        <h1 className="text-foreground tracking-tight text-[32px] font-bold leading-tight px-4 text-left pb-1 pt-6">Terms of <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Service</span></h1>
         {/* MetaText */}
         <div className="flex items-center px-4 pb-6 pt-1">
           <Calendar className="text-foreground/60 mr-2" size={16} />

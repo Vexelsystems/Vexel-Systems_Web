@@ -84,19 +84,19 @@ export default function ServicesPage() {
   };
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-transparent">
       {/* Hero Section */}
       <section className="relative py-20 px-6">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div 
-            className="flex min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden" 
+            className="flex min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md" 
             style={{
-              backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.7) 0%, rgba(16, 28, 34, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2iV5e3QSQdKx_aQim-8kCoRTsv6elhuujaENVDbQkjxCWUfjPhs_JMOuUxmNUX8zsjAyCuqDVjrGGy7Sqz7UfnkXGHQ-9jGL6DqNwoUBnu5XP0RsxqG4om1aIUPcINQ70wjJ2gG02tyfL03O3wzBfx6Nddu--f_2mwQ-QkQIMD9HZq98MvCNMX6ke8YTsaF-yM2uCt5fEDx1L_I3Rp_XTIzfIM-Afcl1HPOOLrOKLmo0IVIl9Z0jqJuUDwBetbq1dle2S-Lt0TxvS")'
+              backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.4) 0%, rgba(16, 28, 34, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2iV5e3QSQdKx_aQim-8kCoRTsv6elhuujaENVDbQkjxCWUfjPhs_JMOuUxmNUX8zsjAyCuqDVjrGGy7Sqz7UfnkXGHQ-9jGL6DqNwoUBnu5XP0RsxqG4om1aIUPcINQ70wjJ2gG02tyfL03O3wzBfx6Nddu--f_2mwQ-QkQIMD9HZq98MvCNMX6ke8YTsaF-yM2uCt5fEDx1L_I3Rp_XTIzfIM-Afcl1HPOOLrOKLmo0IVIl9Z0jqJuUDwBetbq1dle2S-Lt0TxvS")'
             }}
           >
             <div className="z-10 flex flex-col gap-4 max-w-3xl">
               <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
-                Explore Our Services
+                Explore Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Services</span>
               </h1>
               <p className="text-white/80 text-lg md:text-xl font-normal leading-relaxed">
                 Discover the perfect technology solutions tailored to your business goals.
@@ -127,7 +127,7 @@ export default function ServicesPage() {
                   className={`px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${
                     selectedCategory === cat
                       ? "bg-primary text-white border-primary shadow-lg shadow-primary/25"
-                      : "bg-white dark:bg-card text-foreground/70 border-gray-200 dark:border-gray-800 hover:border-primary/50 hover:text-primary"
+                      : "bg-white/40 dark:bg-white/5 backdrop-blur-md text-foreground/70 border-gray-200 dark:border-gray-800 hover:border-primary/50 hover:text-primary"
                   }`}
                 >
                   {cat}
@@ -145,7 +145,7 @@ export default function ServicesPage() {
                  placeholder="Search services..."
                  value={searchQuery}
                  onChange={(e) => setSearchQuery(e.target.value)}
-                 className="w-full pl-10 pr-8 py-2.5 rounded-full bg-white dark:bg-card border border-gray-200 dark:border-gray-800 text-sm font-medium text-foreground placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm transition-all"
+                 className="w-full pl-10 pr-8 py-2.5 rounded-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-gray-800 text-sm font-medium text-foreground placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm transition-all"
                />
                {searchQuery && (
                  <button 
@@ -167,39 +167,51 @@ export default function ServicesPage() {
               return (
                 <div 
                   key={service.slug} 
-                  className="bg-white dark:bg-black/50 p-8 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col h-full shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 group"
+                  className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full"
                 >
-                  <div className="text-primary mb-6 p-3 bg-primary/5 rounded-lg w-fit group-hover:bg-primary/10 transition-colors">
-                    <IconComponent size={40} className="group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-foreground/60 mb-6 grow line-clamp-3">
-                    {service.description}
-                  </p>
-                  
-                  {/* Mini Features List */}
-                  {service.subServices && (
-                    <ul className="space-y-3 mb-8">
-                      {service.subServices.slice(0, 3).map((sub, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm">
-                          <CheckCircle className="text-primary mt-0.5 shrink-0" size={16} />
-                          <span className="text-foreground/80 line-clamp-1">{sub.title}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                   {/* Gradient Hover Overlay */}
+                   <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                   
+                   <div className="relative h-full rounded-[1.7rem] bg-gray-50/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 flex flex-col gap-6 overflow-hidden">
+                      {/* Decorative Blur Blob */}
+                      <div className="absolute -right-10 -top-10 size-40 bg-zinc-500/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
 
-                  <Link 
-                    href={`/services/${service.slug}`} 
-                    className="w-full text-center bg-white dark:bg-card text-foreground border border-gray-200 dark:border-gray-800 font-bold py-3 rounded-lg transition-all hover:bg-primary hover:text-white hover:border-primary shadow-sm hover:shadow-lg hover:shadow-primary/20 flex items-center justify-center gap-2 group/btn"
-                  >
-                    View Details
-                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
+                      <div className="flex items-start justify-between relative z-10">
+                        <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                          <IconComponent size={32} strokeWidth={1.5} />
+                        </div>
+                        <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/20 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+                          <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-col gap-3 relative z-10 grow">
+                        <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-foreground/60 leading-relaxed font-medium line-clamp-3">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {/* Mini Features List */}
+                      {service.subServices && (
+                        <div className="relative z-10 pt-4 border-t border-gray-100 dark:border-zinc-800/50">
+                           <ul className="space-y-2">
+                             {service.subServices.slice(0, 3).map((sub, idx) => (
+                               <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-foreground/50">
+                                 <div className="size-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></div>
+                                 <span className="line-clamp-1">{sub.title}</span>
+                               </li>
+                             ))}
+                           </ul>
+                        </div>
+                      )}
+                      
+                      <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20">
+                        <span className="sr-only">View {service.title}</span>
+                      </Link>
+                   </div>
                 </div>
               );
             })}

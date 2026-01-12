@@ -41,9 +41,9 @@ export default function PrivacyPolicy() {
   ];
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-20">
+    <main className="w-[90%] md:w-[80%] mx-auto max-w-4xl py-20">
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-black mb-4 tracking-tight">Privacy Policy</h1>
+        <h1 className="text-5xl font-black mb-4 tracking-tight">Privacy <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Policy</span></h1>
         <p className="text-foreground/40 font-bold uppercase tracking-widest text-sm">
           Last Updated: {lastUpdated}
         </p>
@@ -76,7 +76,7 @@ export default function PrivacyPolicy() {
       </div>
 
       <div className="mt-20 p-10 rounded-[40px] bg-primary text-white text-center shadow-2xl shadow-primary/20">
-        <h2 className="text-3xl font-bold mb-4">Questions about your data?</h2>
+        <h2 className="text-3xl font-bold mb-4">Questions about your <span className="text-transparent bg-clip-text bg-linear-to-r from-white/90 to-white/70">data?</span></h2>
         <p className="text-white/80 mb-8 max-w-md mx-auto">
           If you have any questions or concerns about our privacy practices, please reach out to our legal team.
         </p>

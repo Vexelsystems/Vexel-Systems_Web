@@ -12,7 +12,7 @@ export default function Products() {
           <div className="flex flex-col gap-6 flex-1">
             <div className="flex flex-col gap-4">
               <h1 className="text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl text-foreground">
-                Powerful Software <br/><span className="text-primary">Products</span> for Modern Businesses
+                Powerful Software <br/><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Products</span> for Modern Businesses
               </h1>
               <p className="text-lg opacity-80 max-w-[540px] text-foreground/80">
                 Proprietary solutions designed to streamline your business management and retail operations with cutting-edge technology.
@@ -112,12 +112,12 @@ export default function Products() {
           
           <div className="relative flex flex-col items-center text-center gap-6 z-10">
             <h2 className="text-3xl md:text-4xl font-black text-white max-w-2xl">
-              Need a Custom Product? <br/><span className="text-primary">We Build It for You.</span>
+              Need a <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Custom Product</span>? <br/><span className="text-primary">We Build It for You.</span>
             </h2>
             <p className="text-gray-400 max-w-lg text-lg">
               Have a unique business challenge? Our engineering team specializes in crafting tailored software solutions for complex workflows.
             </p>
-            <Link href="/contact" className="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-primary-foreground text-black dark:text-primary-foreground text-base font-bold hover:bg-primary hover:text-white transition-colors">
+            <Link href="/contact" className="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-zinc-900 text-primary text-base font-bold hover:bg-primary hover:text-white transition-colors">
               Book a Consultation
             </Link>
           </div>

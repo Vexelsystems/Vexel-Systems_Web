@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
-  CheckCircle, ArrowRight, Server, ShieldCheck, Globe, Search, Filter, GitCompare
+  CheckCircle, ArrowRight, Server, ShieldCheck, Globe, Search, Filter, GitCompare, Target
 } from "lucide-react";
 import { PRICING_CATEGORIES, PricingCategory } from "@/lib/pricing-data";
 import ComparisonTable from "./ComparisonTable";
@@ -92,13 +92,7 @@ export default function PricingPage() {
   // Search state
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [maxBudget, setMaxBudget] = useState(5000); // Default to reasonable high USD
   const [comparingCategory, setComparingCategory] = useState<PricingCategory | null>(null);
-
-  // Reset budget when currency changes
-  useEffect(() => {
-     setMaxBudget(currency === 'USD' ? 5000 : 2000000);
-  }, [currency]);
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -148,14 +142,7 @@ export default function PricingPage() {
             opt.bestFor.toLowerCase().includes(q) ||
             opt.features.some(f => f.toLowerCase().includes(q));
 
-        // Budget Match
-        const optionPrice = currency === 'LKR' ? opt.priceLKR : opt.priceUSD;
-        // Check if starting price is within budget
-        const priceVal = parsePrice(optionPrice);
-        const isMaxBudget = maxBudget >= (currency === 'USD' ? 5000 : 2000000);
-        const matchesBudget = isMaxBudget || priceVal <= maxBudget;
-
-        return matchesSearch && matchesBudget;
+        return matchesSearch;
     });
 
     // Only include the category if it has at least one option that matches both search and budget
@@ -165,15 +152,14 @@ export default function PricingPage() {
   const categoriesList = ["All", ...PRICING_CATEGORIES.map(c => c.title.split(":")[0])];
 
   return (
-    <main className="min-h-screen bg-background pb-20 pt-32">
+    <main className="min-h-screen bg-transparent pb-20 pt-32">
       
       {/* Hero Section */}
-      <section className="relative w-full mb-12 text-center">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <section className="relative w-full mb-12 text-center bg-transparent">
         
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative">
             {/* Currency Toggle */}
-            <div className="absolute top-0 right-0 flex bg-white dark:bg-card border border-primary/20 rounded-full p-1 shadow-sm">
+            <div className="absolute top-0 right-0 flex bg-white/40 dark:bg-card/40 backdrop-blur-md border border-primary/20 rounded-full p-1 shadow-sm">
             <button 
                 onClick={() => setCurrency('LKR')}
                 className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
@@ -218,7 +204,7 @@ export default function PricingPage() {
                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm font-bold mb-4">
                  <Globe size={16} /> International Client Specials
                </div>
-               <h2 className="text-3xl md:text-5xl font-black mb-4">Simplified Global Packages</h2>
+               <h2 className="text-3xl md:text-5xl font-black mb-4">Simplified <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-200 to-white">Global Packages</span></h2>
                <p className="text-white/80 max-w-2xl mx-auto">All-in-one solutions tailored for our international partners.</p>
              </div>
 
@@ -248,7 +234,7 @@ export default function PricingPage() {
       <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row gap-12 mb-32">
         
         {/* Sidebar Filters */}
-        <aside className="w-full lg:w-1/4 space-y-8 h-fit lg:sticky lg:top-32 animate-in fade-in slide-in-from-left-4 duration-700">
+        <aside className="w-full lg:w-[260px] shrink-0 space-y-6 h-fit lg:sticky lg:top-32 animate-in fade-in slide-in-from-left-4 duration-700">
            
            {/* Search */}
            <div className="relative group">
@@ -256,54 +242,29 @@ export default function PricingPage() {
               <input 
                 type="text" 
                 placeholder="Search services..." 
-                className="w-full bg-white dark:bg-card border border-primary/10 focus:border-primary rounded-xl py-3 pl-10 pr-4 outline-none transition-all shadow-sm text-sm"
+                className="w-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-primary/10 focus:border-primary rounded-xl py-3 pl-10 pr-4 outline-none transition-all shadow-sm text-sm"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
            </div>
 
-           {/* Price Range Slider */}
-           <div className="bg-white dark:bg-card p-6 rounded-2xl border border-primary/10 shadow-sm">
-              <h3 className="font-bold mb-4 flex items-center gap-2">
-                 <span className="p-1 rounded-md bg-primary/10 text-primary"><Filter size={16} /></span>
-                 Max Budget
-              </h3>
-              <input 
-                 type="range" 
-                 min="0" 
-                 max={currency === 'USD' ? 5000 : 2000000} 
-                 step={currency === 'USD' ? 100 : 50000}
-                 value={maxBudget || 0}
-                 className="w-full accent-primary h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                 onChange={(e) => setMaxBudget(parseInt(e.target.value))}
-              />
-              <div className="flex justify-between mt-2 text-sm font-medium text-foreground/60">
-                 <span>0</span>
-                 <span>
-                    {currency === 'USD' 
-                        ? `$${maxBudget < 5000 ? maxBudget : '5000+'}` 
-                        : `LKR ${maxBudget < 2000000 ? (maxBudget/1000).toFixed(0) + 'k' : '2M+'}`
-                    }
-                 </span>
-              </div>
-           </div>
 
            {/* Vertical Category List */}
-           <div className="bg-white dark:bg-card p-6 rounded-2xl border border-primary/10 shadow-sm">
-              <h3 className="font-bold mb-4 px-2">Categories</h3>
-              <div className="space-y-1 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
+           <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-sm">
+              <h3 className="font-bold mb-3 px-2 text-[10px] uppercase tracking-widest text-foreground/40">Categories</h3>
+              <div className="space-y-1 max-h-[70vh] overflow-y-auto pr-1 custom-scrollbar">
                 {categoriesList.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all flex items-center justify-between group ${
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between group border-2 ${
                       selectedCategory === cat 
-                        ? 'bg-primary text-white shadow-md shadow-primary/20' 
-                        : 'text-foreground/70 hover:bg-gray-100 dark:hover:bg-white/5'
+                        ? 'bg-primary border-primary text-white shadow-md shadow-primary/20 scale-[1.02]' 
+                        : 'bg-white dark:bg-white/5 border-transparent text-foreground/60 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-foreground hover:pl-4'
                     }`}
                   >
                     {cat}
-                    {selectedCategory === cat && <CheckCircle size={14} />}
+                    {selectedCategory === cat && <CheckCircle size={14} className="text-white" />}
                   </button>
                 ))}
               </div>
@@ -311,7 +272,7 @@ export default function PricingPage() {
         </aside>
 
         {/* Filtered Results Grid */}
-        <div className="w-full lg:w-3/4 space-y-20">
+        <div className="flex-1 space-y-20">
             {filteredCategories.length > 0 ? filteredCategories.map((category) => (
               <div key={category.id} id={category.id} className="animate-in fade-in slide-in-from-bottom-8 duration-700">
                 
@@ -333,22 +294,18 @@ export default function PricingPage() {
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {category.options.map((option, idx) => {
                       // Filter Logic Inside Map (Must match upper filter)
                       const q = searchQuery.toLowerCase();
                       const matchesSearch = !searchQuery || option.name.toLowerCase().includes(q) || option.features.some(f => f.toLowerCase().includes(q));
                       
-                      const price = currency === 'LKR' ? option.priceLKR : option.priceUSD;
-                      const priceVal = parsePrice(price);
-                      const matchesBudget = priceVal <= maxBudget;
-
-                      if (!matchesSearch || !matchesBudget) {
+                      if (!matchesSearch) {
                           return null;
                       }
 
                       return (
-                      <div key={idx} className="group relative bg-white dark:bg-card rounded-3xl p-6 border border-gray-100 dark:border-white/5 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                      <div key={idx} className="group relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-gray-100 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col">
                           <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors pointer-events-none" />
                           
                           <div className="flex justify-between items-start mb-4">
@@ -363,7 +320,17 @@ export default function PricingPage() {
                             {option.type && <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">{option.type}</span>}
                           </div>
 
-                          <h3 className="text-xl font-bold mb-2">{option.name}</h3>
+                          <h3 className="text-xl font-bold mb-1">{option.name}</h3>
+                          <div className="flex items-center gap-2 mb-4">
+                             <div className="p-1.5 rounded-md bg-primary/10 text-primary">
+                                <Target size={14} />
+                             </div>
+                             <div className="flex flex-col">
+                                <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest leading-none mb-0.5">Ideal For</span>
+                                <span className="text-xs font-bold text-foreground/80 leading-tight">{option.bestFor}</span>
+                             </div>
+                          </div>
+
                           <div className="mb-4">
                             <PriceTag price={currency === 'LKR' ? option.priceLKR : option.priceUSD} />
                           </div>
@@ -386,11 +353,11 @@ export default function PricingPage() {
                 </div>
               </div>
             )) : (
-              <div className="text-center py-20 bg-gray-50 dark:bg-white/5 rounded-3xl border border-dashed border-gray-300">
+              <div className="text-center py-20 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl border border-dashed border-gray-300">
                 <Search size={48} className="mx-auto text-foreground/20 mb-4" />
                 <h3 className="text-xl font-bold text-foreground/50">No results found</h3>
-                <p className="text-foreground/40 text-sm mb-4">Try adjusting your budget or search terms.</p>
-                <button onClick={() => { setSearchQuery(""); setSelectedCategory("All"); setMaxBudget(currency === 'USD' ? 5000 : 2000000); }} className="text-primary font-bold hover:underline">
+                <p className="text-foreground/40 text-sm mb-4">Try adjusting your search terms.</p>
+                <button onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }} className="text-primary font-bold hover:underline">
                   Clear All Filters
                 </button>
               </div>
@@ -399,15 +366,14 @@ export default function PricingPage() {
       </div>
 
       {/* Maintenance Section */}
-      <section className="relative py-32 mt-32 overflow-hidden">
+      <section className="relative py-32 mt-32 overflow-hidden bg-transparent">
           {/* Background Decor */}
-          <div className="absolute inset-0 bg-gray-900 text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
-          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] -z-10"></div>
+          <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-md text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
           
          <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10 text-white">
             <div className="text-center mb-20">
                <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">Long Term Success</span>
-               <h2 className="text-4xl md:text-5xl font-black mb-6">Peace of Mind Maintenance</h2>
+               <h2 className="text-4xl md:text-5xl font-black mb-6">Peace of Mind <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Maintenance</span></h2>
                <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">Don't just launch and leave. Keep your digital assets secure, fast, and updated with our dedicated care packages.</p>
             </div>
 

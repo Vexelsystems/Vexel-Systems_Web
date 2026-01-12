@@ -9,7 +9,7 @@ export default function Quote() {
         <div className="lg:col-span-8 flex flex-col gap-8">
           {/* Page Heading */}
           <div className="flex flex-col gap-3">
-            <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">Let's Build Something Great</h1>
+            <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">Let's Build Something <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Great</span></h1>
             <p className="text-foreground/60 text-lg font-normal leading-normal">Tell us about your project and get a detailed response within 24 hours.</p>
           </div>
           
@@ -154,7 +154,7 @@ export default function Quote() {
 
           {/* Why Choose Us Card */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-            <h3 className="text-lg font-bold text-foreground mb-6">Why work with us?</h3>
+            <h3 className="text-lg font-bold text-foreground mb-6">Why work <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">with us?</span></h3>
             <ul className="flex flex-col gap-5">
               <li className="flex gap-4">
                 <div className="text-primary mt-1">

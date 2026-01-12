@@ -11,14 +11,40 @@ export default function CareersPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    portfolio: '',
+    talent: '',
+    file: null as File | null
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData(prev => ({ ...prev, file: e.target.files![0] }));
+    }
+  };
+
+  const isFormValid = selectedJob && formData.fullName && formData.mobile && formData.talent && formData.file;
+
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormValid) return;
+    
     setIsSubmitting(true);
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
       toast.success("Application submitted successfully!");
+      setFormData({ fullName: '', email: '', mobile: '', portfolio: '', talent: '', file: null }); // Reset form
+      setSelectedJob(null);
     }, 2000);
   };
 
@@ -34,14 +60,14 @@ export default function CareersPage() {
           <Star size={16} />
           Join the Revolution
         </motion.div>
-        <h1 className="text-6xl font-bold mb-6">Build the <span className="text-primary">Future of Commerce</span> with Us.</h1>
+        <h1 className="text-6xl font-bold mb-6">Build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Future of Commerce</span> with Us.</h1>
         <p className="text-xl text-foreground/60 leading-relaxed">
           We're a team of innovators, dreamers, and doers on a mission to empower 
           businesses across Asia. Find your role and help us change the world of retail.
         </p>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
+      <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
         {/* Job Listings */}
         <div className="flex flex-col gap-6">
           <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
@@ -146,7 +172,7 @@ export default function CareersPage() {
                   setSelectedJob('custom');
                   document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-black px-10 py-4 rounded-2xl font-bold hover:bg-white/90 transition-all"
+                className="bg-white text-primary px-10 py-4 rounded-2xl font-bold hover:bg-white/90 transition-all"
               >
                 Submit Open Application
               </button>
@@ -190,20 +216,58 @@ export default function CareersPage() {
               <form onSubmit={handleApply} className="space-y-6">
                 <div>
                   <label className="text-sm font-bold mb-2 block">Full Name</label>
-                  <input required type="text" placeholder="Jane Perera" className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" />
+                  <input 
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required 
+                    type="text" 
+                    placeholder="Jane Perera" 
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  />
                 </div>
                 <div>
                   <label className="text-sm font-bold mb-2 block">Email Address</label>
-                  <input required type="email" placeholder="jane@example.com" className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" />
+                  <input 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required 
+                    type="email" 
+                    placeholder="jane@example.com" 
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-bold mb-2 block">Mobile Number</label>
+                  <input 
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleInputChange}
+                    required 
+                    type="tel" 
+                    placeholder="+94 77 123 4567" 
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  />
                 </div>
                 <div>
                   <label className="text-sm font-bold mb-2 block">Portfolio / LinkedIn URL</label>
-                  <input type="url" placeholder="https://..." className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" />
+                  <input 
+                    name="portfolio"
+                    value={formData.portfolio}
+                    onChange={handleInputChange}
+                    type="url" 
+                    placeholder="https://..." 
+                    className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  />
                 </div>
                 
                 <div className="space-y-2">
                   <label className="text-sm font-bold mb-2 block">Tell us your talent</label>
                   <textarea 
+                    name="talent"
+                    value={formData.talent}
+                    onChange={handleInputChange}
                     required
                     placeholder="Describe your expertise and what you're looking for..."
                     className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all min-h-[120px] resize-none"
@@ -217,20 +281,23 @@ export default function CareersPage() {
                       required
                       type="file" 
                       accept=".pdf"
+                      onChange={handleFileChange}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     />
-                    <div className="w-full border-2 border-dashed border-black/10 dark:border-white/10 rounded-2xl p-6 text-center group-hover:bg-primary/5 group-hover:border-primary/50 transition-all">
+                    <div className={`w-full border-2 border-dashed ${formData.file ? 'border-primary/50 bg-primary/5' : 'border-black/10 dark:border-white/10'} rounded-2xl p-6 text-center group-hover:bg-primary/5 group-hover:border-primary/50 transition-all`}>
                       <div className="bg-primary/10 text-primary p-3 rounded-full w-fit mx-auto mb-3">
-                        <Upload size={20} />
+                        {formData.file ? <CheckCircle2 size={20} /> : <Upload size={20} />}
                       </div>
-                      <p className="text-xs font-bold text-foreground/60 uppercase tracking-widest">Click to upload CV</p>
+                      <p className="text-xs font-bold text-foreground/60 uppercase tracking-widest">
+                        {formData.file ? formData.file.name : "Click to upload CV"}
+                      </p>
                       <p className="text-[10px] text-foreground/40 mt-1">Max file size: 5MB</p>
                     </div>
                   </div>
                 </div>
 
                 <button 
-                  disabled={isSubmitting || !selectedJob}
+                  disabled={isSubmitting || !isFormValid}
                   type="submit"
                   className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-primary/20 hover:brightness-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >

@@ -4,90 +4,142 @@ import Image from "next/image";
 import { ArrowRight, Globe, Smartphone, Terminal, Earth, Zap, DollarSign, Headset, Star, Share, Link as LinkIcon, Mail, Phone, MapPin, CheckCircle } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";
 import { toast } from "sonner";
+import { TestimonialSection } from "@/components/TestimonialSection";
+import { TechStackSection } from "@/components/TechStackSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex-1">
-      {/* Hero Section */}
-      <section className="bg-background pt-12 md:pt-20 lg:pt-24 pb-12 md:pb-20 lg:pb-24">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col gap-8 order-2 lg:order-1">
-              <div className="flex flex-col gap-4">
-                <span className="text-primary font-bold tracking-widest text-xs uppercase bg-primary/10 w-fit px-3 py-1 rounded-full">Global Tech Partners</span>
-                <h1 className="text-foreground text-4xl md:text-5xl lg:text-7xl font-black leading-tight tracking-[-0.033em]">
-                  Technology Made Simple for <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Your Business</span>
-                </h1>
-                <p className="text-foreground/60 text-lg md:text-xl font-normal leading-relaxed max-w-[600px]">
-                  Empowering global businesses with cutting-edge software and technology solutions delivered from the heart of Sri Lanka.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg text-base font-bold transition-all shadow-lg shadow-primary/25 hover:scale-105 active:scale-95">
-                  Get Started
-                </button>
-                <button className="bg-white dark:bg-black border border-gray-200 dark:border-gray-800 text-foreground px-8 py-4 rounded-lg text-base font-bold hover:bg-gray-50 dark:hover:bg-gray-900 transition-all">
-                  View Solutions
-                </button>
-              </div>
-              <div className="flex items-center gap-6 pt-4">
-                <div className="flex -space-x-3">
-                  <div className="relative size-12 rounded-full border-2 border-white dark:border-black overflow-hidden hover:z-10 transition-transform hover:scale-110">
-                      <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOLUXUFV74p47UgU7ODt3mnMSOM2CPSPL0mHf2QBQ7r4EYbksYwaIGJSMgouEUTd1-JxqTkA3HurMR09w_zO5h4ivcub0KPeMyJDYA6wh_CGNWtmlL_J_W9gLJ85-RDhJYVOgVmdDhu4aLjXnBTqyKxV-BTG2AygKWX914F3s13qI_LLUsCQo_qQZdtB89o6KVw4l3-PGVxCFBMQglbZjPwZgujRNBk2ungMDh10g1bSbdsYXvfMnFEnts8NmHxJ-ISp-E2qr5ni-v" alt="Client 1" fill className="object-cover" unoptimized />
-                  </div>
-                  <div className="relative size-12 rounded-full border-2 border-white dark:border-black overflow-hidden hover:z-10 transition-transform hover:scale-110">
-                      <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZD7sQ1nehQD-zfWJqKXfnHNhYfOD8E7LJtjJLVbmivm6hNDqeYqmKJRH5XUXyMPOgbeIUuNg4p5seCquG6sE38EV9W2oyjcJ1-HRxJwW5SkOhRWATR4oNZ9xHRxW4nOn2vJky6HimRwThJo-5NH681HtNBDI6VfXD9SHYEQM7SvzAP2Di8Ltr9HB7Y-wp9CtxHABe9qnJ5sS5eM5tSMUOHJm1CS9PMwmf5GGdtD9IF1H-72syYI8a62hyzUhFIi_v1NdTUBlP6EeU" alt="Client 2" fill className="object-cover" unoptimized />
-                  </div>
-                  <div className="relative size-12 rounded-full border-2 border-white dark:border-black overflow-hidden hover:z-10 transition-transform hover:scale-110">
-                      <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB5QkylxItf-WM73kUmrXoRPwKXNU9FFz03vO8KpCBr0DfPIIKHGVC2iT0wfx8PW2z_m2y_iProW1oyeZjx3yadbGq2bgxd9GRrhqxfdxYodexywoUXhvExpywptCWeHf3vrCW35fCNxCvMn-Wdx2vTMARcVDJXa_wPGA3JAS0llU9lT_0OfeX_gTusn7cPEYEy2za8IEp-hP45xGRJd46fusLQfcUDneA4HUTIUkD6sz7N8r_CtQqJsrdvBr09rDj9EDw4Lx569Ux" alt="Client 3" fill className="object-cover" unoptimized />
-                  </div>
-                </div>
-                <div className="text-sm">
-                  <p className="font-bold text-foreground">Trusted by 200+ companies</p>
-                  <div className="flex text-yellow-400">
-                    <Star size={14} fill="currentColor" />
-                    <Star size={14} fill="currentColor" />
-                    <Star size={14} fill="currentColor" />
-                    <Star size={14} fill="currentColor" />
-                    <Star size={14} fill="currentColor" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="order-1 lg:order-2 flex justify-center">
-              <div className="relative w-full max-w-[600px] aspect-square lg:aspect-square bg-linear-to-br from-primary/20 to-transparent rounded-[3rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500">
-                <Image 
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800" 
-                  alt="Modern software development team" 
-                  fill 
-                  className="object-cover mix-blend-overlay hover:mix-blend-normal transition-all duration-500"
-                  unoptimized
-                />
-                <div className="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/90 p-6 rounded-2xl shadow-xl flex items-center gap-4 backdrop-blur-sm">
-                  <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-xl">
-                    <CheckCircle className="text-green-600" size={32} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-foreground/60 font-bold uppercase tracking-tighter">Uptime Guarantee</p>
-                    <p className="text-2xl font-black text-foreground">99.9% Reliable</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section className="relative pt-20 pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-12">
+          {/* Floating Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, -10, 0] 
+            }}
+            transition={{ 
+              initial: { duration: 0.6 },
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default"
+          >
+            <div className="size-2 rounded-full bg-primary animate-pulse"></div>
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 group-hover:text-primary transition-colors">Local Tech Partner</span>
+          </motion.div>
+
+          {/* Centered Heading with Staggered Entrance */}
+          <div className="flex flex-col items-center overflow-hidden">
+            <motion.h2 
+              initial={{ opacity: 0, letterSpacing: "1em" }}
+              animate={{ opacity: 1, letterSpacing: "0.5em" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="text-primary text-xl md:text-2xl font-black uppercase tracking-[0.5em] mb-4"
+            >
+              Vexel Systems
+            </motion.h2>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8, ease: "circOut" }}
+              className="text-4xl md:text-6xl lg:text-8xl font-black leading-[1.1] tracking-[-0.04em] flex flex-col items-center gap-2"
+            >
+              <span className="text-foreground text-center">We Provide The Best</span>
+              <motion.span 
+                initial={{ filter: "blur(10px)", opacity: 0 }}
+                animate={{ filter: "blur(0px)", opacity: 1 }}
+                transition={{ delay: 0.6, duration: 1 }}
+                className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 text-center uppercase"
+              >
+                IT Solutions For You
+              </motion.span>
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="mt-10 text-foreground/60 text-lg md:text-xl font-medium max-w-2xl leading-relaxed italic"
+            >
+              "We bridge the gap between complex technology and your business success by providing the most advanced IT solutions tailored for you."
+            </motion.p>
           </div>
+
+          {/* Action Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.3, duration: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-6"
+          >
+            <Link href="/pricing">
+              <motion.button 
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 0 30px rgba(0,119,237,0.5)",
+                  y: -5
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                Get Started
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
+
+            <Link href="/services">
+              <motion.button 
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)", y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-foreground/10 hover:border-primary/30 transition-all backdrop-blur-sm"
+              >
+                View Solutions
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* Animated Social Proof */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.6, duration: 1 }}
+            className="flex flex-col items-center gap-4 mt-8"
+          >
+            <div className="flex -space-x-4">
+              {[1, 2, 3, 4].map((i) => (
+                <motion.div 
+                  key={i} 
+                  whileHover={{ y: -10, zIndex: 50 }}
+                  className="size-10 rounded-full border-4 border-background bg-zinc-800 relative overflow-hidden cursor-pointer transition-colors"
+                >
+                  <Image src={`https://i.pravatar.cc/100?u=${i}`} alt="Client" fill unoptimized />
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-xs font-bold text-foreground/40 uppercase tracking-widest flex items-center gap-2">
+              <Zap size={12} className="text-primary animate-bounce" />
+              Trusted by 50+ Global Enterprises
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Core Services Section */}
-      <section className="bg-white dark:bg-black py-20 pb-32">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+      <section className="py-20 pb-32 relative bg-transparent">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Our Core Services</h2>
+            <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Our Core <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Services</span></h2>
             <div className="w-24 h-2 bg-primary rounded-full"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <Globe size={36} />
               </div>
@@ -102,7 +154,7 @@ export default function Home() {
               </a>
             </div>
             {/* Card 2 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <Smartphone size={36} />
               </div>
@@ -117,7 +169,7 @@ export default function Home() {
               </a>
             </div>
             {/* Card 3 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <Terminal size={36} />
               </div>
@@ -135,35 +187,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Project Process Section */}
+      <ProcessSection />
+
       {/* Feature / Why Choose Us Section */}
-      <section className="py-20 bg-inner-box dark:bg-black">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+      <section className="py-20 bg-transparent">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/3 flex flex-col gap-6 sticky top-32">
               <h2 className="text-foreground text-4xl font-black leading-tight tracking-tight">
-                Why Global Businesses Choose Vexel
+                Why Global <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Businesses</span> Choose Vexel
               </h2>
               <p className="text-foreground/60 text-lg leading-relaxed">
                 We combine global expertise with agile delivery to provide cost-effective technology solutions that scale with your growth.
               </p>
               <div className="pt-4">
-                <button className="bg-primary text-white font-bold px-6 py-3 rounded-lg shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-primary text-white font-bold px-6 py-3 rounded-lg shadow-lg shadow-primary/20 transition-all"
+                >
                   See Our Case Studies
-                </button>
+                </motion.button>
               </div>
             </div>
             <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
                 <Earth className="text-primary mb-4" size={40} />
                 <h4 className="text-xl font-bold text-foreground mb-2">Global Expertise</h4>
                 <p className="text-foreground/60 text-sm leading-relaxed">Serving clients across 12 countries with international standards and localized support.</p>
               </div>
-              <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
                 <Zap className="text-primary mb-4" size={40} />
                 <h4 className="text-xl font-bold text-foreground mb-2">Agile Delivery</h4>
                 <p className="text-foreground/60 text-sm leading-relaxed">Fast-paced development cycles with weekly sprints ensuring timely and transparent project delivery.</p>
               </div>
-              <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
                 <DollarSign className="text-primary mb-4" size={40} />
                 <h4 className="text-xl font-bold text-foreground mb-2">Cost-Effective</h4>
                 <p className="text-foreground/60 text-sm leading-relaxed">High-quality software solutions at competitive price points, maximizing your ROI.</p>
@@ -179,11 +238,11 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-20 bg-white dark:bg-black">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+      <section className="py-20 bg-transparent">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">Selected Work</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">Selected <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Work</span></h2>
               <p className="text-foreground/60 max-w-md">Take a look at how we've helped our partners digitally transform their operations.</p>
             </div>
             <a className="hidden md:flex items-center gap-2 font-bold text-primary group" href="#">
@@ -191,84 +250,70 @@ export default function Home() {
             </a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-200">
-              <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7FzcUtGu6h26UZuxhvtk8WV8LRRrQCNDIp2Z21bEXTr2CACWcfZhQxOMnQKRw3L00uLjDhOGaMwfKiAf0HDTP4WBgZbJFArBmYiQCIWAZxjKGCRUD-FDcI1iXX-v2svsixPb8_IjK4z8fHkjYoMiS1D5jcqXwyALABntA1b1kaD_AwTD3PLTlh2A-xkv642cvRtmEz5NdfeuiEKYqgC3CIaghHPIYutAd5WZfbl0HEY2ju1mrNyw_ZjGV5JLuhEGxQi21XLhvybmY" 
-                alt="Fintech dashboard" 
-                fill 
-                className="object-cover group-hover:scale-110 transition-transform duration-500" 
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest mb-2">Fintech</span>
-                <h4 className="text-white text-xl font-bold">SecurePay Dashboard</h4>
-              </div>
-            </div>
-            <div className="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-200">
-              <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDljWDkwYBV3mJJ1wOW0F5osaMdvcRXZUn_WdD_Xo-bk28n3w3h0Bkqa50Kqq1SvhapsjUtOdf8B7hy_6gYiTc8nQGeu5JXdUDrMKZ8o4iCjqZ36bkWQ-Fhb-inM7jgCJjom87p-ucmJ2UoByCIqKLuWhKpYKfFLHTn56cp7kk3OEPythJFEuo8u3O1SdcLphgHX9sIJD_ygnCzxUt7ewG4dOIx7kL_fyf4Z5uTzvclvoXzXoCFmoSFViUAXFDDOGMVY5uStvmyFS-R" 
-                alt="E-commerce mobile app" 
-                fill 
-                className="object-cover group-hover:scale-110 transition-transform duration-500" 
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest mb-2">E-Commerce</span>
-                <h4 className="text-white text-xl font-bold">ShopFlow Mobile</h4>
-              </div>
-            </div>
-            <div className="group relative aspect-4/3 rounded-2xl overflow-hidden bg-gray-200 lg:col-span-1 md:col-span-2">
-              <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbY_SuMQmAcdCJxaTlMMOgQ8bGmZy8yh_gUrLyo09Rt6tfNncI1KHjFVK33XAzFshEDFdPatAUBWVuhG3XXKOH-StT0Kdp99tMaxFF0ZTZ9KQ2pGQ9o54b9vrQIH35mEaN0hOO-CaMcsLs9G0qCKUaRnEwSi2cW5cEkV4gxKpjgVN-RlvjbqVKv_ONvjB4w5zFxkwmomr3Z_bEMGhpSvLrf1vwkRpfIk-6aJcM4rwEczaVcEMkiQS-RRPYum1Q4HNHyo0CwrGYMtcU" 
-                alt="Data analytics platform" 
-                fill 
-                className="object-cover group-hover:scale-110 transition-transform duration-500" 
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest mb-2">SaaS</span>
-                <h4 className="text-white text-xl font-bold">Insight Engine Pro</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Slider Placeholder */}
-      <section className="py-20 bg-inner-box dark:bg-black/50">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] text-center">
-            {/* Format Quote Icon Replacement */}
-            <div className="flex justify-center mb-6 text-primary">
-                <svg className="size-16" fill="currentColor" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
-            </div>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-2xl md:text-3xl italic font-medium text-foreground mb-8 leading-relaxed">
-              "Vexel Systems transformed our legacy infrastructure into a modern cloud powerhouse. Their team in Sri Lanka felt like a direct extension of ours in London."
-            </p>
-            <div className="flex flex-col items-center">
-              <div className="relative size-16 rounded-full border-4 border-white dark:border-gray-800 mb-4 shadow-lg overflow-hidden">
+            <div className="group flex flex-col gap-4">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
                 <Image 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvKe1OCwZ1Pb-qZF2lAIV3xZH15233R8EdytcFN1nDazF7U99ug9mXYNzyz3RcrVZXquDEXJW_2kux_1S3GuLkmllIWceDRvKUVLFmiAJY4iZyFTnEDJPsQThV1K1VnLVp0HupeQSjUupipLqGdGn5VvrWC4WT0_BfoTezzPpyaJyvnFPZhm3cJ3KnGRj7vIegXByiozcodbJQmeS9XxV83R0rBaUK_7CX96jttclfe6UBWTxwfHTjl_J45EGqa2Mqo89OlZLbTApD" 
-                    alt="John Carter" 
-                    fill 
-                    className="object-cover"
-                    unoptimized
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                  alt="Fintech dashboard" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  unoptimized
                 />
               </div>
-              <h5 className="text-lg font-bold text-foreground">John Carter</h5>
-              <p className="text-sm text-primary font-bold uppercase">CEO, Blue Horizon Ltd.</p>
+              <div>
+                <span className="text-primary font-bold text-xs uppercase tracking-widest">Fintech</span>
+                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">SecurePay Dashboard</h4>
+              </div>
+            </div>
+
+            <div className="group flex flex-col gap-4">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
+                <Image 
+                  src="https://images.unsplash.com/photo-1512428559087-560fa5ce7d87?auto=format&fit=crop&q=80&w=800"
+                  alt="E-commerce mobile app" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  unoptimized
+                />
+              </div>
+               <div>
+                <span className="text-primary font-bold text-xs uppercase tracking-widest">Retail & AI</span>
+                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">ShopFlow Mobile</h4>
+              </div>
+            </div>
+
+            <div className="group flex flex-col gap-4 lg:col-span-1 md:col-span-2">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
+                <Image 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                  alt="Analytics platform" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  unoptimized
+                />
+              </div>
+               <div>
+                <span className="text-primary font-bold text-xs uppercase tracking-widest">SaaS</span>
+                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">Insight Engine Pro</h4>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Technical Stack Section */}
+      <TechStackSection />
+
+      {/* Testimonials & Success Stories Section */}
+      <TestimonialSection />
+
       {/* Lead Capture CTA / Contact Form */}
-      <section className="py-24 bg-white dark:bg-black overflow-hidden relative">
+      <section className="py-24 bg-transparent overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-1/2"></div>
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col gap-8">
-              <h2 className="text-4xl md:text-5xl font-black text-foreground leading-tight">Ready to build the future of your business?</h2>
+                <h2 className="text-3xl lg:text-4xl font-black text-foreground leading-tight">Ready to build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">future</span> of your business?</h2>
               <p className="text-lg text-foreground/60">
                 Whether you're a startup or an enterprise, we have the technical prowess to help you scale. Reach out for a discovery session.
               </p>
@@ -331,7 +376,14 @@ export default function Home() {
                   <label className="text-sm font-bold text-foreground">Message</label>
                   <textarea required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="How can we help you?" rows={4}></textarea>
                 </div>
-                <button className="bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all" type="submit">Send Message</button>
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all" 
+                  type="submit"
+                >
+                  Send Message
+                </motion.button>
               </form>
             </div>
           </div>

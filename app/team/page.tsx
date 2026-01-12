@@ -63,7 +63,8 @@ export default function TeamPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10"></div>
         <div className="max-w-[1920px] w-[90%] md:w-[80%] mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 animate-fade-in-up">The People Behind <span className="text-primary">Vexel Systems</span></h1>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 animate-fade-in-up">              The People Behind <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Vexel Systems</span>
+</h1>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto animate-fade-in-up delay-100">
                 At Vexel Systems, our strength lies in the people who build, innovate, and lead with purpose. We are a founder-driven startup focused on delivering simple, powerful, and reliable technology solutions.
             </p>
@@ -165,7 +166,7 @@ export default function TeamPage() {
                 
                 {/* Culture */}
                 <div>
-                     <h2 className="text-3xl font-bold mb-8">Our Team Culture</h2>
+                     <h2 className="text-3xl font-bold tracking-tight text-foreground">Our Team <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Culture</span></h2>
                      <div className="grid gap-6">
                         {[
                             { title: "Innovation with purpose", desc: "We don't just build; we solve problems." },
@@ -188,7 +189,7 @@ export default function TeamPage() {
 
                 {/* Timeline / Milestones */}
                 <div>
-                    <h2 className="text-3xl font-bold mb-8">Journey So Far</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-foreground">Journey <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">So Far</span></h2>
                     <div className="space-y-8 pl-4 border-l-2 border-primary/20 ml-4">
                         {milestones.map((milestone, i) => (
                             <div key={i} className="relative pl-8">

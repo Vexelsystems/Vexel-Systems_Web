@@ -25,7 +25,7 @@ export default function CookiePolicy() {
              />
              <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/90 z-10"></div>
           <div className="relative z-20 max-w-3xl">
-            <h1 className="text-white text-4xl lg:text-5xl font-bold mb-4">Cookie Policy</h1>
+            <h1 className="text-white text-4xl lg:text-5xl font-bold mb-4">Cookie <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Policy</span></h1>
             <p className="text-gray-300 text-lg">Transparency at Vexel Systems: How we use cookies to improve your digital experience.</p>
           </div>
         </div>
