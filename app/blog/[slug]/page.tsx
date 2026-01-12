@@ -119,11 +119,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <style jsx global>{`
-              .prose p { color: rgba(var(--foreground-rgb), 0.7); line-height: 1.8; margin-bottom: 2rem; font-size: 18px; }
-              .prose h3 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; color: var(--foreground); }
-              .prose .highlight-box { padding: 2rem; background: rgba(var(--primary-rgb), 0.05); border-left: 4px solid var(--primary); border-radius: 0 1rem 1rem 0; margin: 3rem 0; }
-            `}</style>
+
             
             <div dangerouslySetInnerHTML={{ __html: post.content.replace(/### (.*)/g, '<h3>$1</h3>') }} />
           </div>

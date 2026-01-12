@@ -3,28 +3,29 @@
 :root {
   /* Core Theme Colors */
   --background: #ffffff;
-  --foreground: #1D1D1F;
-  --primary: #0077ED;
+  --foreground: #1d1d1f;
+  --primary: #0077ed;
 
   /* Additional Palette Variables required by tailwind.config.ts */
   --background-light: #ffffff;
   --background-dark: #0a0a0a;
   --ui-background: #ffffff;
 
-  --text-light: #1D1D1F;
+  --text-light: #1d1d1f;
   --text-dark: #ffffff;
 
-  --nav-light: #F5F5F7;
+  --nav-light: #f5f5f7;
   --nav-dark: #1a1a1a;
 
-  --card: #F5F5F7;
-  --card-light: #F5F5F7;
+  --card: #f5f5f7;
+  --card-light: #f5f5f7;
   --card-dark: #121212;
 
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
   /* Helper variables for easy overriding if needed */
-  --nav-bg: #F5F5F7;
+  --nav-bg: #f5f5f7;
   --text-secondary: #4b5563;
   --inner-box: var(--nav-bg);
 }
@@ -140,22 +141,46 @@ body {
 }
 
 /* Global cursor pointer for all interactive elements */
-a, 
-button, 
-[role="button"], 
-[onclick], 
-input[type="button"], 
-input[type="submit"], 
-input[type="reset"], 
-select, 
-label[for], 
+a,
+button,
+[role="button"],
+[onclick],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+label[for],
 summary {
   cursor: pointer !important;
 }
 
 /* Ensure disabled elements don't show pointer */
-a[disabled], 
-button:disabled, 
+a[disabled],
+button:disabled,
 [disabled] {
   cursor: not-allowed !important;
+}
+
+/* Blog Prose Styles */
+.prose p {
+  color: color-mix(in srgb, var(--foreground), transparent 30%);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 18px;
+}
+
+.prose h3 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+}
+
+.prose .highlight-box {
+  padding: 2rem;
+  background: color-mix(in srgb, var(--primary), transparent 95%);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 1rem 1rem 0;
+  margin: 3rem 0;
 }

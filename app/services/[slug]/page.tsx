@@ -362,7 +362,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
                                 <div className="absolute bottom-4 left-4 right-4">
                                     <div className="flex items-center gap-2 mb-1 text-white">
-                                        <ind.icon className="text-primary" size={20} />
+                                        {ind.icon && <ind.icon className="text-primary" size={20} />}
                                         <h3 className="font-bold text-lg">{ind.name}</h3>
                                     </div>
                                     {ind.description && (
@@ -374,7 +374,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                       ) : (
                           <div className="p-6 text-center">
                               <div className="mb-3 flex justify-center">
-                                  <ind.icon className="text-primary" size={32} />
+                                  {ind.icon && <ind.icon className="text-primary" size={32} />}
                               </div>
                               <p className="font-medium text-foreground">{ind.name}</p>
                               {ind.description && (
