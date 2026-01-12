@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export const GlowingBackground = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none dark:hidden">
       {/* Top Left - Deep Primary (Blue) */}
       <motion.div
         className="absolute -top-[15%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/30 blur-[130px]"

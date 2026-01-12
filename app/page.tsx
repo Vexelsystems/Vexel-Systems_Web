@@ -23,7 +23,7 @@ export default function Home() {
               y: [0, -10, 0] 
             }}
             transition={{ 
-              initial: { duration: 0.6 },
+              opacity: { duration: 0.6 },
               y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
             }}
             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default"
