@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-background border-t border-primary/10 pt-16 pb-8">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="w-[80%] mx-auto px-6 lg:px-12">
         
         {/* 6-Column Grid Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 gap-y-12 mb-16">

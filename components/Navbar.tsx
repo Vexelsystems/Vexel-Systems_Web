@@ -124,7 +124,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
+      <nav className="fixed top-4 left-0 right-0 z-50 mx-auto w-[80%] px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-24 rounded-full blur-3xl pointer-events-none -z-10 bg-primary/15 transition-colors duration-300"></div>
 
         <div className={navContainerClasses}>

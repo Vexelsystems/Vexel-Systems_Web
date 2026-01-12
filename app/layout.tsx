@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
@@ -124,7 +124,7 @@ export default function RootLayout({
         />
         <Preloader />
         <Navbar />
-        <div className="pt-24 min-h-screen flex flex-col">
+        <div className="pt-24 min-h-screen flex flex-col w-[80%] mx-auto">
           {children}
         </div>
         <Footer />
