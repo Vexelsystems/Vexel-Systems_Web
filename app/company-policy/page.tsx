@@ -42,7 +42,7 @@ export default function CompanyPolicy() {
     <main className="max-w-4xl mx-auto px-6 py-20">
       <div className="text-center mb-16">
         <h1 className="text-5xl font-black mb-4 tracking-tight">Our Company Policy</h1>
-        <p className="text-foreground/40 font-bold uppercase tracking-widest text-sm text-primary">
+        <p className="text-primary uppercase tracking-widest text-sm">
           The Vexel Standard of Excellence
         </p>
       </div>
@@ -72,9 +72,11 @@ export default function CompanyPolicy() {
 
       <div className="mt-20 p-12 rounded-[48px] bg-zinc-900 border border-white/5 text-white text-center">
         <h2 className="text-3xl font-bold mb-6 italic">"Excellence is not an act, but a habit."</h2>
-        <p className="text-white/60 mb-8 max-w-lg mx-auto">
-          We review our policies annually to ensure they reflect the evolving landscape of technology, law, and social expectations.
-        </p>
+          <p className="text-primary mb-8 max-w-3xl mx-auto">
+            At {companyDetails.name}, we are committed to conducting our business with the highest standards of integrity, 
+            transparency, and social responsibility. Our policies guide our operations and ensure we deliver exceptional 
+            value to our clients, partners, and communities.
+          </p>
         <div className="flex flex-wrap justify-center gap-4">
           <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">ISO 9001 Certified</div>
           <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">GDPR Compliant</div>

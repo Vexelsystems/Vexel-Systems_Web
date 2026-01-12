@@ -1,8 +1,40 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getServiceBySlug } from "@/lib/services";
+import { getServiceBySlug, services } from "@/lib/services";
+import { generateDynamicMetadata, generateServiceSchema, BASE_URL } from "@/lib/seo";
 import { CheckCircle, ArrowRight, ShieldCheck, Megaphone } from "lucide-react";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+  
+  if (!service) {
+    return {};
+  }
+
+  // Use the actual service title for Open Graph and page title
+  return generateDynamicMetadata({
+    title: service.title, // e.g., "AI-Powered Automation for Smarter Businesses"
+    description: service.description,
+    keywords: [
+      ...service.techStack,
+      service.subtitle,
+      'Service',
+      'Vexel Systems',
+    ],
+    path: `/services/${service.slug}`,
+    image: service.heroImage,
+    type: 'website',
+  });
+}
+
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    slug: service.slug,
+  }));
+}
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -14,6 +46,19 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
   return (
     <main className="flex flex-col">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateServiceSchema({
+            name: service.title,
+            description: service.description,
+            url: `${BASE_URL}/services/${service.slug}`,
+            image: service.heroImage,
+          }))
+        }}
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-20 bg-background-light dark:bg-background-dark">
         <div className="top-24 left-6 md:left-10 z-20 sticky self-start ml-10">

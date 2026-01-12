@@ -1,14 +1,41 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { notFound } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-data';
+import { generateDynamicMetadata, generateArticleSchema, BASE_URL } from '@/lib/seo';
 import { Calendar, User, Clock, ChevronLeft, Share2, Facebook, Linkedin, Twitter, MessageCircle } from 'lucide-react';
+import type { Metadata } from 'next';
 
-export default function BlogDetailPage() {
-  const { slug } = useParams();
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find(p => p.slug === slug);
+  
+  if (!post) {
+    return {};
+  }
+
+  // Use the actual blog post title for both page title and Open Graph
+  return generateDynamicMetadata({
+    title: post.title, // This will be used as-is for Open Graph, with company name appended for page title
+    description: post.excerpt,
+    keywords: [post.category, 'Blog', 'Insights', post.author, 'Vexel Systems'],
+    path: `/blog/${post.slug}`,
+    image: post.image,
+    type: 'article',
+    publishedTime: post.date,
+    author: post.author,
+    section: post.category,
+  });
+}
+
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const post = blogPosts.find(p => p.slug === slug);
 
   if (!post) {
@@ -28,6 +55,21 @@ export default function BlogDetailPage() {
 
   return (
     <div className="flex flex-col gap-12 pb-20">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateArticleSchema({
+            title: post.title,
+            description: post.excerpt,
+            image: post.image,
+            datePublished: post.date,
+            author: post.author,
+            url: `${BASE_URL}/blog/${post.slug}`,
+          }))
+        }}
+      />
+      
       {/* Back Button */}
       <div>
         <Link 
@@ -42,11 +84,7 @@ export default function BlogDetailPage() {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-12">
         {/* Main Content */}
         <article className="flex flex-col gap-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col gap-6"
-          >
+          <div className="flex flex-col gap-6">
             <span className="inline-block py-1.5 px-4 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest self-start">
               {post.category}
             </span>
@@ -68,20 +106,16 @@ export default function BlogDetailPage() {
                 {post.readTime} Read
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Featured Image */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="aspect-video rounded-[40px] overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl"
-          >
+          <div className="aspect-video rounded-[40px] overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl">
             <img 
               src={post.image} 
               alt={post.title}
               className="w-full h-full object-cover"
             />
-          </motion.div>
+          </div>
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">

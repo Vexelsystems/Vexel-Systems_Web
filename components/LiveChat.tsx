@@ -5,6 +5,7 @@ import { MessageCircle, X, Send, User, ChevronRight, MessageSquare, ExternalLink
 import { motion, AnimatePresence } from 'framer-motion';
 import { faqData } from '@/lib/faq-data';
 import { toast } from 'sonner';
+import { companyDetails } from "@/lib/companydetails";
 
 const CHIME_URL = 'https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3';
 
@@ -85,7 +86,7 @@ export default function LiveChat() {
     if (typeof window !== 'undefined' && document.hidden && Notification.permission === 'granted') {
       new Notification('Vexel Support', {
         body: text,
-        icon: '/V Logo.png'
+        icon: companyDetails.logos.main
       });
     }
   };

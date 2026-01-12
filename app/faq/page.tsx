@@ -41,33 +41,35 @@ export default function FAQPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Search Section */}
-      <section className="mb-12">
+      <section className="mb-12 relative w-full">
         <div 
-          className="relative overflow-hidden rounded-xl bg-cover bg-center p-8 md:p-16 flex flex-col items-center justify-center gap-8 min-h-[400px]"
+          className="relative overflow-hidden w-full bg-cover bg-center flex flex-col items-center justify-center gap-8 min-h-[400px]"
           style={{ 
             backgroundImage: `linear-gradient(rgba(13, 27, 26, 0.8), rgba(13, 27, 26, 0.4)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMJjOjzzsmmvelrRAJwIL6auN0y-9yvISCZxWTEUcgbL5I7NLiEanyPHfcyv9NCjeiw56X6AZYFJUVnhRiaV2FWUYoE9ue-D2wvLiikcHT_Lda_YtpyBhq_g3qmC8rO90Kr37cDgQOhels8tZZ1NJoMyp10HLgUQIy4MrcPrWjfb846IWf6dCeSyhqTQazi6cynM6eHlgdN9c03oI4EVW6s5mzk574s8y-5hPtBynFdigjY11TURl3MwZmUKt4H71cpMHTF4QlMeuv")` 
           }}
         >
-          <div className="text-center max-w-2xl">
-            <h1 className="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Master FAQ Center</h1>
-            <p className="text-primary text-lg md:text-xl font-medium">Empowering your business with instant software & POS solutions</p>
-          </div>
-          <div className="w-full max-w-2xl bg-white dark:bg-card rounded-xl shadow-2xl overflow-hidden p-1 flex">
-             <input 
-                className="w-full border-none focus:ring-0 bg-transparent text-black dark:text-white placeholder:text-foreground/40 text-lg py-4 px-6 outline-none" 
-                placeholder="Search by topic, keyword, or error code..." 
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-             />
-             <button className="bg-primary text-white px-8 rounded-lg font-bold text-sm uppercase tracking-wider hover:brightness-105 transition-all">
-                Search
-             </button>
+          <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col items-center">
+            <div className="text-center max-w-2xl">
+                <h1 className="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Master FAQ Center</h1>
+                <p className="text-primary text-lg md:text-xl font-medium mb-8">Empowering your business with instant software & POS solutions</p>
+            </div>
+            <div className="w-full max-w-2xl bg-white dark:bg-card rounded-xl shadow-2xl overflow-hidden p-1 flex">
+                <input 
+                    className="w-full border-none focus:ring-0 bg-transparent text-black dark:text-white placeholder:text-foreground/40 text-lg py-4 px-6 outline-none" 
+                    placeholder="Search by topic, keyword, or error code..." 
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button className="bg-primary text-white px-8 rounded-lg font-bold text-sm uppercase tracking-wider hover:brightness-105 transition-all">
+                    Search
+                </button>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[1920px] flex flex-col lg:flex-row gap-8 mb-20">
         {/* Sidebar Navigation */}
         <aside className="w-full lg:w-72 shrink-0">
           <div className="sticky top-24 space-y-4">

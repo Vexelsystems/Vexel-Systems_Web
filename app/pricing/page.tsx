@@ -168,47 +168,49 @@ export default function PricingPage() {
     <main className="min-h-screen bg-background pb-20 pt-32">
       
       {/* Hero Section */}
-      <section className="relative px-6 mb-12 text-center">
+      <section className="relative w-full mb-12 text-center">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
         
-        {/* Currency Toggle */}
-        <div className="absolute top-0 right-6 md:right-20 flex bg-white dark:bg-card border border-primary/20 rounded-full p-1 shadow-sm">
-          <button 
-            onClick={() => setCurrency('LKR')}
-            className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
-          >
-            LKR
-          </button>
-          <button 
-             onClick={() => setCurrency('USD')}
-             className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
-          >
-            USD
-          </button>
-        </div>
-
-        <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-          Pricing that <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Fits You.</span>
-        </h1>
-        <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-10">
-           Transparent pricing for {currency === 'LKR' ? 'Sri Lankan' : 'International'} businesses. 
-           {currency === 'USD' && <span className="block text-primary font-bold mt-2">✨ International Packages Available</span>}
-        </p>
-
-        {/* Quick Summary Pill Grid */}
-        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
-          {SUMMARY_DATA.map((item, idx) => (
-            <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-               <span className="text-sm font-medium text-foreground/70">{item.type}</span>
-               <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
+        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative">
+            {/* Currency Toggle */}
+            <div className="absolute top-0 right-0 flex bg-white dark:bg-card border border-primary/20 rounded-full p-1 shadow-sm">
+            <button 
+                onClick={() => setCurrency('LKR')}
+                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
+            >
+                LKR
+            </button>
+            <button 
+                onClick={() => setCurrency('USD')}
+                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
+            >
+                USD
+            </button>
             </div>
-          ))}
+
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+            Pricing that <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Fits You.</span>
+            </h1>
+            <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-10">
+            Transparent pricing for {currency === 'LKR' ? 'Sri Lankan' : 'International'} businesses. 
+            {currency === 'USD' && <span className="block text-primary font-bold mt-2">✨ International Packages Available</span>}
+            </p>
+
+            {/* Quick Summary Pill Grid */}
+            <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
+            {SUMMARY_DATA.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
+                <span className="text-sm font-medium text-foreground/70">{item.type}</span>
+                <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
+                </div>
+            ))}
+            </div>
         </div>
       </section>
 
       {/* International Packages (USD Only) */}
       {currency === 'USD' && (
-        <section className="max-w-7xl mx-auto px-6 mb-32 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <section className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] mb-32 animate-in fade-in slide-in-from-bottom-8 duration-700">
           <div className="bg-linear-to-br from-indigo-900 via-purple-900 to-primary/50 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
              <div className="absolute top-0 right-0 p-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
              
@@ -243,7 +245,7 @@ export default function PricingPage() {
       )}
 
       {/* Main Content Layout */}
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12 mb-32">
+      <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row gap-12 mb-32">
         
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-1/4 space-y-8 h-fit lg:sticky lg:top-32 animate-in fade-in slide-in-from-left-4 duration-700">
@@ -402,7 +404,7 @@ export default function PricingPage() {
           <div className="absolute inset-0 bg-gray-900 text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
           <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] -z-10"></div>
           
-         <div className="max-w-7xl mx-auto px-6 relative z-10 text-white">
+         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10 text-white">
             <div className="text-center mb-20">
                <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">Long Term Success</span>
                <h2 className="text-4xl md:text-5xl font-black mb-6">Peace of Mind Maintenance</h2>

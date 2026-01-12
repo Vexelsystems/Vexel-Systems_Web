@@ -87,7 +87,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div 
             className="flex min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden" 
             style={{
@@ -109,7 +109,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Filter & Grid Section */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <section className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] py-12">
         
 
 

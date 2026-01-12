@@ -1,30 +1,73 @@
 import { MetadataRoute } from 'next';
- 
+import { blogPosts } from '@/lib/blog-data';
+import { services } from '@/lib/services';
+import { products } from '@/lib/products';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vexelsystems.com'; // Adjust to actual domain
+  const baseUrl = 'https://vexelsystems.com';
   const lastModified = new Date();
 
-  const routes = [
-    '',
-    '/about',
-    '/services',
-    '/products',
-    '/pricing',
-    '/portfolio',
-    '/blog',
-    '/careers',
-    '/contact',
-    '/faq',
-    '/privacy',
-    '/terms',
-    '/cookie-policy',
-    '/refund-policy',
+  // Static routes with priorities
+  const staticRoutes = [
+    { url: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { url: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: '/services', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/pricing', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/portfolio', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/blog', priority: 0.8, changeFrequency: 'daily' as const },
+    { url: '/careers', priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: '/team', priority: 0.6, changeFrequency: 'monthly' as const },
+    { url: '/tech-stack', priority: 0.6, changeFrequency: 'monthly' as const },
+    { url: '/testimonials', priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: '/events', priority: 0.6, changeFrequency: 'weekly' as const },
+    { url: '/process', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: '/quote', priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: '/company-policy', priority: 0.4, changeFrequency: 'yearly' as const },
+    { url: '/privacy', priority: 0.4, changeFrequency: 'yearly' as const },
+    { url: '/terms', priority: 0.4, changeFrequency: 'yearly' as const },
+    { url: '/cookie-policy', priority: 0.4, changeFrequency: 'yearly' as const },
+    { url: '/refund-policy', priority: 0.4, changeFrequency: 'yearly' as const },
   ];
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+  // Dynamic blog post routes
+  const blogRoutes = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Dynamic service routes
+  const serviceRoutes = services.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
     lastModified,
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
+    priority: 0.9,
   }));
+
+  // Dynamic product routes
+  const productRoutes = products.map((product) => ({
+    url: `${baseUrl}/products/${product.slug}`,
+    lastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Combine all routes
+  const allRoutes = [
+    ...staticRoutes.map((route) => ({
+      url: `${baseUrl}${route.url}`,
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...blogRoutes,
+    ...serviceRoutes,
+    ...productRoutes,
+  ];
+
+  return allRoutes;
 }

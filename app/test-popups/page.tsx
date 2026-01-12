@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, ArrowRight, Calendar, Zap, ChevronLeft, ChevronRight, Bell, MessageSquare, Cookie, Loader2, Palette } from 'lucide-react';
+import { X, Sparkles, ArrowRight, Calendar, Zap, ChevronLeft, ChevronRight, Bell, MessageCircle, MessageSquare, Cookie, Loader2, Palette, Gift } from 'lucide-react';
 import { seasonalOffers, generateDiscount, SeasonalOffer } from '@/lib/seasonal-offers';
 import Image from 'next/image';
 import { toast } from 'sonner';
+import { companyDetails } from '@/lib/companydetails';
 
 export default function ComponentTester() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -87,8 +88,8 @@ export default function ComponentTester() {
       if (Notification.permission === 'granted') {
         new Notification('Vexel Systems 🎉', {
           body: 'This is a browser notification test! It works perfectly.',
-          icon: '/V Logo.png',
-          badge: '/V Logo.png',
+          icon: companyDetails.logos.main,
+          badge: companyDetails.logos.main,
           tag: 'test-notification',
           requireInteraction: false,
         });
@@ -103,8 +104,8 @@ export default function ComponentTester() {
         if (permission === 'granted') {
           new Notification('Vexel Systems 🎉', {
             body: 'Notifications enabled! This is a test notification.',
-            icon: '/V Logo.png',
-            badge: '/V Logo.png',
+            icon: companyDetails.logos.main,
+            badge: companyDetails.logos.main,
             tag: 'test-notification',
           });
           toast.success('Permission granted! Notification sent.');
@@ -129,7 +130,7 @@ export default function ComponentTester() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
@@ -200,7 +201,7 @@ export default function ComponentTester() {
               Seasonal Popup
             </h2>
             <div className="space-y-2">
-              <button onClick={() => setShowPopup(true)} className="w-full py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">
+              <button onClick={() => setShowPopup(true)} className="w-full py-3 bg-linear-to-r from-pink-600 to-purple-600 text-white rounded-xl font-semibold hover:brightness-110 transition-all">
                 Show Current Festival
               </button>
               <div className="text-sm text-foreground/60 text-center mt-2">
@@ -285,7 +286,7 @@ export default function ComponentTester() {
 
         {/* Preloader Simulation */}
         {showPreloader && (
-          <div className="fixed inset-0 bg-white dark:bg-black z-[99999] flex items-center justify-center">
+          <div className="fixed inset-0 bg-white dark:bg-black z-99999 flex items-center justify-center">
             <div className="text-center">
               <Loader2 className="w-16 h-16 text-primary animate-spin mx-auto mb-4" />
               <p className="text-xl font-bold">Loading...</p>
@@ -295,7 +296,7 @@ export default function ComponentTester() {
 
         {/* Cookie Banner Simulation */}
         {showCookieBanner && (
-          <div className="fixed bottom-0 left-0 right-0 z-[9998] p-4">
+          <div className="fixed bottom-0 left-0 right-0 z-9998 p-4">
             <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6">
               <div className="flex items-start gap-4">
                 <Cookie className="text-primary shrink-0" size={32} />
@@ -355,7 +356,7 @@ export default function ComponentTester() {
                       ) : (
                         <div className={`w-full h-full bg-linear-to-br ${currentOffer.gradient}`} />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
                       <div className="absolute inset-0 flex flex-col justify-end p-8">
                         <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-7xl mb-4">
                           {currentOffer.emoji}

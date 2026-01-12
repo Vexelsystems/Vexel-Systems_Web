@@ -192,7 +192,7 @@ vexel_systems/
 │   └── services.ts              # Services data
 ├── public/                       # Static assets
 │   ├── images/                  # Image files
-│   └── V Logo.png               # Company logo
+│   └── VLogo.png               # Company logo
 ├── package.json                  # Dependencies
 ├── tsconfig.json                # TypeScript config
 ├── tailwind.config.ts           # Tailwind config

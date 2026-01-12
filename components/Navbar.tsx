@@ -24,12 +24,13 @@ const navigation = {
     href: `/services/${service.slug}`
   })),
   products: [
-    { name: "POS Systems", href: "/products/pos" },
-    { name: "ERP Suite", href: "/products/erp" },
-    { name: "CRM Tool", href: "/products/crm" },
+    { name: "Vexel Track", href: "/products/vexel-track" },
+    { name: "Vexel POS", href: "/products/vexel-pos" },
+    { name: "Vexel Hire", href: "/products/vexel-hire" },
   ],
   company: [
     { name: "About Us", href: "/about" },
+    { name: "Our Team", href: "/team" },
     { name: "Our Process", href: "/process" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
@@ -131,7 +132,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link className="flex items-center gap-3 shrink-0" href="/" aria-label="Vexel Systems Home">
             <div className="relative h-9 w-9 overflow-hidden rounded-full border border-primary/20">
-              <Image src="/V Logo.png" alt={companyDetails.name} fill className="object-cover" />
+              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-cover" />
             </div>
             <span className="text-lg font-bold text-primary tracking-tight hidden sm:block">{companyDetails.name}</span>
           </Link>

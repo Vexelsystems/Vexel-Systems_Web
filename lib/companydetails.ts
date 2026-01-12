@@ -4,9 +4,13 @@ export const companyDetails = {
   // Basic Identity
   name: "Vexel Systems",
   legalName: "Vexel Systems (Pvt) Ltd",
-  tagline: "Technology Made Simple",
-
-  // About
+  tagline: "Powering Future Businesses",
+  
+  // Logo path - centralized for easy management
+  logos: {
+    main: "/VLogo.png",
+  },
+  
   description:
     "Vexel Systems is a modern technology company delivering innovative, scalable, and user-friendly digital solutions. We specialize in software development, AI-powered systems, IoT solutions, and modern web technologies to help businesses grow efficiently.",
 

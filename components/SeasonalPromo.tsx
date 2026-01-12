@@ -103,7 +103,7 @@ export default function SeasonalPromo() {
                   )}
                   
                   {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent" />
                   
                   {/* Content Over Image */}
                   <div className="absolute inset-0 flex flex-col justify-end p-8">
@@ -183,7 +183,7 @@ export default function SeasonalPromo() {
                       className={`w-full py-5 bg-linear-to-r ${currentOffer.gradient} text-white font-bold text-lg rounded-2xl shadow-2xl flex items-center justify-center gap-3 group relative overflow-hidden`}
                     >
                       {/* Shimmer effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
                       
                       <span className="relative z-10">Claim {discount}% OFF Now</span>
                       <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />

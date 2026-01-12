@@ -126,7 +126,7 @@ export default function TestimonialsPage() {
 
                   <div className="flex items-center gap-4 pt-6 border-t border-dashed border-gray-200">
                      <div className="relative size-12 rounded-full overflow-hidden border-2 border-primary/20">
-                        <Image src={t.image} alt={t.name} fill className="object-cover" />
+                        <Image src={t.image} alt={t.name} fill className="object-cover" unoptimized />
                      </div>
                      <div>
                         <h4 className="font-bold text-foreground">{t.name}</h4>

@@ -9,7 +9,7 @@ const teamMembers = [
     name: "Jathushan Varnakulasingam",
     role: "Founder, CEO & CTO",
     tagline: "Visionary Leader | Full-Stack Architect | Technology Strategist",
-    image: "/devlopers/jathushan.png",
+    image: "/devlopers/jathushan-ceo.png",
     about: "I am Jathushan Varnakulasingam, Founder, CEO, and CTO of Vexel Systems—a technology-driven company built with the vision of making modern digital solutions simple, reliable, and impactful. As a full-stack developer and technology strategist, I specialize in web development, backend systems, cloud-based solutions, automation, and AI-assisted technologies.\n\nWith hands-on experience across MERN, LAMP, Java, Python, machine learning, networking, and system architecture, I focus on building scalable products that solve real-world problems for businesses and startups. My journey in technology is driven by curiosity, continuous learning, and a strong belief that great technology should empower people.\n\nI actively work on complex systems such as REST APIs, enterprise backends, POS platforms, and AI-powered applications—always prioritizing performance, security, and user experience. At Vexel Systems, I lead both technical innovation and product strategy, ensuring every solution aligns with business goals and long-term growth.",
     quote: "Technology should simplify life, not complicate it—that is the philosophy behind everything we build.",
     expertise: [
@@ -62,7 +62,7 @@ export default function TeamPage() {
       {/* Hero Section */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10"></div>
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-[1920px] w-[90%] md:w-[80%] mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-black mb-6 animate-fade-in-up">The People Behind <span className="text-primary">Vexel Systems</span></h1>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto animate-fade-in-up delay-100">
                 At Vexel Systems, our strength lies in the people who build, innovate, and lead with purpose. We are a founder-driven startup focused on delivering simple, powerful, and reliable technology solutions.
@@ -72,7 +72,7 @@ export default function TeamPage() {
 
       {/* Founders Section */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6 grid gap-24">
+        <div className="max-w-[1920px] w-[90%] md:w-[80%] mx-auto grid gap-24">
             {teamMembers.map((member, idx) => (
                 <div key={idx} className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''} group`}>
                     
@@ -160,7 +160,7 @@ export default function TeamPage() {
 
       {/* Culture & Milestones Section */}
       <section className="py-24 bg-foreground/5">
-         <div className="max-w-7xl mx-auto px-6">
+         <div className="max-w-[1920px] w-[90%] md:w-[80%] mx-auto">
             <div className="grid lg:grid-cols-2 gap-16">
                 
                 {/* Culture */}

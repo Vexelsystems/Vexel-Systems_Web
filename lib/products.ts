@@ -121,6 +121,70 @@ export const products: Product[] = [
         description: "Add new registers or locations in minutes without worrying about data synchronization issues."
       }
     ]
+  },
+  {
+    id: "vexel-hire",
+    slug: "vexel-hire",
+    title: "Vexel Hire",
+    tagline: "AI-Powered Recruitment & CV Filtering",
+    badge: "AI Solution",
+    badgeColor: "bg-purple-500",
+    category: "HR SOLUTION",
+    shortDescription: "Intelligent AI-based CV screening and candidate filtering system that streamlines your recruitment process.",
+    fullDescription: "Vexel Hire revolutionizes the recruitment process with cutting-edge AI technology. Our intelligent CV filtering system analyzes thousands of resumes in seconds, identifying the best candidates based on your specific requirements. Using advanced natural language processing and machine learning algorithms, Vexel Hire eliminates bias, saves countless hours of manual screening, and ensures you never miss top talent. Perfect for HR departments, recruitment agencies, and growing companies.",
+    mainImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWluiuOszzDsrm3STHBEMsWvTZaeVt6ZfjnHQVcKPpX1sj_XRRgBkL1HRQQ-IdLZ8FvUrY2_TMzRxbYytpVgd6oSe2-MJ6b4cd7R-eSYJUU9a9QNZUjs3eX18motmH4ewajVjYh02sdqq6XreNEJ0q9Uc0zS7ZRAxKOO43pjNn0jBP4lPXwYM2LKSdrimdgzD5ZaNgugqmYXzBSqrepqhwluAjidLo-uYWIPqqLqKxbpfdci7WjUAVznBvAc4na7iF1US0oDKDLCj9",
+    icon: Fingerprint,
+    checklist: [
+      "AI-powered CV analysis \u0026 ranking",
+      "Automated candidate screening",
+      "Bias-free selection process",
+      "Integration with ATS systems"
+    ],
+    idealFor: ["HR Departments", "Recruitment Agencies", "Startups", "Enterprises"],
+    features: [
+      {
+        title: "Intelligent CV Parsing",
+        description: "Advanced AI extracts and analyzes key information from CVs in any format - PDF, Word, or plain text - understanding context and relevance."
+      },
+      {
+        title: "Smart Candidate Ranking",
+        description: "Machine learning algorithms rank candidates based on job requirements, skills match, experience level, and cultural fit indicators."
+      },
+      {
+        title: "Automated Screening",
+        description: "Set custom criteria and let AI filter thousands of applications automatically, presenting only the top matches for review."
+      },
+      {
+        title: "Bias Elimination",
+        description: "AI-driven screening removes unconscious bias by focusing purely on qualifications, skills, and experience."
+      },
+      {
+        title: "Multi-language Support",
+        description: "Process CVs in multiple languages with automatic translation and analysis capabilities."
+      },
+      {
+        title: "ATS Integration",
+        description: "Seamlessly integrates with popular Applicant Tracking Systems and HR management platforms."
+      }
+    ],
+    benefits: [
+      {
+        title: "Save 90% Screening Time",
+        description: "Reduce manual CV review time from hours to minutes with AI-powered automation."
+      },
+      {
+        title: "Improve Hire Quality",
+        description: "Data-driven candidate selection ensures you interview only the most qualified applicants."
+      },
+      {
+        title: "Scale Recruitment",
+        description: "Handle high-volume hiring effortlessly, processing thousands of applications without additional HR staff."
+      },
+      {
+        title: "Reduce Hiring Costs",
+        description: "Lower cost-per-hire by streamlining the recruitment funnel and reducing time-to-fill."
+      }
+    ]
   }
 ];
 

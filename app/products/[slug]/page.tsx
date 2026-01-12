@@ -1,10 +1,43 @@
-import { getProductBySlug } from '@/lib/products';
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { products, getProductBySlug } from "@/lib/products";
+import { generateDynamicMetadata, BASE_URL } from "@/lib/seo";
+import { CheckCircle, ArrowRight, Sparkles } from "lucide-react";
+import type { Metadata } from "next";
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  
+  if (!product) {
+    return {};
+  }
+
+  // Use the actual product title for Open Graph and page title
+  return generateDynamicMetadata({
+    title: product.title, // e.g., "Vexel Hire" or "Vexel POS"
+    description: product.fullDescription,
+    keywords: [
+      product.tagline,
+      product.category,
+      ...product.idealFor,
+      'Product',
+      'Vexel Systems',
+    ],
+    path: `/products/${product.slug}`,
+    image: product.mainImage,
+    type: 'website',
+  });
+}
+
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
+export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
 
@@ -12,148 +45,188 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  const Icon = product.icon;
+  const IconComponent = product.icon;
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="w-full bg-linear-to-b from-gray-50 to-white dark:from-white/5 dark:to-transparent pt-32 pb-20 px-6">
-        <div className="max-w-[1200px] mx-auto mb-8 sticky top-24 z-50">
-            <Link href="/products" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/50 hover:text-primary transition-colors bg-white/80 dark:bg-black/50 backdrop-blur-md px-4 py-1.5 rounded-full shadow-sm">
-                <ArrowRight className="rotate-180" size={16} /> Back to Products
-            </Link>
-        </div>
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div className="flex-1 flex flex-col gap-6">
-                <div className="flex items-center gap-3">
-                   <div className="bg-primary/10 p-2 rounded-lg">
-                      <Icon className="text-primary" size={24} />
-                   </div>
-                   <span className="font-bold text-primary tracking-wide text-sm uppercase">{product.category}</span>
-                </div>
-                <h1 className="text-4xl md:text-6xl font-black text-foreground leading-tight">
-                   {product.title}
-                </h1>
-                <p className="text-xl text-foreground/70 leading-relaxed font-medium max-w-xl">
-                   {product.fullDescription}
-                </p>
-                <div className="flex flex-col gap-4 mt-2">
-                   {product.checklist.map((item) => (
-                      <div key={item} className="flex items-center gap-3 text-foreground/80 font-medium">
-                         <div className="bg-green-500/10 p-1 rounded-full"><CheckCircle className="text-green-600" size={16} /></div>
-                         {item}
-                      </div>
-                   ))}
-                </div>
-                <div className="flex gap-4 mt-6">
-                   <Link href="/contact" className="bg-primary text-white text-base font-bold px-8 py-4 rounded-xl shadow-xl shadow-primary/20 hover:brightness-110 transition-all">
-                      Get Started Now
-                   </Link>
-                   <a 
-                      href={`https://wa.me/94740968108?text=${encodeURIComponent(`Hi, I am interested in the ${product.title} product.`)}`}
-                      target="_blank"
-                      className="px-8 py-4 rounded-xl bg-[#25D366]/10 text-[#25D366] font-bold border border-[#25D366]/20 hover:bg-[#25D366]/20 transition-all flex items-center gap-2"
-                   >
-                      WhatsApp
-                   </a>
-                   <Link href="#features" className="px-8 py-4 rounded-xl border border-gray-200 dark:border-white/10 text-foreground font-bold hover:bg-gray-50 dark:hover:bg-white/5 transition-all">
-                      View Features
-                   </Link>
-                </div>
-            </div>
-            <div className="flex-1 w-full">
-               <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                  <Image 
-                     src={product.mainImage}
-                     alt={product.title}
-                     fill
-                     className="object-cover"
-                     unoptimized
-                  />
-               </div>
-            </div>
-        </div>
-      </div>
+      <section className="relative py-20 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/10"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Product Info */}
+            <div className="space-y-6">
+              <Link 
+                href="/products" 
+                className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-colors"
+              >
+                <ArrowRight className="rotate-180" size={16} />
+                Back to Products
+              </Link>
+              
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+                {product.category}
+              </div>
 
-      {/* Target Audience/Ideal For Bar */}
-      <div className="w-full border-y border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5">
-         <div className="max-w-[1200px] mx-auto px-6 py-8">
-            <p className="text-center text-sm font-bold text-foreground/50 uppercase tracking-widest mb-6">Designed For</p>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-12 opacity-70">
-               {product.idealFor.map(tag => (
-                  <div key={tag} className="flex items-center gap-2 text-lg font-bold text-foreground">
-                     <Star size={16} className="text-primary" /> {tag}
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-xl text-primary">
+                    <IconComponent size={32} />
                   </div>
-               ))}
-            </div>
-         </div>
-      </div>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold text-white ${product.badgeColor || 'bg-primary'}`}>
+                    {product.badge}
+                  </span>
+                </div>
+                <h1 className="text-4xl lg:text-6xl font-black tracking-tight text-foreground mb-4">
+                  {product.title}
+                </h1>
+                <p className="text-xl text-primary font-bold mb-6">{product.tagline}</p>
+                <p className="text-lg text-foreground/60 leading-relaxed">
+                  {product.fullDescription}
+                </p>
+              </div>
 
-      {/* Features Grid */}
-      <div id="features" className="w-full max-w-[1200px] px-6 py-24">
-         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <h2 className="text-3xl font-black text-foreground">Comprehensive Features</h2>
-            <p className="text-foreground/60 text-lg">Everything you need to manage your {product.slug === 'vexel-pos' ? 'retail business' : 'workforce'} efficiently.</p>
-         </div>
-         
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {product.features.map((feature, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-white dark:bg-card border border-gray-100 dark:border-white/5 shadow-lg shadow-black/5 hover:-translate-y-1 transition-transform">
-                 <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <CheckCircle className="text-primary" size={24} />
-                 </div>
-                 <h3 className="font-bold text-lg mb-2 text-foreground">{feature.title}</h3>
-                 <p className="text-foreground/60 text-sm leading-relaxed">{feature.description}</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary/30 transition-all text-center"
+                >
+                  Get Started
+                </Link>
+                <Link
+                  href="/quote"
+                  className="px-8 py-4 border-2 border-gray-200 dark:border-gray-800 font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-center text-foreground"
+                >
+                  Request Quote
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Product Image */}
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800">
+              <Image
+                src={product.mainImage}
+                alt={product.title}
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Checklist */}
+      <section className="py-16 px-6 bg-foreground/5">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Key Highlights</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {product.checklist.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3 p-4 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800">
+                <CheckCircle className="text-primary shrink-0 mt-1" size={20} />
+                <span className="text-foreground font-medium">{item}</span>
               </div>
             ))}
-         </div>
-      </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Benefits Section */}
-      <div className="w-full bg-black dark:bg-white/5 text-white py-24 px-6 relative overflow-hidden">
-         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-3xl pointer-events-none"></div>
-         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
-            <div>
-               <h2 className="text-3xl md:text-5xl font-black mb-6">Why Choose {product.title}?</h2>
-               <p className="text-white/60 text-lg mb-8">
-                  Built to scale with your business while reducing operational overhead.
-               </p>
-               <div className="space-y-8">
-                  {product.benefits.map((benefit, i) => (
-                     <div key={i} className="flex gap-4">
-                        <div className="size-12 shrink-0 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
-                           <span className="font-bold text-primary text-xl">{i + 1}</span>
-                        </div>
-                        <div>
-                           <h4 className="text-xl font-bold mb-2">{benefit.title}</h4>
-                           <p className="text-white/60 leading-relaxed">{benefit.description}</p>
-                        </div>
-                     </div>
-                  ))}
-               </div>
-            </div>
-            <div className="relative h-[500px] rounded-2xl overflow-hidden border border-white/10 hidden md:block">
-                <Image 
-                     src={product.mainImage}
-                     alt="Benefits"
-                     fill
-                     className="object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
-                     unoptimized
-                />
-            </div>
-         </div>
-      </div>
+      {/* Detailed Features */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Powerful Features</h2>
+            <p className="text-foreground/60 max-w-2xl mx-auto">
+              Everything you need to transform your operations
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {product.features.map((feature, idx) => (
+              <div
+                key={idx}
+                className="p-6 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-primary/30 transition-all group"
+              >
+                <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
+                  <Sparkles className="text-primary" size={24} />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                <p className="text-foreground/60 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-20 px-6 bg-foreground/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Why Choose {product.title}?</h2>
+            <p className="text-foreground/60 max-w-2xl mx-auto">
+              Measurable impact on your business
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {product.benefits.map((benefit, idx) => (
+              <div
+                key={idx}
+                className="p-8 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800"
+              >
+                <h3 className="text-2xl font-bold text-primary mb-3">{benefit.title}</h3>
+                <p className="text-foreground/60 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ideal For */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Perfect For</h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {product.idealFor.map((industry, idx) => (
+              <div
+                key={idx}
+                className="px-6 py-3 bg-primary/10 text-primary font-bold rounded-full border border-primary/20"
+              >
+                {industry}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
-      <div className="w-full max-w-[1000px] px-6 py-24 text-center">
-         <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6">Ready to transform your operations?</h2>
-         <p className="text-xl text-foreground/60 mb-8 max-w-2xl mx-auto">Get in touch with our sales team to schedule a personalized demo of {product.title}.</p>
-         <div className="flex justify-center gap-4">
-            <Link href="/contact" className="bg-primary text-white text-lg font-bold px-8 py-4 rounded-xl shadow-xl shadow-primary/20 hover:brightness-110 transition-all">
-               Book a Demo
-            </Link>
-         </div>
-      </div>
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="p-12 bg-primary rounded-2xl text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                Join hundreds of businesses that trust {product.title} for their operations
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-gray-100 transition-all"
+                >
+                  Contact Sales
+                </Link>
+                <Link
+                  href="/quote"
+                  className="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all"
+                >
+                  Get a Quote
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

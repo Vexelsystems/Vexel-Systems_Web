@@ -8,6 +8,8 @@ import CookieConsent from "@/components/CookieConsent";
 import SeasonalPromo from "@/components/SeasonalPromo";
 import Link from "next/link";
 import { Toaster } from "sonner";
+import { companyDetails } from "@/lib/companydetails";
+import { DEFAULT_SEO, BASE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,42 +18,44 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: "Vexel Systems | Innovative Software Solutions",
-    template: "%s | Vexel Systems"
+    default: DEFAULT_SEO.title,
+    template: `%s | ${companyDetails.name}`
   },
-  description: "Global technology partner specializing in POS systems, custom software development, and AI-driven business automation.",
-  keywords: ["POS Systems", "Software Development", "Business Automation", "Retail Technology", "Sri Lanka Tech", "SaaS Solutions"],
-  authors: [{ name: "Vexel Systems" }],
-  creator: "Vexel Systems",
+  description: DEFAULT_SEO.description,
+  keywords: DEFAULT_SEO.keywords,
+  authors: DEFAULT_SEO.authors,
+  creator: DEFAULT_SEO.creator,
+  publisher: DEFAULT_SEO.publisher,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://vexelsystems.com",
-    siteName: "Vexel Systems",
-    images: [{
-      url: "/og-image.png",
-      width: 1200,
-      height: 630,
-      alt: "Vexel Systems - Powering Future Businesses"
-    }]
+    ...DEFAULT_SEO.openGraph,
+    title: DEFAULT_SEO.title,
+    description: DEFAULT_SEO.description,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Vexel Systems",
-    description: "Leading tech solutions for the next generation of business.",
-    images: ["/og-image.png"],
+    ...DEFAULT_SEO.twitter,
+    title: DEFAULT_SEO.title,
+    description: DEFAULT_SEO.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  robots: DEFAULT_SEO.robots,
+  alternates: {
+    canonical: BASE_URL,
+  },
+  verification: {
+    // Add your verification codes here when available
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+  other: {
+    'revisit-after': '7 days',
+    'theme-color': companyDetails.branding.primaryColor,
   },
 };
 
@@ -69,27 +73,58 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Vexel Systems",
-              "url": "https://vexelsystems.com",
-              "logo": "https://vexelsystems.com/V Logo.png",
-              "sameAs": [
-                "https://facebook.com/vexelsystems",
-                "https://twitter.com/vexelsystems",
-                "https://linkedin.com/company/vexelsystems"
+              "name": companyDetails.name,
+              "legalName": companyDetails.legalName,
+              "url": companyDetails.contact.website,
+              "logo": `${BASE_URL}${companyDetails.logos.main}`,
+              "foundingDate": companyDetails.business.establishedYear.toString(),
+              "description": companyDetails.description,
+              "slogan": companyDetails.tagline,
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": companyDetails.address.street,
+                "addressLocality": companyDetails.address.city,
+                "addressRegion": companyDetails.address.province,
+                "postalCode": companyDetails.address.postalCode,
+                "addressCountry": "LK"
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": companyDetails.contact.phone,
+                  "contactType": "customer service",
+                  "email": companyDetails.contact.email,
+                  "areaServed": "Global",
+                  "availableLanguage": ["en", "Tamil", "Sinhala"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": companyDetails.contact.phone,
+                  "contactType": "sales",
+                  "email": companyDetails.contact.salesEmail,
+                  "areaServed": "Global"
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": companyDetails.contact.phone,
+                  "contactType": "technical support",
+                  "email": companyDetails.contact.supportEmail,
+                  "areaServed": "Global"
+                }
               ],
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+94 77 123 4567",
-                "contactType": "customer service",
-                "areaServed": "Global",
-                "availableLanguage": ["en", "Tamil", "Sinhala"]
-              }
+              "sameAs": [
+                companyDetails.socialLinks.facebook,
+                companyDetails.socialLinks.twitter,
+                companyDetails.socialLinks.linkedin,
+                companyDetails.socialLinks.instagram,
+                companyDetails.socialLinks.github
+              ]
             })
           }}
         />
         <Preloader />
         <Navbar />
-        <div className="pt-24 w-[80%] mx-auto max-w-[1920px]">
+        <div className="pt-24 min-h-screen flex flex-col">
           {children}
         </div>
         <Footer />

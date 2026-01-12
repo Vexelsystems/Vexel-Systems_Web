@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1 lg:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
               <div className="relative size-8 rounded-lg overflow-hidden border border-primary/20">
-                <Image src="/V Logo.png" alt="Vexel" fill className="object-cover" />
+                <Image src={companyDetails.logos.main} alt="Vexel" fill className="object-cover" />
               </div>
               <span className="text-xl font-black tracking-tight text-foreground">{companyDetails.name}</span>
             </Link>
