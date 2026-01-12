@@ -74,7 +74,7 @@ export const DEFAULT_SEO = {
     siteName: companyDetails.name,
     images: [
       {
-        url: `${BASE_URL}/og-image.png`,
+        url: `${BASE_URL}/VLogo.png`,
         width: 1200,
         height: 630,
         alt: `${companyDetails.name} - ${companyDetails.tagline}`,
@@ -85,7 +85,7 @@ export const DEFAULT_SEO = {
     card: 'summary_large_image' as const,
     site: '@vexelsystems',
     creator: '@vexelsystems',
-    images: [`${BASE_URL}/og-image.png`],
+    images: [`${BASE_URL}/VLogo.png`],
   },
   robots: {
     index: true,
@@ -409,7 +409,7 @@ export function generateServiceSchema({
     },
     areaServed: 'Global',
     url,
-    image: image || `${BASE_URL}/og-image.png`,
+    image: image || `${BASE_URL}/VLogo.png`,
   };
 }
 
