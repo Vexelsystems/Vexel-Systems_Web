@@ -117,7 +117,7 @@ export default function Products() {
             <p className="text-gray-400 max-w-lg text-lg">
               Have a unique business challenge? Our engineering team specializes in crafting tailored software solutions for complex workflows.
             </p>
-            <Link href="/contact" className="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white text-black text-base font-bold hover:bg-primary hover:text-white transition-colors">
+            <Link href="/contact" className="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-primary-foreground text-black dark:text-primary-foreground text-base font-bold hover:bg-primary hover:text-white transition-colors">
               Book a Consultation
             </Link>
           </div>

@@ -32,7 +32,7 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
       
       {/* Floating Back Navigation */}
       <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full max-w-[1400px] px-6">
-         <Link href={backLink} className="pointer-events-auto inline-flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200 dark:border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm font-bold text-foreground group">
+         <Link href={backLink} className="pointer-events-auto inline-flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-white/80 dark:bg-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm font-bold text-foreground group">
              <div className="size-8 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
                 <ArrowRight className="rotate-180" size={16} />
              </div>
@@ -54,7 +54,7 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                 {pkg.description}
             </p>
 
-            <div className="flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12 p-6 rounded-3xl bg-white/50 dark:bg-white/5 border border-primary/10 backdrop-blur-md inline-flex">
+            <div className="flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12 p-6 rounded-3xl bg-white/50 dark:bg-card/50 border border-primary/10 backdrop-blur-md inline-flex">
                 <div className="text-center">
                     <p className="text-xs font-bold uppercase text-foreground/40 mb-1">Estimated Timeline</p>
                     <div className="flex items-center gap-2 text-xl font-bold text-foreground">

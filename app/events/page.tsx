@@ -137,7 +137,7 @@ export default function EventsPage() {
         {/* Empty State */}
         {filteredEvents.length === 0 && (
            <div className="text-center py-20 opacity-50">
-              <div className="inline-block p-6 rounded-full bg-gray-100 mb-4">
+              <div className="inline-block p-6 rounded-full bg-gray-100 dark:bg-white/10 mb-4">
                  <Calendar size={48} className="text-gray-400" />
               </div>
               <h3 className="text-xl font-bold">No events found for this filter.</h3>

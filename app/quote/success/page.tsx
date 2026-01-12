@@ -85,7 +85,7 @@ export default function DemoSuccessPage() {
 
         {/* Trust Footer */}
         <div className="mt-16 flex flex-col items-center text-center">
-          <Link href="/" className="bg-primary text-black px-10 py-4 rounded-xl font-bold text-base hover:opacity-90 transition-all shadow-lg shadow-primary/20 mb-8">
+          <Link href="/" className="bg-primary text-white px-10 py-4 rounded-xl font-bold text-base hover:opacity-90 transition-all shadow-lg shadow-primary/20 mb-8">
             Back to Home
           </Link>
           <div className="flex items-center gap-2 text-foreground/40 text-sm">

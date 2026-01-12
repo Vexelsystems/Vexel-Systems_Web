@@ -4,7 +4,7 @@ export const companyDetails = {
   // Basic Identity
   name: "Vexel Systems",
   legalName: "Vexel Systems (Pvt) Ltd",
-  tagline: "Powering Future Businesses",
+  tagline: "Technology Made Simple",
   
   // Logo path - centralized for easy management
   logos: {

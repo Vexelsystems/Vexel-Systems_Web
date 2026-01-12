@@ -204,7 +204,7 @@ export default function Navbar() {
             <Link href="/quote" className="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-primary/20 hover:bg-primary/90">
               Get Started
             </Link>
-            <button className="hidden md:flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 transition-colors">
+            <button className="hidden md:flex items-center gap-2 rounded-full border border-gray-200 bg-white dark:bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                 <Lock className="h-4 w-4 text-primary" />
                 <span>Login</span>
             </button>
@@ -265,12 +265,12 @@ export default function Navbar() {
                </Link>
                
                {/* Other Links */}
-               <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
+               <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-800">
                   {navigation.company.concat(navigation.resources).map(item => (
                      <Link 
                         key={item.name} 
                         href={item.href} 
-                        className={`text-sm font-medium bg-gray-50 px-3 py-1.5 rounded-lg ${pathname === item.href ? 'text-primary border border-primary/20' : ''}`} 
+                        className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-3 py-1.5 rounded-lg ${pathname === item.href ? 'text-primary border border-primary/20' : ''}`} 
                         onClick={() => setIsMobileMenuOpen(false)}
                      >
                         {item.name}

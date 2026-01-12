@@ -150,7 +150,7 @@ export default function TestimonialsPage() {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 px-4 md:px-12">
               {successStories.map((story) => (
                  <div key={story.id} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all">
-                    <div className="bg-white text-primary size-14 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                    <div className="bg-white dark:bg-card text-primary size-14 rounded-xl flex items-center justify-center mb-6 shadow-lg">
                        {story.icon}
                     </div>
                     <h3 className="text-3xl font-black mb-2 tracking-tight">{story.result}</h3>

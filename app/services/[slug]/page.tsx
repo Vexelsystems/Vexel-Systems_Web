@@ -141,7 +141,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.subServices.map((sub, idx) => (
-              <div key={idx} className="p-8 rounded-xl transition-all group bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 hover:border-primary/40 hover:bg-primary/5 shadow-sm hover:shadow-lg flex flex-col">
+              <div key={idx} className="p-8 rounded-xl transition-all group bg-white dark:bg-card border border-gray-100 dark:border-gray-800 hover:border-primary/40 hover:bg-primary/5 shadow-sm hover:shadow-lg flex flex-col">
                 {sub.image && (
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
                          <Image 

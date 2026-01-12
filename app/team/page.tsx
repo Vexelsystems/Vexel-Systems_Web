@@ -204,7 +204,7 @@ export default function TeamPage() {
                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
                         <h3 className="text-2xl font-bold mb-4 relative z-10">Want to join our journey?</h3>
                         <p className="text-gray-400 mb-6 relative z-10">We are always looking for passionate individuals to join our team.</p>
-                        <Link href="/careers" className="inline-flex items-center gap-2 bg-primary text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition-colors relative z-10">
+                        <Link href="/careers" className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-black transition-colors relative z-10">
                             View Openings <ArrowRight size={16} />
                         </Link>
                     </div>
