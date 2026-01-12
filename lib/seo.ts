@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { companyDetails } from './companydetails';
 
 // Base URL for the website
-export const BASE_URL = 'https://vexelsystems.com';
+export const BASE_URL = 'https://vexelsystems.vercel.app';
 
 // Default SEO configuration
 export const DEFAULT_SEO = {
