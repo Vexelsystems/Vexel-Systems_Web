@@ -1,4 +1,4 @@
-"use client";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -84,6 +84,7 @@ export default function TeamPage() {
                                 src={member.image} 
                                 alt={member.name} 
                                 fill 
+                                sizes="(max-width: 768px) 90vw, 33vw"
                                 className="object-cover"
                             />
                             <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 to-transparent p-6 pt-24 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">

@@ -74,8 +74,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 src={service.heroImage} 
                 alt={service.title}
                 fill
+                sizes="100vw"
                 className="object-cover object-center"
-                unoptimized
              />
           </div>
         </div>
@@ -150,7 +150,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                             alt={sub.title} 
                             fill 
                             className="object-cover"
-                            unoptimized
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     </div>
                 )}
@@ -196,7 +196,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                     alt="Why Us" 
                     fill 
                     className="object-cover"
-                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute bottom-6 right-6 bg-primary p-6 rounded-xl shadow-xl">
                     <p className="text-background-dark font-black text-4xl">10X</p>
@@ -244,7 +244,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                          alt={study.title} 
                          fill 
                          className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
-                         unoptimized
+                         sizes="(max-width: 768px) 85vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-8 flex flex-col justify-end">
                          <span className="bg-primary px-3 py-1 rounded text-[10px] font-bold text-background-dark uppercase w-fit mb-3">{study.category}</span>
@@ -276,7 +276,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                             alt={benefit.title} 
                             fill 
                             className="object-cover"
-                            unoptimized
+                            sizes="(max-width: 768px) 75vw, 50vw"
                           />
                         </div>
                       )}
@@ -303,7 +303,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                       alt="High-tech dashboard"
                       fill
                       className="object-cover"
-                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-white dark:bg-black p-6 rounded-xl border border-primary/30 max-w-[200px] shadow-lg">
@@ -358,7 +358,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                                     alt={ind.name}
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    unoptimized
+                                    sizes="(max-width: 768px) 40vw, 25vw"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
                                 <div className="absolute bottom-4 left-4 right-4">

@@ -21,7 +21,6 @@ export default function CookiePolicy() {
                 alt="Abstract digital security"
                 fill
                 className="object-cover z-0"
-                unoptimized
              />
              <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/90 z-10"></div>
           <div className="relative z-20 max-w-3xl">

@@ -33,8 +33,8 @@ export default function About() {
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWI_BIEvx28E-bwNePxvNfb5bqT0SluXxCyU11yFZl0jJ52IpRzlC5s15OItuKryvTQZHk9ORVN2Zkn51vCh_4ZbLprg7T5EX91hKmOJhbt9VAnajIgXqr5IRoWOG9mh8ye1D1MWXozW1p7gG6Wau2_2tihT9qThaQbXsY7VuBpH0PDvWCcILBZE8LGkJBgh0hAB4oGUlo1RVMB9Xl1L7NvefUuHd3sgu3xUp_vp-6UssQ1sHCL5jjK6aV2AUlIohi866el-2PuWR"
                     alt="Modern high-tech workspace with professional developers"
                     fill
+                    sizes="(max-width: 1200px) 100vw, 50vw"
                     className="object-cover"
-                    unoptimized
                 />
                 </div>
             </div>

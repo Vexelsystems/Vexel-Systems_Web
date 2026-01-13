@@ -1,4 +1,4 @@
-"use client";
+
 
 import React from 'react';
 import { ShieldCheck, Target, Heart, Users, Recycle, Scale } from 'lucide-react';

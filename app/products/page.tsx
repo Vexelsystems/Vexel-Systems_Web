@@ -36,7 +36,7 @@ export default function Products() {
                 alt="Digital dashboard showing software interface analytics"
                 fill
                 className="object-cover"
-                unoptimized
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent"></div>
             </div>
@@ -65,7 +65,7 @@ export default function Products() {
                     alt={product.title}
                     fill
                     className="object-cover"
-                    unoptimized
+                    sizes="(max-width: 768px) 85vw, 50vw"
                  />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
                 <div className="absolute bottom-4 left-6 flex items-center gap-2">

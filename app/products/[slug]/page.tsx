@@ -110,7 +110,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 alt={product.title}
                 fill
                 className="object-cover"
-                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>

@@ -91,7 +91,7 @@ export const TestimonialSection = () => {
 
                   <div className="flex items-center gap-4 pt-6 border-t border-dashed border-primary/10">
                      <div className="relative size-12 rounded-full overflow-hidden border-2 border-primary/20">
-                        <Image src={t.image} alt={t.name} fill className="object-cover" unoptimized />
+                        <Image src={t.image} alt={t.name} fill className="object-cover" sizes="48px" />
                      </div>
                      <div>
                         <h4 className="font-bold text-foreground">{t.name}</h4>
