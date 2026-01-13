@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
 interface SnapCarouselProps {
   items: any[];
@@ -56,21 +55,17 @@ export function SnapCarousel({ children, className = "", scrollContainerClassNam
       {/* Dot Indicators - Only show on mobile (hidden on md) because desktop usually grids */}
       <div className="flex justify-center gap-2 md:hidden">
         {items.map((_, idx) => (
-          <motion.button
+          <button
             key={idx}
             onClick={() => {
               if (scrollRef.current) {
                 const child = scrollRef.current.children[idx] as HTMLElement;
-                scrollRef.current.scrollTo({ left: child.offsetLeft - 24, behavior: "smooth" }); // 24 is px-6 padding roughly
+                scrollRef.current.scrollTo({ left: child.offsetLeft - 24, behavior: "smooth" });
               }
             }}
-            initial={false}
-            animate={{
-              width: activeIndex === idx ? 24 : 8,
-              backgroundColor: activeIndex === idx ? "#0ea5e9" : "#e5e7eb", // primary vs gray-200
-              opacity: activeIndex === idx ? 1 : 0.5
-            }}
-            className="h-2 rounded-full transition-all duration-300"
+            className={`h-2 rounded-full transition-all duration-300 ${
+              activeIndex === idx ? 'w-6 bg-primary opacity-100' : 'w-2 bg-gray-200 opacity-50'
+            }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}

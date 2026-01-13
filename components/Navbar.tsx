@@ -5,7 +5,6 @@ import { Menu, Lock, X, ChevronDown, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { services } from '@/lib/services';
 import { companyDetails } from '@/lib/companydetails';
 

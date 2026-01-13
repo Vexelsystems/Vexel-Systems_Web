@@ -1,6 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
 import { Mail, Phone, Share, MapPin } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";
 import { toast } from "sonner";
@@ -81,14 +79,12 @@ export function ContactSection() {
                   <label className="text-sm font-bold text-foreground">Message</label>
                   <textarea required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="How can we help you?" rows={4}></textarea>
                 </div>
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <button 
                   className="bg-primary text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all" 
                   type="submit"
                 >
                   Send Message
-                </motion.button>
+                </button>
               </form>
             </div>
           </div>

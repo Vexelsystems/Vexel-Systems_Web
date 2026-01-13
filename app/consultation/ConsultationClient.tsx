@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { 
   Calendar, 
   Clock, 
@@ -101,9 +100,7 @@ export default function ConsultationClient() {
   if (isSuccess) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+        <div 
             className="flex flex-col items-center justify-center text-center space-y-6 bg-white dark:bg-zinc-900 rounded-[32px] border border-gray-100 dark:border-zinc-800 p-12 max-w-lg w-full shadow-2xl"
         >
             <div className="size-20 rounded-full bg-green-500/10 flex items-center justify-center text-green-600 mb-2">
@@ -121,7 +118,7 @@ export default function ConsultationClient() {
             >
                 Close
             </button>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -133,26 +130,18 @@ export default function ConsultationClient() {
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-20">
           <div className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+            <div 
               className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em] rounded-full border border-primary/20 backdrop-blur-sm"
             >
               <Sparkles size={12} /> Strategic Partnership
-            </motion.div>
-            <motion.h1 
+            </div>
+            <h1 
               className="text-5xl lg:text-7xl font-black tracking-tighter text-foreground leading-[0.9]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
             >
               Design the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-primary background-animate">Future</span>
-            </motion.h1>
+            </h1>
           </div>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+          <div 
             className="p-8 rounded-[32px] bg-foreground/5 border border-foreground/5"
           >
              <h3 className="text-xs font-black uppercase tracking-widest text-foreground/50 mb-4 flex items-center gap-2">
@@ -161,14 +150,11 @@ export default function ConsultationClient() {
              <p className="text-lg text-foreground font-medium leading-relaxed">
                No generic sales pitches. You get a raw, technical deep-dive into feasibility, architecture, and cost-efficiency.
              </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Form Container */}
-        <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+        <div 
             className="bg-white dark:bg-zinc-900/50 rounded-[48px] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-white/5"
         >
           <form onSubmit={handleSubmit} className="space-y-12">
@@ -273,11 +259,9 @@ export default function ConsultationClient() {
                 {isSubmitting ? (
                     <>
                       <div className="absolute inset-0 bg-black/10">
-                        <motion.div 
-                          className="h-full bg-white/20"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${progress}%` }}
-                          transition={{ ease: "linear" }}
+                        <div 
+                          className="h-full bg-white/20 transition-all duration-50 ease-linear"
+                          style={{ width: `${progress}%` }}
                         />
                       </div>
                       <span className="relative z-10 font-bold tracking-widest">{Math.round(progress)}% Processed</span> 
@@ -292,8 +276,7 @@ export default function ConsultationClient() {
             </div>
 
           </form>
-        </motion.div>
-
+        </div>
       </div>
       
        <style jsx global>{`

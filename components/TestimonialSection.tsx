@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import React from 'react';
 import { Quote, Star } from 'lucide-react';
 import Image from 'next/image';

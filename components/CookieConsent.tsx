@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X } from 'lucide-react';
 
 export default function CookieConsent() {
@@ -26,12 +25,10 @@ export default function CookieConsent() {
   if (status === 'loading' || status === 'accepted') return null;
 
   return (
-    <AnimatePresence>
+    <>
       {/* The Block/Wall Overlay */}
       {status === 'rejected' && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <div
           className="fixed inset-0 z-10000 bg-white/80 dark:bg-black/80 backdrop-blur-2xl flex items-center justify-center p-6"
         >
           <div className="max-w-md text-center">
@@ -54,15 +51,12 @@ export default function CookieConsent() {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* The Initial Banner */}
       {status === 'unset' && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+        <div
           className="fixed bottom-8 left-1/2 -translate-x-1/2 z-999 w-[90%] max-w-[700px]"
         >
           <div className="bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/10 rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 backdrop-blur-xl">
@@ -92,8 +86,8 @@ export default function CookieConsent() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { jobPositions } from '@/lib/career-data';
 import { Briefcase, MapPin, Clock, DollarSign, Upload, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';

@@ -1,6 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import { Earth, Zap, DollarSign, Headset } from "lucide-react";
 

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send, User, ChevronRight, MessageSquare, ExternalLink, Headphones } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { faqData } from '@/lib/faq-data';
 import { toast } from 'sonner';
 import { companyDetails } from "@/lib/companydetails";
@@ -181,7 +180,7 @@ export default function LiveChat() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] font-sans">
+    <div className="fixed bottom-8 right-8 z-100 font-sans">
       {/* Chat Window */}
       {isOpen && (
         <div
@@ -292,15 +291,12 @@ export default function LiveChat() {
           {isIdentified && (
             <div className="p-4 border-t border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5">
               <div className="mb-3">
-                <a 
-                  href={`https://wa.me/94771234567?text=Hi, I'm ${userData.name}. I need help with...`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div 
                   className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-green-500/10 text-green-500 rounded-lg text-sm font-bold transition-all border border-green-500/20"
                 >
                   <ExternalLink size={14} />
                   Not satisfied? Talk to Human
-                </a>
+                </div>
               </div>
               <form onSubmit={handleSendMessage} className="flex gap-2">
                 <input 

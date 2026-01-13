@@ -7,7 +7,7 @@ import { CheckCircle, Clock, Zap, Target, ArrowRight, MessageCircle, Phone, Glob
 import Link from "next/link";
 import { useState, use } from "react";
 import { products } from "@/lib/products";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 export default function PricingDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
@@ -23,20 +23,7 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
   const category = PRICING_CATEGORIES.find(cat => cat.options.some(opt => opt.id === pkg?.id));
   const backLink = category ? `/pricing#${category.id}` : "/pricing";
 
-  // Animation variants
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
 
   return (
     <main className="min-h-screen bg-transparent pb-20 pt-32 overflow-hidden">
@@ -206,7 +193,7 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                             { name: "Next.js 15", desc: "React framework for server-side rendering & speed." },
                             { name: "Tailwind CSS", desc: "Utility-first CSS for high-performance UI." },
                             { name: "TypeScript", desc: "Type-safe code for zero runtime errors." },
-                            { name: "Framer Motion", desc: "For industry-leading smooth animations." }
+                            { name: "Vanilla CSS", desc: "Modern, high-performance styling without overhead." }
                         ].map((t, i) => (
                             <li key={i} className="flex gap-4">
                                 <div className="mt-1.5 size-1.5 rounded-full bg-blue-500 shrink-0" />

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Lock, LogIn, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { companyDetails } from '@/lib/companydetails';
@@ -57,9 +56,7 @@ export default function LoginClient() {
           <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-500/5 rounded-full blur-[120px]"></div>
        </div>
 
-       <motion.div 
-         initial={{ opacity: 0, scale: 0.95, y: 20 }}
-         animate={{ opacity: 1, scale: 1, y: 0 }}
+       <div 
          className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-[32px] shadow-2xl border border-gray-100 dark:border-zinc-800 p-8 md:p-12 relative z-10"
        >
           <div className="text-center mb-10">
@@ -140,7 +137,7 @@ export default function LoginClient() {
                 Don't have an account? <Link href="/register" className="text-primary hover:underline">Apply for Access</Link>
              </p>
           </div>
-       </motion.div>
+       </div>
     </main>
   );
 }
