@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { Globe, Smartphone, Store, Building, Bot, Timer, ShieldCheck, CheckCircle, Shield, Users, Phone, CloudUpload } from "lucide-react";
 
+/**
+ * QUOTE REQUEST PAGE
+ * 
+ * Functional Overview:
+ * - Form Structure: Three-part segmented form (Type, Logistics, Details).
+ * - UX Elements: 
+ *   - Visual Radio Cards for project selection.
+ *   - Drag-and-drop zone simulation for file uploads.
+ * - Layout: Sidebar layout (`lg:col-span-4`) provides trust signals (stats, guarantees) alongside the form.
+ */
+
 export default function Quote() {
   return (
     <main className="flex-1 flex justify-center py-10 px-4 md:px-10 lg:px-20">

@@ -55,6 +55,15 @@ const testimonials = [
   },
 ];
 
+/**
+ * TESTIMONIAL SECTION
+ * 
+ * Functional Overview:
+ * - Rendering: Dynamic generation of star ratings using array mapping.
+ * - Layout: Responsive grid for testimonials and a 4-column statistic block for impact metrics.
+ * - Interaction: FAQ accordion using native `<details>` and `<summary>` elements for semantic toggle behavior.
+ */
+
 export const TestimonialSection = () => {
   return (
     <div className="flex flex-col bg-transparent">

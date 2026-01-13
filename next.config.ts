@@ -1,5 +1,12 @@
 import type { NextConfig } from "next";
 
+/**
+ * NEXT.JS CONFIGURATION
+ * 
+ * Functional Overview:
+ * - Images: Whitelists external domains (Google, Unsplash, CDN) for `next/image` optimization.
+ * - Security: Defines Content Security Policy (CSP) to restrict script sources.
+ */
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [

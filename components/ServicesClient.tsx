@@ -1,3 +1,12 @@
+/**
+ * SERVICES CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * 1. Data Mapping: Maps service slugs to Lucide icons and categorical groups for filtering.
+ * 2. Filtering Logic: Uses memoization to efficiently filter services by Category AND Search Query (checking title, description, slug, tech stack, and sub-services).
+ * 3. Responsive Rendering: Renders as an accordion list on mobile and an interactive grid on desktop.
+ */
+
 "use client";
 
 import React, { useState, useMemo } from "react";
@@ -11,7 +20,7 @@ import {
   Workflow, Filter, X
 } from "lucide-react";
 
-// Icon Mapping
+// Icon Mapping: Associates dynamic service slugs with static imports
 const ServiceIcons: Record<string, any> = {
   "web-development": Globe,
   "ai-automation": Terminal,
@@ -40,7 +49,7 @@ const ServiceIcons: Record<string, any> = {
   "support-maintenance": Headset
 };
 
-// Category Mapping
+// Category Data Structure: Defines which services belong to which filter group
 const CATEGORIES: Record<string, string[]> = {
   "All": [],
   "Development": ["web-development", "mobile-app-development", "software-solutions", "custom-business-systems", "api-development", "custom-software", "pos-systems"],
@@ -55,6 +64,13 @@ export default function ServicesClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [expandedService, setExpandedService] = useState<string | null>(null);
 
+  /**
+   * FILTERING ALGORITHM (Memoized)
+   * 
+   * Filters the master service list based on two criteria:
+   * 1. Category: Checks if service slug exists in the selected category array.
+   * 2. Search Query: Deep search across Title, Description, Slug, Tech Stack, and Sub-Service titles.
+   */
   const filteredServices = useMemo(() => {
     return services.filter((service) => {
       // 1. Filter by Category

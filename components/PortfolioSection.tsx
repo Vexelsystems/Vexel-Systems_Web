@@ -1,6 +1,15 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+/**
+ * PORTFOLIO SECTION COMPONENT
+ * 
+ * Functional Overview:
+ * - Layout: Responsive grid display of selected projects.
+ * - Content: Static rendering of high-priority case studies (Fintech, Retail, SaaS).
+ * - Styling: Hover effects on individual project cards.
+ */
+
 export function PortfolioSection() {
   return (
     <section className="py-20 bg-transparent">

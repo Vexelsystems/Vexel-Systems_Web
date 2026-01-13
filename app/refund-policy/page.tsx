@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { Terminal, RefreshCcw, CheckCircle, AlertTriangle, CreditCard, Zap, Info, LifeBuoy, HelpCircle, Headset } from "lucide-react";
 
+/**
+ * REFUND POLICY PAGE
+ * 
+ * Functional Overview:
+ * - UX Pattern: Uses horizontal tab-like anchor links for navigating between policy sections (Eligibility, Process, Cancellation).
+ * - Layout: Responsive grid layout (`md:grid-cols-2`) for comparing different service models (License vs Subscription).
+ */
+
 export default function RefundPolicy() {
   return (
     <main className="max-w-[960px] mx-auto px-4 py-8">

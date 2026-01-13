@@ -1,3 +1,12 @@
+/**
+ * PRICING DETAIL PAGE (Server Component)
+ * 
+ * Logic:
+ * 1. Fetches package data via slug (async params in Next 15)
+ * 2. Validates existence -> 404 if missing
+ * 3. Integrates client-side logic (currency, brand input) via separate components or hooks
+ */
+
 "use client";
 
 import { getPackageBySlug, PRICING_CATEGORIES } from "@/lib/pricing-data";
@@ -10,16 +19,20 @@ import { products } from "@/lib/products";
 
 
 export default function PricingDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  // Unwrap params using React.use() (Standard in Next.js 15)
   const { slug } = use(params);
   const pkg = getPackageBySlug(slug);
 
+  // Return 404 if slug doesn't match any known package
   if (!pkg) {
     notFound();
   }
 
+  // Client interaction states
   const [brandName, setBrandName] = useState("");
   const [currency, setCurrency] = useState<'LKR' | 'USD'>('LKR');
 
+  // Determine parent category for correct "Back" link routing
   const category = PRICING_CATEGORIES.find(cat => cat.options.some(opt => opt.id === pkg?.id));
   const backLink = category ? `/pricing#${category.id}` : "/pricing";
 

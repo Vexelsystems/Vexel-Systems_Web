@@ -1,3 +1,11 @@
+/**
+ * ABOUT PAGE
+ * 
+ * Functional Overview:
+ * - Metadata: Uses generatePageMetadata for SEO injection.
+ * - Layout: Features a timeline component (Journey) and a horizontally scrollable (snap-x) values section for mobile/grid for desktop.
+ */
+
 import Image from "next/image";
 import Link from "next/link";
 import { Rocket, Eye, Lightbulb, ShieldCheck, Users, ArrowRight, Share2, MapPin } from "lucide-react";

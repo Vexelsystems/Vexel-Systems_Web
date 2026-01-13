@@ -3,6 +3,16 @@ import { blogPosts } from '@/lib/blog-data';
 import { services } from '@/lib/services';
 import { products } from '@/lib/products';
 
+/**
+ * SITEMAP GENERATOR
+ * 
+ * Functional Overview:
+ * - Type: Dynamic Server Function generating `sitemap.xml`.
+ * - Logic: 
+ *   1. Defines static priority routes (Home, About, Services).
+ *   2. Iterates over data sources (`blogPosts`, `services`, `products`) to generate dynamic entries.
+ *   3. Assigns `changeFrequency` and `priority` based on content type importance.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://vexelsystems.com';
   const lastModified = new Date();

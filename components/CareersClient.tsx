@@ -1,3 +1,12 @@
+/**
+ * CAREERS CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Interaction: Handles job selection and expands details (accordion style).
+ * - Form Handling: Manages application form state, validation, and file uploads.
+ * - Simulation: Mocks an API submission delay with a timeout (placeholder for backend integration).
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -10,6 +19,7 @@ export default function CareersClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Form State
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -30,6 +40,7 @@ export default function CareersClient() {
     }
   };
 
+  // Basic Validation
   const isFormValid = selectedJob && formData.fullName && formData.mobile && formData.talent && formData.file;
 
   const handleApply = (e: React.FormEvent) => {
@@ -37,7 +48,7 @@ export default function CareersClient() {
     if (!isFormValid) return;
     
     setIsSubmitting(true);
-    // Simulate API call
+    // Simulate API call delay
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);

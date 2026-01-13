@@ -4,6 +4,14 @@ import React from 'react';
 import { ShieldCheck, Target, Heart, Users, Recycle, Scale } from 'lucide-react';
 import { companyDetails } from '@/lib/companydetails';
 
+/**
+ * COMPANY POLICY PAGE
+ * 
+ * Functional Overview:
+ * - Data Structure: `categories` array drives the rendering of policy cards (Ethics, Sustainability, etc.).
+ * - Layout: Centralized layout with a responsive grid system and hover effects for card interactivity.
+ */
+
 export default function CompanyPolicy() {
   const categories = [
     {

@@ -125,6 +125,14 @@ import {
   CheckCircle
 } from "lucide-react";
 
+/**
+ * SERVICES DATA
+ * 
+ * Functional Overview:
+ * - Comprehensive list of all services offered.
+ * - Structure: Rich data model including sub-services, benefits, tech stack, and case studies.
+ * - Used by: Services page, Service Detail pages, and Sitemap generation.
+ */
 export interface SubService {
   title: string;
   description: string;

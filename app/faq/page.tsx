@@ -1,6 +1,14 @@
 import { generatePageMetadata } from "@/lib/seo";
 import FaqClient from "@/components/FaqClient";
 
+/**
+ * FAQ ROOT PAGE
+ * 
+ * Functional Overview:
+ * - Pattern: Simple server component wrapper.
+ * - Responsibility: Provides static metadata context for the client-side FAQ accordion interactivity.
+ */
+
 export const metadata = generatePageMetadata({
   title: "FAQ Center - Common Questions & Support",
   description: "Find answers to common questions about Vexel Systems services, pricing, POS systems, and technical support in our comprehensive FAQ center.",

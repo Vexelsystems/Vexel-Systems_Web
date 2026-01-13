@@ -1,3 +1,12 @@
+/**
+ * CONTACT SECTION COMPONENT
+ * 
+ * Functional Overview:
+ * - Form Handling: Intercepts submission, triggers toast notification, and resets form (UI only, no backend integrated yet)
+ * - Layout: Uses CSS transforms (skew) for the angled background effect
+ * - Data Source: Pulls contact info from centralized companyDetails
+ */
+
 "use client";
 import { Mail, Phone, Share, MapPin } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";

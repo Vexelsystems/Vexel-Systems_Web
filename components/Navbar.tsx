@@ -1,3 +1,9 @@
+/**
+ * NAVBAR COMPONENT
+ * Handles global navigation, mobile menu state, and active section detection.
+ * Uses client-side state for dropdowns and scroll styling.
+ */
+
 "use client";
 
 import { usePathname } from 'next/navigation';
@@ -8,7 +14,7 @@ import { useState, useEffect } from 'react';
 import { services } from '@/lib/services';
 import { companyDetails } from '@/lib/companydetails';
 
-// Mega Menu Data Structure
+// Navigation data structure for mega menus
 const navigation = {
   services: services.map(service => ({
     name: service.title,
@@ -34,6 +40,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Toggle glassmorphism effect on scroll > 20px
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -46,7 +53,7 @@ export default function Navbar() {
     isScrolled ? 'bg-white/95 dark:bg-zinc-900/95' : 'bg-white/90 dark:bg-zinc-900/90'
   }`;
 
-  // Shared Dropdown Content Component
+  // Reusable dropdown portal for desktop sub-menus
   const DropdownContent = ({ items, width = "w-[200px]", columns = 1, viewAllLink }: { items: { name: string, href: string }[], width?: string, columns?: number, viewAllLink?: { text: string, href: string } }) => (
     <div className={`absolute top-full left-1/2 -translate-x-1/2 ${width} bg-white dark:bg-card rounded-2xl shadow-xl border border-primary/10 p-4 z-50`}>
        <div className={`grid ${columns === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-2`}>
@@ -89,17 +96,17 @@ export default function Navbar() {
     </div>
   );
 
-  // Determine active section for top-level interactions
+  // Heuristic to highlight top-level nav items based on current path
   const getActiveSection = () => {
      if (pathname === '/') return 'home';
      if (pathname.startsWith('/pricing')) return 'pricing';
      
-     // Check dynamic sections
+     // Check if current path belongs to a specific dropdown category
      if (navigation.services.some(item => pathname === item.href)) return 'services';
      if (navigation.products.some(item => pathname === item.href)) return 'products';
      if (navigation.company.some(item => pathname === item.href)) return 'company';
 
-     // Fallback for sub-routes or unmatched exact paths (e.g. /services/web-development/something)
+     // Fallback prefix matching
      if (pathname.startsWith('/services')) return 'services';
      if (pathname.startsWith('/products')) return 'products';
      if (pathname.startsWith('/portfolio')) return 'portfolio';
@@ -108,10 +115,10 @@ export default function Navbar() {
   };
   
   const currentActiveId = getActiveSection();
-  // If hovering, show that ID. If not hovering, show current active ID.
+  // Prioritize hover state over current active state for visual feedback
   const displayId = activeDropdown || currentActiveId;
 
-  // Mobile dropdown state
+  // Mobile drawer state
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
 
   const toggleMobileDropdown = (id: string) => {
@@ -218,119 +225,227 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Slides up from bottom */}
+      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <div 
-            className="fixed bottom-24 left-4 right-4 bg-white dark:bg-card rounded-3xl shadow-2xl z-50 p-6 overflow-y-auto max-h-[70vh] border border-primary/10"
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm transition-opacity duration-300"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu */}
+      <div className={`lg:hidden fixed top-20 left-2 right-2 sm:left-6 sm:right-6 rounded-2xl shadow-xl z-50 transition-all duration-300 transform origin-top max-h-[80vh] overflow-y-auto ${
+        isMobileMenuOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-4 pointer-events-none'
+      } ${
+        isScrolled 
+          ? 'bg-white/95 dark:bg-zinc-900/95 border border-gray-100 dark:border-gray-800 shadow-[0_8px_32px_rgba(0,0,0,0.12)]' 
+          : 'bg-white/90 dark:bg-zinc-900/90 border border-gray-100 dark:border-gray-800 shadow-[0_8px_32px_rgba(0,0,0,0.12)]'
+      }`}>
+        <div className="flex flex-col p-4 space-y-2">
+          {/* Home */}
+          <Link
+            href="/"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname === '/'
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <div className="flex flex-col gap-4">
-               {/* Mobile Navigation Links */}
-               <Link href="/" className={`text-lg font-bold py-3 ${pathname === '/' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
-                  Home
-               </Link>
-               <Link href="/about" className={`text-lg font-bold py-3 ${pathname === '/about' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
-                  About Us
-               </Link>
- 
-               {/* Collapsible Services */}
-               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
-                  <button 
-                    onClick={() => toggleMobileDropdown('services')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
+            Home
+          </Link>
+
+          {/* About */}
+          <Link
+            href="/about"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname === '/about'
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About Us
+          </Link>
+
+          {/* Services Dropdown */}
+          <div>
+            <button
+              onClick={() => toggleMobileDropdown('services')}
+              className={`w-full flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                mobileOpenDropdown === 'services' || pathname.startsWith('/services')
+                  ? 'bg-primary/10 text-primary font-bold'
+                  : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+              }`}
+            >
+              Services
+              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'services' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileOpenDropdown === 'services' && (
+              <div className="mt-2 ml-4 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                <Link
+                  href="/services"
+                  className="block p-2 text-sm text-primary font-bold hover:underline"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  View All Services
+                </Link>
+                {navigation.services.map(item => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`block p-2 pl-4 text-sm border-l-2 transition-all duration-300 ${
+                      pathname === item.href
+                        ? 'border-primary text-primary font-bold'
+                        : 'border-gray-200 dark:border-gray-800 text-foreground/70 hover:border-primary hover:text-primary'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Services <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'services' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {mobileOpenDropdown === 'services' && (
-                    <div 
-                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
-                    >
-                       <Link href="/services" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Services</Link>
-                       {navigation.services.map(item => (
-                          <Link 
-                             key={item.name} 
-                             href={item.href} 
-                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`} 
-                             onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                             {item.name}
-                          </Link>
-                       ))}
-                    </div>
-                  )}
-               </div>
- 
-               {/* Collapsible Products */}
-               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
-                  <button 
-                    onClick={() => toggleMobileDropdown('products')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Products Dropdown */}
+          <div>
+            <button
+              onClick={() => toggleMobileDropdown('products')}
+              className={`w-full flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                mobileOpenDropdown === 'products' || pathname.startsWith('/products')
+                  ? 'bg-primary/10 text-primary font-bold'
+                  : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+              }`}
+            >
+              Products
+              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'products' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileOpenDropdown === 'products' && (
+              <div className="mt-2 ml-4 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                <Link
+                  href="/products"
+                  className="block p-2 text-sm text-primary font-bold hover:underline"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  View All Products
+                </Link>
+                {navigation.products.map(item => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`block p-2 pl-4 text-sm border-l-2 transition-all duration-300 ${
+                      pathname === item.href
+                        ? 'border-primary text-primary font-bold'
+                        : 'border-gray-200 dark:border-gray-800 text-foreground/70 hover:border-primary hover:text-primary'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Products <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'products' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {mobileOpenDropdown === 'products' && (
-                    <div 
-                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
-                    >
-                       <Link href="/products" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Products</Link>
-                       {navigation.products.map(item => (
-                          <Link 
-                             key={item.name} 
-                             href={item.href} 
-                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`}  
-                             onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                             {item.name}
-                          </Link>
-                       ))}
-                    </div>
-                  )}
-               </div>
- 
-               <Link href="/pricing" className={`text-lg font-bold py-2 ${pathname === '/pricing' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
-                  Pricing
-               </Link>
- 
-               {/* Collapsible Company */}
-               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
-                  <button 
-                    onClick={() => toggleMobileDropdown('company')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Pricing */}
+          <Link
+            href="/pricing"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname === '/pricing'
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Pricing
+          </Link>
+
+          {/* Portfolio */}
+          <Link
+            href="/portfolio"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname === '/portfolio'
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Portfolio
+          </Link>
+
+          {/* Company Dropdown */}
+          <div>
+            <button
+              onClick={() => toggleMobileDropdown('company')}
+              className={`w-full flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                mobileOpenDropdown === 'company'
+                  ? 'bg-primary/10 text-primary font-bold'
+                  : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+              }`}
+            >
+              Company
+              <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'company' ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileOpenDropdown === 'company' && (
+              <div className="mt-2 ml-4 space-y-1 animate-in slide-in-from-top-2 duration-200">
+                {navigation.company.map(item => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`block p-2 pl-4 text-sm border-l-2 transition-all duration-300 ${
+                      pathname === item.href
+                        ? 'border-primary text-primary font-bold'
+                        : 'border-gray-200 dark:border-gray-800 text-foreground/70 hover:border-primary hover:text-primary'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Company <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'company' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {mobileOpenDropdown === 'company' && (
-                    <div 
-                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
-                    >
-                       {navigation.company.map(item => (
-                          <Link 
-                             key={item.name} 
-                             href={item.href} 
-                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`} 
-                             onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                             {item.name}
-                          </Link>
-                       ))}
-                    </div>
-                  )}
-               </div>
-               
-               {/* Other Links */}
-               <div className="flex flex-wrap gap-4 pt-4">
-                   <Link href="/portfolio" className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-4 py-2 rounded-lg ${pathname === '/portfolio' ? 'text-primary border border-primary/20' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
-                     Portfolio
-                   </Link>
-                   <Link href="/login" className="text-sm font-medium bg-gray-50 dark:bg-white/5 px-4 py-2 rounded-lg" onClick={() => setIsMobileMenuOpen(false)}>
-                     Login
-                   </Link>
-               </div>
-            </div>
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Contact */}
+          <Link
+            href="/contact"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname === '/contact'
+                ? 'bg-primary/10 text-primary font-bold'
+                : 'text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold'
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact Us
+          </Link>
+
+          {/* Action Buttons */}
+          <div className={`grid grid-cols-1 gap-3 pt-2 mt-2 border-t transition-colors duration-300 ${
+            isScrolled ? 'border-gray-200 dark:border-gray-800' : 'border-gray-200 dark:border-gray-800'
+          }`}>
+            <Link
+              href="/quote"
+              className="flex h-10 cursor-pointer items-center justify-center rounded-lg text-sm font-bold bg-primary text-white hover:bg-primary/90 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/login"
+              className={`flex h-10 cursor-pointer items-center justify-center gap-2 rounded-lg text-sm font-bold shadow-sm transition-colors duration-300 ${
+                isScrolled
+                  ? 'bg-gray-50 dark:bg-zinc-800 text-foreground/80 hover:bg-gray-100 dark:hover:bg-zinc-700'
+                  : 'bg-gray-50 dark:bg-zinc-800 text-foreground/80 hover:bg-gray-100 dark:hover:bg-zinc-700'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Lock size={16} className="text-primary" />
+              Login
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

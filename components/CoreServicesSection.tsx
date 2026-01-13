@@ -1,3 +1,11 @@
+/**
+ * CORE SERVICES SECTION
+ * 
+ * Functional Overview:
+ * - Layout: Utilizes `SnapCarousel` for a swipeable card interface on mobile, adapting to a grid on larger screens.
+ * - Interaction: Simple hover effects for icon highlighting and "Learn More" link activation.
+ */
+
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import { Globe, Smartphone, Terminal, ArrowRight } from "lucide-react";
 

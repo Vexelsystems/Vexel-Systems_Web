@@ -1,3 +1,11 @@
+/**
+ * EVENTS CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Filtering: Segments events by Type (In-Person, Virtual, Hybrid) using simple client-side logic.
+ * - Rendering: Displays events in a responsive grid with category tags.
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -24,7 +32,7 @@ const events = [
     category: "Webinar",
     location: "Online (Zoom)",
     type: "Virtual",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3z6P07yC3w5IaT18Oc8S1lD_j3uEz06d0P5q8e0Y0nQ5r4oE0wH2sJ0x1u7cM8mY8w3A6pE2qG4y5b9tC7vF3jK_M1wN6u0nP9sD4i8_kB2d5y1l3p8x7r0u4z9v1j6_e8g0h4iA8k2f5l7m9o1q6_r0s4t8_w2x5y9A1c3d6e8f4g7h9k1l2m3n5o7p0u4z9v1j6_e8g0h4iA8k2f5l7m9o1q6_r0s4t8_w2x5y9A1c3d6e8f4g7h9k1l2m3n5o7p9",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3z6P07yC3w5IaT18Oc8S1lD_j3uEz06d0P5q8e0Y0nQ5r4oE0wH2sJ0x1u7cM8mY8w3A6pE2qG4y5b9tC7vF3jK_M1wN6u0nP9sD4i8_kB2d5y1l3p8x7r0u4z9v1j6_e8g0h4iA8k2f5l7m9o1q6_r0s4t8_w2x5y9A1c3d6e8f4g7h9k1l2m3n5o7p9",
     description: "A deep dive into strategies for seamless cloud infrastructure upgrades."
   },
   {

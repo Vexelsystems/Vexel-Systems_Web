@@ -5,6 +5,17 @@ import { toast } from "sonner";
 import { companyDetails } from "@/lib/companydetails";
 import Link from "next/link";
 
+/**
+ * CONTACT CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Integrations: 
+ *   1. Google Maps Iframe for location display.
+ *   2. `sonner` for toast notifications on form submission.
+ * - Interactivity: Dispatches `vexel-chat-open` custom event to trigger the global LiveChat widget.
+ * - Data Source: Pulls company info (address, social links) from centralized configuration.
+ */
+
 export default function Contact() {
   return (
     <main className="min-h-screen bg-transparent">

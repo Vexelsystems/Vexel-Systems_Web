@@ -1,3 +1,9 @@
+/**
+ * SNAP CAROUSEL
+ * Horizontal scroll carousel with snap points and dot indicators
+ * Calculates active item based on which child is closest to viewport center
+ */
+
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
@@ -12,26 +18,24 @@ interface SnapCarouselProps {
 export function SnapCarousel({ children, className = "", scrollContainerClassName = "" }: { children: React.ReactNode, className?: string, scrollContainerClassName?: string }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  
   const items = React.Children.toArray(children);
 
+  // Calculates which child is closest to viewport center on scroll
   const handleScroll = () => {
     if (scrollRef.current) {
       const scrollLeft = scrollRef.current.scrollLeft;
       const width = scrollRef.current.offsetWidth;
-
-      // Let's try a logic that works for partial views (like 85vw)
-      // We can find which child is closest to the center.
+      const containerCenter = scrollLeft + width / 2;
       
       let closestIndex = 0;
       let minDistance = Number.MAX_VALUE;
       
-      const containerCenter = scrollLeft + width / 2;
-      
+      // Find child whose center is closest to viewport center
       Array.from(scrollRef.current.children).forEach((child, i) => {
         const childEl = child as HTMLElement;
         const childCenter = childEl.offsetLeft + childEl.offsetWidth / 2;
         const distance = Math.abs(childCenter - containerCenter);
+        
         if (distance < minDistance) {
           minDistance = distance;
           closestIndex = i;
@@ -44,6 +48,7 @@ export function SnapCarousel({ children, className = "", scrollContainerClassNam
 
   return (
     <div className={`flex flex-col gap-6 ${className}`}>
+      {/* snap-x snap-mandatory enables CSS scroll snapping */}
       <div 
         ref={scrollRef}
         onScroll={handleScroll}
@@ -52,7 +57,7 @@ export function SnapCarousel({ children, className = "", scrollContainerClassNam
         {children}
       </div>
 
-      {/* Dot Indicators - Only show on mobile (hidden on md) because desktop usually grids */}
+      {/* Dot indicators - only on mobile */}
       <div className="flex justify-center gap-2 md:hidden">
         {items.map((_, idx) => (
           <button
@@ -60,6 +65,7 @@ export function SnapCarousel({ children, className = "", scrollContainerClassNam
             onClick={() => {
               if (scrollRef.current) {
                 const child = scrollRef.current.children[idx] as HTMLElement;
+                // Subtract 24px for padding offset
                 scrollRef.current.scrollTo({ left: child.offsetLeft - 24, behavior: "smooth" });
               }
             }}

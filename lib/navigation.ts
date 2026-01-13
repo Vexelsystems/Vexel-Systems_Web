@@ -1,5 +1,13 @@
 import { services } from '@/lib/services';
 
+/**
+ * NAVIGATION CONFIGURATION
+ * 
+ * Functional Overview:
+ * - Centralizes all menu links (header/footer/mobile).
+ * - Logic: Auto-generates Service links dynamically from `services.ts`.
+ * - formatSlug: Helper to beautify URL slugs for display.
+ */
 // Helper to format slug to title (e.g., "web-development" -> "Web Development")
 const formatSlug = (slug: string) => {
   return slug 

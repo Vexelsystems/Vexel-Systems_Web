@@ -2,6 +2,14 @@
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import { Earth, Zap, DollarSign, Headset } from "lucide-react";
 
+/**
+ * WHY CHOOSE US SECTION
+ * 
+ * Functional Overview:
+ * - Layout: Hybrid layout with a sticky text description (left) and a scrolling/grid content area (right).
+ * - Component: Uses `SnapCarousel` configured with grid classes (`sm:grid-cols-2`) to disable scrolling on tablets+.
+ */
+
 export function WhyChooseUsSection() {
   return (
     <section className="py-20 bg-transparent">

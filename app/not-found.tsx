@@ -3,6 +3,14 @@
 import Link from "next/link";
 import { ArrowLeft, Home } from "lucide-react";
 
+/**
+ * NOT FOUND (404) PAGE
+ * 
+ * Functional Overview:
+ * - Trigger: Renders automatically when `notFound()` is called or an unmatched URL is visited.
+ * - UX: Friendly error message with a direct recovery action (Back to Home button).
+ */
+
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center text-center px-6">

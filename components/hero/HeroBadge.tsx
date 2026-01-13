@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * HERO BADGE COMPONENT
+ * - Pure UI component displaying the "status" or "tag" in the hero area.
+ * - Uses backdrop blur for depth.
+ */
+
 export function HeroBadge() {
   return (
     <div 

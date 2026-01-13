@@ -1,4 +1,10 @@
 {
+  /* 
+   * TYPESCRIPT CONFIGURATION
+   * - Compiler Options: Strict mode enabled for type safety.
+   * - Paths: Configures `@/*` alias for cleaner imports from project root.
+   * - Includes: Targets standard Next.js directory structure.
+   */
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],

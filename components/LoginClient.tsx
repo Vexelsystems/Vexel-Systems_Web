@@ -7,6 +7,16 @@ import { companyDetails } from '@/lib/companydetails';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
+/**
+ * LOGIN CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Purpose: Simulates an authentication flow (mock) for demonstration purposes.
+ * - Interactivity: Visual progress bar simulation during the "login" phase.
+ * - Feedback: Uses `sonner` toast notifications for success/error feedback.
+ * - Aesthetics: High-polish UI with blur effects and floating background elements.
+ */
+
 export default function LoginClient() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

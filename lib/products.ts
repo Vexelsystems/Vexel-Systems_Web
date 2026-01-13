@@ -1,5 +1,14 @@
 import { Fingerprint, ShoppingCart } from "lucide-react";
 
+/**
+ * PRODUCT CATALOGUE
+ * 
+ * Functional Overview:
+ * - Repository for proprietary Vexel Systems products (e.g., POS, Attendance System).
+ * - Usage: Populates the Products page and individual product detail pages.
+ * - getProductBySlug: Helper to fetch specific product data for dynamic routing.
+ */
+
 export interface ProductFeature {
   title: string;
   description: string;

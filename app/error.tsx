@@ -3,6 +3,16 @@
 import { useEffect } from "react";
 import { AlertCircle, RotateCcw } from "lucide-react";
 
+/**
+ * GLOBAL ERROR BOUNDARY
+ * 
+ * Functional Overview:
+ * - Type: Client Component (Next.js requirement for error boundaries).
+ * - Behavior: Catches runtime errors from child components.
+ * - Recovery: Provides a `reset` function (Try Again) to attempt re-rendering the segment.
+ * - Logging: Hooks into `useEffect` to log error details (extensible for Sentry/Datadog).
+ */
+
 export default function Error({
   error,
   reset,

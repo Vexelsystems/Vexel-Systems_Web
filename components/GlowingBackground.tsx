@@ -2,6 +2,14 @@
 
 import React from 'react';
 
+/**
+ * GLOWING BACKGROUND
+ * 
+ * Functional Overview:
+ * - Performance: Uses `fixed` positioning and `pointer-events-none` to prevent layout reflows and interaction blocking.
+ * - Visibility: Hidden on mobile/dark mode specific configurations via Tailwind classes.
+ */
+
 export const GlowingBackground = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none dark:hidden hidden md:block">

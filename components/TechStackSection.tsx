@@ -249,6 +249,15 @@ const techItems = {
   ]
 };
 
+/**
+ * TECH STACK SECTION
+ * 
+ * Functional Overview:
+ * - State: Manages `activeTab` to filter and display technology categories (Frontend, Backend, AI/ML, etc.).
+ * - Data Structure: Complex nested object `techItems` mapping categories to specific tools/levels.
+ * - Interaction: Filter buttons update the view, triggering a re-render of the grid content.
+ */
+
 export const TechStackSection = () => {
   const [activeTab, setActiveTab] = useState('frontend');
 

@@ -1,3 +1,12 @@
+/**
+ * SERVICE DETAIL PAGE (Dynamic Route)
+ * 
+ * Technical Implementation:
+ * - Uses generateMetadata for dynamic SEO injection
+ * - Implements generateStaticParams for SSG (Static Site Generation) at build time
+ * - Handles async params pattern required by Next.js 15
+ */
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +16,13 @@ import { CheckCircle, ArrowRight, ShieldCheck, Megaphone } from "lucide-react";
 import type { Metadata } from "next";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
+/**
+ * GENERATE METADATA
+ * Dynamically constructs SEO tags based on the service slug.
+ * 
+ * @param params - Promise resolving to route parameters
+ * @returns Metadata object with Open Graph and Twitter card settings
+ */
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
@@ -31,6 +47,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
+/**
+ * GENERATE STATIC PARAMS
+ * Defines which paths should be statically generated at build time.
+ * Improves performance by pre-rendering all known service pages.
+ */
 export async function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -38,6 +59,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
+  // Await params to access slug (Next.js 15 requirement)
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 

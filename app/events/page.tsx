@@ -2,6 +2,16 @@
 import { generatePageMetadata } from "@/lib/seo";
 import EventsClient from "@/components/EventsClient";
 
+/**
+ * EVENTS ROOT PAGE
+ * 
+ * Functional Overview:
+ * - Page Structure: Standard "Server Shell" pattern.
+ * - Logic: 
+ *   - Fetches no data (currently static/client-side data in `EventsClient`).
+ *   - Pre-renders layout skeleton and headers for SEO/performance.
+ */
+
 export const metadata = generatePageMetadata({
   title: "Events & Webinars - Community & Learning",
   description: "Join upcoming events, webinars, and workshops hosted by Vexel Systems. Connect with industry leaders and learn about the future of tech.",

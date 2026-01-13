@@ -1,5 +1,14 @@
 import { Layout, Briefcase, ShoppingCart, Newspaper, GraduationCap, Plane, Calendar, Heart, Smartphone, Zap, Globe, Box, Plug, Server, Blocks, CloudCog, Target, TrendingUp } from "lucide-react";
 
+/**
+ * PRICING DATA
+ * 
+ * Functional Overview:
+ * - Defines all service packages and pricing tiers.
+ * - Structure: Hierarchical (Categories -> Packages).
+ * - Logic: Used by PricingPage and Quote calculator to display options and cost estimates.
+ */
+
 export interface PackageDeliverable {
   title: string;
   description: string;

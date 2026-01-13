@@ -2,6 +2,15 @@
 import { generatePageMetadata } from "@/lib/seo";
 import ServicesClient from "@/components/ServicesClient";
 
+/**
+ * SERVICES ROOT PAGE
+ * 
+ * Functional Overview:
+ * - Rendering: Server-renders the Hero section with a high-quality background image for visual impact.
+ * - Integration: Uses `ServicesClient` for the interactive filtering grid.
+ * - Pattern: Hybrid approach (Server UI + Client Logic) to balance SEO and interactivity.
+ */
+
 export const metadata = generatePageMetadata({
   title: "Our Services - Web, Mobile & AI Solutions",
   description: "Explore Vexel Systems' comprehensive range of services including Custom Software Development, AI Solutions, Web & Mobile App Development, and Cloud Infrastructure.",

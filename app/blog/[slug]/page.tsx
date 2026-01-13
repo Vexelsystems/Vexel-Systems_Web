@@ -1,3 +1,12 @@
+/**
+ * BLOG POST PAGE (Dynamic Route)
+ * 
+ * Technical Implementation:
+ * - Uses generateMetadata with 'article' type for rich social sharing
+ * - Implements generateStaticParams for SSG (Static Site Generation)
+ * - Resolves async params for Next.js 15 compatibility
+ */
+
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -8,6 +17,11 @@ import type { Metadata } from 'next';
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import Image from 'next/image';
 
+/**
+ * GENERATE METADATA
+ * Constructs SEO metadata specifically for articles/blog posts.
+ * Includes author, publish date, and section data for Open Graph.
+ */
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find(p => p.slug === slug);
@@ -16,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {};
   }
 
-  // Use the actual blog post title for both page title and Open Graph
+  // Generate metadata with 'article' type for specific social card rendering
   return generateDynamicMetadata({
     title: post.title, // This will be used as-is for Open Graph, with company name appended for page title
     description: post.excerpt,
@@ -30,6 +44,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
+/**
+ * GENERATE STATIC PARAMS
+ * Pre-renders all blog posts at build time for optimal performance (SSG).
+ */
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
@@ -37,6 +55,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  // Await params to access slug (Next.js 15 requirement)
   const { slug } = await params;
   const post = blogPosts.find(p => p.slug === slug);
 

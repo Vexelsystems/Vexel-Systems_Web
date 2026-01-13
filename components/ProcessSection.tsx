@@ -51,6 +51,14 @@ const outcomes = [
 
 
 
+/**
+ * PROCESS SECTION
+ * 
+ * Functional Overview:
+ * - Data Structure: Iterates through static `phases` (Timeline) and `outcomes` (Grid) arrays.
+ * - Layout: Responsive grid system that stacks vertically on mobile and expands to 5 columns on desktop.
+ */
+
 export const ProcessSection = () => {
   return (
     <div className="flex flex-col bg-transparent">

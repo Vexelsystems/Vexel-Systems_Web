@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { ArrowLeft, Clock, Hammer } from "lucide-react";
 
+/**
+ * MAINTENANCE PAGE
+ * 
+ * Functional Overview:
+ * - Usage: Static page enabling a "construction mode" (manual redirect required to activate).
+ * - Layout: Focused center card with estimated return time to manage user expectations.
+ */
+
 export default function Maintenance() {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">

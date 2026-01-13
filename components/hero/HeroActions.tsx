@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+/**
+ * HERO ACTIONS COMPONENT
+ * - Renders primary (CTA) and secondary action buttons.
+ * - Encapsulates navigation links to `/pricing` and `/services`.
+ */
+
 export function HeroActions() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-6">

@@ -4,6 +4,15 @@ import React from 'react';
 import { Shield, Lock, Eye, FileText, Globe, Bell } from 'lucide-react';
 import { companyDetails } from '@/lib/companydetails';
 
+/**
+ * PRIVACY POLICY PAGE
+ * 
+ * Functional Overview:
+ * - Structure: Static content page using a data-driven approach for section rendering.
+ * - Data Mapping: `sections` array maps icons, titles, and content to reusable card components.
+ * - Integration: Dynamically pulls company details (name, email) from `@/lib/companydetails` configuration.
+ */
+
 export default function PrivacyPolicy() {
   const lastUpdated = "January 12, 2026";
 

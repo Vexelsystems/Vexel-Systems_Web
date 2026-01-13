@@ -1,4 +1,10 @@
-
+/**
+ * PROCESS PAGE
+ * 
+ * Logic Overview:
+ * - Data Mapping: Iterates over static `phases` and `outcomes` arrays to render the process timeline and deliverables.
+ * - Visualization: Uses a vertical stacking layout with a connector line (CSS pseudo-elements) to visualize the workflow progression.
+ */
 
 import React from 'react';
 import Link from 'next/link';

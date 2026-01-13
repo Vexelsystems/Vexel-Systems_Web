@@ -11,6 +11,16 @@ import {
 import { services } from '@/lib/services';
 import { companyDetails } from '@/lib/companydetails';
 
+/**
+ * SITE INDEX / LINKS PAGE
+ * 
+ * Functional Overview:
+ * - Purpose: Visual HTML sitemap for users and better internal linking SEO structure.
+ * - Logic: 
+ *   - Aggregates static links and dynamic service/product links.
+ *   - Renders a categorized grid layout for quick navigation.
+ */
+
 export default function AllLinksPage() {
   const categories = [
     {

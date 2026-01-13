@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { ArrowLeft, Search, Calendar, Shield, CreditCard, Receipt, Share } from "lucide-react";
 
+/**
+ * TERMS OF SERVICE PAGE
+ * 
+ * Functional Overview:
+ * - Navigation: Implements on-page anchor linking (#usage, #payments) for quick section jumping.
+ * - Layout: Features a sticky top header with horizontal scrollable chips for mobile accessibility.
+ * - Components: Uses standard HTML semantic sections with `scroll-mt` classes to offset fixed header height.
+ */
+
 export default function Terms() {
   return (
     <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">

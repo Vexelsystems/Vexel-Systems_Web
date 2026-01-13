@@ -1,14 +1,71 @@
+/**
+ * SEO UTILITIES
+ * 
+ * This file provides utilities for generating SEO metadata and structured data
+ * across the entire application.
+ * 
+ * Purpose:
+ * - Centralize SEO configuration
+ * - Generate page-specific metadata
+ * - Create JSON-LD structured data for rich snippets
+ * - Ensure consistent SEO across all pages
+ * 
+ * Used by:
+ * - All pages for metadata generation
+ * - Dynamic routes (services, products, blog posts)
+ * - Layout for global SEO configuration
+ * 
+ * Benefits:
+ * - Better search engine rankings
+ * - Rich snippets in search results
+ * - Improved social media sharing
+ * - Consistent metadata structure
+ */
+
 import { Metadata } from 'next';
 import { companyDetails } from './companydetails';
 
-// Base URL for the website
+/**
+ * BASE URL
+ * The production URL of the website
+ * Used for generating absolute URLs in metadata and structured data
+ */
 export const BASE_URL = 'https://vexelsystems.vercel.app';
 
-// Default SEO configuration
+/**
+ * DEFAULT SEO CONFIGURATION
+ * 
+ * Default values used across the site if page-specific values aren't provided.
+ * This ensures every page has basic SEO even without custom metadata.
+ * 
+ * Structure:
+ * - siteName: Company name for branding
+ * - title: Default page title
+ * - description: Default meta description
+ * - keywords: Array of relevant keywords for search engines
+ * - openGraph: Social media sharing configuration (Facebook, LinkedIn)
+ * - twitter: Twitter Card configuration
+ * - robots: Search engine crawling instructions
+ */
 export const DEFAULT_SEO = {
   siteName: companyDetails.name,
   title: `${companyDetails.name} | ${companyDetails.tagline}`,
   description: companyDetails.description,
+  
+  /**
+   * KEYWORDS
+   * 
+   * Comprehensive list of keywords for search engine optimization.
+   * Organized by category for better maintainability.
+   * 
+   * Categories:
+   * - Core Services: Main service offerings
+   * - Location-based: Geographic targeting (Vavuniya, Sri Lanka)
+   * - Affordable/Price-focused: Budget-conscious keywords
+   * - Industry-specific: Vertical market terms
+   * - Technology: Tech stack and platforms
+   * - Business: Business-oriented terms
+   */
   keywords: [
     // Core Services
     'POS Systems',

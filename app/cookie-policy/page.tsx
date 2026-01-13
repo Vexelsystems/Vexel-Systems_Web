@@ -1,6 +1,15 @@
 import Image from "next/image";
 import { ChevronRight, Info, HelpCircle, Shield, Settings, Timer, Trash2, RotateCcw, Cookie, X } from "lucide-react";
 
+/**
+ * COOKIE POLICY PAGE
+ * 
+ * Functional Overview:
+ * - Navigation: Sidebar-based navigation for larger screens using sticky positioning.
+ * - Interactivity: Includes a preview of the "Consent Banner" UI component at the viewport bottom.
+ * - Content: Technical breakdown of cookie types (Essential vs Performance) using comparison tables.
+ */
+
 export default function CookiePolicy() {
   return (
     <main className="max-w-[1280px] mx-auto px-6 lg:px-10 py-8">

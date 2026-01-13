@@ -1,3 +1,11 @@
+/**
+ * BLOG CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Filtering: Implements dual filtering by 'Category' AND 'Search Query' (matches title or excerpt).
+ * - State: Manages active category and search input state locally.
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -12,6 +20,7 @@ export default function BlogClient() {
   const [activeCategory, setActiveCategory] = useState<typeof categories[number]>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Filtering Logic: Combines category check with text search
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 

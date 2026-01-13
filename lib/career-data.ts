@@ -1,3 +1,11 @@
+/**
+ * CAREER DATA
+ * 
+ * Functional Overview:
+ * - Defines open positions for the Careers page.
+ * - Structure: Optimized for card display and detail modals.
+ * - type: Enforces work arrangement types (Remote/Hybrid/On-site).
+ */
 export type JobPosition = {
   id: string;
   title: string;

@@ -1,3 +1,12 @@
+/**
+ * PRODUCTS LIST PAGE
+ * 
+ * Layout Strategy:
+ * - Responsive design: Standard stack on mobile, flexible grid on desktop
+ * - SnapCarousel used for product cards to allow swipeable list on mobile, grid on desktop
+ * - Images optimized with 'priority' for LCP candidates
+ */
+
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle, ArrowRight, Activity, Calendar, Cloud, Store, CreditCard, ChevronRight } from "lucide-react";
@@ -8,7 +17,7 @@ import { SnapCarousel } from "@/components/ui/SnapCarousel";
 export default function Products() {
   return (
     <main className="flex flex-col items-center">
-      {/* Hero Section */}
+      {/* Hero Section: Rendered with @container for container queries if supported, otherwise standard responsive */}
       <div className="w-full max-w-[1200px] px-6 @container">
         <div className="flex flex-col gap-6 py-12 md:flex-row md:items-center">
           <div className="flex flex-col gap-6 flex-1">

@@ -87,21 +87,31 @@ const PriceTag = ({ price }: { price: string }) => {
   );
 };
 
+/**
+ * PRICING CLIENT COMPONENT
+ * 
+ * Logic Overview:
+ * 1. Geo-Location: Fetches user country via IPAPI to auto-set currency (USD vs LKR)
+ * 2. Filtering: Multi-layer filtering based on Category selection AND Search query
+ * 3. Currency State: Toggles between LKR and USD, updating displayed prices dynamically
+ */
+
 export default function PricingClient() {
   const [currency, setCurrency] = useState<'LKR' | 'USD'>('LKR');
   const [isLoadingGeo, setIsLoadingGeo] = useState(true);
   
-  // Search state
+  // Search and Filter State
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [comparingCategory, setComparingCategory] = useState<PricingCategory | null>(null);
 
+  // Geo-location Effect: Detects country to set default currency
   useEffect(() => {
     const fetchLocation = async () => {
       try {
         const res = await fetch('https://ipapi.co/json/');
         const data = await res.json();
-        // If country is NOT Sri Lanka (LK), default to USD
+        // Default to LKR only if explicit match, otherwise USD (International)
         if (data.country_code && data.country_code !== 'LK') {
           setCurrency('USD');
         } else {
@@ -116,7 +126,7 @@ export default function PricingClient() {
     fetchLocation();
   }, []);
 
-  // Helper to parse price string to number
+  // Utility to clean and parse price strings for numerical operations if needed
   const parsePrice = (priceStr: string) => {
     // Remove non-numeric chars except needed? Actually just remove non-digits.
     // Handle "LKR 40,000" -> 40000
@@ -128,13 +138,21 @@ export default function PricingClient() {
     return parseInt(clean) || 0;
   };
 
-  // Filter Categories Logic
+  /**
+   * FILTERING ALGORITHM
+   * 
+   * Two-stage filtering process:
+   * 1. Category Filter: Checks if top-level category matches selection
+   * 2. Search Filter: Checks if specific options within category match search input
+   * 
+   * Returns a subset of categories containing ONLY the matching options.
+   */
   const filteredCategories = PRICING_CATEGORIES.filter(cat => {
-    // 1. Matches Category Filter
+    // Stage 1: Category Match
     const categoryMatchesSelected = selectedCategory === "All" || cat.title.split(":")[0] === selectedCategory;
     if (!categoryMatchesSelected) return false;
     
-    // 2. Filter Options based on Search AND Budget
+    // Stage 2: Option Filtering via Search Term
     const activeOptions = cat.options.filter(opt => {
         // Search Match
         const q = searchQuery.toLowerCase();

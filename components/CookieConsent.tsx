@@ -4,6 +4,17 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Cookie, X } from 'lucide-react';
 
+/**
+ * COOKIE CONSENT COMPONENT
+ * 
+ * Functional Overview:
+ * - State Persistence: Check `localStorage` for 'vexel_cookie_status' on mount.
+ * - Conditional Rendering: 
+ *   - 'unset': Shows bottom banner.
+ *   - 'rejected': Shows full-screen blocking wall (Access Restricted).
+ *   - 'accepted': Renders nothing (null).
+ */
+
 export default function CookieConsent() {
   const [status, setStatus] = useState<'loading' | 'unset' | 'accepted' | 'rejected'>('loading');
 

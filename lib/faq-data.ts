@@ -1,3 +1,11 @@
+/**
+ * FAQ DATA
+ * 
+ * Functional Overview:
+ * - Central repository for Frequently Asked Questions.
+ * - Used by: FaqClient component for search and filtering.
+ * - categorization: Keys allow for side-bar navigation (e.g., 'general', 'pricing').
+ */
 export interface FAQItem {
   category: string;
   question: string;

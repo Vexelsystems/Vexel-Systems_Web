@@ -19,6 +19,16 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 
+/**
+ * CONSULTATION CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - State Management: Tracks form data, submission status (`isSubmitting`), and success state.
+ * - Progress Simulation: Uses `setInterval` to mimic a server negotiation process, enhancing perceived value.
+ * - Validation: Custom logic prevents submission without essential contact info (Email OR Phone).
+ * - UI Pattern: Multi-stage interaction (Form -> Processing -> Success Message).
+ */
+
 export default function ConsultationClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

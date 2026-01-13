@@ -1,3 +1,12 @@
+/**
+ * PORTFOLIO CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Filtering: Segregates projects based on active categories via client-side state.
+ * - Interaction: Includes a sticky filter bar and interactive snap-carousel for project cards.
+ * - Featured Section: Renders a specialized, immersive view for the top-priority case study.
+ */
+
 "use client";
 
 import React, { useState } from 'react';
@@ -41,8 +50,10 @@ const projects = [
 ];
 
 export default function PortfolioClient() {
+  // State for active filter category
   const [activeCategory, setActiveCategory] = useState("All");
 
+  // Filter projects dynamically based on selection
   const filteredProjects = projects.filter(project => 
     activeCategory === "All" || project.category.includes(activeCategory)
   );

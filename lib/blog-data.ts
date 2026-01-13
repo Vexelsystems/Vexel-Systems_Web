@@ -1,3 +1,11 @@
+/**
+ * BLOG DATA
+ * 
+ * Functional Overview:
+ * - Serves as a static CMS for the blog section.
+ * - content: Uses simple string-based content (in a real app, this might be Markdown/MDX).
+ * - categories: strictly typed to ensure UI consistency.
+ */
 export type BlogPost = {
   slug: string;
   title: string;

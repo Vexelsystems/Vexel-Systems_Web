@@ -1,3 +1,11 @@
+/**
+ * PORTFOLIO PAGE (Server Component)
+ * 
+ * Strategy:
+ * - Server Component: Handles static SEO generation (metadata) and renders the LCP hero section.
+ * - Client Component Delegation: Offloads interactive portfolio filtering and rendering to `PortfolioClient`
+ *   to reduce TBT and keep the initial HTML light.
+ */
 
 import { generatePageMetadata } from "@/lib/seo";
 import PortfolioClient from "@/components/PortfolioClient";

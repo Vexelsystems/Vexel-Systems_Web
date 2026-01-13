@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* 
+ * TAILWIND V4 CONFIGURATION & THEME VARIABLES
+ * 
+ * Functional Overview:
+ * - Architecture: Uses Tailwind v4 CSS-first configuration via `@theme`.
+ * - Variables: Defines semantic color tokens (background, foreground, primary) for theming.
+ * - Dark Mode: Implements CSS variable overrides within `@media (prefers-color-scheme: dark)`.
+ */
+
 :root {
   /* Core Theme Colors */
   --background: #ffffff;

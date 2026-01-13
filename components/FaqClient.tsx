@@ -25,6 +25,16 @@ const categories = [
   { id: 'onboarding', label: 'Onboarding', icon: <Rocket size={20} /> },
 ];
 
+/**
+ * FAQ CLIENT COMPONENT
+ * 
+ * Functional Overview:
+ * - Search Logic: Real-time filtering based on both query string and selected category.
+ * - Navigation: Sidebar category matching with `activeCategory` state.
+ * - UX: Accordion-style answer expansion using `openIndex` state.
+ * - Data Source: Uses static `faqData` from `@/lib/faq-data`.
+ */
+
 export default function FaqClient() {
   const [activeCategory, setActiveCategory] = useState('general');
   const [openIndex, setOpenIndex] = useState<number | null>(0);

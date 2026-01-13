@@ -56,6 +56,15 @@ const milestones = [
   { year: "2025", title: "Global Expansion", description: "Expanded operations to serve international clients." },
 ];
 
+/**
+ * TEAM PAGE
+ * 
+ * Functional Overview:
+ * - Rendering Strategy: Iterates over static `teamMembers` and `milestones` arrays.
+ * - Layout: Alternating grid layout (zig-zag pattern) for team member profiles using flexbox reversal logic.
+ * - Interaction: Hover effects on profile images reveal "Message" CTA overlays.
+ */
+
 export default function TeamPage() {
   return (
     <div className="bg-background text-foreground min-h-screen">

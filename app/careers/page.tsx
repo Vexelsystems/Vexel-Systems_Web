@@ -3,6 +3,15 @@ import { generatePageMetadata } from "@/lib/seo";
 import { Star } from 'lucide-react';
 import CareersClient from "@/components/CareersClient";
 
+/**
+ * CAREERS ROOT PAGE
+ * 
+ * Functional Overview:
+ * - Layout Structure: Renders a static Hero section on the server for immediate LCP (Largest Contentful Paint).
+ * - Client Delegation: Embeds `CareersClient` to handle complex form interactions and state.
+ * - SEO: Static metadata generation for job search indexing.
+ */
+
 export const metadata = generatePageMetadata({
   title: "Careers - Join the Vexel Team",
   description: "Join Vexel Systems and help build the future of technology in Sri Lanka. Explore open positions in software development, AI, and more.",

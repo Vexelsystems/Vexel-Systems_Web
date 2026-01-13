@@ -15,6 +15,16 @@ type Message = {
   timestamp: Date;
 };
 
+/**
+ * LIVE CHAT COMPONENT
+ * 
+ * Functional Overview:
+ * - Availability Logic: Determines online status based on Sri Lanka Time (UTC+5.5) business hours (Mon-Fri, 9-6).
+ * - Identity: Persists user details (Name/Email) to `localStorage` to bypass lead capture on return visits.
+ * - Responses: Uses a lightweight keyword matching algorithm to provide instant answers from `faqData` or fallbacks.
+ * - Notifications: Integrates browser Notifications API and local sound playback (Chime) for alerts.
+ */
+
 export default function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [isIdentified, setIsIdentified] = useState(false);

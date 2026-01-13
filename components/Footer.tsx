@@ -1,3 +1,12 @@
+/**
+ * FOOTER COMPONENT
+ * 
+ * Functional Implementation:
+ * - Responsive Layout: Grid on desktop, Accordion on mobile
+ * - State Management: Tracks open section for mobile accordion behavior
+ * - Conditional Rendering: FooterSection component adapts render based on screen size and state
+ */
+
 "use client";
 
 import Image from 'next/image';
@@ -10,14 +19,17 @@ import { useState } from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  // State for mobile accordion sections (null = all closed)
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
   };
 
+  // Reusable sub-component handling responsive logic (Mobile: Accordion / Desktop: Block)
   const FooterSection = ({ title, children, className = "" }: { title: string, children: React.ReactNode, className?: string }) => (
     <div className={`border-b border-primary/5 last:border-0 lg:border-0 ${className}`}>
+        {/* Toggle Button (Mobile Only Interaction) */}
         <button 
             onClick={() => toggleSection(title)}
             className="flex items-center justify-between w-full py-4 lg:py-0 lg:cursor-default lg:pointer-events-none group"
@@ -28,6 +40,7 @@ export default function Footer() {
                 className={`text-primary/50 transition-transform duration-300 lg:hidden ${openSection === title ? 'rotate-180' : ''}`}
             />
         </button>
+        {/* Content Wrapper - animated transition on mobile could be added here */}
         <div 
             className={`${openSection === title ? 'block' : 'hidden md:hidden lg:block'} lg:block`}
         >
