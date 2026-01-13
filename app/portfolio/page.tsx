@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, ArrowRight, Activity, TrendingUp, Zap, Server, Shield, CheckCircle2 } from 'lucide-react';
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
+
 
 const categories = ["All", "Fintech", "Retail & AI", "Healthcare", "Logistics"];
 
@@ -87,7 +89,7 @@ export default function PortfolioPage() {
       {/* 2. Filters */}
       <section className="mb-16 sticky top-24 z-30">
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-          <div className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-full w-fit mx-auto flex flex-wrap justify-center gap-1 shadow-xl">
+          <div className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-full w-full md:w-fit mx-auto flex flex-nowrap md:flex-wrap overflow-x-auto gap-1 shadow-xl scrollbar-hide">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -115,10 +117,7 @@ export default function PortfolioPage() {
       {/* 3. Filtered Grid (Existing Premium Design) */}
       <section className="mb-32">
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-           <motion.div 
-              layout 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-           >
+           <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, idx) => (
               <motion.div 
                 layout
@@ -126,7 +125,7 @@ export default function PortfolioPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 key={project.id} 
-                className="group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
+                className="min-w-[85vw] md:min-w-0 snap-center group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
               >
                 <Image 
                   src={project.image} 
@@ -156,10 +155,10 @@ export default function PortfolioPage() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-          {filteredProjects.length === 0 && (
-             <div className="text-center py-20 text-foreground/40">No projects found in this category.</div>
-          )}
+           </SnapCarousel>
+           {filteredProjects.length === 0 && (
+              <div className="text-center py-20 text-foreground/40">No projects found in this category.</div>
+           )}
         </div>
       </section>
 

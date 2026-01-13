@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React from 'react';
-import { Quote, Star, Award, TrendingUp, Users } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
 import Image from 'next/image';
 
 const testimonials = [
@@ -56,30 +56,6 @@ const testimonials = [
   },
 ];
 
-const successStories = [
-  {
-    id: 1,
-    client: "GlobalBank Corp",
-    result: "300% faster transaction processing",
-    icon: <TrendingUp className="w-8 h-8" />,
-    description: "Migrating a 20-year-old mainframe ledger to a distributed blockchain ledger."
-  },
-  {
-    id: 2,
-    client: "MediCare Plus",
-    result: "HIPAA Compliant Cloud Transition",
-    icon: <Award className="w-8 h-8" />,
-    description: "Securely moving 10M+ patient records to a private AWS environment."
-  },
-  {
-    id: 3,
-    client: "EduTech Pioneers",
-    result: "1M+ Active Daily Users Scaled",
-    icon: <Users className="w-8 h-8" />,
-    description: "Re-architecting the backend to support massive concurrent classroom sessions."
-  }
-];
-
 export const TestimonialSection = () => {
   return (
     <div className="flex flex-col bg-transparent">
@@ -101,7 +77,7 @@ export const TestimonialSection = () => {
                <motion.div 
                  key={t.id} 
                  whileHover={{ y: -10, scale: 1.01 }}
-                 className="relative bg-card border border-primary/10 p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:border-primary/30 transition-all duration-300 flex flex-col h-full"
+                 className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 transition-all duration-300 flex flex-col h-full"
                >
                   <Quote className="absolute top-8 right-8 text-primary/10 w-16 h-16 transform rotate-180" />
                   
@@ -128,35 +104,140 @@ export const TestimonialSection = () => {
         </div>
       </section>
 
-      {/* Success Stories Section */}
-      <section className="py-24 mb-20 bg-primary/5 backdrop-blur-md border border-primary/10 rounded-[48px] w-[90%] md:w-[80%] mx-auto relative overflow-hidden px-6 lg:px-12">
+      {/* Client Success Metrics Section */}
+      <section className="py-20 bg-primary/5 backdrop-blur-md border border-primary/10 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden px-6 lg:px-12">
          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
 
-         <div className="relative z-10 text-center mb-16">
-            <h2 className="text-2xl md:text-4xl font-black text-foreground mb-2">Proven <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Results</span></h2>
+         <div className="relative z-10 text-center mb-12">
+            <h2 className="text-2xl md:text-4xl font-black text-foreground mb-2">Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Impact</span></h2>
             <p className="text-foreground/60 text-lg max-w-2xl mx-auto leading-relaxed">
-              Real metrics from real deployments. We deliver impact, not just code.
+              Numbers that speak louder than words
             </p>
          </div>
 
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-            {successStories.map((story) => (
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+            {[
+              { number: "150+", label: "Projects Delivered" },
+              { number: "98%", label: "Client Satisfaction" },
+              { number: "50+", label: "Happy Clients" },
+              { number: "24/7", label: "Support Available" }
+            ].map((stat, idx) => (
                <motion.div 
-                 key={story.id} 
-                 whileHover={{ y: -8, scale: 1.02 }}
-                 className="bg-card border border-primary/10 p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:border-primary/40 group transition-all duration-300"
+                 key={idx} 
+                 whileHover={{ y: -8, scale: 1.05 }}
+                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/40 transition-all duration-300 text-center"
                >
-                  <div className="bg-primary/10 text-primary size-14 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                     {story.icon}
-                  </div>
-                  <h3 className="text-3xl font-black mb-2 tracking-tight text-primary">{story.result}</h3>
-                  <p className="text-sm font-bold text-foreground/40 uppercase mb-4 tracking-widest">{story.client}</p>
-                  <p className="text-base text-foreground/70 leading-relaxed font-medium">
-                     {story.description}
-                  </p>
+                  <h3 className="text-4xl md:text-5xl font-black text-primary mb-2">{stat.number}</h3>
+                  <p className="text-sm font-bold text-foreground/60 uppercase tracking-wide">{stat.label}</p>
                </motion.div>
             ))}
-          </div>
+         </div>
+        </section>
+
+      {/* Industries We Serve Section */}
+      <section className="py-20 w-[90%] md:w-[80%] mx-auto mb-20">
+         <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">Industries We <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Serve</span></h2>
+            <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              Delivering tailored solutions across diverse sectors
+            </p>
+         </div>
+
+         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: "FinTech", icon: "💰", desc: "Banking & Finance" },
+              { name: "Healthcare", icon: "🏥", desc: "Medical Systems" },
+              { name: "E-Commerce", icon: "🛒", desc: "Online Shopping" },
+              { name: "Education", icon: "🎓", desc: "EdTech Solutions" },
+              { name: "Fashion & Retail", icon: "👗", desc: "Dress Shops & Boutiques" },
+              { name: "Restaurants", icon: "🍽️", desc: "Food & Dining" },
+              { name: "Logistics", icon: "🚚", desc: "Supply Chain" },
+              { name: "Real Estate", icon: "🏢", desc: "Property Tech" },
+              { name: "Hospitality", icon: "🏨", desc: "Hotels & Tourism" },
+              { name: "Entertainment", icon: "🎬", desc: "Media & Streaming" },
+              { name: "Automotive", icon: "🚗", desc: "Auto Services" },
+              { name: "Manufacturing", icon: "🏭", desc: "Industry 4.0" }
+            ].map((industry, idx) => (
+               <motion.div 
+                 key={idx} 
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ 
+                   duration: 0.5, 
+                   delay: idx * 0.1,
+                   ease: "easeOut"
+                 }}
+                 whileHover={{ y: -5, scale: 1.03 }}
+                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 text-center"
+               >
+                  <div className="text-4xl mb-3">{industry.icon}</div>
+                  <h3 className="text-lg font-black text-foreground mb-1">{industry.name}</h3>
+                  <p className="text-xs text-foreground/60 font-medium">{industry.desc}</p>
+               </motion.div>
+            ))}
+         </div>
+        </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 w-[90%] md:w-[80%] mx-auto mb-20">
+         <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">Frequently Asked <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Questions</span></h2>
+            <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              Quick answers to common questions
+            </p>
+         </div>
+
+         <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              { q: "What is your typical project timeline?", a: "Most projects take 8-16 weeks depending on complexity. We provide detailed timelines during consultation." },
+              { q: "Do you offer post-launch support?", a: "Yes! We provide 24/7 support and maintenance packages to ensure your systems run smoothly." },
+              { q: "What technologies do you specialize in?", a: "We work with modern tech stacks including React, Next.js, Node.js, Python, AWS, and more. Check our Tech Stack section for details." },
+              { q: "Can you work with our existing team?", a: "Absolutely! We seamlessly integrate with your in-house team and follow your development processes." },
+              { q: "What are your payment terms?", a: "We offer flexible payment plans with milestone-based payments. Contact us for custom pricing." }
+            ].map((faq, idx) => (
+               <motion.details 
+                 key={idx}
+                 whileHover={{ scale: 1.01 }}
+                 className="group bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 cursor-pointer"
+               >
+                  <summary className="font-bold text-foreground flex items-center justify-between cursor-pointer">
+                     {faq.q}
+                     <span className="text-primary text-2xl group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <p className="mt-4 text-foreground/70 leading-relaxed">{faq.a}</p>
+               </motion.details>
+            ))}
+         </div>
+        </section>
+
+      <section className="py-20 bg-linear-to-r from-primary to-purple-600 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden">
+         <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-sm"></div>
+         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+         <div className="relative z-10 text-center px-6 lg:px-12">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Ready to Build Something <span className="text-white drop-shadow-lg">Amazing?</span></h2>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+              Let's turn your vision into reality. Schedule a free consultation and get a custom proposal within 48 hours.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+               <motion.a 
+                 href="/consultation"
+                 whileHover={{ scale: 1.05 }}
+                 whileTap={{ scale: 0.95 }}
+                 className="px-8 py-4 bg-white text-primary font-black rounded-2xl shadow-2xl hover:shadow-white/20 transition-all"
+               >
+                 Schedule Free Consultation
+               </motion.a>
+               <motion.a 
+                 href="/pricing"
+                 whileHover={{ scale: 1.05 }}
+                 whileTap={{ scale: 0.95 }}
+                 className="px-8 py-4 bg-white/10 backdrop-blur-md text-white font-black rounded-2xl border-2 border-white/30 hover:bg-white/20 transition-all"
+               >
+                 View Pricing
+               </motion.a>
+            </div>
+         </div>
         </section>
       </div>
   );

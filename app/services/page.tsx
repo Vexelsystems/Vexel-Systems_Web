@@ -54,6 +54,7 @@ const CATEGORIES: Record<string, string[]> = {
 export default function ServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [expandedService, setExpandedService] = useState<string | null>(null);
 
   // Flatten categories for reverse lookup if needed, or just use the filter logic
   const filteredServices = useMemo(() => {
@@ -89,13 +90,13 @@ export default function ServicesPage() {
       <section className="relative py-20 px-6">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div 
-            className="flex min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md" 
+            className="flex min-h-[300px] md:min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md" 
             style={{
               backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.4) 0%, rgba(16, 28, 34, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2iV5e3QSQdKx_aQim-8kCoRTsv6elhuujaENVDbQkjxCWUfjPhs_JMOuUxmNUX8zsjAyCuqDVjrGGy7Sqz7UfnkXGHQ-9jGL6DqNwoUBnu5XP0RsxqG4om1aIUPcINQ70wjJ2gG02tyfL03O3wzBfx6Nddu--f_2mwQ-QkQIMD9HZq98MvCNMX6ke8YTsaF-yM2uCt5fEDx1L_I3Rp_XTIzfIM-Afcl1HPOOLrOKLmo0IVIl9Z0jqJuUDwBetbq1dle2S-Lt0TxvS")'
             }}
           >
             <div className="z-10 flex flex-col gap-4 max-w-3xl">
-              <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
+              <h1 className="text-white text-3xl md:text-6xl font-black leading-tight tracking-tight">
                 Explore Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Services</span>
               </h1>
               <p className="text-white/80 text-lg md:text-xl font-normal leading-relaxed">
@@ -160,62 +161,125 @@ export default function ServicesPage() {
 
         {/* Services Grid */}
         {filteredServices.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredServices.map((service) => {
-              const IconComponent = ServiceIcons[service.slug] || Globe; // Default to Globe
-              
-              return (
-                <div 
-                  key={service.slug} 
-                  className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full"
-                >
-                   {/* Gradient Hover Overlay */}
-                   <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                   
-                   <div className="relative h-full rounded-[1.7rem] bg-gray-50/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 flex flex-col gap-6 overflow-hidden">
-                      {/* Decorative Blur Blob */}
-                      <div className="absolute -right-10 -top-10 size-40 bg-zinc-500/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
+          <>
+            {/* Mobile View: Vertical Stack of Accordions */}
+            <div className="flex flex-col gap-4 md:hidden">
+              {filteredServices.map((service) => {
+                const IconComponent = ServiceIcons[service.slug] || Globe;
+                const isExpanded = expandedService === service.slug;
 
-                      <div className="flex items-start justify-between relative z-10">
-                        <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
-                          <IconComponent size={32} strokeWidth={1.5} />
-                        </div>
-                        <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/20 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
-                          <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                        </div>
+                return (
+                  <div 
+                    key={service.slug}
+                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isExpanded ? 'bg-white dark:bg-zinc-900 border-primary/50 shadow-lg' : 'bg-white/40 dark:bg-white/5 border-gray-100 dark:border-zinc-800'}`}
+                  >
+                    <button
+                      onClick={() => setExpandedService(isExpanded ? null : service.slug)}
+                      className="w-full flex items-center gap-4 p-5 text-left"
+                    >
+                      <div className={`shrink-0 size-12 rounded-xl flex items-center justify-center transition-colors ${isExpanded ? 'bg-primary text-white' : 'bg-white dark:bg-zinc-800 text-primary shadow-sm'}`}>
+                        <IconComponent size={24} />
                       </div>
-                      
-                      <div className="flex flex-col gap-3 relative z-10 grow">
-                        <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                      <div className="grow">
+                        <h3 className={`font-bold text-lg leading-tight ${isExpanded ? 'text-primary' : 'text-foreground'}`}>
                           {service.title}
                         </h3>
-                        <p className="text-foreground/60 leading-relaxed font-medium line-clamp-3">
-                          {service.description}
-                        </p>
                       </div>
+                      <div className={`shrink-0 text-foreground/40 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-primary' : ''}`}>
+                         <Filter size={20} className="hidden" /> {/* Dummy to keep imports valid if needed, utilizing Chevron below instead */}
+                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </button>
+                    
+                    <div 
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="p-5 pt-0 border-t border-dashed border-gray-100 dark:border-zinc-800 mt-2">
+                           <p className="text-foreground/70 text-sm leading-relaxed py-4">{service.description}</p>
+                           
+                           {service.subServices && (
+                              <div className="flex flex-wrap gap-2 mb-6">
+                                {service.subServices.slice(0, 4).map((sub, idx) => (
+                                  <span key={idx} className="text-xs font-medium px-2.5 py-1 bg-gray-100 dark:bg-zinc-800 text-foreground/60 rounded-lg">
+                                    {sub.title}
+                                  </span>
+                                ))}
+                              </div>
+                           )}
 
-                      {/* Mini Features List */}
-                      {service.subServices && (
-                        <div className="relative z-10 pt-4 border-t border-gray-100 dark:border-zinc-800/50">
-                           <ul className="space-y-2">
-                             {service.subServices.slice(0, 3).map((sub, idx) => (
-                               <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-foreground/50">
-                                 <div className="size-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></div>
-                                 <span className="line-clamp-1">{sub.title}</span>
-                               </li>
-                             ))}
-                           </ul>
+                           <Link 
+                             href={`/services/${service.slug}`}
+                             className="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-3 rounded-xl hover:bg-primary/90 transition-colors"
+                           >
+                             View Details <ArrowRight size={16} />
+                           </Link>
                         </div>
-                      )}
-                      
-                      <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20">
-                        <span className="sr-only">View {service.title}</span>
-                      </Link>
-                   </div>
-                </div>
-              );
-            })}
-          </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Desktop View: Grid Cards */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredServices.map((service) => {
+                const IconComponent = ServiceIcons[service.slug] || Globe; // Default to Globe
+                
+                return (
+                  <div 
+                    key={service.slug} 
+                    className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full"
+                  >
+                     {/* Gradient Hover Overlay */}
+                     <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     
+                     <div className="relative h-full rounded-[1.7rem] bg-gray-50/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 flex flex-col gap-6 overflow-hidden">
+                        {/* Decorative Blur Blob */}
+                        <div className="absolute -right-10 -top-10 size-40 bg-zinc-500/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
+  
+                        <div className="flex items-start justify-between relative z-10">
+                          <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                            <IconComponent size={32} strokeWidth={1.5} />
+                          </div>
+                          <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/20 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+                            <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+                          </div>
+                        </div>
+                        
+                        <div className="flex flex-col gap-3 relative z-10 grow">
+                          <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                            {service.title}
+                          </h3>
+                          <p className="text-foreground/60 leading-relaxed font-medium line-clamp-3">
+                            {service.description}
+                          </p>
+                        </div>
+  
+                        {/* Mini Features List */}
+                        {service.subServices && (
+                          <div className="relative z-10 pt-4 border-t border-gray-100 dark:border-zinc-800/50">
+                             <ul className="space-y-2">
+                               {service.subServices.slice(0, 3).map((sub, idx) => (
+                                 <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-foreground/50">
+                                   <div className="size-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></div>
+                                   <span className="line-clamp-1">{sub.title}</span>
+                                 </li>
+                               ))}
+                             </ul>
+                          </div>
+                        )}
+                        
+                        <Link href={`/services/${service.slug}`} className="absolute inset-0 z-20">
+                          <span className="sr-only">View {service.title}</span>
+                        </Link>
+                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
         ) : (
           /* Empty State */
           <div className="flex flex-col items-center justify-center py-20 text-center">

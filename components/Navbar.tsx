@@ -62,6 +62,7 @@ export default function Navbar() {
                             ? 'bg-primary/10 text-primary' 
                             : 'text-foreground/80 hover:text-primary hover:bg-primary/5'
                         }`}
+                        onClick={() => setActiveDropdown(null)}
                     >
                         {item.name}
                         {isActive && <div className="size-1.5 rounded-full bg-primary" />}
@@ -79,6 +80,7 @@ export default function Navbar() {
             <Link 
                href={viewAllLink.href}
                className="flex items-center justify-center gap-2 w-full py-2 text-sm font-bold text-primary hover:bg-primary/5 rounded-xl transition-all group"
+               onClick={() => setActiveDropdown(null)}
             >
                {viewAllLink.text}
                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -110,19 +112,26 @@ export default function Navbar() {
   // If hovering, show that ID. If not hovering, show current active ID.
   const displayId = activeDropdown || currentActiveId;
 
+  // Mobile dropdown state
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
+
+  const toggleMobileDropdown = (id: string) => {
+    setMobileOpenDropdown(mobileOpenDropdown === id ? null : id);
+  };
+
   return (
     <>
+      {/* Navbar positioned top on all screens */}
       <nav className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-24 rounded-full blur-3xl pointer-events-none -z-10 bg-primary/15 transition-colors duration-300"></div>
 
         <div className={navContainerClasses}>
           {/* Logo */}
-          {/* Logo */}
           <Link className="flex items-center gap-3 shrink-0" href="/" aria-label="Vexel Systems Home">
-            <div className="relative h-10 w-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.6)] border border-primary rounded-full p-0.5">
+            <div className="relative h-10 w-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.6)]">
               <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" />
             </div>
-            <span className="text-lg font-bold text-primary tracking-tight hidden sm:block">{companyDetails.name}</span>
+            <span className="text-lg font-bold text-primary tracking-tight">{companyDetails.name}</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -189,7 +198,7 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
                <Link href="/quote" className="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-primary/20 hover:bg-primary/90 block">
                  Get Started
                </Link>
@@ -212,68 +221,126 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Slides up from bottom */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="fixed top-24 left-4 right-4 bg-white dark:bg-card rounded-3xl shadow-2xl z-50 p-6 overflow-y-auto max-h-[80vh] animate-in slide-in-from-top-5 duration-300">
-            <div className="space-y-6">
-               {/* Mobile Services */}
-               <div>
-                  <h4 className="font-bold text-primary mb-3">Services</h4>
-                  <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-primary/10 max-h-[200px] overflow-y-auto">
-                     {navigation.services.map(item => (
-                        <Link 
-                           key={item.name} 
-                           href={item.href} 
-                           className={`py-1 text-sm ${pathname === item.href ? 'text-primary font-bold' : 'text-foreground/80'}`} 
-                           onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                           {item.name}
-                        </Link>
-                     ))}
-                  </div>
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            className="fixed bottom-24 left-4 right-4 bg-white dark:bg-card rounded-3xl shadow-2xl z-50 p-6 overflow-y-auto max-h-[70vh] border border-primary/10"
+          >
+            <div className="flex flex-col gap-4">
+               {/* Mobile Navigation Links */}
+               <Link href="/" className={`text-lg font-bold py-2 ${pathname === '/' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
+                  Home
+               </Link>
+               <Link href="/about" className={`text-lg font-bold py-2 ${pathname === '/about' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
+                  About Us
+               </Link>
+
+               {/* Collapsible Services */}
+               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
+                  <button 
+                    onClick={() => toggleMobileDropdown('services')}
+                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                  >
+                    Services <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'services' ? 'rotate-180' : ''}`} />
+                  </button>
+                  {mobileOpenDropdown === 'services' && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
+                    >
+                       <Link href="/services" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Services</Link>
+                       {navigation.services.map(item => (
+                          <Link 
+                             key={item.name} 
+                             href={item.href} 
+                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`} 
+                             onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                             {item.name}
+                          </Link>
+                       ))}
+                    </motion.div>
+                  )}
                </div>
 
-               {/* Mobile Products */}
-               <div>
-                  <h4 className="font-bold text-primary mb-3">Products</h4>
-                  <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-primary/10">
-                     {navigation.products.map(item => (
-                        <Link 
-                           key={item.name} 
-                           href={item.href} 
-                           className={`py-1 text-sm ${pathname === item.href ? 'text-primary font-bold' : 'text-foreground/80'}`}  
-                           onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                           {item.name}
-                        </Link>
-                     ))}
-                  </div>
+               {/* Collapsible Products */}
+               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
+                  <button 
+                    onClick={() => toggleMobileDropdown('products')}
+                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                  >
+                    Products <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'products' ? 'rotate-180' : ''}`} />
+                  </button>
+                  {mobileOpenDropdown === 'products' && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
+                    >
+                       <Link href="/products" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Products</Link>
+                       {navigation.products.map(item => (
+                          <Link 
+                             key={item.name} 
+                             href={item.href} 
+                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`}  
+                             onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                             {item.name}
+                          </Link>
+                       ))}
+                    </motion.div>
+                  )}
                </div>
 
-               <Link href="/pricing" className={`block font-bold py-1 ${pathname === '/pricing' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
+               <Link href="/pricing" className={`text-lg font-bold py-2 ${pathname === '/pricing' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
                   Pricing
                </Link>
+
+               {/* Collapsible Company */}
+               <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
+                  <button 
+                    onClick={() => toggleMobileDropdown('company')}
+                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                  >
+                    Company <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'company' ? 'rotate-180' : ''}`} />
+                  </button>
+                  {mobileOpenDropdown === 'company' && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
+                    >
+                       {navigation.company.map(item => (
+                          <Link 
+                             key={item.name} 
+                             href={item.href} 
+                             className={`py-2 text-sm border-l-2 pl-3 ${pathname === item.href ? 'border-primary text-primary font-bold' : 'border-gray-200 dark:border-gray-800 text-foreground/70'}`} 
+                             onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                             {item.name}
+                          </Link>
+                       ))}
+                    </motion.div>
+                  )}
+               </div>
                
                {/* Other Links */}
-               <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-                   <Link href="/portfolio" className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-3 py-1.5 rounded-lg ${pathname === '/portfolio' ? 'text-primary border border-primary/20' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+               <div className="flex flex-wrap gap-4 pt-4">
+                   <Link href="/portfolio" className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-4 py-2 rounded-lg ${pathname === '/portfolio' ? 'text-primary border border-primary/20' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
                      Portfolio
                    </Link>
-                   {navigation.company.map(item => (
-                     <Link 
-                        key={item.name} 
-                        href={item.href} 
-                        className={`text-sm font-medium bg-gray-50 dark:bg-white/5 px-3 py-1.5 rounded-lg ${pathname === item.href ? 'text-primary border border-primary/20' : ''}`} 
-                        onClick={() => setIsMobileMenuOpen(false)}
-                     >
-                        {item.name}
-                     </Link>
-                  ))}
+                   <Link href="/login" className="text-sm font-medium bg-gray-50 dark:bg-white/5 px-4 py-2 rounded-lg" onClick={() => setIsMobileMenuOpen(false)}>
+                     Login
+                   </Link>
                </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>

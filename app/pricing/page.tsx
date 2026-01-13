@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { PRICING_CATEGORIES, PricingCategory } from "@/lib/pricing-data";
 import ComparisonTable from "./ComparisonTable";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
+
 
 // --- Types ---
 interface Package {
@@ -208,9 +210,9 @@ export default function PricingPage() {
                <p className="text-white/80 max-w-2xl mx-auto">All-in-one solutions tailored for our international partners.</p>
              </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+             <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-3 gap-6 relative z-10 pb-8 md:pb-0 scrollbar-hide -mx-8 px-8 md:mx-0 md:px-0">
                 {INTERNATIONAL_PACKAGES.map((pkg, idx) => (
-                  <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-colors">
+                  <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-colors">
                     <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                     <div className="text-4xl font-black mb-6 text-transparent bg-clip-text bg-linear-to-r from-blue-200 to-white">{pkg.price}</div>
                     <ul className="space-y-3 mb-8">
@@ -225,7 +227,7 @@ export default function PricingPage() {
                     </Link>
                   </div>
                 ))}
-             </div>
+            </SnapCarousel>
           </div>
         </section>
       )}
@@ -294,7 +296,7 @@ export default function PricingPage() {
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-3 gap-6 pb-8 md:pb-0 scrollbar-hide -mr-6 pr-6 md:mr-0 md:pr-0">
                     {category.options.map((option, idx) => {
                       // Filter Logic Inside Map (Must match upper filter)
                       const q = searchQuery.toLowerCase();
@@ -305,7 +307,7 @@ export default function PricingPage() {
                       }
 
                       return (
-                      <div key={idx} className="group relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-gray-100 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                      <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center group relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-gray-100 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col">
                           <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors pointer-events-none" />
                           
                           <div className="flex justify-between items-start mb-4">
@@ -350,7 +352,7 @@ export default function PricingPage() {
                       </div>
                     );
                     })}
-                </div>
+                </SnapCarousel>
               </div>
             )) : (
               <div className="text-center py-20 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl border border-dashed border-gray-300">
@@ -377,9 +379,9 @@ export default function PricingPage() {
                <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">Don't just launch and leave. Keep your digital assets secure, fast, and updated with our dedicated care packages.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 gap-8 max-w-5xl mx-auto pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0">
                {(currency === 'LKR' ? MAINTENANCE_PACKAGES_LKR : MAINTENANCE_PACKAGES_USD).map((pkg, idx) => (
-                  <div key={idx} className={`relative group p-1 rounded-3xl bg-linear-to-b ${idx === 0 ? 'from-blue-500/50 to-blue-900/10' : 'from-purple-500/50 to-purple-900/10'} hover:scale-[1.02] transition-transform duration-500`}>
+                  <div key={idx} className={`min-w-[85vw] md:min-w-0 snap-center relative group p-1 rounded-3xl bg-linear-to-b ${idx === 0 ? 'from-blue-500/50 to-blue-900/10' : 'from-purple-500/50 to-purple-900/10'} hover:scale-[1.02] transition-transform duration-500`}>
                      <div className="h-full bg-gray-950/90 backdrop-blur-xl rounded-[22px] p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-white/5">
                         <div className={`p-6 rounded-2xl shrink-0 ${idx === 0 ? 'bg-blue-500/20 text-blue-400 shadow-lg shadow-blue-500/20' : 'bg-purple-500/20 text-purple-400 shadow-lg shadow-purple-500/20'}`}>
                            {idx === 0 ? <Server size={40} /> : <ShieldCheck size={40} />}
@@ -404,7 +406,7 @@ export default function PricingPage() {
                      </div>
                   </div>
                ))}
-            </div>
+            </SnapCarousel>
          </div>
       </section>
 

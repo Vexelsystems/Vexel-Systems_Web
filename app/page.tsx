@@ -9,12 +9,13 @@ import { TechStackSection } from "@/components/TechStackSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
 export default function Home() {
   return (
-    <main className="flex-1">
-      <section className="relative pt-20 pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
-        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-12">
+    <main className="flex-1 overflow-x-hidden">
+      <section className="relative min-h-screen pt-16 pb-12 overflow-hidden flex flex-col items-center justify-center text-center">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
           {/* Floating Badge */}
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -33,30 +34,30 @@ export default function Home() {
           </motion.div>
 
           {/* Centered Heading with Staggered Entrance */}
-          <div className="flex flex-col items-center overflow-hidden">
+          <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
             <motion.h2 
-              initial={{ opacity: 0, letterSpacing: "1em" }}
-              animate={{ opacity: 1, letterSpacing: "0.5em" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="text-primary text-xl md:text-2xl font-black uppercase tracking-[0.5em] mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4"
             >
-              Vexel Systems
+              Welcome to Vexel Systems
             </motion.h2>
             
             <motion.h1 
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8, ease: "circOut" }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black leading-[1.1] tracking-[-0.04em] flex flex-col items-center gap-2"
+              className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6"
             >
-              <span className="text-foreground text-center">We Provide The Best</span>
+              <span className="text-foreground">Building Smart, Scalable</span>
               <motion.span 
                 initial={{ filter: "blur(10px)", opacity: 0 }}
                 animate={{ filter: "blur(0px)", opacity: 1 }}
                 transition={{ delay: 0.6, duration: 1 }}
-                className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 text-center uppercase"
+                className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2"
               >
-                IT Solutions For You
+                Future-Ready Digital Solutions.
               </motion.span>
             </motion.h1>
 
@@ -64,9 +65,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="mt-10 text-foreground/60 text-lg md:text-xl font-medium max-w-2xl leading-relaxed italic"
+              className="text-foreground/60 text-lg md:text-xl font-medium max-w-3xl leading-relaxed"
             >
-              "We bridge the gap between complex technology and your business success by providing the most advanced IT solutions tailored for you."
+              At Vexel Systems, we design and develop modern software, AI-powered platforms, and intelligent systems that help businesses grow, automate, and innovate.
             </motion.p>
           </div>
 
@@ -109,7 +110,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 1 }}
-            className="flex flex-col items-center gap-4 mt-8"
+            className="flex flex-col items-center gap-4 mt-6"
           >
             <div className="flex -space-x-4">
               {[1, 2, 3, 4].map((i) => (
@@ -137,53 +138,53 @@ export default function Home() {
             <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Our Core <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Services</span></h2>
             <div className="w-24 h-2 bg-primary rounded-full"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-              <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                <Globe size={36} />
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-foreground text-2xl font-bold">Web Development</h3>
-                <p className="text-foreground/60 text-lg leading-relaxed">
-                  Scalable and responsive web applications built with modern frameworks and cloud-native architecture.
-                </p>
-              </div>
-              <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
-                Learn More <ArrowRight size={18} />
-              </a>
-            </div>
-            {/* Card 2 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-              <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                <Smartphone size={36} />
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-foreground text-2xl font-bold">Mobile Development</h3>
-                <p className="text-foreground/60 text-lg leading-relaxed">
-                  High-performance native and cross-platform mobile apps tailored for seamless user experiences.
-                </p>
-              </div>
-              <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
-                Learn More <ArrowRight size={18} />
-              </a>
-            </div>
-            {/* Card 3 */}
-            <div className="group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-              <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                <Terminal size={36} />
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="text-foreground text-2xl font-bold">Custom Software</h3>
-                <p className="text-foreground/60 text-lg leading-relaxed">
-                  Bespoke software solutions designed to solve your unique business challenges and drive operational efficiency.
-                </p>
-              </div>
-              <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
-                Learn More <ArrowRight size={18} />
-              </a>
-            </div>
-          </div>
+          
+          <SnapCarousel>
+               <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                  <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Globe size={36} />
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-foreground text-2xl font-bold">Web Development</h3>
+                    <p className="text-foreground/60 text-lg leading-relaxed">
+                      Scalable and responsive web applications built with modern frameworks and cloud-native architecture.
+                    </p>
+                  </div>
+                  <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
+                    Learn More <ArrowRight size={18} />
+                  </a>
+                </div>
+
+                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                  <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Smartphone size={36} />
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-foreground text-2xl font-bold">Mobile Development</h3>
+                    <p className="text-foreground/60 text-lg leading-relaxed">
+                      High-performance native and cross-platform mobile apps tailored for seamless user experiences.
+                    </p>
+                  </div>
+                  <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
+                    Learn More <ArrowRight size={18} />
+                  </a>
+                </div>
+
+                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+                  <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <Terminal size={36} />
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <h3 className="text-foreground text-2xl font-bold">Custom Software</h3>
+                    <p className="text-foreground/60 text-lg leading-relaxed">
+                      Bespoke software solutions designed to solve your unique business challenges and drive operational efficiency.
+                    </p>
+                  </div>
+                  <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="#">
+                    Learn More <ArrowRight size={18} />
+                  </a>
+                </div>
+          </SnapCarousel>
         </div>
       </section>
 
@@ -211,27 +212,29 @@ export default function Home() {
                 </motion.button>
               </div>
             </div>
-            <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                <Earth className="text-primary mb-4" size={40} />
-                <h4 className="text-xl font-bold text-foreground mb-2">Global Expertise</h4>
-                <p className="text-foreground/60 text-sm leading-relaxed">Serving clients across 12 countries with international standards and localized support.</p>
-              </div>
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                <Zap className="text-primary mb-4" size={40} />
-                <h4 className="text-xl font-bold text-foreground mb-2">Agile Delivery</h4>
-                <p className="text-foreground/60 text-sm leading-relaxed">Fast-paced development cycles with weekly sprints ensuring timely and transparent project delivery.</p>
-              </div>
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                <DollarSign className="text-primary mb-4" size={40} />
-                <h4 className="text-xl font-bold text-foreground mb-2">Cost-Effective</h4>
-                <p className="text-foreground/60 text-sm leading-relaxed">High-quality software solutions at competitive price points, maximizing your ROI.</p>
-              </div>
-              <div className="bg-white dark:bg-black p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-                <Headset className="text-primary mb-4" size={40} />
-                <h4 className="text-xl font-bold text-foreground mb-2">24/7 Support</h4>
-                <p className="text-foreground/60 text-sm leading-relaxed">Dedicated technical support across all time zones to ensure your systems never sleep.</p>
-              </div>
+            <div className="lg:w-2/3">
+                <SnapCarousel scrollContainerClassName="sm:grid sm:grid-cols-2 md:grid-cols-2 md:gap-6">
+                   <div className="min-w-[75vw] sm:min-w-0 md:col-span-1 h-full bg-white/40 dark:bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <Earth className="text-primary mb-4" size={40} />
+                      <h4 className="text-xl font-bold text-foreground mb-2">Global Expertise</h4>
+                      <p className="text-foreground/60 text-sm leading-relaxed">Serving clients across 12 countries with international standards and localized support.</p>
+                   </div>
+                   <div className="min-w-[75vw] sm:min-w-0 md:col-span-1 h-full bg-white/40 dark:bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <Zap className="text-primary mb-4" size={40} />
+                      <h4 className="text-xl font-bold text-foreground mb-2">Agile Delivery</h4>
+                      <p className="text-foreground/60 text-sm leading-relaxed">Fast-paced development cycles with weekly sprints ensuring timely and transparent project delivery.</p>
+                   </div>
+                   <div className="min-w-[75vw] sm:min-w-0 md:col-span-1 h-full bg-white/40 dark:bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <DollarSign className="text-primary mb-4" size={40} />
+                      <h4 className="text-xl font-bold text-foreground mb-2">Cost-Effective</h4>
+                      <p className="text-foreground/60 text-sm leading-relaxed">High-quality software solutions at competitive price points, maximizing your ROI.</p>
+                   </div>
+                   <div className="min-w-[75vw] sm:min-w-0 md:col-span-1 h-full bg-white/40 dark:bg-black p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+                      <Headset className="text-primary mb-4" size={40} />
+                      <h4 className="text-xl font-bold text-foreground mb-2">24/7 Support</h4>
+                      <p className="text-foreground/60 text-sm leading-relaxed">Dedicated technical support across all time zones to ensure your systems never sleep.</p>
+                   </div>
+                </SnapCarousel>
             </div>
           </div>
         </div>
@@ -344,7 +347,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-900 p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800">
+            <div className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl shadow-primary/5 border border-gray-200 dark:border-gray-800">
               <form className="flex flex-col gap-6" onSubmit={(e) => {
                   e.preventDefault();
                   toast.success("Inquiry received!", {
@@ -356,25 +359,31 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-foreground">Name</label>
-                    <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="John Doe" type="text" />
+                    <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="John Doe" type="text" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-foreground">Email</label>
-                    <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="john@company.com" type="email" />
+                    <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="john@company.com" type="email" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-bold text-foreground">Mobile Number</label>
+                    <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="+1 (555) 123-4567" type="tel" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-bold text-foreground">Subject</label>
+                    <select className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none">
+                      <option>Web Development</option>
+                      <option>Mobile App Development</option>
+                      <option>Custom Software</option>
+                      <option>Consultation</option>
+                    </select>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-sm font-bold text-foreground">Subject</label>
-                  <select className="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-foreground p-3 focus:ring-primary focus:border-primary outline-none">
-                    <option>Web Development</option>
-                    <option>Mobile App Development</option>
-                    <option>Custom Software</option>
-                    <option>Consultation</option>
-                  </select>
-                </div>
-                <div className="flex flex-col gap-2">
                   <label className="text-sm font-bold text-foreground">Message</label>
-                  <textarea required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="How can we help you?" rows={4}></textarea>
+                  <textarea required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="How can we help you?" rows={4}></textarea>
                 </div>
                 <motion.button 
                   whileHover={{ scale: 1.02 }}

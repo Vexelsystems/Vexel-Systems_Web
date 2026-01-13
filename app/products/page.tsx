@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle, ArrowRight, Activity, Calendar, Cloud, Store, CreditCard, ChevronRight } from "lucide-react";
 import { products } from "@/lib/products";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
+
 
 export default function Products() {
   return (
@@ -50,12 +52,13 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Product Grid */}
-      <div className="w-full max-w-[1200px] px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Product Grid - Mobile Horizontal Scroll, Desktop Grid */}
+      <div className="w-full max-w-[1200px] px-6 py-8">
+        <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 gap-8">
         {products.map((product) => {
            const Icon = product.icon;
            return (
-            <div key={product.id} className="flex flex-col rounded-2xl shadow-xl shadow-black/5 bg-white dark:bg-black/20 overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100 dark:border-gray-800">
+            <div key={product.id} className="min-w-[85vw] md:min-w-0 snap-center flex flex-col rounded-2xl shadow-xl shadow-black/5 bg-white dark:bg-black/20 overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100 dark:border-gray-800">
               <div className="w-full h-64 relative">
                  <Image 
                     src={product.mainImage}
@@ -79,12 +82,16 @@ export default function Products() {
                   <p className="text-sm opacity-70 mt-1 font-medium italic text-foreground/80">{product.tagline}</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  {product.checklist.map((item, i) => (
+                  {/* Limit checklist on mobile to save space? keeping full for now as card is swipeable */}
+                  {product.checklist.slice(0, 4).map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-sm opacity-80 text-foreground">
                       <CheckCircle className="text-primary" size={18} />
                       {item}
                     </div>
                   ))}
+                  {product.checklist.length > 4 && (
+                    <p className="text-xs text-primary font-bold pl-8">+ {product.checklist.length - 4} more features</p>
+                  )}
                 </div>
                 <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
                   <p className="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter mb-2">Ideal For</p>
@@ -102,6 +109,7 @@ export default function Products() {
             </div>
            );
         })}
+        </SnapCarousel>
       </div>
 
       {/* Custom Solution CTA */}

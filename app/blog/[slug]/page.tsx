@@ -5,6 +5,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { generateDynamicMetadata, generateArticleSchema, BASE_URL } from '@/lib/seo';
 import { Calendar, User, Clock, ChevronLeft, Share2, Facebook, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 import type { Metadata } from 'next';
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -88,7 +89,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <span className="inline-block py-1.5 px-4 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest self-start">
               {post.category}
             </span>
-            <h1 className="text-5xl font-bold leading-tight">{post.title}</h1>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight">{post.title}</h1>
             
             <div className="flex flex-wrap items-center gap-6 text-sm font-bold text-foreground/40 uppercase tracking-widest pb-8 border-b border-black/5 dark:border-white/5">
               <div className="flex items-center gap-2">
@@ -127,7 +128,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           {/* Sharing */}
           <div className="flex flex-col gap-6 py-12 border-t border-black/5 dark:border-white/5 mt-12">
             <h4 className="font-bold uppercase tracking-widest text-foreground/40 text-xs">Share this insight:</h4>
-            <div className="flex gap-4">
+            <SnapCarousel scrollContainerClassName="md:flex md:flex-wrap md:gap-4">
               {[
                 { icon: <Facebook size={20} />, label: 'Facebook', bg: 'hover:bg-[#1877F2]' },
                 { icon: <Twitter size={20} />, label: 'Twitter', bg: 'hover:bg-[#1DA1F2]' },
@@ -136,13 +137,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               ].map((social) => (
                 <button 
                   key={social.label}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 font-bold text-sm transition-all hover:text-white ${social.bg} hover:border-transparent`}
+                  className={`min-w-fit flex items-center gap-2 px-6 py-3 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 font-bold text-sm transition-all hover:text-white ${social.bg} hover:border-transparent snap-center`}
                 >
                   {social.icon}
                   {social.label}
                 </button>
               ))}
-            </div>
+            </SnapCarousel>
           </div>
         </article>
 
@@ -151,9 +152,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           {/* Related Stories */}
           <div className="p-8 bg-black/5 dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5">
             <h4 className="text-xl font-bold mb-8">Related Insights</h4>
-            <div className="flex flex-col gap-8">
+            <SnapCarousel scrollContainerClassName="md:flex md:flex-col md:gap-8">
               {relatedPosts.map((rp) => (
-                <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group flex flex-col gap-3">
+                <Link key={rp.slug} href={`/blog/${rp.slug}`} className="min-w-[80vw] md:min-w-0 snap-center group flex flex-col gap-3">
                   <div className="aspect-video rounded-2xl overflow-hidden mb-2">
                     <img src={rp.image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
@@ -167,7 +168,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   </div>
                 </Link>
               ))}
-            </div>
+            </SnapCarousel>
           </div>
 
           {/* Newsletter / CTA */}

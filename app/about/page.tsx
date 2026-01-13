@@ -21,7 +21,7 @@ export const metadata = generatePageMetadata({
 
 export default function About() {
   return (
-    <main className="min-h-screen pt-24 lg:pt-32">
+    <main className="min-h-[60vh] md:min-h-screen pt-24 lg:pt-32">
       {/* Hero Section */}
       <section className="mb-24">
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
@@ -42,7 +42,7 @@ export default function About() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full w-fit">
                 Our Story
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-black tracking-tight leading-tight text-foreground">
+                <h1 className="text-3xl lg:text-6xl font-black tracking-tight leading-tight text-foreground">
                 Pioneering Digital <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Global Excellence</span>
                 </h1>
                 <p className="text-lg text-foreground/60 leading-relaxed max-w-xl">
@@ -68,8 +68,8 @@ export default function About() {
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Purpose Driven <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Innovation</span></h2>
             <div className="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
+            <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0">
+            <div className="min-w-[85vw] md:min-w-0 snap-center p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
                 <div className="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <Rocket size={32} />
                 </div>
@@ -78,7 +78,7 @@ export default function About() {
                 To empower businesses through digital excellence and innovative software solutions that drive sustainable growth, efficiency, and competitive advantage in a fast-evolving global market.
                 </p>
             </div>
-            <div className="p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
+            <div className="min-w-[85vw] md:min-w-0 snap-center p-8 rounded-xl bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-sm border border-gray-200 dark:border-white/10 hover:border-primary transition-colors group">
                 <div className="w-14 h-14 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                 <Eye size={32} />
                 </div>
@@ -101,24 +101,24 @@ export default function About() {
             </div>
             <div className="relative">
                 {/* Vertical Line */}
-                <div className="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-primary/20"></div>
+                <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 h-full w-0.5 bg-primary/20"></div>
                 
                 {/* Milestone 1 */}
-                <div className="relative flex items-center justify-between mb-16 group">
-                <div className="w-[45%] text-right pr-8">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16 group pl-12 md:pl-0">
+                <div className="w-full md:w-[45%] text-left md:text-right md:pr-8 order-2 md:order-1">
                     <h4 className="text-primary font-black text-xl mb-1">2018</h4>
                     <p className="font-bold text-lg text-foreground">The Spark</p>
                     <p className="text-sm text-foreground/50">It started as a group of passionate freelancers, working late nights to deliver exceptional web projects.</p>
                 </div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50"></div>
-                <div className="w-[45%]"></div>
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50 top-0 md:top-auto"></div>
+                <div className="w-full md:w-[45%] order-1 md:order-2"></div>
                 </div>
 
                 {/* Milestone 2 */}
-                <div className="relative flex items-center justify-between mb-16 group">
-                <div className="w-[45%]"></div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50"></div>
-                <div className="w-[45%] text-left pl-8">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16 group pl-12 md:pl-0">
+                <div className="w-full md:w-[45%]"></div>
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50 top-0 md:top-auto"></div>
+                <div className="w-full md:w-[45%] text-left md:pl-8">
                     <h4 className="text-primary font-black text-xl mb-1">2020</h4>
                     <p className="font-bold text-lg text-foreground">Gaining Expertise</p>
                     <p className="text-sm text-foreground/50">Our team underwent rigorous training within established tech companies, refining our skills in enterprise development.</p>
@@ -126,21 +126,21 @@ export default function About() {
                 </div>
 
                 {/* Milestone 3 */}
-                <div className="relative flex items-center justify-between mb-16 group">
-                <div className="w-[45%] text-right pr-8">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between mb-12 md:mb-16 group pl-12 md:pl-0">
+                <div className="w-full md:w-[45%] text-left md:text-right md:pr-8 order-2 md:order-1">
                     <h4 className="text-primary font-black text-xl mb-1">2022</h4>
                     <p className="font-bold text-lg text-foreground">Vexel Systems Born</p>
                     <p className="text-sm text-foreground/50">Officially registered as a business. We established our physical office and launched our core web & mobile development services.</p>
                 </div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50"></div>
-                <div className="w-[45%]"></div>
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50 top-0 md:top-auto"></div>
+                <div className="w-full md:w-[45%] order-1 md:order-2"></div>
                 </div>
 
                 {/* Milestone 4 */}
-                <div className="relative flex items-center justify-between group">
-                <div className="w-[45%]"></div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50"></div>
-                <div className="w-[45%] text-left pl-8">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between group pl-12 md:pl-0">
+                <div className="w-full md:w-[45%]"></div>
+                <div className="absolute left-2.5 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white z-10 shadow-lg shadow-primary/50 top-0 md:top-auto"></div>
+                <div className="w-full md:w-[45%] text-left md:pl-8">
                     <h4 className="text-primary font-black text-xl mb-1">Present</h4>
                     <p className="font-bold text-lg text-foreground">AI Integration Era</p>
                     <p className="text-sm text-foreground/50">Now pioneering AI-driven solutions, we integrate intelligent automation into modern web and mobile applications.</p>
@@ -158,22 +158,22 @@ export default function About() {
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Core <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Values</span></h2>
             <p className="text-foreground/60 mt-2">The principles that guide every line of code we write.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-8 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl shadow-sm border border-gray-100 dark:border-white/10 transition-transform hover:-translate-y-2">
+            <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0">
+            <div className="min-w-[75vw] md:min-w-0 snap-center flex flex-col items-center text-center p-8 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl shadow-sm border border-gray-100 dark:border-white/10 transition-transform hover:-translate-y-2">
                 <div className="mb-6 p-4 bg-primary/5 text-primary rounded-full">
                 <Lightbulb size={40} />
                 </div>
                 <h4 className="text-xl font-bold mb-3 text-foreground">Innovation</h4>
                 <p className="text-foreground/50 text-sm leading-relaxed">Constantly pushing the boundaries of what's possible with software and emerging technologies.</p>
             </div>
-            <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-2">
+            <div className="min-w-[75vw] md:min-w-0 snap-center flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-2">
                 <div className="mb-6 p-4 bg-primary/5 text-primary rounded-full">
                 <ShieldCheck size={40} />
                 </div>
                 <h4 className="text-xl font-bold mb-3 text-foreground">Integrity</h4>
                 <p className="text-foreground/50 text-sm leading-relaxed">Honest communication, transparent processes, and ethical technology practices are non-negotiable.</p>
             </div>
-            <div className="flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-2">
+            <div className="min-w-[75vw] md:min-w-0 snap-center flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-sm border border-gray-100 transition-transform hover:-translate-y-2">
                 <div className="mb-6 p-4 bg-primary/5 text-primary rounded-full">
                 <Users size={40} />
                 </div>

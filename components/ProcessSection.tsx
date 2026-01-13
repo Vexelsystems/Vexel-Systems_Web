@@ -118,10 +118,10 @@ export const ProcessSection = () => {
                 <div className="text-center px-2">
                   <span className="text-primary font-bold text-sm tracking-widest uppercase mb-1 block">Phase {phase.number}</span>
                   <h3 className="text-xl font-bold mb-3">{phase.title}</h3>
-                  <p className="text-sm text-foreground/60 leading-relaxed mb-6">
+                  <p className="text-sm text-foreground/60 leading-relaxed mb-6 min-h-10">
                     {phase.description}
                   </p>
-                  <div className="space-y-2 text-left bg-card p-4 rounded-xl border border-primary/5 shadow-sm group-hover:border-primary/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
+                  <div className="space-y-2 text-left bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-4 rounded-xl border border-primary/5 shadow-sm group-hover:border-primary/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
                     {phase.activities.map((act, i) => (
                       <motion.div 
                         key={act} 
@@ -175,7 +175,7 @@ export const ProcessSection = () => {
             {outcomes.map((outcome, i) => (
               <motion.div 
                 key={i} 
-                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-card p-6 transition-all group shadow-sm hover:border-primary/40"
+                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05, rotate: 1 }}
               >

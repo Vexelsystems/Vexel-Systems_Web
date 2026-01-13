@@ -37,7 +37,7 @@ export default function Preloader() {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-background">
+    <div className="fixed inset-0 z-9999 hidden md:flex items-center justify-center bg-background">
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-primary/10 animate-pulse"></div>
       
@@ -46,13 +46,12 @@ export default function Preloader() {
          {/* Logo Container */}
          <div className="relative flex items-center justify-center scale-90 sm:scale-100">
              {/* Outer Ping Ring */}
-             <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping duration-1000"></div>
-             <div className="relative h-28 w-28 z-10 filter drop-shadow-[0_0_15px_rgba(0,119,237,0.6)] border border-primary rounded-full p-1 bg-background">
+             <div className="relative h-28 w-28 z-10 filter drop-shadow-[0_0_15px_rgba(0,119,237,0.6)]">
                 <Image
                     src={companyDetails.logos.main}
                     alt="Vexel Systems Logo"
                     fill
-                    className="object-contain p-2"
+                    className="object-contain"
                     priority
                 />
              </div>

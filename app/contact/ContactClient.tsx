@@ -58,7 +58,7 @@ export default function Contact() {
                     name="name"
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
 
@@ -73,7 +73,7 @@ export default function Contact() {
                     name="email"
                     required
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
 
@@ -87,7 +87,7 @@ export default function Contact() {
                     id="phone"
                     name="phone"
                     placeholder="+94 76 123 4567"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
 
@@ -102,7 +102,7 @@ export default function Contact() {
                     name="subject"
                     required
                     placeholder="How can we help you?"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
 
@@ -117,7 +117,7 @@ export default function Contact() {
                     required
                     rows={5}
                     placeholder="Tell us about your project or inquiry..."
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
+                    className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
                   />
                 </div>
 

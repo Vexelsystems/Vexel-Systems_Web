@@ -2,11 +2,13 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
-import { Palette, Settings, Cloud, Code2, Database, Shield } from 'lucide-react';
+import { Palette, Settings, Cloud, Code2, Database, Shield, Brain, Smartphone } from 'lucide-react';
 
 const techStackCategories = [
   { id: 'frontend', name: 'Frontend & UI', icon: <Palette className="w-6 h-6" />, color: 'bg-blue-500/10 text-blue-500' },
   { id: 'backend', name: 'Backend & API', icon: <Settings className="w-6 h-6" />, color: 'bg-emerald-500/10 text-emerald-500' },
+  { id: 'ai_ml', name: 'AI & Machine Learning', icon: <Brain className="w-6 h-6" />, color: 'bg-fuchsia-500/10 text-fuchsia-500' },
+  { id: 'mobile', name: 'Mobile Development', icon: <Smartphone className="w-6 h-6" />, color: 'bg-cyan-500/10 text-cyan-500' },
   { id: 'database', name: 'Database & Storage', icon: <Database className="w-6 h-6" />, color: 'bg-orange-500/10 text-orange-500' },
   { id: 'devops', name: 'Cloud & DevOps', icon: <Cloud className="w-6 h-6" />, color: 'bg-purple-500/10 text-purple-500' },
   { id: 'qa_design', name: 'QA & Design', icon: <Shield className="w-6 h-6" />, color: 'bg-red-500/10 text-red-500' }
@@ -80,6 +82,88 @@ const techItems = {
         { name: "REST API", desc: "Distributed systems" },
         { name: "GraphQL", desc: "Flexible data fetching" },
         { name: "WebSockets", desc: "Real-time sync" }
+      ]
+    }
+  ],
+  ai_ml: [
+    { 
+      name: "AI & Machine Learning", 
+      level: "Advanced", 
+      items: [
+        { name: "TensorFlow", desc: "Deep learning models" },
+        { name: "PyTorch", desc: "Research & production AI" },
+        { name: "Scikit-learn", desc: "Classical ML algorithms" },
+        { name: "Keras", desc: "Neural network API" }
+      ]
+    },
+    { 
+      name: "AI Tools & Services", 
+      level: "Integration", 
+      items: [
+        { name: "OpenAI API", desc: "GPT integration" },
+        { name: "LangChain", desc: "LLM orchestration" },
+        { name: "Hugging Face", desc: "Model deployment" },
+        { name: "Anthropic Claude", desc: "AI assistant API" }
+      ]
+    },
+    { 
+      name: "Computer Vision & NLP", 
+      level: "Specialized", 
+      items: [
+        { name: "OpenCV", desc: "Image processing" },
+        { name: "YOLO", desc: "Object detection" },
+        { name: "spaCy", desc: "NLP processing" },
+        { name: "NLTK", desc: "Text analysis" }
+      ]
+    },
+    { 
+      name: "Data Science", 
+      level: "Analytics", 
+      items: [
+        { name: "Pandas", desc: "Data manipulation" },
+        { name: "NumPy", desc: "Numerical computing" },
+        { name: "Jupyter", desc: "Interactive notebooks" }
+      ]
+    }
+  ],
+  mobile: [
+    { 
+      name: "Cross-Platform", 
+      level: "Hybrid", 
+      items: [
+        { name: "React Native", desc: "JavaScript mobile apps" },
+        { name: "Flutter", desc: "Beautiful native UI" },
+        { name: "Expo", desc: "React Native framework" },
+        { name: "Ionic", desc: "Web-based mobile apps" }
+      ]
+    },
+    { 
+      name: "Native Development", 
+      level: "Platform", 
+      items: [
+        { name: "Swift (iOS)", desc: "Apple ecosystem" },
+        { name: "Kotlin (Android)", desc: "Modern Android dev" },
+        { name: "SwiftUI", desc: "Declarative iOS UI" },
+        { name: "Jetpack Compose", desc: "Modern Android UI" }
+      ]
+    },
+    { 
+      name: "Mobile Backend", 
+      level: "Cloud", 
+      items: [
+        { name: "Firebase", desc: "Real-time sync" },
+        { name: "AWS Amplify", desc: "Full-stack mobile" },
+        { name: "Supabase", desc: "Open-source backend" },
+        { name: "Parse", desc: "Mobile BaaS" }
+      ]
+    },
+    { 
+      name: "Mobile Tools", 
+      level: "DevOps", 
+      items: [
+        { name: "Fastlane", desc: "CI/CD automation" },
+        { name: "App Center", desc: "Testing & distribution" },
+        { name: "TestFlight", desc: "iOS beta testing" }
       ]
     }
   ],
@@ -181,22 +265,22 @@ export const TechStackSection = () => {
 
         <div className="flex flex-col gap-12">
           {/* Tabbed Navigation */}
-          <div className="flex items-center justify-center p-2 bg-primary/5 rounded-2xl self-center overflow-x-auto no-scrollbar max-w-full">
-            <div className="flex items-center gap-1 min-w-max px-2">
+          <div className="flex items-center justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-2 p-3 bg-primary/5 rounded-2xl max-w-full">
               {techStackCategories.map((cat) => (
                 <motion.button
                   key={cat.id}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab(cat.id)}
-                  className={`flex items-center gap-3 px-6 md:px-8 py-3 rounded-xl text-sm md:text-base font-bold transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
                     activeTab === cat.id 
                       ? 'bg-primary text-white shadow-xl scale-105 z-10' 
                       : 'text-foreground/60 hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <span className="hidden sm:inline">{cat.icon}</span>
-                  {cat.name}
+                  <span className="shrink-0">{cat.icon}</span>
+                  <span className="hidden sm:inline">{cat.name}</span>
                 </motion.button>
               ))}
             </div>
@@ -244,7 +328,7 @@ export const TechStackSection = () => {
                           initial={{ opacity: 0, scale: 0.95 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: i * 0.1 }}
-                          className="group p-8 bg-card border border-primary/10 rounded-[32px] hover:border-primary/40 transition-all hover:shadow-2xl shadow-sm overflow-hidden"
+                          className="group p-8 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-[32px] hover:border-primary/40 transition-all hover:shadow-2xl hover:-translate-y-2 shadow-sm overflow-hidden duration-300"
                         >
                           <div className="flex justify-between items-start mb-6">
                             <h4 className="text-2xl font-black group-hover:text-primary transition-colors">{tech.name}</h4>

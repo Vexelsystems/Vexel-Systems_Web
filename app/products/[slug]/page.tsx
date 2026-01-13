@@ -5,6 +5,7 @@ import { products, getProductBySlug } from "@/lib/products";
 import { generateDynamicMetadata, BASE_URL } from "@/lib/seo";
 import { CheckCircle, ArrowRight, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -50,7 +51,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 px-6 overflow-hidden">
+      <section className="relative py-10 md:py-20 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/10"></div>
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -120,14 +121,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <section className="py-16 px-6 bg-foreground/5">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Key Highlights</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {product.checklist.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-4 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800">
-                <CheckCircle className="text-primary shrink-0 mt-1" size={20} />
-                <span className="text-foreground font-medium">{item}</span>
-              </div>
-            ))}
-          </div>
+           <SnapCarousel>
+             {product.checklist.map((item, idx) => (
+               <div key={idx} className="min-w-[70vw] md:min-w-0 snap-center flex items-start gap-3 p-4 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800">
+                 <CheckCircle className="text-primary shrink-0 mt-1" size={20} />
+                 <span className="text-foreground font-medium">{item}</span>
+               </div>
+             ))}
+           </SnapCarousel>
         </div>
       </section>
 
@@ -140,20 +141,20 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               Everything you need to transform your operations
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {product.features.map((feature, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-primary/30 transition-all group"
-              >
-                <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
-                  <Sparkles className="text-primary" size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-                <p className="text-foreground/60 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+          <SnapCarousel>
+             {product.features.map((feature, idx) => (
+               <div
+                 key={idx}
+                 className="min-w-[80vw] md:min-w-0 snap-center p-6 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-primary/30 transition-all group"
+               >
+                 <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
+                   <Sparkles className="text-primary" size={24} />
+                 </div>
+                 <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                 <p className="text-foreground/60 leading-relaxed">{feature.description}</p>
+               </div>
+             ))}
+           </SnapCarousel>
         </div>
       </section>
 
@@ -166,17 +167,19 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               Measurable impact on your business
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {product.benefits.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800"
-              >
-                <h3 className="text-2xl font-bold text-primary mb-3">{benefit.title}</h3>
-                <p className="text-foreground/60 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
+          <div className="max-w-4xl mx-auto">
+            <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 gap-8">
+              {product.benefits.map((benefit, idx) => (
+                <div
+                  key={idx}
+                  className="min-w-[80vw] md:min-w-0 snap-center p-8 bg-white dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-800"
+                >
+                  <h3 className="text-2xl font-bold text-primary mb-3">{benefit.title}</h3>
+                  <p className="text-foreground/60 leading-relaxed">{benefit.description}</p>
+                </div>
+              ))}
+            </SnapCarousel>
+           </div>
         </div>
       </section>
 

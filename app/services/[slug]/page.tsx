@@ -5,6 +5,7 @@ import { getServiceBySlug, services } from "@/lib/services";
 import { generateDynamicMetadata, generateServiceSchema, BASE_URL } from "@/lib/seo";
 import { CheckCircle, ArrowRight, ShieldCheck, Megaphone } from "lucide-react";
 import type { Metadata } from "next";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -60,7 +61,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-20 bg-background-light dark:bg-background-dark">
+      <section className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-20 bg-background-light dark:bg-background-dark">
         <div className="absolute top-24 left-6 md:left-10 z-20">
             <Link href="/services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-all hover:gap-3 bg-white/50 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-foreground/5 shadow-sm">
                 <ArrowRight className="rotate-180" size={16} /> Back to Services
@@ -86,7 +87,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             </span>
             {service.subtitle}
           </div>
-          <h1 className="text-5xl md:text-7xl font-black leading-[1.1] mb-8 max-w-4xl mx-auto text-foreground">
+          <h1 className="text-4xl md:text-7xl font-black leading-[1.1] mb-8 max-w-4xl mx-auto text-foreground">
              {service.title.split(" ").map((word, i, arr) => {
                 if (word.toLowerCase() === "automation" || word.toLowerCase() === "smarter" || word.toLowerCase() === "businesses") {
                    return <span key={i} className="text-primary">{word} </span>
@@ -139,9 +140,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <h2 className="text-3xl font-bold mb-4 text-foreground">Our Capabilities</h2>
             <div className="h-1 w-20 bg-primary"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SnapCarousel>
             {service.subServices.map((sub, idx) => (
-              <div key={idx} className="p-8 rounded-xl transition-all group bg-white dark:bg-card border border-gray-100 dark:border-gray-800 hover:border-primary/40 hover:bg-primary/5 shadow-sm hover:shadow-lg flex flex-col">
+              <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center p-8 rounded-xl transition-all group bg-white dark:bg-card border border-gray-100 dark:border-gray-800 hover:border-primary/40 hover:bg-primary/5 shadow-sm hover:shadow-lg flex flex-col">
                 {sub.image && (
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
                          <Image 
@@ -181,7 +182,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 )}
               </div>
             ))}
-          </div>
+          </SnapCarousel>
         </div>
       </section>
 
@@ -235,9 +236,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                    <p className="text-foreground/60">Real results for our partners across the globe.</p>
                 </div>
              </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+             <SnapCarousel>
                 {service.caseStudies.map((study, idx) => (
-                   <div key={idx} className="group relative bg-black/10 dark:bg-black/40 rounded-2xl overflow-hidden aspect-video">
+                   <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center group relative bg-black/10 dark:bg-black/40 rounded-2xl overflow-hidden aspect-video">
                       <Image 
                          src={study.image} 
                          alt={study.title} 
@@ -252,7 +253,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                       </div>
                    </div>
                 ))}
-            </div>
+            </SnapCarousel>
           </div>
         </section>
       )}
@@ -265,9 +266,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <div className="lg:w-1/2">
                 <h2 className="text-4xl font-bold mb-6 text-foreground">The Benefits of <span className="text-primary">Transformation</span></h2>
                 <p className="text-foreground/60 text-lg mb-10">Modernizing your business with Vexel Systems isn't just about new tech—it's about measurable ROI and operational freedom.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <SnapCarousel scrollContainerClassName="sm:grid sm:grid-cols-2 gap-8">
                   {service.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex flex-col gap-4">
+                    <div key={idx} className="min-w-[75vw] sm:min-w-0 snap-center flex flex-col gap-4">
                       {benefit.image && (
                         <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-md">
                           <Image 
@@ -293,7 +294,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                       </div>
                     </div>
                   ))}
-                </div>
+                </SnapCarousel>
               </div>
               <div className="lg:w-1/2 relative">
                 <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
@@ -346,9 +347,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <h2 className="text-3xl font-bold mb-4 text-foreground">Versatile Solutions for Every Sector</h2>
               <p className="text-foreground/60 max-w-xl mx-auto">Vexel Systems adapts its automation engine to the unique constraints and requirements of your industry.</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <SnapCarousel>
               {service.industries.map((ind, idx) => (
-                  <div key={idx} className="group relative overflow-hidden rounded-xl bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 transition-all hover:scale-[1.02]">
+                  <div key={idx} className="min-w-[40vw] md:min-w-0 snap-center group relative overflow-hidden rounded-xl bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 transition-all hover:scale-[1.02]">
                       {ind.image ? (
                           <>
                             <div className="relative w-full aspect-video">
@@ -384,7 +385,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                       )}
                   </div>
               ))}
-            </div>
+            </SnapCarousel>
           </div>
         </section>
       )}
@@ -397,9 +398,9 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <h2 className="text-3xl font-bold mb-4">Our Simplified Process</h2>
               <p className="text-foreground/60 max-w-2xl mx-auto">From concept to deployment, we handle the technical heavy lifting.</p>
             </div>
-            <div className="relative grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="relative flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-4 gap-8 md:gap-12 pb-12 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0">
               {service.process.map((step, idx) => (
-                <div key={idx} className="relative z-10 text-center flex flex-col items-center">
+                <div key={idx} className="min-w-[70vw] md:min-w-0 snap-center relative z-10 text-center flex flex-col items-center">
                   <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6 text-white">{idx + 1}</div>
                   <h5 className="text-xl font-bold mb-2">{step.title}</h5>
                   <p className="text-sm text-foreground/60">{step.description}</p>

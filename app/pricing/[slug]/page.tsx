@@ -170,20 +170,9 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                 <div className="absolute top-0 right-0 p-40 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform"></div>
                 <div className="relative z-10">
                     <h3 className="text-3xl font-black mb-6">Designed specifically for <br/> <span className="text-blue-200 underline decoration-blue-400/50">{pkg.bestFor}</span></h3>
-                    <p className="text-lg text-white/80 mb-10 leading-relaxed font-medium italic">
+                    <p className="text-lg text-white/80 leading-relaxed font-medium italic">
                         "We chose this architecture because it specifically solves the conversion and scalability challenges faced by {pkg.bestFor.toLowerCase()}."
                     </p>
-                    
-                    <div className="space-y-6">
-                        <p className="text-xs font-black uppercase tracking-[0.2em] text-white/40">Ideal Profile Checklist</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {pkg.idealFor.map((tag) => (
-                                <div key={tag} className="flex items-center gap-3 px-4 py-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 font-bold text-sm">
-                                    <CheckCircle size={16} className="text-blue-300" /> {tag}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </div>
             </div>
         </motion.div>
