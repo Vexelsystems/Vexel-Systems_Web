@@ -18,7 +18,7 @@ export default function Maintenance() {
             </p>
 
             <div className="p-4 bg-gray-50 dark:bg-black/20 rounded-xl flex items-center justify-center gap-3 mb-8">
-                <Clock className="text-primary animate-pulse" size={20} />
+                <Clock className="text-primary" size={20} />
                 <span className="text-sm font-bold text-foreground/80">Estimated Return: 2 Hours</span>
             </div>
 

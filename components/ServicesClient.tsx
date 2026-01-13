@@ -87,7 +87,7 @@ export default function ServicesClient() {
       {/* Category Filters */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
            <div className="flex items-center gap-2 overflow-x-auto pb-4 md:pb-0 w-full md:w-auto no-scrollbar">
-              <span className="flex items-center gap-2 text-sm font-bold text-foreground/50 uppercase tracking-widest mr-4">
+              <span className="flex items-center gap-2 text-sm font-bold text-foreground/70 uppercase tracking-widest mr-4">
                 <Filter size={16} /> Filters:
               </span>
               {Object.keys(CATEGORIES).map((cat) => (
@@ -97,7 +97,7 @@ export default function ServicesClient() {
                   className={`px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${
                     selectedCategory === cat
                       ? "bg-primary text-white border-primary shadow-lg shadow-primary/25"
-                      : "bg-white/40 dark:bg-white/5 backdrop-blur-md text-foreground/70 border-gray-200 dark:border-gray-800 hover:border-primary/50 hover:text-primary"
+                      : "bg-white/40 dark:bg-white/5 backdrop-blur-md text-foreground/80 border-gray-200 dark:border-gray-800 hover:border-primary/50 hover:text-primary"
                   }`}
                 >
                   {cat}
@@ -107,7 +107,7 @@ export default function ServicesClient() {
            
            {/* Compact Search Bar (Right Aligned) */}
            <div className="w-full md:w-auto md:max-w-xs relative group shrink-0">
-               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-foreground/50 group-focus-within:text-primary transition-colors">
+               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-foreground/70 group-focus-within:text-primary transition-colors">
                  <Search size={18} />
                </div>
                <input
@@ -115,7 +115,7 @@ export default function ServicesClient() {
                  placeholder="Search services..."
                  value={searchQuery}
                  onChange={(e) => setSearchQuery(e.target.value)}
-                 className="w-full pl-10 pr-8 py-2.5 rounded-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-gray-800 text-sm font-medium text-foreground placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm transition-all"
+                 className="w-full pl-10 pr-8 py-2.5 rounded-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-gray-800 text-sm font-medium text-foreground placeholder-foreground/70 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm transition-all"
                />
                {searchQuery && (
                  <button 
@@ -154,7 +154,7 @@ export default function ServicesClient() {
                         {service.title}
                       </h3>
                     </div>
-                    <div className={`shrink-0 text-foreground/40 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-primary' : ''}`}>
+                    <div className={`shrink-0 text-foreground/70 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-primary' : ''}`}>
                        <Filter size={20} className="hidden" /> {/* Dummy to keep imports valid if needed, utilizing Chevron below instead */}
                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
@@ -165,12 +165,12 @@ export default function ServicesClient() {
                   >
                     <div className="overflow-hidden">
                       <div className="p-5 pt-0 border-t border-dashed border-gray-100 dark:border-zinc-800 mt-2">
-                         <p className="text-foreground/70 text-sm leading-relaxed py-4">{service.description}</p>
+                         <p className="text-foreground/80 text-sm leading-relaxed py-4">{service.description}</p>
                          
                          {service.subServices && (
                             <div className="flex flex-wrap gap-2 mb-6">
                               {service.subServices.slice(0, 4).map((sub, idx) => (
-                                <span key={idx} className="text-xs font-medium px-2.5 py-1 bg-gray-100 dark:bg-zinc-800 text-foreground/60 rounded-lg">
+                                <span key={idx} className="text-xs font-medium px-2.5 py-1 bg-gray-100 dark:bg-zinc-800 text-foreground/80 rounded-lg">
                                   {sub.title}
                                 </span>
                               ))}
@@ -212,7 +212,7 @@ export default function ServicesClient() {
                         <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
                           <IconComponent size={32} strokeWidth={1.5} />
                         </div>
-                        <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/20 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+                        <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/40 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
                           <ArrowRight size={14} className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                         </div>
                       </div>
@@ -221,7 +221,7 @@ export default function ServicesClient() {
                         <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
                           {service.title}
                         </h3>
-                        <p className="text-foreground/60 leading-relaxed font-medium line-clamp-3">
+                        <p className="text-foreground/80 leading-relaxed font-medium line-clamp-3">
                           {service.description}
                         </p>
                       </div>
@@ -231,7 +231,7 @@ export default function ServicesClient() {
                         <div className="relative z-10 pt-4 border-t border-gray-100 dark:border-zinc-800/50">
                            <ul className="space-y-2">
                              {service.subServices.slice(0, 3).map((sub, idx) => (
-                               <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-foreground/50">
+                               <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-foreground/70">
                                  <div className="size-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></div>
                                  <span className="line-clamp-1">{sub.title}</span>
                                </li>
@@ -256,7 +256,7 @@ export default function ServicesClient() {
             <Search size={48} />
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-2">No services found</h3>
-          <p className="text-foreground/60 max-w-md mb-8">
+          <p className="text-foreground/80 max-w-md mb-8">
             We couldn't find any services matching "{searchQuery}" in the {selectedCategory} category.
           </p>
           <button 

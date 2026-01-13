@@ -42,9 +42,7 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
     <main className="min-h-screen bg-transparent pb-20 pt-32 overflow-hidden">
       
       {/* Floating Back Navigation */}
-      <motion.div 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+      <div 
         className="fixed top-24 left-1/2 -translate-x-1/2 z-50 pointer-events-none w-full max-w-[1400px] px-6"
       >
          <Link href={backLink} className="pointer-events-auto inline-flex items-center gap-2 pl-2 pr-4 py-2 rounded-full bg-white/80 dark:bg-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm font-bold text-foreground group">
@@ -53,41 +51,29 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
              </div>
              <span>Back to {category?.title || "Pricing"}</span>
          </Link>
-      </motion.div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative px-6 mb-20 bg-transparent">
         
         <div className="max-w-4xl mx-auto text-center">
-            <motion.div 
-              variants={fadeIn}
-              initial="initial"
-              animate="animate"
+            <div 
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6"
             >
                 <Sparkles size={14} /> {pkg.type || "Professional Package"}
-            </motion.div>
-            <motion.h1 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
+            </div>
+            <h1 
               className="text-5xl md:text-7xl font-black mb-6 leading-tight text-foreground tracking-tight"
             >
                 {pkg.name}
-            </motion.h1>
-            <motion.p 
-              variants={fadeIn}
-              initial="initial"
-              animate="animate"
+            </h1>
+            <p 
               className="text-xl md:text-2xl text-foreground/60 max-w-2xl mx-auto mb-10 font-medium leading-relaxed"
             >
                 {pkg.description}
-            </motion.p>
+            </p>
 
-            <motion.div 
-              variants={fadeIn}
-              initial="initial"
-              animate="animate"
+            <div 
               className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-12 p-8 rounded-[3rem] bg-white/40 dark:bg-card/40 border border-primary/10 backdrop-blur-md shadow-2xl"
             >
                 <div className="text-center group">
@@ -115,30 +101,23 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                         <button onClick={() => setCurrency('USD')} className={`text-[10px] font-extrabold px-3 py-1 rounded-full transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-lg' : 'bg-black/5 dark:bg-white/5 text-foreground/40 hover:text-foreground'}`}>USD</button>
                      </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
       </section>
 
       {/* Feature Deep-Dive Section */}
       <section className="max-w-6xl mx-auto px-6 mb-32">
-        <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+        <div 
             className="text-center mb-16"
         >
             <h2 className="text-4xl font-black mb-4">Deep Dive into <span className="text-primary">Features</span></h2>
             <p className="text-foreground/60 max-w-xl mx-auto">Discover the technical and strategic value behind every component of this package.</p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(pkg.detailedFeatures || []).map((feature, idx) => (
-                <motion.div 
+                <div 
                     key={idx}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.1 }}
-                    viewport={{ once: true }}
                     className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-xl hover:shadow-2xl transition-all group relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 p-12 bg-primary/5 rounded-full blur-2xl -mr-6 -mt-6 group-hover:scale-110 transition-transform"></div>
@@ -149,17 +128,14 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                         <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
                         <p className="text-sm text-foreground/60 leading-relaxed font-semibold italic">"{feature.description}"</p>
                     </div>
-                </motion.div>
+                </div>
             ))}
         </div>
       </section>
 
       {/* Suitability & Vision Section */}
       <section className="max-w-6xl mx-auto px-6 mb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-        <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+        <div 
             className="flex flex-col h-full"
         >
             <h2 className="text-3xl font-black mb-8 flex items-center gap-3">
@@ -175,12 +151,9 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                     </p>
                 </div>
             </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+        <div 
             className="flex flex-col h-full"
         >
              <h2 className="text-3xl font-black mb-8 flex items-center gap-3">
@@ -189,9 +162,8 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
             </h2>
             <div className="grow grid gap-6">
                 {pkg.whyChoose.map((benefit, idx) => (
-                    <motion.div 
+                    <div 
                         key={idx}
-                        whileHover={{ x: 10 }}
                         className="p-8 rounded-4xl bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-lg relative overflow-hidden group"
                     >
                         <div className="flex gap-6">
@@ -203,32 +175,26 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                                 <p className="text-sm text-foreground/60 leading-relaxed font-medium">{benefit.description}</p>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* The Vexel Engineering Protocol (Tech, Security, SEO) */}
       <section className="py-32 bg-transparent relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-6xl">
-            <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+            <div 
                 className="text-center mb-20"
             >
                 <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-6 inline-block">The Vexel Standard</span>
                 <h2 className="text-4xl md:text-5xl font-black mb-6 italic">Engineering <span className="text-primary not-italic">Protocol</span></h2>
                 <p className="text-lg text-foreground/60 max-w-2xl mx-auto font-medium">We don't just build websites; we engineer digital assets. Here is the technical foundation of your {pkg.name}.</p>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Tech Stack Block */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                <div 
                     className="p-12 rounded-4xl bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl relative overflow-hidden group"
                 >
                     <div className="size-16 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-8 group-hover:bg-blue-500 group-hover:text-white transition-all shadow-lg">
@@ -251,14 +217,10 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                             </li>
                         ))}
                     </ul>
-                </motion.div>
+                </div>
 
                 {/* Security Protocol Block */}
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.1 }}
-                    viewport={{ once: true }}
+                <div 
                     className="p-10 rounded-[3rem] bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-2xl relative group"
                 >
                     <div className="size-16 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all shadow-lg">
@@ -281,14 +243,10 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                             </li>
                         ))}
                     </ul>
-                </motion.div>
+                </div>
 
                 {/* Global SEO Block */}
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                    viewport={{ once: true }}
+                <div 
                     className="p-10 rounded-[3rem] bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-2xl relative group"
                 >
                     <div className="size-16 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-8 group-hover:bg-amber-500 group-hover:text-white transition-all shadow-lg">
@@ -311,16 +269,14 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                             </li>
                         ))}
                     </ul>
-                </motion.div>
+                </div>
             </div>
         </div>
       </section>
 
       {/* Deliverables Checklist */}
       <section className="max-w-4xl mx-auto px-6 py-32">
-        <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div 
             className="text-center mb-16"
         >
             <h2 className="text-3xl font-black mb-4 flex items-center justify-center gap-3">
@@ -328,15 +284,12 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                 Master Deliverables
             </h2>
             <p className="text-foreground/40 font-bold uppercase text-[10px] tracking-widest">Everything you receive in this package</p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 gap-4">
             {pkg.deliverables.map((item, idx) => (
-                <motion.div 
+                <div 
                     key={idx} 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
                     className="flex justify-between items-center p-6 rounded-3xl bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:translate-x-3 transition-transform cursor-default"
                 >
                     <div className="flex items-center gap-5">
@@ -345,13 +298,13 @@ export default function PricingDetailPage({ params }: { params: Promise<{ slug: 
                         </div>
                         <span className="text-lg font-bold text-foreground/80">{item}</span>
                     </div>
-                </motion.div>
+                </div>
             ))}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="quote" className="max-w-4xl mx-auto px-6 animate-in fade-in slide-in-from-bottom-12 duration-1000">
+      <section id="quote" className="max-w-4xl mx-auto px-6">
         <div className="relative overflow-hidden rounded-[4rem] bg-gray-900 text-white shadow-2xl">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-linear-to-bl from-primary to-purple-600 opacity-30 rounded-full blur-[120px] -mr-32 -mt-32 pointer-events-none"></div>
             

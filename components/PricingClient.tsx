@@ -70,7 +70,7 @@ const PriceTag = ({ price }: { price: string }) => {
         <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
           {price}
         </div>
-         <div className="text-sm text-foreground/40 font-medium mt-1">Enterprise Grade</div>
+         <div className="text-sm text-foreground/70 font-medium mt-1">Enterprise Grade</div>
       </div>
     );
   }
@@ -82,7 +82,7 @@ const PriceTag = ({ price }: { price: string }) => {
       <div className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
         {startPrice}
       </div>
-       <div className="text-sm text-foreground/40 font-medium mt-1">Range: {price}</div>
+       <div className="text-sm text-foreground/70 font-medium mt-1">Range: {price}</div>
     </div>
   );
 };
@@ -164,13 +164,13 @@ export default function PricingClient() {
             <div className="absolute top-0 right-0 flex bg-white/40 dark:bg-card/40 backdrop-blur-md border border-primary/20 rounded-full p-1 shadow-sm">
             <button 
                 onClick={() => setCurrency('LKR')}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
             >
                 LKR
             </button>
             <button 
                 onClick={() => setCurrency('USD')}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/60 hover:text-primary'}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
             >
                 USD
             </button>
@@ -179,7 +179,7 @@ export default function PricingClient() {
             <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
             Pricing that <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Fits You.</span>
             </h1>
-            <p className="text-xl text-foreground/60 max-w-2xl mx-auto mb-10">
+            <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-10">
             Transparent pricing for {currency === 'LKR' ? 'Sri Lankan' : 'International'} businesses. 
             {currency === 'USD' && <span className="block text-primary font-bold mt-2">✨ International Packages Available</span>}
             </p>
@@ -187,8 +187,8 @@ export default function PricingClient() {
             {/* Quick Summary Pill Grid */}
             <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
             {SUMMARY_DATA.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
-                <span className="text-sm font-medium text-foreground/70">{item.type}</span>
+                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm">
+                <span className="text-sm font-medium text-foreground/80">{item.type}</span>
                 <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
                 </div>
             ))}
@@ -198,7 +198,7 @@ export default function PricingClient() {
 
       {/* International Packages (USD Only) */}
       {currency === 'USD' && (
-        <section className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] mb-32 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <section className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] mb-32">
           <div className="bg-linear-to-br from-indigo-900 via-purple-900 to-primary/50 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
              <div className="absolute top-0 right-0 p-32 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
              
@@ -236,7 +236,7 @@ export default function PricingClient() {
       <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row gap-12 mb-32">
         
         {/* Sidebar Filters */}
-        <aside className="w-full lg:w-[260px] shrink-0 space-y-6 h-fit lg:sticky lg:top-32 animate-in fade-in slide-in-from-left-4 duration-700">
+        <aside className="w-full lg:w-[260px] shrink-0 space-y-6 h-fit lg:sticky lg:top-32">
            
            {/* Search */}
            <div className="relative group">
@@ -253,7 +253,7 @@ export default function PricingClient() {
 
            {/* Vertical Category List */}
            <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-sm">
-              <h3 className="font-bold mb-3 px-2 text-[10px] uppercase tracking-widest text-foreground/40">Categories</h3>
+              <h3 className="font-bold mb-3 px-2 text-[10px] uppercase tracking-widest text-foreground/70">Categories</h3>
               <div className="space-y-1 max-h-[70vh] overflow-y-auto pr-1 custom-scrollbar">
                 {categoriesList.map((cat) => (
                   <button
@@ -262,7 +262,7 @@ export default function PricingClient() {
                     className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between group border-2 ${
                       selectedCategory === cat 
                         ? 'bg-primary border-primary text-white shadow-md shadow-primary/20 scale-[1.02]' 
-                        : 'bg-white dark:bg-white/5 border-transparent text-foreground/60 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-foreground hover:pl-4'
+                        : 'bg-white dark:bg-white/5 border-transparent text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-foreground hover:pl-4'
                     }`}
                   >
                     {cat}
@@ -276,7 +276,7 @@ export default function PricingClient() {
         {/* Filtered Results Grid */}
         <div className="flex-1 space-y-20">
             {filteredCategories.length > 0 ? filteredCategories.map((category) => (
-              <div key={category.id} id={category.id} className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <div key={category.id} id={category.id}>
                 
                 <div className="flex items-center gap-3 mb-8">
                     <div className={`p-3 rounded-xl bg-linear-to-br ${category.color} text-white shadow-lg shadow-primary/20`}>
@@ -284,7 +284,7 @@ export default function PricingClient() {
                     </div>
                     <div>
                       <h2 className="text-2xl font-bold">{category.title}</h2>
-                      <p className="text-sm text-foreground/60">{category.description}</p>
+                      <p className="text-sm text-foreground/80">{category.description}</p>
                     </div>
                     {category.options.length > 1 && (
                          <button 
@@ -312,7 +312,7 @@ export default function PricingClient() {
                           
                           <div className="flex justify-between items-start mb-4">
                             <div className="flex flex-col gap-1">
-                                <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-foreground/70 text-[10px] font-bold rounded-full uppercase tracking-wider w-fit">
+                                <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-foreground/80 text-[10px] font-bold rounded-full uppercase tracking-wider w-fit">
                                     {option.timeline}
                                 </span>
                                 <span className="text-[10px] font-bold text-primary/60 px-1 uppercase tracking-tight">
@@ -328,7 +328,7 @@ export default function PricingClient() {
                                 <Target size={14} />
                              </div>
                              <div className="flex flex-col">
-                                <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest leading-none mb-0.5">Ideal For</span>
+                                <span className="text-[10px] font-bold text-foreground/70 uppercase tracking-widest leading-none mb-0.5">Ideal For</span>
                                 <span className="text-xs font-bold text-foreground/80 leading-tight">{option.bestFor}</span>
                              </div>
                           </div>

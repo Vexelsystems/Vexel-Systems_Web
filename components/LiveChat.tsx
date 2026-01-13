@@ -181,180 +181,161 @@ export default function LiveChat() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-100 font-sans">
+    <div className="fixed bottom-8 right-8 z-[100] font-sans">
       {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-24 right-0 w-[300px] h-[540px] bg-white dark:bg-[#0a0a0a] rounded-3xl shadow-2xl shadow-primary/20 border border-black/5 dark:border-white/5 flex flex-col overflow-hidden"
-          >
-            {/* Header */}
-            <div className={`p-6 text-white flex items-center justify-between transition-colors duration-500 ${isOnline ? 'bg-primary' : 'bg-zinc-800'}`}>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <MessageSquare size={20} />
-                </div>
-                <div>
-                  <h3 className="font-bold">Vexel Chat</h3>
-                  <div className="flex items-center gap-2 text-xs opacity-80">
-                    <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400 animate-pulse' : 'bg-red-400'}`}></span>
-                    {isOnline ? 'Online | Support Assistant' : 'Offline | 09:00 - 18:00 LKT'}
-                  </div>
+      {isOpen && (
+        <div
+          className="absolute bottom-24 right-0 w-[300px] h-[540px] bg-white dark:bg-[#0a0a0a] rounded-3xl shadow-2xl shadow-primary/20 border border-black/5 dark:border-white/5 flex flex-col overflow-hidden"
+        >
+          {/* Header */}
+          <div className={`p-6 text-white flex items-center justify-between transition-colors duration-500 ${isOnline ? 'bg-primary' : 'bg-zinc-800'}`}>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <MessageSquare size={20} />
+              </div>
+              <div>
+                <h3 className="font-bold">Vexel Chat</h3>
+                <div className="flex items-center gap-2 text-xs opacity-80">
+                  <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-red-400'}`}></span>
+                  {isOnline ? 'Online | Support Assistant' : 'Offline | 09:00 - 18:00 LKT'}
                 </div>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
-              >
-                <X size={20} />
-              </button>
             </div>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="p-2 hover:bg-white/10 rounded-full transition-colors"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-            {/* Content Area */}
-            <div className="flex-1 overflow-y-auto p-6 scroll-smooth">
-              {!isIdentified ? (
-                // Lead Capture Form
-                <div className="h-full flex flex-col justify-center">
-                  <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <User size={32} />
-                    </div>
-                    <h4 className="text-xl font-bold mb-2">Welcome!</h4>
-                    <p className="text-foreground/60">Please let us know who you are to start the conversation.</p>
+          {/* Content Area */}
+          <div className="flex-1 overflow-y-auto p-6 scroll-smooth">
+            {!isIdentified ? (
+              // Lead Capture Form
+              <div className="h-full flex flex-col justify-center">
+                <div className="text-center mb-8">
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <User size={32} />
                   </div>
-                  
-                  <form onSubmit={handleIdentification} className="space-y-4">
-                    <div>
-                      <label className="text-sm font-bold mb-1.5 block">Full Name</label>
-                      <input 
-                        required
-                        type="text"
-                        placeholder="John Doe"
-                        value={userData.name}
-                        onChange={e => setUserData({...userData, name: e.target.value})}
-                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-bold mb-1.5 block">Email Address</label>
-                      <input 
-                        required
-                        type="email"
-                        placeholder="john@example.com"
-                        value={userData.email}
-                        onChange={e => setUserData({...userData, email: e.target.value})}
-                        className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
-                      />
-                    </div>
-                    <button 
-                      type="submit"
-                      className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group"
-                    >
-                      Start Chatting
-                      <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </form>
+                  <h4 className="text-xl font-bold mb-2">Welcome!</h4>
+                  <p className="text-foreground/60">Please let us know who you are to start the conversation.</p>
                 </div>
-              ) : (
-                // Chat Interface
-                <div className="space-y-4">
-                  {messages.map((msg) => (
-                    <div 
-                      key={msg.id}
-                      className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div className={`max-w-[80%] p-4 rounded-2xl ${
-                        msg.type === 'user' 
-                        ? 'bg-primary text-white rounded-tr-none' 
-                        : 'bg-black/5 dark:bg-white/5 text-foreground rounded-tl-none'
-                      }`}>
-                        <p className="text-sm leading-relaxed">{msg.text}</p>
-                        <span className="text-[10px] opacity-40 mt-1 block">
-                          {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                  {isTyping && (
-                    <div className="flex justify-start">
-                      <div className="bg-black/5 dark:bg-white/5 p-4 rounded-2xl rounded-tl-none flex gap-1">
-                        <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full animate-bounce"></span>
-                        <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-                        <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full animate-bounce [animation-delay:0.4s]"></span>
-                      </div>
-                    </div>
-                  )}
-                  <div ref={messagesEndRef} />
-                </div>
-              )}
-            </div>
-
-            {/* Footer / Input */}
-            {isIdentified && (
-              <div className="p-4 border-t border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5">
-                <div className="mb-3">
-                  <a 
-                    href={`https://wa.me/94771234567?text=Hi, I'm ${userData.name}. I need help with...`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-green-500/10 text-green-500 rounded-lg text-sm font-bold hover:bg-green-500/20 transition-all border border-green-500/20"
-                  >
-                    <ExternalLink size={14} />
-                    Not satisfied? Talk to Human
-                  </a>
-                </div>
-                <form onSubmit={handleSendMessage} className="flex gap-2">
-                  <input 
-                    type="text"
-                    value={inputValue}
-                    onChange={e => setInputValue(e.target.value)}
-                    placeholder="Type your question..."
-                    className="flex-1 bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary transition-all"
-                  />
+                
+                <form onSubmit={handleIdentification} className="space-y-4">
+                  <div>
+                    <label className="text-sm font-bold mb-1.5 block">Full Name</label>
+                    <input 
+                      required
+                      type="text"
+                      placeholder="John Doe"
+                      value={userData.name}
+                      onChange={e => setUserData({...userData, name: e.target.value})}
+                      className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-bold mb-1.5 block">Email Address</label>
+                    <input 
+                      required
+                      type="email"
+                      placeholder="john@example.com"
+                      value={userData.email}
+                      onChange={e => setUserData({...userData, email: e.target.value})}
+                      className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
+                    />
+                  </div>
                   <button 
                     type="submit"
-                    className="p-2 bg-primary text-white rounded-xl hover:brightness-110 transition-all"
+                    className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group"
                   >
-                    <Send size={18} />
+                    Start Chatting
+                    <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </form>
               </div>
+            ) : (
+              // Chat Interface
+              <div className="space-y-4">
+                {messages.map((msg) => (
+                  <div 
+                    key={msg.id}
+                    className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`max-w-[80%] p-4 rounded-2xl ${
+                      msg.type === 'user' 
+                      ? 'bg-primary text-white rounded-tr-none' 
+                      : 'bg-black/5 dark:bg-white/5 text-foreground rounded-tl-none'
+                    }`}>
+                      <p className="text-sm leading-relaxed">{msg.text}</p>
+                      <span className="text-[10px] opacity-40 mt-1 block">
+                        {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="bg-black/5 dark:bg-white/5 p-4 rounded-2xl rounded-tl-none flex gap-1">
+                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
+                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
+                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
             )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          {/* Footer / Input */}
+          {isIdentified && (
+            <div className="p-4 border-t border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5">
+              <div className="mb-3">
+                <a 
+                  href={`https://wa.me/94771234567?text=Hi, I'm ${userData.name}. I need help with...`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-green-500/10 text-green-500 rounded-lg text-sm font-bold transition-all border border-green-500/20"
+                >
+                  <ExternalLink size={14} />
+                  Not satisfied? Talk to Human
+                </a>
+              </div>
+              <form onSubmit={handleSendMessage} className="flex gap-2">
+                <input 
+                  type="text"
+                  value={inputValue}
+                  onChange={e => setInputValue(e.target.value)}
+                  placeholder="Type your question..."
+                  className="flex-1 bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary transition-all"
+                />
+                <button 
+                  type="submit"
+                  className="p-2 bg-primary text-white rounded-xl transition-all"
+                >
+                  <Send size={18} />
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Floating Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 group relative"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-            >
-              <X size={28} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-            >
-              <MessageCircle size={28} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isOpen ? (
+          <div>
+            <X size={28} />
+          </div>
+        ) : (
+          <div>
+            <MessageCircle size={28} />
+          </div>
+        )}
         
         {/* Unread Badge (Simulated) */}
         {!isOpen && !isIdentified && (
@@ -362,7 +343,7 @@ export default function LiveChat() {
             1
           </span>
         )}
-      </motion.button>
+      </button>
     </div>
   );
 }

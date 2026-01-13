@@ -54,7 +54,7 @@ export default function FaqClient() {
             </div>
             <div className="w-full max-w-2xl bg-white dark:bg-card rounded-xl shadow-2xl overflow-hidden p-1 flex">
                 <input 
-                    className="w-full border-none focus:ring-0 bg-transparent text-black dark:text-white placeholder:text-foreground/40 text-lg py-4 px-6 outline-none" 
+                    className="w-full border-none focus:ring-0 bg-transparent text-black dark:text-white placeholder:text-foreground/70 text-lg py-4 px-6 outline-none" 
                     placeholder="Search by topic, keyword, or error code..." 
                     type="text"
                     value={searchQuery}
@@ -72,13 +72,13 @@ export default function FaqClient() {
         {/* Sidebar Navigation */}
         <aside className="w-full lg:w-72 shrink-0">
           <div className="sticky top-24 space-y-4">
-            <div className="flex items-center gap-2 mb-4 px-2 text-sm opacity-60">
+            <div className="flex items-center gap-2 mb-4 px-2 text-sm text-foreground/70">
                <Link href="/" className="hover:text-primary">Home</Link>
                <span>/</span>
                <span className="font-bold text-foreground">FAQ Center</span>
             </div>
             <div className="bg-card rounded-xl border border-primary/10 p-4 shadow-sm h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide">
-              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 px-3 opacity-50">{categories.length} Categories</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest mb-4 px-3 text-foreground/70">{categories.length} Categories</h3>
               <div className="flex flex-col gap-1">
                 {categories.map((cat) => (
                   <button
@@ -90,7 +90,7 @@ export default function FaqClient() {
                     className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left ${
                       activeCategory === cat.id 
                         ? 'bg-primary/10 text-primary font-bold' 
-                        : 'text-foreground/70 hover:bg-primary/5'
+                        : 'text-foreground/80 hover:bg-primary/5'
                     }`}
                   >
                     <span>{cat.icon}</span>
@@ -102,7 +102,7 @@ export default function FaqClient() {
             {/* Contact Card */}
             <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
               <p className="text-sm font-bold mb-2">Need direct help?</p>
-              <p className="text-xs opacity-60 mb-4">Our support team is available 24/7 for urgent Vexel inquiries.</p>
+              <p className="text-xs text-foreground/70 mb-4">Our support team is available 24/7 for urgent Vexel inquiries.</p>
               <button className="w-full bg-primary text-white py-2 rounded-lg text-sm font-bold hover:opacity-90 transition-all">
                 Contact Support
               </button>
@@ -143,7 +143,7 @@ export default function FaqClient() {
                   </button>
                   
                   <div className={`transition-all duration-500 ease-in-out px-8 overflow-hidden ${openIndex === index ? 'max-h-[500px] pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <p className="text-black/60 dark:text-white/60 leading-relaxed text-lg whitespace-pre-line">
+                    <p className="text-black/80 dark:text-white/80 leading-relaxed text-lg whitespace-pre-line">
                       {faq.answer}
                     </p>
                   </div>
@@ -155,7 +155,7 @@ export default function FaqClient() {
                    <Search size={32} />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">No matches found</h3>
-                <p className="text-foreground/60 max-w-md mx-auto">
+                <p className="text-foreground/80 max-w-md mx-auto">
                   We couldn't find any questions matching "{searchQuery}". Try using different keywords or browse our categories.
                 </p>
                 <button 
@@ -185,16 +185,16 @@ export default function FaqClient() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-card p-6 rounded-xl border border-primary/10">
                 <h3 className="text-lg font-bold mb-2">Remote Assistance</h3>
-                <p className="text-sm opacity-60 mb-4">Allow our engineers to securely access your system to fix issues in real-time.</p>
+                <p className="text-sm text-foreground/70 mb-4">Allow our engineers to securely access your system to fix issues in real-time.</p>
                 <button className="text-primary font-bold text-sm flex items-center gap-2 hover:underline">
                   Launch Remote Support <Share2 size={16} />
                 </button>
               </div>
               <div className="bg-card p-6 rounded-xl border border-primary/10">
                 <h3 className="text-lg font-bold mb-2">System Status</h3>
-                <p className="text-sm opacity-60 mb-4">Check for any known outages or scheduled maintenance windows.</p>
+                <p className="text-sm text-foreground/70 mb-4">Check for any known outages or scheduled maintenance windows.</p>
                 <div className="flex items-center gap-2">
-                  <span className="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                  <span className="size-2 rounded-full bg-green-500"></span>
                   <span className="text-xs font-bold text-green-500 uppercase">All Systems Operational</span>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function FaqClient() {
           {/* Global CTA */}
           <div className="pt-8 border-t border-primary/10 flex flex-col items-center text-center">
             <h2 className="text-2xl font-bold mb-4">Still have <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">questions?</span></h2>
-            <p className="opacity-60 mb-8 max-w-lg">If you couldn't find what you were looking for, our expert team is ready to help you optimize your business operations.</p>
+            <p className="text-foreground/70 mb-8 max-w-lg">If you couldn't find what you were looking for, our expert team is ready to help you optimize your business operations.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <button 
                 onClick={() => window.dispatchEvent(new CustomEvent('vexel-chat-open'))}

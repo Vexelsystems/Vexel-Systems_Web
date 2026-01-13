@@ -29,7 +29,7 @@ export function ContactSection() {
                     </div>
                     <span className="font-bold text-foreground">{companyDetails.contact.phone}</span>
                   </a>
-                  <a href={`https://wa.me/${companyDetails.contact.whatsapp.replace('+', '')}?text=${encodeURIComponent("Hi, I want to know more about Vexel Systems.")}`} target="_blank" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
+                  <a href={`https://wa.me/${companyDetails.contact.whatsapp.replace('+', '')}?text=${encodeURIComponent("Hi, I want to know more about Vexel Systems.")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
                     <div className="size-10 rounded-full bg-[#25D366]/10 flex items-center justify-center text-[#25D366]">
                       <Share size={20} />
                     </div>
@@ -68,8 +68,8 @@ export function ContactSection() {
                     <input required className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none" placeholder="+1 (555) 123-4567" type="tel" />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-foreground">Subject</label>
-                    <select className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none">
+                    <label htmlFor="subject" className="text-sm font-bold text-foreground">Subject</label>
+                    <select id="subject" className="rounded-lg border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm text-foreground p-3 focus:ring-primary focus:border-primary outline-none">
                       <option>Web Development</option>
                       <option>Mobile App Development</option>
                       <option>Custom Software</option>

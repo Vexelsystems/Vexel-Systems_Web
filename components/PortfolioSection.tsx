@@ -22,12 +22,12 @@ export function PortfolioSection() {
                   alt="Fintech dashboard" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="object-cover transition-transform duration-500" 
                 />
               </div>
               <div>
                 <span className="text-primary font-bold text-xs uppercase tracking-widest">Fintech</span>
-                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">SecurePay Dashboard</h4>
+                <h3 className="text-foreground text-xl font-bold mt-2 transition-colors">SecurePay Dashboard</h3>
               </div>
             </div>
 
@@ -38,12 +38,12 @@ export function PortfolioSection() {
                   alt="E-commerce mobile app" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="object-cover transition-transform duration-500" 
                 />
               </div>
                <div>
                 <span className="text-primary font-bold text-xs uppercase tracking-widest">Retail & AI</span>
-                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">ShopFlow Mobile</h4>
+                <h3 className="text-foreground text-xl font-bold mt-2 transition-colors">ShopFlow Mobile</h3>
               </div>
             </div>
 
@@ -54,12 +54,12 @@ export function PortfolioSection() {
                   alt="Analytics platform" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                  className="object-cover transition-transform duration-500" 
                 />
               </div>
                <div>
                 <span className="text-primary font-bold text-xs uppercase tracking-widest">SaaS</span>
-                <h4 className="text-foreground text-xl font-bold mt-2 group-hover:text-primary transition-colors">Insight Engine Pro</h4>
+                <h3 className="text-foreground text-xl font-bold mt-2 transition-colors">Insight Engine Pro</h3>
               </div>
             </div>
           </div>

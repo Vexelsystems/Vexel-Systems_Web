@@ -67,14 +67,14 @@ export default function EventsClient() {
       {/* Event Grid */}
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
         {filteredEvents.map((event) => (
-          <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1">
+          <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all">
             <div className="relative h-48 w-full overflow-hidden">
               <Image
                 src={event.image}
                 alt={event.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-700"
               />
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-black text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
                  <Tag size={12} className="text-primary" />
@@ -91,7 +91,7 @@ export default function EventsClient() {
                  <span>{event.time}</span>
               </div>
               
-              <h3 className="text-2xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors">
+              <h3 className="text-2xl font-bold mb-3 leading-tight transition-colors">
                 {event.title}
               </h3>
               

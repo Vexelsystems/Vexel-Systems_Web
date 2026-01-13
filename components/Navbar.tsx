@@ -49,7 +49,7 @@ export default function Navbar() {
 
   // Shared Dropdown Content Component
   const DropdownContent = ({ items, width = "w-[200px]", columns = 1, viewAllLink }: { items: { name: string, href: string }[], width?: string, columns?: number, viewAllLink?: { text: string, href: string } }) => (
-    <div className={`absolute top-full left-1/2 -translate-x-1/2 ${width} bg-white dark:bg-card rounded-2xl shadow-xl border border-primary/10 p-4 animate-in fade-in slide-in-from-top-2 duration-200 z-50`}>
+    <div className={`absolute top-full left-1/2 -translate-x-1/2 ${width} bg-white dark:bg-card rounded-2xl shadow-xl border border-primary/10 p-4 z-50`}>
        <div className={`grid ${columns === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-2`}>
         {items.map((item, index) => {
             const isActive = pathname === item.href;
@@ -129,7 +129,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link className="flex items-center gap-3 shrink-0" href="/" aria-label="Vexel Systems Home">
             <div className="relative h-10 w-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.6)]">
-              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" sizes="40px" />
+              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" sizes="40px" priority />
             </div>
             <span className="text-lg font-bold text-primary tracking-tight">{companyDetails.name}</span>
           </Link>
@@ -155,10 +155,8 @@ export default function Navbar() {
                 >
                    {/* Animated Background Pill */}
                    {displayId === item.id && (
-                      <motion.div
-                         layoutId="navbar-active"
+                      <div
                          className="absolute inset-0 bg-primary/10 rounded-full"
-                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} 
                       />
                    )}
                    
@@ -198,17 +196,17 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="hidden md:block">
+            <div className="hidden md:block">
                <Link href="/quote" className="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg transition-all shadow-md shadow-primary/20 hover:bg-primary/90 block">
                  Get Started
                </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            </div>
+            <div>
                <Link href="/login" className="hidden md:flex items-center gap-2 rounded-full border border-gray-200 bg-white dark:bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
                    <Lock className="h-4 w-4 text-primary" />
                    <span>Login</span>
                </Link>
-            </motion.div>
+            </div>
             <button
                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                className="lg:hidden flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-foreground hover:bg-black/5 transition-colors"
@@ -225,33 +223,28 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <motion.div 
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
+          <div 
             className="fixed bottom-24 left-4 right-4 bg-white dark:bg-card rounded-3xl shadow-2xl z-50 p-6 overflow-y-auto max-h-[70vh] border border-primary/10"
           >
             <div className="flex flex-col gap-4">
                {/* Mobile Navigation Links */}
-               <Link href="/" className={`text-lg font-bold py-2 ${pathname === '/' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
+               <Link href="/" className={`text-lg font-bold py-3 ${pathname === '/' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
                   Home
                </Link>
-               <Link href="/about" className={`text-lg font-bold py-2 ${pathname === '/about' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
+               <Link href="/about" className={`text-lg font-bold py-3 ${pathname === '/about' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
                   About Us
                </Link>
-
+ 
                {/* Collapsible Services */}
                <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
                   <button 
                     onClick={() => toggleMobileDropdown('services')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
                   >
                     Services <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'services' ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileOpenDropdown === 'services' && (
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
+                    <div 
                       className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
                     >
                        <Link href="/services" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Services</Link>
@@ -265,22 +258,20 @@ export default function Navbar() {
                              {item.name}
                           </Link>
                        ))}
-                    </motion.div>
+                    </div>
                   )}
                </div>
-
+ 
                {/* Collapsible Products */}
                <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
                   <button 
                     onClick={() => toggleMobileDropdown('products')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
                   >
                     Products <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'products' ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileOpenDropdown === 'products' && (
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
+                    <div 
                       className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
                     >
                        <Link href="/products" className="text-primary font-bold py-1 text-sm" onClick={() => setIsMobileMenuOpen(false)}>View All Products</Link>
@@ -294,26 +285,24 @@ export default function Navbar() {
                              {item.name}
                           </Link>
                        ))}
-                    </motion.div>
+                    </div>
                   )}
                </div>
-
+ 
                <Link href="/pricing" className={`text-lg font-bold py-2 ${pathname === '/pricing' ? 'text-primary' : 'text-foreground/80'}`} onClick={() => setIsMobileMenuOpen(false)}>
                   Pricing
                </Link>
-
+ 
                {/* Collapsible Company */}
                <div className="border-b border-gray-100 dark:border-gray-800 pb-2">
                   <button 
                     onClick={() => toggleMobileDropdown('company')}
-                    className="flex items-center justify-between w-full text-lg font-bold py-2 text-foreground/80"
+                    className="flex items-center justify-between w-full text-lg font-bold py-3 text-foreground/80"
                   >
                     Company <ChevronDown size={20} className={`transition-transform duration-300 ${mobileOpenDropdown === 'company' ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileOpenDropdown === 'company' && (
-                    <motion.div 
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
+                    <div 
                       className="flex flex-col gap-2 pl-4 mt-2 overflow-hidden"
                     >
                        {navigation.company.map(item => (
@@ -326,7 +315,7 @@ export default function Navbar() {
                              {item.name}
                           </Link>
                        ))}
-                    </motion.div>
+                    </div>
                   )}
                </div>
                
@@ -340,7 +329,7 @@ export default function Navbar() {
                    </Link>
                </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       )}
     </>

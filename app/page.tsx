@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/HeroSection";
-import { CoreServicesSection } from "@/components/CoreServicesSection";
-import { PortfolioSection } from "@/components/PortfolioSection";
+const CoreServicesSection = dynamic(() => import("@/components/CoreServicesSection").then(mod => mod.CoreServicesSection));
+const PortfolioSection = dynamic(() => import("@/components/PortfolioSection").then(mod => mod.PortfolioSection));
 
 // Lazy load below-the-fold interactive components
 const ProcessSection = dynamic(() => import("@/components/ProcessSection").then(mod => mod.ProcessSection));

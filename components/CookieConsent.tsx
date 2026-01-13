@@ -35,7 +35,7 @@ export default function CookieConsent() {
           className="fixed inset-0 z-10000 bg-white/80 dark:bg-black/80 backdrop-blur-2xl flex items-center justify-center p-6"
         >
           <div className="max-w-md text-center">
-            <div className="w-20 h-20 rounded-3xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8 animate-bounce">
+            <div className="w-20 h-20 rounded-3xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-8">
               <Cookie size={40} />
             </div>
             <h2 className="text-3xl font-black mb-4">Access Restricted</h2>

@@ -27,7 +27,7 @@ export default function Contact() {
                     <p className="text-sm text-foreground/60">Schedule a dedicated strategy session with our leads.</p>
                 </div>
              </div>
-             <Link href="/consultation" className="px-6 py-3 bg-primary text-white font-bold rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all whitespace-nowrap text-sm">
+             <Link href="/consultation" className="px-6 py-3 bg-primary text-white font-bold rounded-xl whitespace-nowrap text-sm">
                 Book Consultation
              </Link>
           </div>
@@ -184,13 +184,13 @@ export default function Contact() {
               <div className="mt-12 lg:mt-0 pt-10 border-t border-gray-200 dark:border-gray-800">
                 <h3 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6">Connect with us</h3>
                 <div className="flex gap-4">
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.facebook} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all text-foreground/60" href={companyDetails.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
                     <Facebook size={20} />
                   </a>
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#1DA1F2] hover:shadow-[0_0_15px_rgba(29,161,242,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.twitter} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all text-foreground/60" href={companyDetails.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
                     <Twitter size={20} />
                   </a>
-                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center hover:text-[#0077B5] hover:shadow-[0_0_15px_rgba(0,119,181,0.4)] transition-all text-foreground/60" href={companyDetails.socialLinks.linkedin} target="_blank">
+                  <a className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center transition-all text-foreground/60" href={companyDetails.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
                     <Linkedin size={20} />
                   </a>
                 </div>
@@ -201,12 +201,12 @@ export default function Contact() {
           {/* Google Maps Section */}
           <section className="mt-20 lg:mt-32">
             <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 h-[450px] relative">
-              <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 animate-pulse flex items-center justify-center">
+              <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
                 <span className="text-gray-500 dark:text-gray-400 font-medium">Loading Map...</span>
               </div>
               <iframe 
                 allowFullScreen 
-                className="w-full h-full relative z-10 border-0 grayscale hover:grayscale-0 transition-all duration-700" 
+                className="w-full h-full relative z-10 border-0 transition-all duration-700" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade" 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63044.15242337628!2d80.461621370217!3d9.040989065604473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3af9642531d054e7%3A0x6a0c5c366e6c4331!2sVavuniya%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
@@ -219,7 +219,7 @@ export default function Contact() {
                 <Clock size={16} />
                 <span>Opening Hours: Mon - Fri, 9:00 AM - 6:00 PM (IST)</span>
               </div>
-              <a className="text-primary font-bold text-sm hover:underline flex items-center gap-1" href="https://maps.google.com" target="_blank">
+              <a className="text-primary font-bold text-sm hover:underline flex items-center gap-1" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
                 Get Directions
                 <ExternalLink size={14} />
               </a>

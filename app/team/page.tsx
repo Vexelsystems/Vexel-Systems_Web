@@ -63,9 +63,9 @@ export default function TeamPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10"></div>
         <div className="max-w-[1920px] w-[90%] md:w-[80%] mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 animate-fade-in-up">              The People Behind <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Vexel Systems</span>
+            <h1 className="text-4xl md:text-6xl font-black mb-6">              The People Behind <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Vexel Systems</span>
 </h1>
-            <p className="text-xl text-foreground/60 max-w-2xl mx-auto animate-fade-in-up delay-100">
+            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
                 At Vexel Systems, our strength lies in the people who build, innovate, and lead with purpose. We are a founder-driven startup focused on delivering simple, powerful, and reliable technology solutions.
             </p>
         </div>
@@ -104,7 +104,7 @@ export default function TeamPage() {
                                 {member.role}
                             </div>
                             <h2 className="text-4xl font-bold mb-2">{member.name}</h2>
-                            <p className="text-lg text-foreground/50 font-medium italic">{member.tagline}</p>
+                            <p className="text-lg text-foreground/70 font-medium italic">{member.tagline}</p>
                         </div>
 
                         <blockquote className="border-l-4 border-primary pl-6 py-2 bg-foreground/5 rounded-r-lg">
@@ -115,7 +115,7 @@ export default function TeamPage() {
                             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                                 <Clock className="text-primary" size={20} /> About
                             </h3>
-                            <p className="text-foreground/70 leading-relaxed text-lg whitespace-pre-wrap">
+                            <p className="text-foreground/80 leading-relaxed text-lg whitespace-pre-wrap">
                                 {member.about}
                             </p>
                         </div>
@@ -181,7 +181,7 @@ export default function TeamPage() {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                                    <p className="text-foreground/60 text-sm">{item.desc}</p>
+                                    <p className="text-foreground/80 text-sm">{item.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -197,7 +197,7 @@ export default function TeamPage() {
                                 <div className="absolute top-1 -left-[9px] w-4 h-4 bg-primary rounded-full ring-4 ring-background"></div>
                                 <span className="text-sm font-bold text-primary mb-1 block">{milestone.year}</span>
                                 <h4 className="text-xl font-bold mb-2">{milestone.title}</h4>
-                                <p className="text-foreground/60">{milestone.description}</p>
+                                <p className="text-foreground/80">{milestone.description}</p>
                             </div>
                         ))}
                     </div>

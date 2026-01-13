@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import { Palette, Settings, Cloud, Code2, Database, Shield, Brain, Smartphone } from 'lucide-react';
 
@@ -258,7 +257,7 @@ export const TechStackSection = () => {
       <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
         <div className="flex flex-col items-center text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">Our Technical <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">DNA</span></h2>
-          <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
             We don't just use tools; we master them. Explore the enterprise-grade stack we use to build high-performance digital assets.
           </p>
         </div>
@@ -268,34 +267,27 @@ export const TechStackSection = () => {
           <div className="flex items-center justify-center">
             <div className="flex flex-wrap items-center justify-center gap-2 p-3 bg-primary/5 rounded-2xl max-w-full">
               {techStackCategories.map((cat) => (
-                <motion.button
+                <button
                   key={cat.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveTab(cat.id)}
                   className={`flex items-center gap-2 px-4 md:px-6 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
                     activeTab === cat.id 
                       ? 'bg-primary text-white shadow-xl scale-105 z-10' 
-                      : 'text-foreground/60 hover:text-primary hover:bg-primary/5'
+                      : 'text-foreground/80 hover:text-primary hover:bg-primary/5'
                   }`}
                 >
                   <span className="shrink-0">{cat.icon}</span>
                   <span className="hidden sm:inline">{cat.name}</span>
-                </motion.button>
+                </button>
               ))}
             </div>
           </div>
 
           {/* Tab Content */}
-          <div className="relative">
-            <AnimatePresence mode="wait">
+            <div className="relative">
               {techStackCategories.filter(s => s.id === activeTab).map((section) => (
-                <motion.div 
+                <div 
                   key={section.id} 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
                   className="w-full"
                 >
                   <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
@@ -305,7 +297,7 @@ export const TechStackSection = () => {
                       </div>
                       <div>
                         <h3 className="text-3xl md:text-4xl font-black mb-6 tracking-tight">{section.name}</h3>
-                        <p className="text-foreground/60 text-lg md:text-xl leading-relaxed">
+                        <p className="text-foreground/80 text-lg md:text-xl leading-relaxed">
                           We leverage industry-leading standards to build resilient, ultra-fast, and future-proof digital products.
                         </p>
                       </div>
@@ -313,7 +305,7 @@ export const TechStackSection = () => {
                          <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">Core Principles</h4>
                          <ul className="space-y-3">
                             {["Performance First", "Security by Design", "Maintenance-Ready Code"].map(p => (
-                              <li key={p} className="flex items-center gap-2 text-sm font-bold text-foreground/70">
+                              <li key={p} className="flex items-center gap-2 text-sm font-bold text-foreground/80">
                                  <span className="size-1.5 rounded-full bg-primary"></span> {p}
                               </li>
                             ))}
@@ -322,13 +314,10 @@ export const TechStackSection = () => {
                     </div>
 
                     <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {(techItems[section.id as keyof typeof techItems] || []).map((tech, i) => (
-                        <motion.div 
+                      {techItems[section.id as keyof typeof techItems]?.map((tech, i) => (
+                        <div 
                           key={i}
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: i * 0.1 }}
-                          className="group p-8 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-[32px] hover:border-primary/40 transition-all hover:shadow-2xl hover:-translate-y-2 shadow-sm overflow-hidden duration-300"
+                          className="group p-8 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-[32px] hover:border-primary/40 transition-all shadow-sm overflow-hidden duration-300"
                         >
                           <div className="flex justify-between items-start mb-6">
                             <h4 className="text-2xl font-black group-hover:text-primary transition-colors">{tech.name}</h4>
@@ -337,13 +326,13 @@ export const TechStackSection = () => {
                             </span>
                           </div>
                           <div className="flex flex-col gap-4 mb-8">
-                            {tech.items.map((item, subIdx) => (
+                            {tech.items.map((item: any, subIdx: number) => (
                               <div key={subIdx} className="flex flex-col gap-1">
                                 <div className="flex items-center gap-2">
                                   <span className="size-1.5 rounded-full bg-primary shrink-0"></span>
                                   <span className="text-sm font-bold text-foreground/80">{item.name}</span>
                                 </div>
-                                <p className="text-xs text-foreground/40 font-medium pl-3.5 leading-relaxed">
+                                <p className="text-xs text-foreground/70 font-medium pl-3.5 leading-relaxed">
                                   {item.desc}
                                 </p>
                               </div>
@@ -351,23 +340,20 @@ export const TechStackSection = () => {
                           </div>
                           <div className="flex items-center gap-3">
                              <div className="h-1.5 flex-1 bg-primary/10 rounded-full overflow-hidden">
-                                <motion.div 
-                                   initial={{ width: 0 }}
-                                   animate={{ width: "85%" }}
-                                   transition={{ duration: 1, delay: 0.5 }}
+                                <div 
+                                   style={{ width: "85%" }}
                                    className="h-full bg-primary"
-                                ></motion.div>
+                                ></div>
                              </div>
                              <span className="text-[10px] font-black opacity-30">PRO</span>
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
-          </div>
+            </div>
         </div>
       </div>
     </section>

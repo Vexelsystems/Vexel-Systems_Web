@@ -67,16 +67,15 @@ export const TestimonialSection = () => {
                <Star className="w-4 h-4" /> Client Success
             </div>
             <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Trusted by Industry <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Leaders</span></h2>
-            <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
               We don't just build software; we build lasting partnerships. Here's what our clients have to say about their journey with Vexel.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t) => (
-               <motion.div 
+               <div 
                  key={t.id} 
-                 whileHover={{ y: -10, scale: 1.01 }}
                  className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 transition-all duration-300 flex flex-col h-full"
                >
                   <Quote className="absolute top-8 right-8 text-primary/10 w-16 h-16 transform rotate-180" />
@@ -91,14 +90,14 @@ export const TestimonialSection = () => {
 
                   <div className="flex items-center gap-4 pt-6 border-t border-dashed border-primary/10">
                      <div className="relative size-12 rounded-full overflow-hidden border-2 border-primary/20">
-                        <Image src={t.image} alt={t.name} fill className="object-cover" sizes="48px" />
+                        <Image src={t.image} alt={t.name} fill className="object-cover" sizes="48px" unoptimized />
                      </div>
                      <div>
-                        <h4 className="font-bold text-foreground">{t.name}</h4>
+                        <h3 className="font-bold text-foreground">{t.name}</h3>
                         <p className="text-xs font-bold text-primary uppercase tracking-wide">{t.role}</p>
                      </div>
                   </div>
-               </motion.div>
+               </div>
             ))}
           </div>
         </div>
@@ -110,7 +109,7 @@ export const TestimonialSection = () => {
 
          <div className="relative z-10 text-center mb-12">
             <h2 className="text-2xl md:text-4xl font-black text-foreground mb-2">Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Impact</span></h2>
-            <p className="text-foreground/60 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-foreground/80 text-lg max-w-2xl mx-auto leading-relaxed">
               Numbers that speak louder than words
             </p>
          </div>
@@ -122,26 +121,25 @@ export const TestimonialSection = () => {
               { number: "50+", label: "Happy Clients" },
               { number: "24/7", label: "Support Available" }
             ].map((stat, idx) => (
-               <motion.div 
+               <div 
                  key={idx} 
-                 whileHover={{ y: -8, scale: 1.05 }}
                  className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/40 transition-all duration-300 text-center"
                >
                   <h3 className="text-4xl md:text-5xl font-black text-primary mb-2">{stat.number}</h3>
-                  <p className="text-sm font-bold text-foreground/60 uppercase tracking-wide">{stat.label}</p>
-               </motion.div>
+                  <p className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{stat.label}</p>
+               </div>
             ))}
          </div>
         </section>
 
       {/* Industries We Serve Section */}
       <section className="py-20 w-[90%] md:w-[80%] mx-auto mb-20">
-         <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">Industries We <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Serve</span></h2>
-            <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">Industries We <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Serve</span></h2>
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
               Delivering tailored solutions across diverse sectors
             </p>
-         </div>
+          </div>
 
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
@@ -158,23 +156,14 @@ export const TestimonialSection = () => {
               { name: "Automotive", icon: "🚗", desc: "Auto Services" },
               { name: "Manufacturing", icon: "🏭", desc: "Industry 4.0" }
             ].map((industry, idx) => (
-               <motion.div 
+               <div 
                  key={idx} 
-                 initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ 
-                   duration: 0.5, 
-                   delay: idx * 0.1,
-                   ease: "easeOut"
-                 }}
-                 whileHover={{ y: -5, scale: 1.03 }}
                  className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 text-center"
                >
                   <div className="text-4xl mb-3">{industry.icon}</div>
                   <h3 className="text-lg font-black text-foreground mb-1">{industry.name}</h3>
-                  <p className="text-xs text-foreground/60 font-medium">{industry.desc}</p>
-               </motion.div>
+                  <p className="text-xs text-foreground/70 font-medium">{industry.desc}</p>
+               </div>
             ))}
          </div>
         </section>
@@ -182,8 +171,8 @@ export const TestimonialSection = () => {
       {/* FAQ Section */}
       <section className="py-20 w-[90%] md:w-[80%] mx-auto mb-20">
          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4">Frequently Asked <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Questions</span></h2>
-            <p className="text-lg text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">Frequently Asked <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Questions</span></h2>
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
               Quick answers to common questions
             </p>
          </div>
@@ -196,20 +185,19 @@ export const TestimonialSection = () => {
               { q: "Can you work with our existing team?", a: "Absolutely! We seamlessly integrate with your in-house team and follow your development processes." },
               { q: "What are your payment terms?", a: "We offer flexible payment plans with milestone-based payments. Contact us for custom pricing." }
             ].map((faq, idx) => (
-               <motion.details 
+               <details 
                  key={idx}
-                 whileHover={{ scale: 1.01 }}
                  className="group bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 cursor-pointer"
                >
                   <summary className="font-bold text-foreground flex items-center justify-between cursor-pointer">
                      {faq.q}
                      <span className="text-primary text-2xl group-open:rotate-45 transition-transform">+</span>
                   </summary>
-                  <p className="mt-4 text-foreground/70 leading-relaxed">{faq.a}</p>
-               </motion.details>
+                  <p className="mt-4 text-foreground/80 leading-relaxed">{faq.a}</p>
+               </details>
             ))}
          </div>
-        </section>
+      </section>
 
       <section className="py-20 bg-linear-to-r from-primary to-purple-600 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden">
          <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-sm"></div>
@@ -220,25 +208,21 @@ export const TestimonialSection = () => {
               Let's turn your vision into reality. Schedule a free consultation and get a custom proposal within 48 hours.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-               <motion.a 
+               <a 
                  href="/consultation"
-                 whileHover={{ scale: 1.05 }}
-                 whileTap={{ scale: 0.95 }}
                  className="px-8 py-4 bg-white text-primary font-black rounded-2xl shadow-2xl hover:shadow-white/20 transition-all"
                >
                  Schedule Free Consultation
-               </motion.a>
-               <motion.a 
+               </a>
+               <a 
                  href="/pricing"
-                 whileHover={{ scale: 1.05 }}
-                 whileTap={{ scale: 0.95 }}
                  className="px-8 py-4 bg-white/10 backdrop-blur-md text-white font-black rounded-2xl border-2 border-white/30 hover:bg-white/20 transition-all"
                >
                  View Pricing
-               </motion.a>
+               </a>
             </div>
          </div>
-        </section>
-      </div>
+      </section>
+    </div>
   );
 };

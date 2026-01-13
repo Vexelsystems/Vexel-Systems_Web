@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 
 
 import Link from "next/link";
@@ -122,7 +121,6 @@ export default function RootLayout({
             })
           }}
         />
-        <Preloader />
         <Navbar />
         <div className="pt-24 min-h-screen flex flex-col  mx-auto">
           {children}

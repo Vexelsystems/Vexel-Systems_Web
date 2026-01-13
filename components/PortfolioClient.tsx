@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { Star, ArrowRight, Activity, TrendingUp, Zap, Server, Shield, CheckCircle2 } from 'lucide-react';
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
@@ -65,10 +64,8 @@ export default function PortfolioClient() {
                 }`}
               >
                 {activeCategory === cat && (
-                  <motion.div 
-                    layoutId="activeFilter"
+                  <div 
                     className="absolute inset-0 bg-primary rounded-full shadow-lg shadow-primary/30"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 <span className="relative z-10">{cat}</span>
@@ -82,12 +79,8 @@ export default function PortfolioClient() {
       <section className="mb-32">
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
            <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, idx) => (
-              <motion.div 
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
+            {filteredProjects.map((project) => (
+              <div 
                 key={project.id} 
                 className="min-w-[85vw] md:min-w-0 snap-center group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
               >
@@ -117,7 +110,7 @@ export default function PortfolioClient() {
                       ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
            </SnapCarousel>
            {filteredProjects.length === 0 && (
@@ -168,33 +161,23 @@ export default function PortfolioClient() {
                         ))}
                      </div>
 
-                     <motion.button 
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                     <button 
                         className="w-fit bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-all mt-4"
                      >
                         Read Full Case Study <ArrowRight size={18} />
-                     </motion.button>
+                     </button>
                   </div>
                   
                   {/* Right Side Visual/Abstract */}
                   <div className="hidden lg:flex justify-center items-center">
                      <div className="relative w-full aspect-square max-w-md">
                         {/* Abstract floating cards effect */}
-                         <motion.div 
-                           animate={{ y: [0, -20, 0] }}
-                           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                           className="absolute top-0 right-0 w-3/4 aspect-video bg-gray-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-20"
-                         >
+                         <div className="absolute top-0 right-0 w-3/4 aspect-video bg-gray-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-20">
                             <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="UI 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
-                         </motion.div>
-                         <motion.div 
-                           animate={{ y: [0, 30, 0] }}
-                           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                           className="absolute bottom-10 left-0 w-3/4 aspect-video bg-gray-800 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-10 opacity-60"
-                         >
+                         </div>
+                         <div className="absolute bottom-10 left-0 w-3/4 aspect-video bg-gray-800 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-10 opacity-60">
                             <Image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="UI 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
-                         </motion.div>
+                         </div>
                      </div>
                   </div>
                </div>
@@ -219,22 +202,18 @@ export default function PortfolioClient() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 pt-6">
                      <Link href="/consultation">
-                        <motion.button 
-                           whileHover={{ scale: 1.05 }}
-                           whileTap={{ scale: 0.95 }}
+                        <button 
                            className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-2xl shadow-white/10"
                         >
                            Schedule Consultation
-                        </motion.button>
+                        </button>
                      </Link>
                      <Link href="/services">
-                        <motion.button 
-                           whileHover={{ scale: 1.05 }}
-                           whileTap={{ scale: 0.95 }}
+                        <button 
                            className="bg-white/5 border border-white/10 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm"
                         >
                            Explore Services
-                        </motion.button>
+                        </button>
                      </Link>
                   </div>
                </div>

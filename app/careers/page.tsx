@@ -22,13 +22,13 @@ export default function CareersPage() {
       {/* Hero */}
       <section className="text-center max-w-4xl mx-auto py-12">
         <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6 animate-in fade-in zoom-in duration-500"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6"
         >
           <Star size={16} />
           Join the Revolution
         </div>
-        <h1 className="text-6xl font-bold mb-6 animate-in slide-in-from-bottom-8 fade-in duration-700">Build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Future of Commerce</span> with Us.</h1>
-        <p className="text-xl text-foreground/60 leading-relaxed animate-in slide-in-from-bottom-4 fade-in duration-700 delay-200">
+        <h1 className="text-6xl font-bold mb-6">Build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Future of Commerce</span> with Us.</h1>
+        <p className="text-xl text-foreground/60 leading-relaxed">
           We're a team of innovators, dreamers, and doers on a mission to empower 
           businesses across Asia. Find your role and help us change the world of retail.
         </p>

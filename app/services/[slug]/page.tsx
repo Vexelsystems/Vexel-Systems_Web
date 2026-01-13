@@ -82,7 +82,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-6">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
             {service.subtitle}
@@ -105,6 +104,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <a 
               href={`https://wa.me/94740968108?text=${encodeURIComponent(`Hi, I am interested in learning more about ${service.title} services.`)}`}
               target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-[#25D366] text-white font-bold rounded-xl text-lg hover:bg-[#20bd5a] transition-all flex items-center justify-center gap-2"
             >
                WhatsApp
@@ -155,7 +155,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                     </div>
                 )}
                 {!sub.image && (
-                    <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                    <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 transition-transform">
                         <sub.icon size={32} />
                     </div>
                 )}
@@ -349,7 +349,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             </div>
             <SnapCarousel>
               {service.industries.map((ind, idx) => (
-                  <div key={idx} className="min-w-[40vw] md:min-w-0 snap-center group relative overflow-hidden rounded-xl bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 transition-all hover:scale-[1.02]">
+                  <div key={idx} className="min-w-[40vw] md:min-w-0 snap-center group relative overflow-hidden rounded-xl bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 transition-all">
                       {ind.image ? (
                           <>
                             <div className="relative w-full aspect-video">
@@ -357,7 +357,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                                     src={ind.image}
                                     alt={ind.name}
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    className="object-cover transition-transform duration-500"
                                     sizes="(max-width: 768px) 40vw, 25vw"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>

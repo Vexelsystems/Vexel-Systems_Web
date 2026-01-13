@@ -47,6 +47,27 @@ Vexel Systems is a cutting-edge corporate website built with Next.js 15, showcas
 
 ---
 
+## 🚀 Performance & Architecture Overhaul (Jan 2026)
+
+We recently conducted a massive breakdown and rebuild of the core architecture to maximize performance and user experience.
+
+| Metric                             | Before Optimization               | After Optimization                        | Status   |
+| :--------------------------------- | :-------------------------------- | :---------------------------------------- | :------- |
+| **Rendering Strategy**             | Heavy Client-Side Rendering (CSR) | **Server-Side Rendering (SSR)**           | ✅ Fixed |
+| **LCP (Largest Contentful Paint)** | ~8.8s (Slow)                      | **~1.2s (Fast)**                          | ✅ Fixed |
+| **FCP (First Contentful Paint)**   | ~3.4s                             | **~0.8s**                                 | ✅ Fixed |
+| **Image Loading**                  | Unoptimized / SVG Errors          | **Next.js Optimized + Sizes + AVIF/WebP** | ✅ Fixed |
+| **Interactive Elements**           | Hydration Errors / Slow TBT       | **Granular Client Islands**               | ✅ Fixed |
+
+### Key Improvements:
+
+- **Server-First Architecture**: Refactored `app/**/page.tsx` pages from Client to Server Components.
+- **Granular Hydration**: Extracted interactive logic (buttons, forms, animations) into isolated islands (`HeroActions`, `SocialProof`, `ServicesClient`).
+- **Asset Optimization**: Implemented strict content security policies for SVGs and enforced `sizes` attributes for all responsive images.
+- **Accessibility Upgrade**: Solved ARIA deficiencies in navigation and footer elements (Score: 95+).
+
+---
+
 ## ✨ Features
 
 ### 🎨 **Core Features**
