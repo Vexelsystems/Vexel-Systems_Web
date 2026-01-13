@@ -74,6 +74,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 src={service.heroImage} 
                 alt={service.title}
                 fill
+                priority
                 sizes="100vw"
                 className="object-cover object-center"
              />

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-data';
 import { Search, Calendar, Clock, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 const categories = ['All', 'Technology', 'Business', 'POS', 'Guides'] as const;
 
@@ -82,10 +83,12 @@ export default function BlogClient() {
               >
                 {/* Image Container */}
                 <div className="relative h-64 overflow-hidden">
-                  <img 
+                  <Image 
                     src={post.image} 
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-700"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-white/90 dark:bg-black/90 backdrop-blur-md text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">

@@ -84,6 +84,7 @@ export default function TeamPage() {
                                 src={member.image} 
                                 alt={member.name} 
                                 fill 
+                                priority
                                 sizes="(max-width: 768px) 90vw, 33vw"
                                 className="object-cover"
                             />

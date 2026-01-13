@@ -6,6 +6,7 @@ import { generateDynamicMetadata, generateArticleSchema, BASE_URL } from '@/lib/
 import { Calendar, User, Clock, ChevronLeft, Share2, Facebook, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
+import Image from 'next/image';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -110,11 +111,14 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           </div>
 
           {/* Featured Image */}
-          <div className="aspect-video rounded-[40px] overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl">
-            <img 
+          <div className="aspect-video relative rounded-[40px] overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl">
+            <Image 
               src={post.image} 
               alt={post.title}
-              className="w-full h-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              className="object-cover"
             />
           </div>
 
@@ -155,8 +159,8 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <SnapCarousel scrollContainerClassName="md:flex md:flex-col md:gap-8">
               {relatedPosts.map((rp) => (
                 <Link key={rp.slug} href={`/blog/${rp.slug}`} className="min-w-[80vw] md:min-w-0 snap-center group flex flex-col gap-3">
-                  <div className="aspect-video rounded-2xl overflow-hidden mb-2">
-                    <img src={rp.image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="aspect-video relative rounded-2xl overflow-hidden mb-2">
+                    <Image src={rp.image} alt={rp.title} fill sizes="(max-width: 768px) 80vw, 300px" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <h5 className="font-bold group-hover:text-primary transition-colors line-clamp-2">
                     {rp.title}
