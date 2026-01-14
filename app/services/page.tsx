@@ -1,6 +1,8 @@
 
 import { generatePageMetadata } from "@/lib/seo";
 import ServicesClient from "@/components/ServicesClient";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 /**
  * SERVICES ROOT PAGE
@@ -30,25 +32,56 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-transparent">
       {/* Hero Section */}
-      <section className="relative py-20 px-6">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-          <div 
-            className="flex min-h-[300px] md:min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md" 
-            style={{
-              backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.4) 0%, rgba(16, 28, 34, 0.6) 100%), url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop")'
-            }}
-          >
-            <div className="z-10 flex flex-col gap-4 max-w-3xl">
-              <h1 className="text-white text-3xl md:text-6xl font-black leading-tight tracking-tight">
-                Explore Our <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Services</span>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
+
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge Replicated */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Our Services</span>
+            </div>
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
+                Global Tech Solutions
+              </h2>
+              
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
+                <span className="text-foreground">Explore Our</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  Comprehensive Services.
+                </span>
               </h1>
-              <p className="text-white/80 text-lg md:text-xl font-normal leading-relaxed">
-                Discover the perfect technology solutions tailored to your business goals.
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
+                Discover the perfect technology solutions tailored to your business goals. From custom software to AI integration, we build for the future.
               </p>
             </div>
 
+            {/* Hero Actions Replicated */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
+              <Link href="/contact">
+                <button 
+                  className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
+                >
+                  Start a Project
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
 
-          </div>
+              <Link href="/portfolio">
+                <button 
+                  className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-foreground/10 hover:border-primary/30 transition-all backdrop-blur-sm"
+                >
+                  View Case Studies
+                </button>
+              </Link>
+            </div>
         </div>
       </section>
 

@@ -1,154 +1,181 @@
 import Link from "next/link";
-import { ArrowLeft, Search, Calendar, Shield, CreditCard, Receipt, Share } from "lucide-react";
+import { FileText, CreditCard, AlertTriangle, Ban, ArrowRight, BookOpen, Scale, HelpCircle } from "lucide-react";
 
 /**
  * TERMS OF SERVICE PAGE
  * 
  * Functional Overview:
- * - Navigation: Implements on-page anchor linking (#usage, #payments) for quick section jumping.
- * - Layout: Features a sticky top header with horizontal scrollable chips for mobile accessibility.
- * - Components: Uses standard HTML semantic sections with `scroll-mt` classes to offset fixed header height.
+ * - Redesigned to match Cookie Policy layout.
+ * - Standardized Hero Section.
+ * - Sticky Sidebar Navigation for sections.
  */
 
 export default function Terms() {
   return (
-    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-      {/* TopAppBar */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div className="flex items-center p-4 pb-2 justify-between">
-          <Link href="/" className="text-primary flex size-12 shrink-0 items-center justify-start cursor-pointer hover:opacity-80 transition-opacity">
-            <ArrowLeft size={24} />
-          </Link>
-          <h2 className="text-foreground text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Legal Center</h2>
-          <div className="flex w-12 items-center justify-end">
-            <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-primary gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-primary/5 transition-colors">
-              <Search size={24} />
-            </button>
-          </div>
-        </div>
-        {/* Quick Navigation Chips (Anchor Links) */}
-        <div className="flex gap-3 p-3 overflow-x-auto no-scrollbar scroll-smooth">
-          <a className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4 hover:bg-primary/90 transition-colors" href="#usage">
-            <p className="text-sm font-medium leading-normal">Usage</p>
-          </a>
-          <a className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-foreground px-4 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" href="#payments">
-            <p className="text-sm font-medium leading-normal">Payments</p>
-          </a>
-          <a className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-foreground px-4 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" href="#liability">
-            <p className="text-sm font-medium leading-normal">Liability</p>
-          </a>
-          <a className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-foreground px-4 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors" href="#termination">
-            <p className="text-sm font-medium leading-normal">Termination</p>
-          </a>
-        </div>
-      </header>
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
-      <main className="flex-1 w-[90%] md:w-[80%] mx-auto max-w-4xl">
-        {/* HeadlineText */}
-        <h1 className="text-foreground tracking-tight text-[32px] font-bold leading-tight px-4 text-left pb-1 pt-6">Terms of <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Service</span></h1>
-        {/* MetaText */}
-        <div className="flex items-center px-4 pb-6 pt-1">
-          <Calendar className="text-foreground/60 mr-2" size={16} />
-          <p className="text-foreground/60 text-sm font-normal leading-normal">Last updated: October 24, 2023</p>
-        </div>
-        {/* Intro Section */}
-        <div className="px-4 pb-6">
-          <p className="text-foreground leading-relaxed">
-            Welcome to Vexel Systems. These Terms & Conditions govern your access to and use of Vexel Systems' website, services, and software applications. By using our services, you agree to be bound by these terms.
-          </p>
-        </div>
-
-        {/* Section 1: Service Usage */}
-        <section className="scroll-mt-32" id="usage">
-          <div className="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mt-4">
-            <h3 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">1. Service Usage</h3>
-          </div>
-          <div className="px-4 py-4 space-y-4">
-            <p className="text-foreground leading-relaxed">
-              You must be at least 18 years old to use our Services. By agreeing to these Terms, you represent and warrant that you are of legal age.
-            </p>
-            <ul className="list-decimal list-inside space-y-3 pl-2 text-foreground">
-              <li className="pl-2"><span className="font-semibold">Account Security:</span> You are responsible for maintaining the confidentiality of your account credentials.</li>
-              <li className="pl-2"><span className="font-semibold">Prohibited Conduct:</span> You agree not to misuse the Services or help anyone else do so. This includes attempting to access non-public areas of the Service.</li>
-              <li className="pl-2"><span className="font-semibold">Software License:</span> Vexel Systems grants you a personal, worldwide, royalty-free, non-assignable and non-exclusive license to use the software provided.</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Section 2: Payments */}
-        <section className="scroll-mt-32" id="payments">
-          <div className="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mt-6">
-            <h3 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">2. Payments & Billing</h3>
-          </div>
-          <div className="px-4 py-4 space-y-4">
-            <p className="text-foreground leading-relaxed">
-              Some aspects of the Service may be provided for a fee. If you elect to use paid features, you agree to the pricing and payment terms.
-            </p>
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 space-y-3">
-              <div className="flex items-start gap-3">
-                <CreditCard className="text-primary mt-1" size={24} />
-                <div>
-                  <h4 className="font-bold text-foreground">Subscription Cycles</h4>
-                  <p className="text-sm text-foreground/60">Fees are billed in advance on a monthly or annual basis and are non-refundable except as required by law.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Receipt className="text-primary mt-1" size={24} />
-                <div>
-                  <h4 className="font-bold text-foreground">Taxes</h4>
-                  <p className="text-sm text-foreground/60">All fees are exclusive of taxes, and you are responsible for their payment.</p>
-                </div>
-              </div>
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Legal Center</span>
             </div>
-          </div>
-        </section>
 
-        {/* Section 3: Liability */}
-        <section className="scroll-mt-32" id="liability">
-          <div className="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mt-6">
-            <h3 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">3. Limitation of Liability</h3>
-          </div>
-          <div className="px-4 py-4">
-            <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-5 bg-white dark:bg-black shadow-sm">
-              <p className="uppercase text-xs font-bold tracking-widest text-foreground/60 mb-3">Legal Disclaimer</p>
-              <p className="text-foreground italic leading-relaxed">
-                "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, VEXEL SYSTEMS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY."
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
+                <span className="text-foreground">Terms of </span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  Service
+                </span>
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
+                Please read these terms carefully before using our services.
               </p>
             </div>
-            <p className="mt-4 text-foreground">
+        </div>
+      </section>
+
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-12 flex flex-col lg:flex-row gap-12">
+        {/* Side Navigation */}
+        <aside className="lg:w-72 shrink-0">
+          <div className="hidden lg:block sticky top-32 space-y-8">
+            <div>
+              <h3 className="text-foreground text-sm font-bold uppercase tracking-widest mb-4">Table of Contents</h3>
+              <p className="text-foreground/60 text-xs mb-6">Last updated: January 14, 2026</p>
+              <nav className="flex flex-col gap-1">
+                <a className="group flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#usage">
+                  <FileText size={20} />
+                  <span className="text-sm font-semibold">Service Usage</span>
+                </a>
+                <a className="group flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/70 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#payments">
+                  <CreditCard size={20} />
+                  <span className="text-sm font-medium">Payments & Billing</span>
+                </a>
+                <a className="group flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/70 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#liability">
+                  <AlertTriangle size={20} />
+                  <span className="text-sm font-medium">Liability</span>
+                </a>
+                <a className="group flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/70 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" href="#termination">
+                  <Ban size={20} />
+                  <span className="text-sm font-medium">Termination</span>
+                </a>
+              </nav>
+            </div>
+            <div className="p-6 rounded-xl bg-inner-box border border-gray-200 dark:border-gray-800">
+              <h4 className="text-foreground text-sm font-bold mb-2">Have Questions?</h4>
+              <p className="text-foreground/60 text-xs leading-relaxed mb-4">If you have any doubts about our terms, legal team is here to help.</p>
+              <a className="text-primary text-xs font-bold hover:underline" href="/contact">Contact Support</a>
+            </div>
+          </div>
+        </aside>
+
+        {/* Content Area */}
+        <article className="flex-1 max-w-4xl space-y-16">
+          <div className="prose dark:prose-invert max-w-none text-foreground/70 leading-relaxed space-y-4">
+            <p className="text-lg">
+              Welcome to Vexel Systems. These Terms & Conditions govern your access to and use of Vexel Systems' website, services, and software applications. By using our services, you agree to be bound by these terms.
+            </p>
+          </div>
+
+          <section id="usage" className="scroll-mt-32">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-bold">1</span>
+              Service Usage
+            </h2>
+            <div className="prose dark:prose-invert max-w-none text-foreground/70 leading-relaxed space-y-4">
+              <p>
+                You must be at least 18 years old to use our Services. By agreeing to these Terms, you represent and warrant that you are of legal age.
+              </p>
+              <ul className="list-none space-y-4 mt-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5"></div>
+                  <span><strong className="text-foreground">Account Security:</strong> You are responsible for maintaining the confidentiality of your account credentials.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5"></div>
+                  <span><strong className="text-foreground">Prohibited Conduct:</strong> You agree not to misuse the Services or help anyone else do so. This includes attempting to access non-public areas of the Service.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5"></div>
+                  <span><strong className="text-foreground">Software License:</strong> Vexel Systems grants you a personal, worldwide, royalty-free, non-assignable and non-exclusive license to use the software provided.</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="payments" className="scroll-mt-32">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-bold">2</span>
+              Payments & Billing
+            </h2>
+            <div className="prose dark:prose-invert max-w-none text-foreground/70 leading-relaxed space-y-4">
+              <p>
+                Some aspects of the Service may be provided for a fee. If you elect to use paid features, you agree to the pricing and payment terms.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6 mt-6">
+                <div className="p-5 rounded-xl border border-gray-200 dark:border-gray-800 bg-black/5 dark:bg-white/5">
+                  <h4 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <CreditCard className="text-primary" size={18} /> Subscription Cycles
+                  </h4>
+                  <p className="text-sm">Fees are billed in advance on a monthly or annual basis and are non-refundable except as required by law.</p>
+                </div>
+                <div className="p-5 rounded-xl border border-gray-200 dark:border-gray-800 bg-black/5 dark:bg-white/5">
+                  <h4 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Scale className="text-primary" size={18} /> Taxes
+                  </h4>
+                  <p className="text-sm">All fees are exclusive of taxes, and you are responsible for their payment.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="liability" className="scroll-mt-32">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-bold">3</span>
+              Limitation of Liability
+            </h2>
+             <div className="p-6 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400">
+                <h4 className="text-sm font-black uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <AlertTriangle size={16} /> Legal Disclaimer
+                </h4>
+                <p className="italic font-medium leading-relaxed text-foreground/80">
+                  "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, VEXEL SYSTEMS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES."
+                </p>
+            </div>
+            <p className="mt-6 text-foreground/70 leading-relaxed">
               Our total liability for any claim arising out of or relating to these terms or the services, regardless of the form of the action, is limited to the amount paid by you to use the services in the 12 months preceding the claim.
             </p>
-          </div>
-        </section>
+          </section>
 
-        {/* Section 4: Termination */}
-        <section className="scroll-mt-32 mb-20" id="termination">
-          <div className="bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mt-6">
-            <h3 className="text-foreground text-xl font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">4. Termination</h3>
-          </div>
-          <div className="px-4 py-4 space-y-4">
-            <p className="text-foreground">
-              We may terminate or suspend your access to the Services at any time, with or without cause, and with or without notice. Upon termination, your right to use the Services will immediately cease.
-            </p>
-            <p className="text-foreground">
-              If you have any questions about these Terms, please contact us at <a href="mailto:vexelsystems@gmail.com" className="text-primary hover:underline">vexelsystems@gmail.com</a>.
-            </p>
-          </div>
-        </section>
-      </main>
-
-      {/* Fixed Footer Action */}
-      <footer className="fixed bottom-0 left-0 right-0 p-4 bg-white/95 dark:bg-black/95 border-t border-gray-200 dark:border-gray-800 backdrop-blur-sm">
-        <div className="max-w-3xl mx-auto flex gap-3">
-          <button className="flex-1 h-12 bg-primary hover:bg-primary/90 transition-colors text-white rounded-lg font-bold text-base shadow-lg shadow-primary/20">
-            I Accept These Terms
-          </button>
-          <button className="w-12 h-12 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 text-foreground/60 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-            <Share size={24} />
-          </button>
-        </div>
-      </footer>
-      <div className="h-20 bg-transparent"></div>
-    </div>
+          <section id="termination" className="scroll-mt-32">
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-bold">4</span>
+              Termination
+            </h2>
+             <div className="prose dark:prose-invert max-w-none text-foreground/70 leading-relaxed space-y-4">
+                <p>
+                We may terminate or suspend your access to the Services at any time, with or without cause, and with or without notice. Upon termination, your right to use the Services will immediately cease.
+                </p>
+                <div className="flex items-center gap-2 p-4 rounded-lg bg-primary/5 border border-primary/10 mt-4">
+                    <HelpCircle className="text-primary shrink-0" size={20} />
+                    <p className="text-sm m-0">
+                        If you have any questions about these Terms, please contact us at <a href="mailto:vexelsystems@gmail.com" className="text-primary font-bold hover:underline">vexelsystems@gmail.com</a>.
+                    </p>
+                </div>
+            </div>
+          </section>
+          
+          {/* Footer spacer */}
+          <div className="h-24"></div>
+        </article>
+      </div>
+    </main>
   );
 }

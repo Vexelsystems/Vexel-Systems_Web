@@ -50,19 +50,34 @@ export default function FaqClient() {
   return (
     <div className="flex flex-col">
       {/* Hero Search Section */}
-      <section className="mb-12 relative w-full">
-        <div 
-          className="relative overflow-hidden w-full bg-cover bg-center flex flex-col items-center justify-center gap-8 min-h-[400px]"
-          style={{ 
-            backgroundImage: `linear-gradient(rgba(13, 27, 26, 0.8), rgba(13, 27, 26, 0.4)), url("https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop")` 
-          }}
-        >
-          <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col items-center">
-            <div className="text-center max-w-2xl">
-                <h1 className="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Master <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">FAQ</span> Center</h1>
-                <p className="text-primary text-lg md:text-xl font-medium mb-8">Empowering your business with instant software & POS solutions</p>
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
+
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Support Center</span>
             </div>
-            <div className="w-full max-w-2xl bg-white dark:bg-card rounded-xl shadow-2xl overflow-hidden p-1 flex">
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
+                <span className="text-foreground">Master</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  FAQ Center
+                </span>
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-8">
+                Empowering your business with instant software & POS solutions.
+              </p>
+
+              {/* Search Bar */}
+              <div className="w-full max-w-2xl bg-white dark:bg-zinc-900/50 backdrop-blur-md rounded-xl shadow-2xl overflow-hidden p-1 flex border border-primary/10">
                 <input 
                     className="w-full border-none focus:ring-0 bg-transparent text-black dark:text-white placeholder:text-foreground/70 text-lg py-4 px-6 outline-none" 
                     placeholder="Search by topic, keyword, or error code..." 
@@ -73,8 +88,8 @@ export default function FaqClient() {
                 <button className="bg-primary text-white px-8 rounded-lg font-bold text-sm uppercase tracking-wider hover:brightness-105 transition-all">
                     Search
                 </button>
+              </div>
             </div>
-          </div>
         </div>
       </section>
 

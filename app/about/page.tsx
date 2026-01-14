@@ -29,42 +29,55 @@ export const metadata = generatePageMetadata({
 
 export default function About() {
   return (
-    <main className="min-h-[60vh] md:min-h-screen pt-24 lg:pt-32">
+    <main className="min-h-[60vh] md:min-h-screen">
       {/* Hero Section */}
-      <section className="mb-24">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative group">
-                <div className="absolute -inset-4 bg-primary/20 rounded-xl blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
-                <div className="relative aspect-video bg-center bg-cover rounded-xl shadow-2xl overflow-hidden">
-                <Image
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
-                    alt="Modern high-tech workspace with professional developers"
-                    fill
-                    sizes="(max-width: 1200px) 100vw, 50vw"
-                    className="object-cover"
-                />
-                </div>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
+
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge Replicated */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Our Story</span>
             </div>
-            <div className="flex flex-col gap-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider rounded-full w-fit">
-                Our Story
-                </div>
-                <h1 className="text-3xl lg:text-6xl font-black tracking-tight leading-tight text-foreground">
-                Pioneering Digital <br /><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Global Excellence</span>
-                </h1>
-                <p className="text-lg text-foreground/60 leading-relaxed max-w-xl">
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
+                Pioneering Digital Excellence
+              </h2>
+              
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
+                <span className="text-foreground">Bridging Global</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  Innovation & Tech.
+                </span>
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
                 A premier software and technology solutions provider, bridging the gap between Sri Lankan innovation and global business needs. We empower enterprises with future-ready digital transformations.
-                </p>
-                <div className="flex gap-4">
-                <button className="bg-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl hover:shadow-primary/30 transition-all">
-                    View Our Work
-                </button>
-                <button className="border-2 border-gray-200 dark:border-gray-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-foreground">
-                    Contact Us
-                </button>
-                </div>
+              </p>
             </div>
+
+            {/* Hero Actions Replicated */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
+              <button 
+                className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
+              >
+                View Our Work
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <Link href="/contact">
+                <button 
+                  className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-foreground/10 hover:border-primary/30 transition-all backdrop-blur-sm"
+                >
+                  Contact Us
+                </button>
+              </Link>
             </div>
         </div>
       </section>

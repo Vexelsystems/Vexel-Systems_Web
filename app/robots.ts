@@ -1,11 +1,11 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 /**
  * ROBOTS.TXT GENERATOR
- * 
+ *
  * Functional Overview:
  * - Purpose: Instructions for search engine crawlers.
- * - Rules: 
+ * - Rules:
  *   - Allows indexing of the main site (`/`).
  *   - Disallows sensitive/system paths (`/api/`, `/_next/`, `/admin/`).
  *   - Sets a modest `crawlDelay` to prevent server overload.
@@ -14,30 +14,53 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
+        userAgent: "*",
+        allow: "/",
         disallow: [
-          '/api/',
-          '/_next/',
-          '/admin/',
-          '/test-popups/',
-          '/maintenance/',
-          '/*.json$',
-          '/quote/success',
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/login/",
+          "/test-popups/",
+          "/maintenance/",
+          "/*.json$",
+          "/quote/success",
         ],
-        crawlDelay: 1,
+        crawlDelay: 15,
       },
       {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/test-popups/', '/maintenance/'],
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/test-popups/",
+          "/maintenance/",
+        ],
       },
       {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/test-popups/', '/maintenance/'],
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/test-popups/",
+          "/maintenance/",
+        ],
+      },
+      {
+        userAgent: [
+          "GPTBot",
+          "PerplexityBot",
+          "ClaudeBot",
+          "Applebot-Extended",
+        ],
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/admin/"],
       },
     ],
-    sitemap: 'https://www.vexelsystems.lk/sitemap.xml',
+    sitemap: "https://www.vexelsystems.lk/sitemap.xml",
   };
 }

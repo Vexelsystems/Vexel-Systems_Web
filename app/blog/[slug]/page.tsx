@@ -153,18 +153,41 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <h4 className="font-bold uppercase tracking-widest text-foreground/40 text-xs">Share this insight:</h4>
             <SnapCarousel scrollContainerClassName="md:flex md:flex-wrap md:gap-4">
               {[
-                { icon: <Facebook size={20} />, label: 'Facebook', bg: 'hover:bg-[#1877F2]' },
-                { icon: <Twitter size={20} />, label: 'Twitter', bg: 'hover:bg-[#1DA1F2]' },
-                { icon: <Linkedin size={20} />, label: 'LinkedIn', bg: 'hover:bg-[#0A66C2]' },
-                { icon: <MessageCircle size={20} />, label: 'WhatsApp', bg: 'hover:bg-[#25D366]' },
+                { 
+                  icon: <Facebook size={20} />, 
+                  label: 'Facebook', 
+                  bg: 'hover:bg-[#1877F2]',
+                  url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                },
+                { 
+                  icon: <Twitter size={20} />, 
+                  label: 'Twitter', 
+                  bg: 'hover:bg-[#1DA1F2]',
+                  url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                },
+                { 
+                  icon: <Linkedin size={20} />, 
+                  label: 'LinkedIn', 
+                  bg: 'hover:bg-[#0A66C2]',
+                  url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                },
+                { 
+                  icon: <MessageCircle size={20} />, 
+                  label: 'WhatsApp', 
+                  bg: 'hover:bg-[#25D366]',
+                  url: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${BASE_URL}/blog/${post.slug}`)}`
+                },
               ].map((social) => (
-                <button 
+                <a 
                   key={social.label}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`min-w-fit flex items-center gap-2 px-6 py-3 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 font-bold text-sm transition-all hover:text-white ${social.bg} hover:border-transparent snap-center`}
                 >
                   {social.icon}
                   {social.label}
-                </button>
+                </a>
               ))}
             </SnapCarousel>
           </div>

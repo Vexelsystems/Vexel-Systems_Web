@@ -9,6 +9,22 @@ import { Terminal, RefreshCcw, CheckCircle, AlertTriangle, CreditCard, Zap, Info
  * - Layout: Responsive grid layout (`md:grid-cols-2`) for comparing different service models (License vs Subscription).
  */
 
+
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Refund & Cancellation Policy",
+  description: "Read Vexel Systems' refund and cancellation policies for software licenses and subscriptions. We value transparency and fairness.",
+  keywords: [
+    "Refund Policy",
+    "Cancellation Policy",
+    "Software License Terms",
+    "Subscription Cancellation",
+    "Money Back Guarantee"
+  ],
+  path: "/refund-policy",
+});
+
 export default function RefundPolicy() {
   return (
     <main className="max-w-[960px] mx-auto px-4 py-8">
@@ -26,7 +42,7 @@ export default function RefundPolicy() {
         <div className="flex flex-col gap-3">
           <h1 className="text-foreground text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Refund & Cancellation <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Policy</span></h1>
           <p className="text-foreground/60 text-lg font-normal leading-normal max-w-2xl">
-            Last Updated: October 2023. At Vexel Systems, we strive to maintain transparency and fairness in our billing and service delivery.
+            Last Updated: January 14, 2026. At Vexel Systems, we strive to maintain transparency and fairness in our billing and service delivery.
           </p>
         </div>
       </section>

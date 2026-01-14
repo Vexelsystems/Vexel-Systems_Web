@@ -21,7 +21,7 @@ const events = [
     category: "Summit",
     location: "Colombo, Sri Lanka",
     type: "In-Person",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
+    image: "/events/photo-1540575467063-178a50c2df87.jpg",
     description: "Join industry leaders to discuss the future of retail in the AI era."
   },
   {
@@ -32,7 +32,7 @@ const events = [
     category: "Webinar",
     location: "Online (Zoom)",
     type: "Virtual",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1000&auto=format&fit=crop",
+    image: "/events/photo-1515187029135-18ee286d815b.jpg",
     description: "A deep dive into strategies for seamless cloud infrastructure upgrades."
   },
   {
@@ -43,7 +43,7 @@ const events = [
     category: "Workshop",
     location: "Tech District, Singapore",
     type: "Hybrid",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop",
+    image: "/events/photo-1505373877841-8d25f7d46678.jpg",
     description: "Hands-on session using Vexel's predictive health algorithms."
   }
 ];

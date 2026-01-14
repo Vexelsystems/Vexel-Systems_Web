@@ -65,6 +65,22 @@ const milestones = [
  * - Interaction: Hover effects on profile images reveal "Message" CTA overlays.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Our Team - The People Behind Vexel",
+  description: "Meet the visionary leaders and talented developers at Vexel Systems dedicated to your success. A founder-driven startup focused on innovation.",
+  keywords: [
+    "Vexel Team",
+    "Software Developers Sri Lanka",
+    "Tech Leadership",
+    "Jathushan Varnakulasingam",
+    "Kajakaran Sivananthan",
+    "Vexel Founders"
+  ],
+  path: "/team",
+});
+
 export default function TeamPage() {
   return (
     <div className="bg-background text-foreground min-h-screen">

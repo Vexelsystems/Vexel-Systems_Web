@@ -57,6 +57,21 @@ const outcomes = [
 ];
 
 import { Cloud } from 'lucide-react';
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Our Process - How We Build Software",
+  description: "Learn about Vexel Systems' strategic software development process, from discovery and design to development and deployment.",
+  keywords: [
+    "Software Development Process",
+    "Agile Methodology",
+    "SDLC",
+    "Project Management",
+    "Vexel Process",
+    "Software Consulting"
+  ],
+  path: "/process",
+});
 
 export default function ProcessPage() {
   return (

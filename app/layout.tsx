@@ -23,6 +23,7 @@ import { DEFAULT_SEO, BASE_URL } from "@/lib/seo"; // SEO configuration and util
 import GlobalClientWrapper from "@/components/GlobalClientWrapper"; // Wrapper for global client components
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
+import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
 
 
 /**
@@ -128,7 +129,7 @@ export default function RootLayout({
   return (
     // suppressHydrationWarning prevents warnings from dark mode implementations
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         {/* 
           JSON-LD STRUCTURED DATA
           
@@ -214,6 +215,8 @@ export default function RootLayout({
           - flex flex-col: Flexbox column layout for proper footer positioning
         */}
         <div className="pt-24 min-h-screen flex flex-col  mx-auto">
+          {/* Breadcrumbs - Automatically hidden on homepage */}
+          <Breadcrumbs />
           {children} {/* Page-specific content rendered here */}
         </div>
         

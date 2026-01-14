@@ -10,42 +10,60 @@ import { ChevronRight, Info, HelpCircle, Shield, Settings, Timer, Trash2, Rotate
  * - Content: Technical breakdown of cookie types (Essential vs Performance) using comparison tables.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Cookie Policy",
+  description: "Transparency at Vexel Systems: How we use cookies to improve your digital experience. Learn about session, performance, and essential cookies.",
+  keywords: [
+    "Cookie Policy",
+    "Privacy",
+    "Data Usage",
+    "Tracking Cookies",
+    "GDPR Compliance"
+  ],
+  path: "/cookie-policy",
+});
+
 export default function CookiePolicy() {
   return (
-    <main className="max-w-[1280px] mx-auto px-6 lg:px-10 py-8">
-      {/* Breadcrumbs */}
-      <nav className="flex items-center gap-2 mb-8 text-sm">
-        <a className="text-foreground/60 hover:text-primary transition-colors" href="/">Home</a>
-        <ChevronRight size={16} className="text-foreground/40" />
-        <span className="text-foreground/60">Legal</span>
-        <ChevronRight size={16} className="text-foreground/40" />
-        <span className="text-foreground font-medium">Cookie Policy</span>
-      </nav>
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
-      {/* Header Image Section */}
-      <div className="relative w-full rounded-xl overflow-hidden mb-12">
-        <div className="relative h-[280px] flex flex-col justify-end p-8 lg:p-12">
-             <Image
-                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
-                alt="Abstract digital security"
-                fill
-                className="object-cover z-0"
-             />
-             <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/90 z-10"></div>
-          <div className="relative z-20 max-w-3xl">
-            <h1 className="text-white text-4xl lg:text-5xl font-bold mb-4">Cookie <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Policy</span></h1>
-            <p className="text-gray-300 text-lg">Transparency at Vexel Systems: How we use cookies to improve your digital experience.</p>
-          </div>
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Legal</span>
+            </div>
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
+                <span className="text-foreground">Cookie </span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  Policy
+                </span>
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
+                Transparency at Vexel Systems: How we use cookies to improve your digital experience.
+              </p>
+            </div>
         </div>
-      </div>
+      </section>
 
-      <div className="flex flex-col lg:flex-row gap-12">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-12 flex flex-col lg:flex-row gap-12">
         {/* Side Navigation */}
         <aside className="lg:w-72 shrink-0">
           <div className="sticky top-24 space-y-8">
             <div>
               <h3 className="text-foreground text-sm font-bold uppercase tracking-widest mb-4">Policy Navigation</h3>
-              <p className="text-foreground/60 text-xs mb-6">Last updated: October 12, 2023</p>
+              <p className="text-foreground/60 text-xs mb-6">Last updated: January 14, 2026</p>
               <nav className="flex flex-col gap-1">
                 <a className="group flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#intro">
                   <Info size={20} />
@@ -194,31 +212,6 @@ export default function CookiePolicy() {
           {/* Footer spacer */}
           <div className="h-24"></div>
         </article>
-      </div>
-
-      {/* Sticky Consent Banner Preview */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-4xl z-50">
-        <div className="bg-white dark:bg-black border border-gray-200 dark:border-primary/30 rounded-xl shadow-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-          <div className="flex-1 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 text-primary mb-2">
-              <Cookie size={24} />
-              <span className="text-sm font-bold uppercase tracking-widest">Consent Settings</span>
-            </div>
-            <h4 className="text-foreground font-bold text-lg mb-1">Your Privacy Choice</h4>
-            <p className="text-foreground/60 text-sm">We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-            <button className="px-6 h-12 rounded-lg border border-gray-200 dark:border-gray-700 text-foreground font-bold text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-               Customize
-            </button>
-            <button className="px-8 h-12 rounded-lg bg-primary text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
-               Accept All
-            </button>
-          </div>
-          <button className="absolute top-4 right-4 text-gray-400 hover:text-foreground transition-colors">
-            <X size={20} />
-          </button>
-        </div>
       </div>
     </main>
   );

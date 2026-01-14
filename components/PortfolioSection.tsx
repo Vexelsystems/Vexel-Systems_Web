@@ -27,7 +27,7 @@ export function PortfolioSection() {
             <div className="group flex flex-col gap-4">
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
                 <Image 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+                  src="/products/photo-1551288049-bebda4e38f71.jpg"
                   alt="Fintech dashboard" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
@@ -43,7 +43,7 @@ export function PortfolioSection() {
             <div className="group flex flex-col gap-4">
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
                 <Image 
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
+                  src="/pages/photo-1542744173-8e7e53415bb0.jpg"
                   alt="E-commerce mobile app" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
@@ -59,7 +59,7 @@ export function PortfolioSection() {
             <div className="group flex flex-col gap-4 lg:col-span-1 md:col-span-2">
               <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
                 <Image 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                  src="/home/photo-1460925895917-afdab827c52f.jpg"
                   alt="Analytics platform" 
                   fill 
                   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"

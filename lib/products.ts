@@ -48,7 +48,7 @@ export const products: Product[] = [
     category: "ENTERPRISE SOLUTION",
     shortDescription: "Proprietary solution designed to streamline your business management and retail operations with cutting-edge technology.",
     fullDescription: "Vexel Track is a comprehensive attendance and workforce management system designed for modern enterprises. By integrating advanced biometric hardware with cloud-based analytics, it eliminates time theft, streamlines payroll processing, and provides real-time visibility into workforce attendance. Whether you manage a single office or distributed teams across factories and branches, Vexel Track scales to meet your needs.",
-    mainImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    mainImage: "/products/photo-1551288049-bebda4e38f71.jpg",
     icon: Fingerprint,
     checklist: [
       "Biometric & Face Recognition integration",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     category: "RETAIL SOLUTION",
     shortDescription: "Comprehensive Retail/Wholesale Management System designed to streamline operations.",
     fullDescription: "Vexel POS is more than just a cash register—it's a complete retail operating system. Designed for high-volume retail and wholesale environments, it handles everything from inventory tracking across multiple warehouses to customer loyalty programs. With offline capabilities and lightning-fast checkout flows, Vexel POS ensures you never miss a sale.",
-    mainImage: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1000&auto=format&fit=crop",
+    mainImage: "/products/photo-1556742502-ec7c0e9f34b1.jpg",
     icon: ShoppingCart,
     checklist: [
       "Advanced Inventory & Stock management",
@@ -141,7 +141,7 @@ export const products: Product[] = [
     category: "HR SOLUTION",
     shortDescription: "Intelligent AI-based CV screening and candidate filtering system that streamlines your recruitment process.",
     fullDescription: "Vexel Hire revolutionizes the recruitment process with cutting-edge AI technology. Our intelligent CV filtering system analyzes thousands of resumes in seconds, identifying the best candidates based on your specific requirements. Using advanced natural language processing and machine learning algorithms, Vexel Hire eliminates bias, saves countless hours of manual screening, and ensures you never miss top talent. Perfect for HR departments, recruitment agencies, and growing companies.",
-    mainImage: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=1000&auto=format&fit=crop",
+    mainImage: "/products/photo-1586281380349-632531db7ed4.jpg",
     icon: Fingerprint,
     checklist: [
       "AI-powered CV analysis \u0026 ranking",

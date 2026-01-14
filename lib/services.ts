@@ -234,7 +234,7 @@ export const services: ServiceData[] = [
     "title": "API Development & System Integration",
     "subtitle": "Connectivity Solutions",
     "description": "Connect systems, platforms, and applications securely. We build robust bridges for your data to flow effortlessly across your entire ecosystem.",
-    "heroImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1451187580459-43490279c0fa.jpg",
     "subServices": [
       {
         "title": "REST API Development",
@@ -317,7 +317,7 @@ export const services: ServiceData[] = [
     "title": "AI & Machine Learning Solutions",
     "subtitle": "Next-Gen Intelligence",
     "description": "Turn vast amounts of complex data into actionable insights using advanced AI/ML models engineered for performance and scale.",
-    heroImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop",
+    heroImage: "/home/photo-1531482615713-2afd69097998.jpg",
     "subServices": [
       {
         "title": "Predictive Analytics",
@@ -374,7 +374,7 @@ export const services: ServiceData[] = [
     "title": "Custom Business Software Solutions",
     "subtitle": "Built Exactly for Your Business",
     "description": "Stop struggling with generic tools. We build custom management systems designed to solve your specific operational headaches.",
-    "heroImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1460925895917-afdab827c52f.jpg",
     "subServices": [
       {
         "title": "Business Management Systems",
@@ -429,7 +429,7 @@ export const services: ServiceData[] = [
     "title": "Digital Marketing That Delivers Real Results",
     "subtitle": "Growth Driven Marketing",
     "description": "Empowering your brand with data-driven strategies and targeted growth solutions. We combine technology and creativity to scale your business.",
-    "heroImage": "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1557838923-2985c318be48.jpg",
     "subServices": [
       {
         "title": "SEO & Local SEO",
@@ -486,7 +486,7 @@ export const services: ServiceData[] = [
     "title": "Professional Web Development",
     "subtitle": "Next-Gen Web Solutions",
     "description": "High-performance, scalable web solutions tailored for your brand's success. We turn complex ideas into digital realities with cutting-edge technologies.",
-    "heroImage": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1498050108023-c5249f4df085.jpg",
     "subServices": [
       {
         "title": "Custom Websites",
@@ -528,7 +528,7 @@ export const services: ServiceData[] = [
     "title": "Mobile App Development",
     "subtitle": "iOS & Android Solutions",
     "description": "We develop intuitive, high-performance mobile applications for Android and iOS tailored to your unique business needs. From concept to deployment, we build tools that scale.",
-    "heroImage": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1512941937669-90a1b58e7e9c.jpg",
     "subServices": [
       {
         "title": "iOS Development",
@@ -565,7 +565,7 @@ export const services: ServiceData[] = [
     "title": "Smart IoT Solutions for Connected Businesses",
     "subtitle": "Connected Future",
     "description": "Monitor, control, and automate your devices using intelligent IoT systems designed for scalability and security.",
-    "heroImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/pages/photo-1518770660439-4636190af475.jpg",
     "subServices": [
       {
         "title": "Device Integration",
@@ -617,7 +617,7 @@ export const services: ServiceData[] = [
     "title": "Advanced Cybersecurity Solutions",
     "subtitle": "Next-Gen Threat Mitigation",
     "description": "Secure applications, servers, and data from modern threats. Military-grade defense for the evolving digital landscape.",
-    "heroImage": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1550751827-4bd374c3f58b.jpg",
     "subServices": [
       {
         "title": "Application Security Testing",
@@ -676,7 +676,7 @@ export const services: ServiceData[] = [
     "title": "Professional QA & Testing Services",
     "subtitle": "Deliver Bug-Free Software",
     "description": "Ensure performance, security, and reliability through our comprehensive QA methodologies. We catch what others miss.",
-    "heroImage": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1517694712202-14dd9538aa97.jpg",
     "subServices": [
       {
         "title": "Manual Testing",
@@ -728,7 +728,7 @@ export const services: ServiceData[] = [
     "title": "IT Consulting & Support Services",
     "subtitle": "Transform Your Business Technology",
     "description": "Strategic technology solutions and reliable support tailored for business growth, efficiency, and future-proof digital transformation.",
-    "heroImage": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2070&auto=format&fit=crop",
+    "heroImage": "/home/photo-1521737604893-d14cc237f11d.jpg",
     "subServices": [
       {
         "title": "IT Strategy & Consulting",

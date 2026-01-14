@@ -1,20 +1,20 @@
 /**
  * SEO UTILITIES
- * 
+ *
  * This file provides utilities for generating SEO metadata and structured data
  * across the entire application.
- * 
+ *
  * Purpose:
  * - Centralize SEO configuration
  * - Generate page-specific metadata
  * - Create JSON-LD structured data for rich snippets
  * - Ensure consistent SEO across all pages
- * 
+ *
  * Used by:
  * - All pages for metadata generation
  * - Dynamic routes (services, products, blog posts)
  * - Layout for global SEO configuration
- * 
+ *
  * Benefits:
  * - Better search engine rankings
  * - Rich snippets in search results
@@ -22,22 +22,22 @@
  * - Consistent metadata structure
  */
 
-import { Metadata } from 'next';
-import { companyDetails } from './companydetails';
+import { Metadata } from "next";
+import { companyDetails } from "./companydetails";
 
 /**
  * BASE URL
  * The production URL of the website
  * Used for generating absolute URLs in metadata and structured data
  */
-export const BASE_URL = 'https://www.vexelsystems.lk';
+export const BASE_URL = "https://www.vexelsystems.lk";
 
 /**
  * DEFAULT SEO CONFIGURATION
- * 
+ *
  * Default values used across the site if page-specific values aren't provided.
  * This ensures every page has basic SEO even without custom metadata.
- * 
+ *
  * Structure:
  * - siteName: Company name for branding
  * - title: Default page title
@@ -51,13 +51,13 @@ export const DEFAULT_SEO = {
   siteName: companyDetails.name,
   title: `${companyDetails.name} | ${companyDetails.tagline}`,
   description: companyDetails.description,
-  
+
   /**
    * KEYWORDS
-   * 
+   *
    * Comprehensive list of keywords for search engine optimization.
    * Organized by category for better maintainability.
-   * 
+   *
    * Categories:
    * - Core Services: Main service offerings
    * - Location-based: Geographic targeting (Vavuniya, Sri Lanka)
@@ -68,65 +68,65 @@ export const DEFAULT_SEO = {
    */
   keywords: [
     // Core Services
-    'POS Systems',
-    'Point of Sale',
-    'Software Development',
-    'Custom Software',
-    'Business Automation',
-    'AI Solutions',
-    'IoT Solutions',
-    'Cloud Solutions',
-    'DevOps',
-    'API Development',
-    
+    "POS Systems",
+    "Point of Sale",
+    "Software Development",
+    "Custom Software",
+    "Business Automation",
+    "AI Solutions",
+    "IoT Solutions",
+    "Cloud Solutions",
+    "DevOps",
+    "API Development",
+
     // Location-based
-    'Vavuniya',
-    'Sri Lanka',
-    'Northern Province',
-    'Sri Lankan Tech Company',
-    'Vavuniya Software',
-    'Best Web Design Company Vavuniya',
-    'Northern Province Tech Services',
-    
+    "Vavuniya",
+    "Sri Lanka",
+    "Northern Province",
+    "Sri Lankan Tech Company",
+    "Vavuniya Software",
+    "Best Web Design Company Vavuniya",
+    "Northern Province Tech Services",
+
     // Affordable / Price-focused
-    'Low Cost Web Development Vavuniya',
-    'Affordable Web Design Sri Lanka',
-    'Cheap Website Builder Northern Province',
-    'Low Price Mobile App Development',
-    'Affordable AI Integration',
-    'Budget Friendly Software Solutions',
-    
+    "Low Cost Web Development Vavuniya",
+    "Affordable Web Design Sri Lanka",
+    "Cheap Website Builder Northern Province",
+    "Low Price Mobile App Development",
+    "Affordable AI Integration",
+    "Budget Friendly Software Solutions",
+
     // Industry-specific
-    'Retail Technology',
-    'Restaurant POS',
-    'Inventory Management',
-    'ERP Systems',
-    'CRM Solutions',
-    'Digital Marketing',
-    'Web Development',
-    'Mobile App Development',
-    
+    "Retail Technology",
+    "Restaurant POS",
+    "Inventory Management",
+    "ERP Systems",
+    "CRM Solutions",
+    "Digital Marketing",
+    "Web Development",
+    "Mobile App Development",
+
     // Technology
-    'React',
-    'Next.js',
-    'Node.js',
-    'Python',
-    'AI Automation',
-    'Machine Learning',
-    'Cloud Computing',
-    'AWS',
-    'Azure',
-    
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "AI Automation",
+    "Machine Learning",
+    "Cloud Computing",
+    "AWS",
+    "Azure",
+
     // Business
-    'SaaS Solutions',
-    'Enterprise Software',
-    'Startup Technology',
-    'Business Intelligence',
-    'Data Analytics'
+    "SaaS Solutions",
+    "Enterprise Software",
+    "Startup Technology",
+    "Business Intelligence",
+    "Data Analytics",
   ],
   openGraph: {
-    type: 'website' as const,
-    locale: 'en_US',
+    type: "website" as const,
+    locale: "en_US",
     url: BASE_URL,
     siteName: companyDetails.name,
     images: [
@@ -139,9 +139,9 @@ export const DEFAULT_SEO = {
     ],
   },
   twitter: {
-    card: 'summary_large_image' as const,
-    site: '@vexelsystems',
-    creator: '@vexelsystems',
+    card: "summary_large_image" as const,
+    site: "@vexelsystems",
+    creator: "@vexelsystems",
     images: [`${BASE_URL}/VLogo.png`],
   },
   robots: {
@@ -150,9 +150,9 @@ export const DEFAULT_SEO = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large' as const,
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
     },
   },
   authors: [{ name: companyDetails.name }],
@@ -173,7 +173,7 @@ export function generatePageMetadata({
   title,
   description,
   keywords = [],
-  path = '',
+  path = "",
   image,
   noIndex = false,
 }: {
@@ -184,15 +184,22 @@ export function generatePageMetadata({
   image?: string;
   noIndex?: boolean;
 }): Metadata {
-  const fullTitle = title.includes(companyDetails.name) 
-    ? title 
+  // Ensure title ends with Company Name if not already present
+  // User request: "page name | descritopn or company name"
+  // We prioritize "Title | Company Name" for consistency.
+  const fullTitle = title
+    .toLowerCase()
+    .includes(companyDetails.name.toLowerCase())
+    ? title
     : `${title} | ${companyDetails.name}`;
-  
+
   const url = `${BASE_URL}${path}`;
-  const ogImage = image ? `${BASE_URL}${image}` : DEFAULT_SEO.openGraph.images[0].url;
+  const ogImage = image
+    ? `${BASE_URL}${image}`
+    : DEFAULT_SEO.openGraph.images[0].url;
 
   return {
-    title: fullTitle,
+    title: title, // Use raw title to allow layout template to apply suffix without duplication
     description,
     keywords: [...DEFAULT_SEO.keywords, ...keywords],
     authors: DEFAULT_SEO.authors,
@@ -253,7 +260,7 @@ export function generateDynamicMetadata({
   keywords = [],
   path,
   image,
-  type = 'website',
+  type = "website",
   publishedTime,
   modifiedTime,
   author,
@@ -264,18 +271,19 @@ export function generateDynamicMetadata({
   keywords?: string[];
   path: string;
   image?: string;
-  type?: 'website' | 'article';
+  type?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
   section?: string;
 }): Metadata {
+  // User request: "page name | descritopn or company name"
   const fullTitle = `${title} | ${companyDetails.name}`;
   const url = `${BASE_URL}${path}`;
   const ogImage = image || DEFAULT_SEO.openGraph.images[0].url;
 
   const metadata: Metadata = {
-    title: fullTitle, // Browser page title with company name
+    title: title, // Use raw title so app/layout.tsx template "%s | Vexel Systems" applies WITHOUT duplication
     description,
     keywords: [...DEFAULT_SEO.keywords, ...keywords],
     authors: author ? [{ name: author }] : DEFAULT_SEO.authors,
@@ -310,10 +318,13 @@ export function generateDynamicMetadata({
   };
 
   // Add article-specific metadata
-  if (type === 'article' && (publishedTime || modifiedTime || author || section)) {
+  if (
+    type === "article" &&
+    (publishedTime || modifiedTime || author || section)
+  ) {
     metadata.openGraph = {
       ...metadata.openGraph,
-      type: 'article',
+      type: "article",
       publishedTime,
       modifiedTime,
       authors: author ? [author] : undefined,
@@ -329,8 +340,8 @@ export function generateDynamicMetadata({
  */
 export function generateOrganizationSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
+    "@context": "https://schema.org",
+    "@type": "Organization",
     name: companyDetails.name,
     legalName: companyDetails.legalName,
     url: companyDetails.contact.website,
@@ -339,20 +350,20 @@ export function generateOrganizationSchema() {
     description: companyDetails.description,
     slogan: companyDetails.tagline,
     address: {
-      '@type': 'PostalAddress',
+      "@type": "PostalAddress",
       streetAddress: companyDetails.address.street,
       addressLocality: companyDetails.address.city,
       addressRegion: companyDetails.address.province,
       postalCode: companyDetails.address.postalCode,
-      addressCountry: 'LK',
+      addressCountry: "LK",
     },
     contactPoint: {
-      '@type': 'ContactPoint',
+      "@type": "ContactPoint",
       telephone: companyDetails.contact.phone,
-      contactType: 'customer service',
+      contactType: "customer service",
       email: companyDetails.contact.email,
-      areaServed: 'Global',
-      availableLanguage: ['en', 'Tamil', 'Sinhala'],
+      areaServed: "Global",
+      availableLanguage: ["en", "Tamil", "Sinhala"],
     },
     sameAs: [
       companyDetails.socialLinks.facebook,
@@ -369,26 +380,26 @@ export function generateOrganizationSchema() {
  */
 export function generateWebSiteSchema() {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     name: companyDetails.name,
     url: BASE_URL,
     description: companyDetails.description,
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: companyDetails.name,
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${BASE_URL}${companyDetails.logos.main}`,
       },
     },
     potentialAction: {
-      '@type': 'SearchAction',
+      "@type": "SearchAction",
       target: {
-        '@type': 'EntryPoint',
+        "@type": "EntryPoint",
         urlTemplate: `${BASE_URL}/search?q={search_term_string}`,
       },
-      'query-input': 'required name=search_term_string',
+      "query-input": "required name=search_term_string",
     },
   };
 }
@@ -414,28 +425,28 @@ export function generateArticleSchema({
   url: string;
 }) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    "@context": "https://schema.org",
+    "@type": "Article",
     headline: title,
     description,
     image,
     datePublished,
     dateModified: dateModified || datePublished,
     author: {
-      '@type': 'Person',
+      "@type": "Person",
       name: author,
     },
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: companyDetails.name,
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${BASE_URL}${companyDetails.logos.main}`,
       },
     },
     mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
+      "@type": "WebPage",
+      "@id": url,
     },
   };
 }
@@ -455,16 +466,16 @@ export function generateServiceSchema({
   image?: string;
 }) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
+    "@context": "https://schema.org",
+    "@type": "Service",
     name,
     description,
     provider: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: companyDetails.name,
       url: companyDetails.contact.website,
     },
-    areaServed: 'Global',
+    areaServed: "Global",
     url,
     image: image || `${BASE_URL}/VLogo.png`,
   };
@@ -473,12 +484,14 @@ export function generateServiceSchema({
 /**
  * Generate JSON-LD structured data for BreadcrumbList
  */
-export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function generateBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: `${BASE_URL}${item.url}`,

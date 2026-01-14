@@ -13,49 +13,78 @@ import { CheckCircle, ArrowRight, Activity, Calendar, Cloud, Store, CreditCard, 
 import { products } from "@/lib/products";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Our Products - Proprietary Software Solutions",
+  description: "Discover Vexel Systems' proprietary software solutions including POS systems, HRM, and more. Tailored for modern businesses.",
+  keywords: [
+    "Vexel Products",
+    "Proprietary Software",
+    "POS Systems",
+    "HRM Software",
+    "Business Solutions",
+    "Retail Technology"
+  ],
+  path: "/products",
+});
 
 export default function Products() {
   return (
-    <main className="flex flex-col items-center">
-      {/* Hero Section: Rendered with @container for container queries if supported, otherwise standard responsive */}
-      <div className="w-full max-w-[1200px] px-6 @container">
-        <div className="flex flex-col gap-6 py-12 md:flex-row md:items-center">
-          <div className="flex flex-col gap-6 flex-1">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl text-foreground">
-                Powerful Software <br/><span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Products</span> for Modern Businesses
+    <main className="min-h-screen bg-transparent">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
+
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge Replicated */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Our Products</span>
+            </div>
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
+                Proprietary Solutions
+              </h2>
+              
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
+                <span className="text-foreground">Powerful Software</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  For Modern Businesses.
+                </span>
               </h1>
-              <p className="text-lg opacity-80 max-w-[540px] text-foreground/80">
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
                 Proprietary solutions designed to streamline your business management and retail operations with cutting-edge technology.
               </p>
             </div>
-            <div className="flex gap-4">
-              <button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+
+            {/* Hero Actions Replicated */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
+              <button 
+                className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
+              >
                 Explore Products
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 border-2 border-primary/30 hover:border-primary text-foreground text-sm font-bold transition-colors">
-                Watch Demo
-              </button>
+
+              <Link href="/contact">
+                <button 
+                  className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-foreground/10 hover:border-primary/30 transition-all backdrop-blur-sm"
+                >
+                  Book Demo
+                </button>
+              </Link>
             </div>
-          </div>
-          <div className="flex-1">
-            <div className="relative w-full aspect-square md:aspect-video rounded-3xl shadow-2xl overflow-hidden border border-white/10">
-              <Image 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-                alt="Digital dashboard showing software interface analytics"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent"></div>
-            </div>
-          </div>
         </div>
-      </div>
+      </section>
 
       {/* Section Header */}
-      <div className="w-full max-w-[1200px] px-6 mt-12">
+      <div className="w-full max-w-[1200px] px-6 mt-12 mx-auto">
         <div className="flex items-center gap-3">
           <div className="h-8 w-1 bg-primary rounded-full"></div>
           <h2 className="text-2xl font-bold leading-tight tracking-tight text-foreground">Our Proprietary Solutions</h2>
@@ -63,7 +92,7 @@ export default function Products() {
       </div>
 
       {/* Product Grid - Mobile Horizontal Scroll, Desktop Grid */}
-      <div className="w-full max-w-[1200px] px-6 py-8">
+      <div className="w-full max-w-[1200px] px-6 py-8 mx-auto">
         <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 gap-8">
         {products.map((product) => {
            const Icon = product.icon;
@@ -123,7 +152,7 @@ export default function Products() {
       </div>
 
       {/* Custom Solution CTA */}
-      <div className="w-full max-w-[1200px] px-6 py-20">
+      <div className="w-full max-w-[1200px] px-6 py-20 mx-auto">
         <div className="relative rounded-3xl bg-black dark:bg-[#1a3330] p-12 overflow-hidden border border-white/5">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-primary opacity-10 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-primary opacity-10 rounded-full blur-[80px]"></div>

@@ -83,59 +83,66 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] md:min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-20 bg-background-light dark:bg-background-dark">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
+
+        {/* Back Link */}
         <div className="absolute top-24 left-6 md:left-10 z-20">
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-all hover:gap-3 bg-white/50 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-foreground/5 shadow-sm">
+            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-all hover:gap-3 bg-white/5 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-sm">
                 <ArrowRight className="rotate-180" size={16} /> Back to Services
             </Link>
         </div>
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(19,164,236,0.08),transparent_70%)]"></div>
-          <div className="absolute inset-0 opacity-20">
-             <Image 
-                src={service.heroImage} 
-                alt={service.title}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-center"
-             />
-          </div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            {service.subtitle}
-          </div>
-          <h1 className="text-4xl md:text-7xl font-black leading-[1.1] mb-8 max-w-4xl mx-auto text-foreground">
-             {service.title.split(" ").map((word, i, arr) => {
-                if (word.toLowerCase() === "automation" || word.toLowerCase() === "smarter" || word.toLowerCase() === "businesses") {
-                   return <span key={i} className="text-primary">{word} </span>
-                }
-                 return word + " ";
-             })}
-          </h1>
-          <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto mb-12 leading-relaxed">
-            {service.description}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="#contact" className="w-full sm:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl text-lg hover:shadow-[0_0_30px_rgba(19,164,236,0.5)] transition-all">
-              Automate Your Business
-            </Link>
-            <a 
-              href={`https://wa.me/94740968108?text=${encodeURIComponent(`Hi, I am interested in learning more about ${service.title} services.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 bg-[#25D366] text-white font-bold rounded-xl text-lg hover:bg-[#20bd5a] transition-all flex items-center justify-center gap-2"
-            >
-               WhatsApp
-            </a>
-            <Link href="#services" className="w-full sm:w-auto px-8 py-4 border border-foreground/10 bg-foreground/5 font-bold rounded-xl text-lg hover:bg-foreground/10 transition-all text-foreground">
-              View Capabilities
-            </Link>
-          </div>
+
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">{service.subtitle || "Service Overview"}</span>
+            </div>
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              {/* Dynamic Title with Gradient Logic */}
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-1 mb-6">
+                 {service.title.split(" ").map((word, i) => {
+                    // Logic to detect keywords for gradient - can be expanded or made smarter if needed
+                    const isHighlight = ["automation", "smarter", "businesses", "solutions", "development", "ai", "cloud", "mobile", "web"].some(k => word.toLowerCase().includes(k));
+                    return (
+                        <span key={i} className={isHighlight ? "text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2" : "text-foreground pb-2"}>
+                            {word}
+                        </span>
+                    );
+                 })}
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+
+            {/* Hero Actions */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
+                 <Link href="#contact">
+                    <button 
+                        className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
+                    >
+                        Automate Your Business
+                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                 </Link>
+
+                  <a 
+                    href={`https://wa.me/94740968108?text=${encodeURIComponent(`Hi, I am interested in learning more about ${service.title} services.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all backdrop-blur-sm flex items-center gap-2"
+                  >
+                     WhatsApp
+                  </a>
+            </div>
         </div>
       </section>
 
@@ -322,7 +329,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <div className="lg:w-1/2 relative">
                 <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
                   <Image 
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                      src="/products/photo-1551288049-bebda4e38f71.jpg"
                       alt="High-tech dashboard"
                       fill
                       className="object-cover"

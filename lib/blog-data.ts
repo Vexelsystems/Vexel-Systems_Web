@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Jathushan V.',
     date: 'Jan 10, 2026',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1556742044-3c52d6e88c62.jpg'
   },
   {
     slug: 'scaling-your-retail-business-sri-lanka',
@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Sarah Perera',
     date: 'Jan 8, 2026',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1441986300917-64674bd600d8.jpg'
   },
   {
     slug: 'omnichannel-retail-strategies',
@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Kamal Silva',
     date: 'Jan 5, 2026',
     readTime: '4 min',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1516321318423-f06f85e504b3.jpg'
   },
   {
     slug: 'managing-restaurant-waste-with-tech',
@@ -80,7 +80,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Chef Aruni',
     date: 'Jan 3, 2026',
     readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1552566626-52f8b828add9.jpg'
   },
   {
     slug: 'security-best-practices-for-pos',
@@ -91,7 +91,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Security Team',
     date: 'Dec 28, 2025',
     readTime: '8 min',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1563986768609-322da13575f3.jpg'
   },
   {
     slug: 'impact-of-5g-on-retail',
@@ -102,7 +102,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Tech Dept',
     date: 'Dec 25, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1519389950473-47ba0277781c.jpg'
   },
   {
     slug: 'modern-loyalty-programs',
@@ -113,7 +113,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Marketing Team',
     date: 'Dec 22, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1563986768494-4dee2763ff3f.jpg'
   },
   {
     slug: 'tax-compliance-made-easy',
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Finance Expert',
     date: 'Dec 18, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1554224155-6726b3ff858f.jpg'
   },
   {
     slug: 'hiring-tech-savvy-staff',
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
     author: 'HR Dept',
     date: 'Dec 15, 2025',
     readTime: '4 min',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1516321318423-f06f85e504b3.jpg'
   },
   {
     slug: 'automating-inventory-counts',
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Operations Team',
     date: 'Dec 12, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1586528116311-ad8dd3c8310d.jpg'
   },
   {
     slug: 'custom-hardware-vs-tablets',
@@ -157,7 +157,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Hardware Specialist',
     date: 'Dec 10, 2025',
     readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1556742502-ec7c0e9f34b1.jpg'
   },
   {
     slug: 'benefits-of-qr-payments',
@@ -168,7 +168,7 @@ export const blogPosts: BlogPost[] = [
     author: 'FinTech Team',
     date: 'Dec 5, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1590283603385-17ffb3a7f29f.jpg'
   },
   {
     slug: 'cloud-hosting-for-startups',
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Cloud Architect',
     date: 'Dec 1, 2025',
     readTime: '8 min',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1451187580459-43490279c0fa.jpg'
   },
   {
     slug: 'dark-mode-in-pos-design',
@@ -190,7 +190,7 @@ export const blogPosts: BlogPost[] = [
     author: 'UX Designer',
     date: 'Nov 28, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1558655146-d09347e92766.jpg'
   },
   {
     slug: 'remote-store-management',
@@ -201,7 +201,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Success Manager',
     date: 'Nov 25, 2025',
     readTime: '4 min',
-    image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1519125323398-675f0ddb6308.jpg'
   },
   {
     slug: 'api-driven-business-growth',
@@ -212,7 +212,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Software Lead',
     date: 'Nov 20, 2025',
     readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1517694712202-14dd9538aa97.jpg'
   },
   {
     slug: 'reducing-queues-with-tech',
@@ -223,7 +223,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Retail Expert',
     date: 'Nov 15, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1000&auto=format&fit=crop'
+    image: '/blog/photo-1556742502-ec7c0e9f34b1.jpg'
   },
   {
     slug: 'ethical-data-collection',
@@ -234,7 +234,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Legal Team',
     date: 'Nov 10, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1550751827-4bd374c3f58b.jpg'
   },
   {
     slug: 'future-of-automated-checkouts',
@@ -245,7 +245,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Innovation Lead',
     date: 'Nov 5, 2025',
     readTime: '9 min',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1504384308090-c894fdcc538d.jpg'
   },
   {
     slug: 'customer-service-as-marketing',
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Growth Lead',
     date: 'Nov 1, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1516321318423-f06f85e504b3.jpg'
   },
   {
     slug: 'sustainability-in-retail-tech',
@@ -267,7 +267,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Sustainability Coord',
     date: 'Oct 28, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1473341304170-971dccb5ac1e.jpg'
   },
   {
     slug: 'mental-health-for-entrepreneurs',
@@ -278,6 +278,6 @@ export const blogPosts: BlogPost[] = [
     author: 'Wellness Coach',
     date: 'Oct 25, 2025',
     readTime: '7 min',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop'
+    image: '/blog/photo-1506126613408-eca07ce68773.jpg'
   }
 ];

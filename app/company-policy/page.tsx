@@ -12,6 +12,22 @@ import { companyDetails } from '@/lib/companydetails';
  * - Layout: Centralized layout with a responsive grid system and hover effects for card interactivity.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Company Policy - Corporate Governance",
+  description: "Learn about Vexel Systems' commitment to ethics, sustainability, and social responsibility. Our policies guide our operations and ensure integrity.",
+  keywords: [
+    "Company Policy",
+    "Corporate Governance",
+    "Business Ethics",
+    "Sustainability",
+    "Social Responsibility",
+    "Vexel Standards"
+  ],
+  path: "/company-policy",
+});
+
 export default function CompanyPolicy() {
   const categories = [
     {
@@ -47,33 +63,58 @@ export default function CompanyPolicy() {
   ];
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-20">
-      <div className="text-center mb-16">
-        <h1 className="text-5xl font-black mb-4 tracking-tight">Our Company <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Policy</span></h1>
-        <p className="text-primary uppercase tracking-widest text-sm">
-          The Vexel Standard of Excellence
-        </p>
-      </div>
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-[50vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
+        {/* Background Gradients & Grid */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
-      <div className="prose prose-lg dark:prose-invert max-w-none mb-20 text-foreground/70 leading-relaxed text-center">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+            
+            {/* Hero Badge */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
+              <div className="size-2 rounded-full bg-primary"></div>
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Corporate Governance</span>
+            </div>
+
+            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
+                <span className="text-foreground">Company </span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                  Policy
+                </span>
+              </h1>
+
+              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
+                The Vexel Standard of Excellence.
+              </p>
+            </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
+        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-16 text-foreground/70 leading-relaxed text-center">
         <p className="text-xl">
           At {companyDetails.name}, our policies are not just rules—they are the foundation of our culture and our promise to clients, employees, and the global community.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="flex flex-col gap-6">
         {categories.map((category, index) => (
           <div 
             key={index}
-            className="p-8 rounded-[32px] bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/20 transition-all group flex flex-col items-center text-center"
+            className="p-8 rounded-[24px] bg-white dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all group flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8"
           >
-            <div className="w-16 h-16 rounded-2xl bg-primary shadow-lg shadow-primary/20 text-white flex items-center justify-center mb-6 group-hover:rotate-6 transition-transform">
+            <div className="w-16 h-16 shrink-0 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
               {category.icon}
             </div>
-            <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
-            <p className="text-foreground/60 leading-relaxed">
-              {category.content}
-            </p>
+            <div className="text-left">
+                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{category.title}</h3>
+                <p className="text-foreground/70 leading-relaxed text-lg">
+                {category.content}
+                </p>
+            </div>
           </div>
         ))}
       </div>
@@ -90,6 +131,7 @@ export default function CompanyPolicy() {
           <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">GDPR Compliant</div>
           <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">Carbon Neutral Cloud</div>
         </div>
+      </div>
       </div>
     </main>
   );

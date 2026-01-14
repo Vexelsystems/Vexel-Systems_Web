@@ -25,7 +25,7 @@ const projects = [
     problem: "High latency in cross-border settlements.",
     solution: "A blockchain-powered real-time tracking engine reducing settlement time from days to seconds.",
     tech: ["React", "Node.js", "AWS"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: "/products/photo-1551288049-bebda4e38f71.jpg",
     isLive: true
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     problem: "Manual stock counting leading to 15% wastage.",
     solution: "ML-driven predictive analytics that automates supply chain restocking for 200+ outlets.",
     tech: ["Python", "PostgreSQL", "TensorFlow"],
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
+    image: "/pages/photo-1542744173-8e7e53415bb0.jpg"
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const projects = [
     problem: "Limited market intelligence in rural regions.",
     solution: "Video-consultation platform with low-bandwidth optimization for rural connectivity.",
     tech: ["Flutter", "WebRTC", "Docker"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "/home/photo-1460925895917-afdab827c52f.jpg",
     isLive: true
   }
 ];
@@ -136,7 +136,7 @@ export default function PortfolioClient() {
             <div className="relative rounded-[3rem] overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl">
                <div className="absolute inset-0">
                   <Image 
-                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000"
+                     src="/products/photo-1551288049-bebda4e38f71.jpg"
                      alt="Project Alpha Background"
                      fill
                      sizes="100vw"
@@ -184,10 +184,10 @@ export default function PortfolioClient() {
                      <div className="relative w-full aspect-square max-w-md">
                         {/* Abstract floating cards effect */}
                          <div className="absolute top-0 right-0 w-3/4 aspect-video bg-gray-900 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-20">
-                            <Image src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="UI 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
+                            <Image src="/products/photo-1551288049-bebda4e38f71.jpg" alt="UI 1" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
                          </div>
                          <div className="absolute bottom-10 left-0 w-3/4 aspect-video bg-gray-800 rounded-2xl border border-white/10 shadow-2xl overflow-hidden z-10 opacity-60">
-                            <Image src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="UI 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
+                            <Image src="/home/photo-1460925895917-afdab827c52f.jpg" alt="UI 2" fill className="object-cover" sizes="(max-width: 768px) 100vw, 300px" />
                          </div>
                      </div>
                   </div>

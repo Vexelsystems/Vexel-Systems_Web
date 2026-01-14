@@ -12,6 +12,21 @@ import { Globe, Smartphone, Store, Building, Bot, Timer, ShieldCheck, CheckCircl
  * - Layout: Sidebar layout (`lg:col-span-4`) provides trust signals (stats, guarantees) alongside the form.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Request a Quote - Start Your Project",
+  description: "Get a detailed quote for your web, mobile, or software project. Tell us your requirements and we'll build something great together.",
+  keywords: [
+    "Request Quote",
+    "Project Estimation",
+    "Software Development Cost",
+    "Hire Developers",
+    "Vexel Systems Quote"
+  ],
+  path: "/quote",
+});
+
 export default function Quote() {
   return (
     <main className="flex-1 flex justify-center py-10 px-4 md:px-10 lg:px-20">
