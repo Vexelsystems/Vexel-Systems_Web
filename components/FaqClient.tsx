@@ -54,7 +54,7 @@ export default function FaqClient() {
         <div 
           className="relative overflow-hidden w-full bg-cover bg-center flex flex-col items-center justify-center gap-8 min-h-[400px]"
           style={{ 
-            backgroundImage: `linear-gradient(rgba(13, 27, 26, 0.8), rgba(13, 27, 26, 0.4)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMJjOjzzsmmvelrRAJwIL6auN0y-9yvISCZxWTEUcgbL5I7NLiEanyPHfcyv9NCjeiw56X6AZYFJUVnhRiaV2FWUYoE9ue-D2wvLiikcHT_Lda_YtpyBhq_g3qmC8rO90Kr37cDgQOhels8tZZ1NJoMyp10HLgUQIy4MrcPrWjfb846IWf6dCeSyhqTQazi6cynM6eHlgdN9c03oI4EVW6s5mzk574s8y-5hPtBynFdigjY11TURl3MwZmUKt4H71cpMHTF4QlMeuv")` 
+            backgroundImage: `linear-gradient(rgba(13, 27, 26, 0.8), rgba(13, 27, 26, 0.4)), url("https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop")` 
           }}
         >
           <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col items-center">

@@ -322,7 +322,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <div className="lg:w-1/2 relative">
                 <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
                   <Image 
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC00fIoBj2euWSyKwhGlBAbqeMhFG5W9KXQz_DADzIYAj6ueEjjKeGvnUPwknPjBAkzl9KW-ARONV_21ervVHrzJbdhn3dt5R2BiKKV2MNlRSP7NQNAs49o_vXMK-ss52md2Du3d6L0JlJiYdsDHt6MrWhKgQuyzh5w9OV5VrFJcFfkw46F2Br-U2Rz1A6wobt1gZGSxw_dlGxRRML7k3PFllWNFo5PbOhEOgN-iM2-TZUNRXF71XVe4Kzdte4VR-NSiRViW5hff2ir"
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
                       alt="High-tech dashboard"
                       fill
                       className="object-cover"

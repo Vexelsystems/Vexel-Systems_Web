@@ -323,7 +323,7 @@ export const faqData: FAQItem[] = [
   {
     category: 'tech-support',
     question: "How do I contact technical support?",
-    answer: "You can reach us via live chat in the dashboard, email at support@vexelsystems.com, or by calling our 24/7 hotline."
+    answer: "You can reach our support team via email at vexelsystems@gmail.com or call us at +94 74 096 8108. We are available Monday to Friday, 9:00 AM to 5:00 PM."
   },
   {
     category: 'tech-support',
@@ -547,7 +547,7 @@ export const faqData: FAQItem[] = [
   {
     category: 'updates',
     question: "Where can I see what's new in an update?",
-    answer: "Check the 'What's New' popup in your dashboard or visit vexelsystems.com/changelog."
+    answer: "Check the 'What's New' popup in your dashboard or visit vexelsystems.lk/changelog."
   },
   {
     category: 'updates',

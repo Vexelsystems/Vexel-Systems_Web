@@ -38,6 +38,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/', '/admin/', '/test-popups/', '/maintenance/'],
       },
     ],
-    sitemap: 'https://vexelsystems.com/sitemap.xml',
+    sitemap: 'https://www.vexelsystems.lk/sitemap.xml',
   };
 }

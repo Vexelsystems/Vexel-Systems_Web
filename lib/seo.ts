@@ -30,7 +30,7 @@ import { companyDetails } from './companydetails';
  * The production URL of the website
  * Used for generating absolute URLs in metadata and structured data
  */
-export const BASE_URL = 'https://vexelsystems.vercel.app';
+export const BASE_URL = 'https://www.vexelsystems.lk';
 
 /**
  * DEFAULT SEO CONFIGURATION

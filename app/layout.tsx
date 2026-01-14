@@ -22,6 +22,8 @@ import { companyDetails } from "@/lib/companydetails"; // Centralized company in
 import { DEFAULT_SEO, BASE_URL } from "@/lib/seo"; // SEO configuration and utilities
 import GlobalClientWrapper from "@/components/GlobalClientWrapper"; // Wrapper for global client components
 import "./globals.css"; // Global CSS styles
+import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
+
 
 /**
  * FONT CONFIGURATION
@@ -238,6 +240,7 @@ export default function RootLayout({
           - richColors: Enables colored toasts (success, error, info, warning)
         */}
         <Toaster position="bottom-right" richColors />
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-TG3FQ4DYYZ" />
       </body>
     </html>
   );

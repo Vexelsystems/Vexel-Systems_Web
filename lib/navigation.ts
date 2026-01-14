@@ -31,8 +31,7 @@ export const navigation = {
     { name: "Our Process", href: "/process" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
-    { name: "Success Stories", href: "/testimonials" },
-    { name: "Tech Stack", href: "/tech-stack" },
+
     { name: "Events", href: "/events" },
     { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },

@@ -14,27 +14,25 @@ import { products } from '@/lib/products';
  *   3. Assigns `changeFrequency` and `priority` based on content type importance.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vexelsystems.com';
+  const baseUrl = 'https://www.vexelsystems.lk';
   const lastModified = new Date();
 
   // Static routes with priorities
   const staticRoutes = [
     { url: '', priority: 1.0, changeFrequency: 'daily' as const },
-    { url: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
+    { url: '/about', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: '/services', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: '/products', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: '/pricing', priority: 0.9, changeFrequency: 'weekly' as const },
     { url: '/portfolio', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: '/blog', priority: 0.8, changeFrequency: 'daily' as const },
     { url: '/careers', priority: 0.7, changeFrequency: 'weekly' as const },
-    { url: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: '/faq', priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: '/team', priority: 0.6, changeFrequency: 'monthly' as const },
-    { url: '/tech-stack', priority: 0.6, changeFrequency: 'monthly' as const },
-    { url: '/testimonials', priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: '/contact', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/faq', priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: '/team', priority: 0.6, changeFrequency: 'weekly' as const },
     { url: '/events', priority: 0.6, changeFrequency: 'weekly' as const },
-    { url: '/process', priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: '/quote', priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: '/process', priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: '/quote', priority: 0.8, changeFrequency: 'weekly' as const },
     { url: '/company-policy', priority: 0.4, changeFrequency: 'yearly' as const },
     { url: '/privacy', priority: 0.4, changeFrequency: 'yearly' as const },
     { url: '/terms', priority: 0.4, changeFrequency: 'yearly' as const },

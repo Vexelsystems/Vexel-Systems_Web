@@ -26,7 +26,7 @@ export default function CookiePolicy() {
       <div className="relative w-full rounded-xl overflow-hidden mb-12">
         <div className="relative h-[280px] flex flex-col justify-end p-8 lg:p-12">
              <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD7q7BCJpb3L6_LHHpZq_BqMMOO5ygoCTjdnuLCTib1MqwJcSzjsoFZebj8zj7nQHLRSZ0Qbw3X5VAHvlq2OzXbB07-N5zjS6inuFCUEjidPerL_XbeC2tmJzk3GfPxtRXdWFqWcol6SA21hKSvvitGsSYLz09oHeYz_hcr_Jb_FEAVff6aNRuukzghP-xJJ7SC9UzmttpVW0Bw-uv3eFoyxU9Hrr4pw99HFL1beFcqnTsWzKl9ThBwwhr4YUnCspQ9HS4trnOHNEw"
+                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
                 alt="Abstract digital security"
                 fill
                 className="object-cover z-0"

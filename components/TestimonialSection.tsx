@@ -124,9 +124,9 @@ export const TestimonialSection = () => {
 
          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
             {[
-              { number: "150+", label: "Projects Delivered" },
+              { number: "25+", label: "Projects Delivered" },
               { number: "98%", label: "Client Satisfaction" },
-              { number: "50+", label: "Happy Clients" },
+              { number: "25+", label: "Happy Clients" },
               { number: "24/7", label: "Support Available" }
             ].map((stat, idx) => (
                <div 

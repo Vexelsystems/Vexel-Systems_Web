@@ -85,12 +85,12 @@ export const companyDetails = {
    * Used in footer, contact page, and metadata
    */
   contact: {
-    email: "info@vexelsystems.com", // General inquiries
-    salesEmail: "sales@vexelsystems.com", // Sales department
-    supportEmail: "support@vexelsystems.com", // Technical support
+    email: "vexelsystems@gmail.com", // General inquiries
+    salesEmail: "vexelsystems@gmail.com", // Sales department
+    supportEmail: "vexelsystems@gmail.com", // Technical support
     phone: "+94740968108", // Primary phone number
     whatsapp: "+94740968108", // WhatsApp business number
-    website: "https://www.vexelsystems.com", // Official website URL
+    website: "https://www.vexelsystems.lk", // Official website URL
   },
 
   /**
@@ -135,11 +135,11 @@ export const companyDetails = {
    * - Share buttons
    */
   socialLinks: {
-    facebook: "https://facebook.com/vexelsystems",
-    instagram: "https://instagram.com/vexelsystems",
-    linkedin: "https://linkedin.com/company/vexel-systems",
+    facebook: "https://www.facebook.com/vexelsystems/",
+    instagram: "https://www.instagram.com/vexelsystems/",
+    linkedin: "https://www.linkedin.com/company/vexelsystems/",
     github: "https://github.com/vexelsystems",
-    twitter: "https://twitter.com/vexelsystems",
+    twitter: "https://x.com/vexelsystems",
   },
 
   /**

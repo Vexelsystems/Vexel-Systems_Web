@@ -26,7 +26,7 @@ const navigation = {
     { name: "Vexel Hire", href: "/products/vexel-hire" },
   ],
   company: [
-    { name: "Our Team", href: "/team" },
+    //{ name: "Our Team", href: "/team" },
     { name: "Careers", href: "/careers" },
     { name: "Events", href: "/events" },
     { name: "Blog", href: "/blog" },

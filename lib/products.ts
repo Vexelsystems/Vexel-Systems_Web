@@ -1,4 +1,4 @@
-import { Fingerprint, ShoppingCart } from "lucide-react";
+import { Fingerprint, ShoppingCart, type LucideIcon } from "lucide-react";
 
 /**
  * PRODUCT CATALOGUE
@@ -12,7 +12,7 @@ import { Fingerprint, ShoppingCart } from "lucide-react";
 export interface ProductFeature {
   title: string;
   description: string;
-  icon?: any;
+  icon?: LucideIcon;
 }
 
 export interface ProductBenefit {
@@ -31,7 +31,7 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   mainImage: string;
-  icon: any; // Lucide icon component
+  icon: LucideIcon; // Lucide icon component
   checklist: string[];
   idealFor: string[];
   features: ProductFeature[];
@@ -48,7 +48,7 @@ export const products: Product[] = [
     category: "ENTERPRISE SOLUTION",
     shortDescription: "Proprietary solution designed to streamline your business management and retail operations with cutting-edge technology.",
     fullDescription: "Vexel Track is a comprehensive attendance and workforce management system designed for modern enterprises. By integrating advanced biometric hardware with cloud-based analytics, it eliminates time theft, streamlines payroll processing, and provides real-time visibility into workforce attendance. Whether you manage a single office or distributed teams across factories and branches, Vexel Track scales to meet your needs.",
-    mainImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCCqzfOxNFk0EtJMuLdgqqql8Z-qcjN2u_xaGFdFVJ03B1I_attAAq-6qEdQ-D-KxA5GPwvl_wLGg9zXdA7sDMafGRFG5urnJALsC9l2TxXIY5ftglJ1ZWYejv-h1QzWjMaJpd6tntgeWRHuagcuUbRQFHzYYw1Aqfwd0D1-4Ff-9uUghpupewcldPyX6gYPgKhSB5ltAFPpw1X5fIDI6APSVimtsQ_WAdyukRIiVePastcQ7as2BKFqhNXusnnDEsv3L3g2KpLG99x",
+    mainImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
     icon: Fingerprint,
     checklist: [
       "Biometric & Face Recognition integration",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     category: "RETAIL SOLUTION",
     shortDescription: "Comprehensive Retail/Wholesale Management System designed to streamline operations.",
     fullDescription: "Vexel POS is more than just a cash register—it's a complete retail operating system. Designed for high-volume retail and wholesale environments, it handles everything from inventory tracking across multiple warehouses to customer loyalty programs. With offline capabilities and lightning-fast checkout flows, Vexel POS ensures you never miss a sale.",
-    mainImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBnhtTFObyqaBwY7ZtY7LTRvjO6DYI6ewrxGUhJUVKvukKXK5Il57sYpfCK2ybPBUnQXHTpvKdSbqciykO8UFQhJQBCTMp7NK3iBE3KpTB54W7ItHw0K1UfdYjRrQIRXmJSLDTl2cOzI1_EUojF7qUCmZNHKjkNUdr3glgeRJAK5LV7gN3XTejH3JoJm3UuBS3s5lag5lt01bgT1gAXiiEoPRJDmQFIutiQ95ejNMzaBLK8VqUmPQ6ZH3Nh1cInEGSDyfKKDzke3BR-",
+    mainImage: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1000&auto=format&fit=crop",
     icon: ShoppingCart,
     checklist: [
       "Advanced Inventory & Stock management",
@@ -141,7 +141,7 @@ export const products: Product[] = [
     category: "HR SOLUTION",
     shortDescription: "Intelligent AI-based CV screening and candidate filtering system that streamlines your recruitment process.",
     fullDescription: "Vexel Hire revolutionizes the recruitment process with cutting-edge AI technology. Our intelligent CV filtering system analyzes thousands of resumes in seconds, identifying the best candidates based on your specific requirements. Using advanced natural language processing and machine learning algorithms, Vexel Hire eliminates bias, saves countless hours of manual screening, and ensures you never miss top talent. Perfect for HR departments, recruitment agencies, and growing companies.",
-    mainImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWluiuOszzDsrm3STHBEMsWvTZaeVt6ZfjnHQVcKPpX1sj_XRRgBkL1HRQQ-IdLZ8FvUrY2_TMzRxbYytpVgd6oSe2-MJ6b4cd7R-eSYJUU9a9QNZUjs3eX18motmH4ewajVjYh02sdqq6XreNEJ0q9Uc0zS7ZRAxKOO43pjNn0jBP4lPXwYM2LKSdrimdgzD5ZaNgugqmYXzBSqrepqhwluAjidLo-uYWIPqqLqKxbpfdci7WjUAVznBvAc4na7iF1US0oDKDLCj9",
+    mainImage: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=1000&auto=format&fit=crop",
     icon: Fingerprint,
     checklist: [
       "AI-powered CV analysis \u0026 ranking",

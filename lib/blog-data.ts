@@ -113,7 +113,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Marketing Team',
     date: 'Dec 22, 2025',
     readTime: '6 min',
-    image: 'https://images.unsplash.com/photo-1556740734-7bb607677891?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2070&auto=format&fit=crop'
   },
   {
     slug: 'tax-compliance-made-easy',
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
     author: 'HR Dept',
     date: 'Dec 15, 2025',
     readTime: '4 min',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c29596ba?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
   },
   {
     slug: 'automating-inventory-counts',
@@ -223,7 +223,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Retail Expert',
     date: 'Nov 15, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1481437156560-3201fb1ea5f7?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1000&auto=format&fit=crop'
   },
   {
     slug: 'ethical-data-collection',
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Growth Lead',
     date: 'Nov 1, 2025',
     readTime: '5 min',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c29596ba?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
   },
   {
     slug: 'sustainability-in-retail-tech',

@@ -137,7 +137,7 @@ export default function RefundPolicy() {
           <div className="relative">
             <div className="absolute -left-[41px] top-0 bg-primary w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs text-white">1</div>
             <h4 className="font-bold text-foreground">Submit a Request</h4>
-            <p className="text-sm text-foreground/60 mt-1">Email <a className="text-primary hover:underline" href="mailto:billing@vexelsystems.com">billing@vexelsystems.com</a> with your order ID and reason for refund.</p>
+            <p className="text-sm text-foreground/60 mt-1">Email <a className="text-primary hover:underline" href="mailto:vexelsystems@gmail.com">vexelsystems@gmail.com</a> with your order ID and reason for refund.</p>
           </div>
           <div className="relative">
             <div className="absolute -left-[41px] top-0 bg-primary w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs text-white">2</div>

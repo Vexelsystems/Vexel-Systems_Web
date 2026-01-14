@@ -129,7 +129,7 @@ export default function LiveChat() {
 
     // Keyword matching fallback
     const keywords = [
-      { keys: ['price', 'pricing', 'cost', 'plan'], answer: "You can find our detailed pricing at vexelsystems.com/pricing. We offer Starter, Professional, and Enterprise plans." },
+      { keys: ['price', 'pricing', 'cost', 'plan'], answer: "You can find our detailed pricing at vexelsystems.lk/pricing. We offer Starter, Professional, and Enterprise plans." },
       { keys: ['contact', 'human', 'person', 'support', 'care'], answer: "I can connect you with our customer care team! Just click the 'Talk to Human' button below." },
       { keys: ['pos', 'hardware', 'register', 'terminal'], answer: "Vexel POS works both online and offline. We support a wide range of hardware bundles. Check out our 'POS Services' category for more details." },
       { keys: ['hi', 'hello', 'hey'], answer: "Hello! How can I assist you with Vexel Systems today?" }

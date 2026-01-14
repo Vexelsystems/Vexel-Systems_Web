@@ -70,7 +70,7 @@ export default function DemoSuccessPage() {
               <ArrowRight className="text-primary opacity-0 group-hover:opacity-100 transition-opacity ml-2 w-5 h-5" />
             </Link>
             {/* Resource Card 2 */}
-            <Link href="/testimonials" className="flex items-center p-6 bg-card border border-primary/10 rounded-xl hover:shadow-md transition-all group hover:-translate-y-1">
+            <Link href="/portfolio" className="flex items-center p-6 bg-card border border-primary/10 rounded-xl hover:shadow-md transition-all group hover:-translate-y-1">
               <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-5 group-hover:bg-primary group-hover:text-white transition-colors">
                  <CheckCircle className="w-8 h-8" />
               </div>

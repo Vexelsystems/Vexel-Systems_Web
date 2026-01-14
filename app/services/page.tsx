@@ -35,7 +35,7 @@ export default function ServicesPage() {
           <div 
             className="flex min-h-[300px] md:min-h-[400px] flex-col gap-8 bg-cover bg-center bg-no-repeat rounded-2xl items-center justify-center p-8 text-center relative overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md" 
             style={{
-              backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.4) 0%, rgba(16, 28, 34, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2iV5e3QSQdKx_aQim-8kCoRTsv6elhuujaENVDbQkjxCWUfjPhs_JMOuUxmNUX8zsjAyCuqDVjrGGy7Sqz7UfnkXGHQ-9jGL6DqNwoUBnu5XP0RsxqG4om1aIUPcINQ70wjJ2gG02tyfL03O3wzBfx6Nddu--f_2mwQ-QkQIMD9HZq98MvCNMX6ke8YTsaF-yM2uCt5fEDx1L_I3Rp_XTIzfIM-Afcl1HPOOLrOKLmo0IVIl9Z0jqJuUDwBetbq1dle2S-Lt0TxvS")'
+              backgroundImage: 'linear-gradient(rgba(16, 28, 34, 0.4) 0%, rgba(16, 28, 34, 0.6) 100%), url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop")'
             }}
           >
             <div className="z-10 flex flex-col gap-4 max-w-3xl">

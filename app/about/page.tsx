@@ -38,7 +38,7 @@ export default function About() {
                 <div className="absolute -inset-4 bg-primary/20 rounded-xl blur-2xl group-hover:bg-primary/30 transition-all duration-500"></div>
                 <div className="relative aspect-video bg-center bg-cover rounded-xl shadow-2xl overflow-hidden">
                 <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWI_BIEvx28E-bwNePxvNfb5bqT0SluXxCyU11yFZl0jJ52IpRzlC5s15OItuKryvTQZHk9ORVN2Zkn51vCh_4ZbLprg7T5EX91hKmOJhbt9VAnajIgXqr5IRoWOG9mh8ye1D1MWXozW1p7gG6Wau2_2tihT9qThaQbXsY7VuBpH0PDvWCcILBZE8LGkJBgh0hAB4oGUlo1RVMB9Xl1L7NvefUuHd3sgu3xUp_vp-6UssQ1sHCL5jjK6aV2AUlIohi866el-2PuWR"
+                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
                     alt="Modern high-tech workspace with professional developers"
                     fill
                     sizes="(max-width: 1200px) 100vw, 50vw"

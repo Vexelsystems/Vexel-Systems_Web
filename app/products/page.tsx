@@ -41,7 +41,7 @@ export default function Products() {
           <div className="flex-1">
             <div className="relative w-full aspect-square md:aspect-video rounded-3xl shadow-2xl overflow-hidden border border-white/10">
               <Image 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRFxwkVBvPV1oUS20tOe8zLrMEhUlIoLCSwwAlJvUwjE_pKap6slMXbcTJyvwRpax4CQt_VGM-j9BRk8dPT17XOxXLyBHP0qlll3eHAccgi9V5ad6m1OaFMFcmkfG-32nsunaCSgadKIpaqM521_vgMOwNjebH53u9HXoGki-hWMydfeW4rrxeXWCMZLyztbws4wZlOgeH41t8bhCsV3go107Dy0Ff1T3It_W7Uc46QkKfTdbnQDXPFtttJvOUP_jwZGfoCZUqaZ19"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
                 alt="Digital dashboard showing software interface analytics"
                 fill
                 priority

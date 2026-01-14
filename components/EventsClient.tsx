@@ -21,7 +21,7 @@ const events = [
     category: "Summit",
     location: "Colombo, Sri Lanka",
     type: "In-Person",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD3s5Q09yB3v5JbT17Oa8T1lB_k3uFz06c0O5q8d0X0mQ5q4nE0vH2rJ0w1t7bM8lY8v3z6oE2pG4x5a9sC7uF3iK_L1vN6t0mP9rD4h8_jB2c5x1k3o8w7q0t4y9u1i6_d8f0g3hA8j2e5k7l9m4n1p6_q0r4s8_v2w5x9z0A1b3c6d8e2f4g7h9j1k2l3m5n7o9p0",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
     description: "Join industry leaders to discuss the future of retail in the AI era."
   },
   {
@@ -32,7 +32,7 @@ const events = [
     category: "Webinar",
     location: "Online (Zoom)",
     type: "Virtual",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3z6P07yC3w5IaT18Oc8S1lD_j3uEz06d0P5q8e0Y0nQ5r4oE0wH2sJ0x1u7cM8mY8w3A6pE2qG4y5b9tC7vF3jK_M1wN6u0nP9sD4i8_kB2d5y1l3p8x7r0u4z9v1j6_e8g0h4iA8k2f5l7m9o1q6_r0s4t8_w2x5y9A1c3d6e8f4g7h9k1l2m3n5o7p9",
+    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1000&auto=format&fit=crop",
     description: "A deep dive into strategies for seamless cloud infrastructure upgrades."
   },
   {
@@ -43,7 +43,7 @@ const events = [
     category: "Workshop",
     location: "Tech District, Singapore",
     type: "Hybrid",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC4x7Q08zD3x5JbT19Pd8T1mE_k3vFz07e0Q5r9f0Z0oQ6s4pE0xH3tJ0y1v8dN9nZ9x4B7qF3rG5z6c0uD8wF4jL_N2xO7v0qQ9tE5j9_lC3e6z2m4q9y8s1v5A2j7_f9h1i5jB9l3g6m8n0p2q7_s0t5u9_x3y6z0B2d4e7f9g5h8j0k2m3n4o6p8",
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop",
     description: "Hands-on session using Vexel's predictive health algorithms."
   }
 ];

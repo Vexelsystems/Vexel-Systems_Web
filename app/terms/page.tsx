@@ -131,7 +131,7 @@ export default function Terms() {
               We may terminate or suspend your access to the Services at any time, with or without cause, and with or without notice. Upon termination, your right to use the Services will immediately cease.
             </p>
             <p className="text-foreground">
-              If you wish to terminate your account, you may simply discontinue using the Services or contact our support team at <a className="text-primary underline" href="mailto:legal@vexelsystems.com">legal@vexelsystems.com</a>.
+              If you have any questions about these Terms, please contact us at <a href="mailto:vexelsystems@gmail.com" className="text-primary hover:underline">vexelsystems@gmail.com</a>.
             </p>
           </div>
         </section>

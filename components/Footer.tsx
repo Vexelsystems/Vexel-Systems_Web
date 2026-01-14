@@ -95,10 +95,10 @@ export default function Footer() {
                     <li><Link href="/" className="block py-1 text-foreground/80 hover:text-primary transition-colors">Home</Link></li>
                     <li><Link href="/pricing" className="block py-1 text-foreground/80 hover:text-primary transition-colors">Pricing</Link></li>
                     <li><Link href="/portfolio" className="block py-1 text-foreground/80 hover:text-primary transition-colors">Portfolio</Link></li>
-                    <li><Link href="/tech-stack" className="block py-1 text-foreground/80 hover:text-primary transition-colors">Tech Stack</Link></li>
+                    
                     <li><Link href="/blog" className="block py-1 text-foreground/80 hover:text-primary transition-colors">Blog & Insights</Link></li>
                     <li><Link href="/consultation" className="block py-1 text-primary font-bold hover:underline">Schedule Consultation</Link></li>
-                    <li><Link href="/links" className="block py-1 text-foreground/80 hover:text-primary transition-colors font-bold">Sitemap (All Links)</Link></li>
+
                  </ul>
               </FooterSection>
 
@@ -106,10 +106,16 @@ export default function Footer() {
               <FooterSection title="Services">
                  <ul className="space-y-3 text-sm font-medium">
                     <li><Link href="/services/web-development" className="text-foreground/70 hover:text-primary transition-colors">Web Development</Link></li>
-                    <li><Link href="/services/mobile-app-development" className="text-foreground/70 hover:text-primary transition-colors">Mobile Apps</Link></li>
-                    <li><Link href="/services/ai-automation" className="text-foreground/70 hover:text-primary transition-colors">AI & Automation</Link></li>
-                    <li><Link href="/services/infrastructure-integrations" className="text-foreground/70 hover:text-primary transition-colors">Integrations & Infra</Link></li>
-                    <li><Link href="/services" className="text-primary font-bold hover:underline flex items-center justify-center md:justify-start gap-1">View All <ArrowRight size={12}/></Link></li>
+                    <li><Link href="/services/mobile-app-development" className="text-foreground/70 hover:text-primary transition-colors">Mobile App Development</Link></li>
+                    <li><Link href="/services/ai-ml-solutions" className="text-foreground/70 hover:text-primary transition-colors">AI & Machine Learning</Link></li>
+                    <li><Link href="/services/cloud-devops-infrastructure" className="text-foreground/70 hover:text-primary transition-colors">Cloud & DevOps</Link></li>
+                    <li><Link href="/services/cybersecurity" className="text-foreground/70 hover:text-primary transition-colors">Cybersecurity</Link></li>
+                    <li><Link href="/services/custom-business-software" className="text-foreground/70 hover:text-primary transition-colors">Custom Software</Link></li>
+                    <li><Link href="/services/api-development-integration" className="text-foreground/70 hover:text-primary transition-colors">API & Integration</Link></li>
+                    <li><Link href="/services/digital-marketing" className="text-foreground/70 hover:text-primary transition-colors">Digital Marketing</Link></li>
+                    <li><Link href="/services/iot-solutions" className="text-foreground/70 hover:text-primary transition-colors">IoT Solutions</Link></li>
+                    <li><Link href="/services/qa-testing" className="text-foreground/70 hover:text-primary transition-colors">QA & Testing</Link></li>
+                    <li><Link href="/services/it-consulting-support" className="text-foreground/70 hover:text-primary transition-colors">IT Consulting</Link></li>
                  </ul>
               </FooterSection>
 
@@ -117,10 +123,11 @@ export default function Footer() {
               <FooterSection title="Company">
                  <ul className="space-y-3 text-sm font-medium">
                     <li><Link href="/about" className="text-foreground/70 hover:text-primary transition-colors">About Us</Link></li>
-                    <li><Link href="/process" className="text-foreground/70 hover:text-primary transition-colors">Our Process</Link></li>
+                    <li><Link href="/services" className="text-foreground/70 hover:text-primary transition-colors">Services</Link></li>
+                    <li><Link href="/products" className="text-foreground/70 hover:text-primary transition-colors">Products</Link></li>
                     <li><Link href="/careers" className="text-foreground/70 hover:text-primary transition-colors">Careers</Link></li>
-                    <li><Link href="/testimonials" className="text-foreground/70 hover:text-primary transition-colors">Success Stories</Link></li>
                     <li><Link href="/events" className="text-foreground/70 hover:text-primary transition-colors">Events</Link></li>
+                    <li><Link href="/faq" className="text-foreground/70 hover:text-primary transition-colors">FAQ</Link></li>
                  </ul>
               </FooterSection>
 
@@ -132,15 +139,8 @@ export default function Footer() {
                     <li><Link href="/refund-policy" className="text-foreground/70 hover:text-primary transition-colors">Refund Policy</Link></li>
                     <li><Link href="/cookie-policy" className="text-foreground/70 hover:text-primary transition-colors">Cookie Policy</Link></li>
                     <li><Link href="/company-policy" className="text-foreground/70 hover:text-primary transition-colors">Company Policy</Link></li>
-                    <li><Link href="/faq" className="text-foreground/70 hover:text-primary transition-colors">Help Center</Link></li>
-                    <li>
-                      <button 
-                        onClick={() => window.dispatchEvent(new CustomEvent('vexel-chat-open'))}
-                        className="text-foreground/70 hover:text-primary transition-colors font-medium"
-                      >
-                        Vexel Chat
-                      </button>
-                    </li>
+
+
                  </ul>
               </FooterSection>
 
