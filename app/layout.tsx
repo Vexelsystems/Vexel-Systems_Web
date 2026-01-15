@@ -60,6 +60,12 @@ export const metadata: Metadata = {
   // Meta description for search results
   description: DEFAULT_SEO.description,
   
+
+
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   // Keywords for search engine indexing
   keywords: DEFAULT_SEO.keywords,
   
