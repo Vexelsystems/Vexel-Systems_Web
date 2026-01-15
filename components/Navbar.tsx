@@ -138,7 +138,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link className="flex items-center gap-3 shrink-0" href="/" aria-label="Vexel Systems Home">
             <div className="relative h-10 w-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.6)]">
-              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" sizes="40px" priority />
+              <Image src={companyDetails.logos.main} alt={companyDetails.name} fill className="object-contain" sizes="40px" priority loading="eager" />
             </div>
             <span className="text-lg font-bold text-primary tracking-tight">{companyDetails.name}</span>
           </Link>

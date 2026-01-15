@@ -22,9 +22,7 @@ export default function Home() {
   return (
     <main className="flex-1">
     
-      <MotionWrapper type="scale">
-        <HeroSection /> {/* Loaded immediately */}
-      </MotionWrapper>
+      <HeroSection /> {/* Loaded immediately - No Animation Wrapper for LCP */}
       
       <MotionWrapper type="slideUp" delay={0.1} duration={1.2}>
         <CoreServicesSection />
