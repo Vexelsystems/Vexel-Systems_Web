@@ -1,8 +1,8 @@
-import { services } from '@/lib/services';
+import { services } from "@/lib/services";
 
 /**
  * NAVIGATION CONFIGURATION
- * 
+ *
  * Functional Overview:
  * - Centralizes all menu links (header/footer/mobile).
  * - Logic: Auto-generates Service links dynamically from `services.ts`.
@@ -10,21 +10,21 @@ import { services } from '@/lib/services';
  */
 // Helper to format slug to title (e.g., "web-development" -> "Web Development")
 const formatSlug = (slug: string) => {
-  return slug 
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 export const navigation = {
-  services: services.map((service: { slug: string; }) => ({
+  services: services.map((service: { slug: string }) => ({
     name: formatSlug(service.slug),
-    href: `/services/${service.slug}`
+    href: `/services/${service.slug}`,
   })),
   products: [
-    { name: "POS Systems", href: "/products/pos" },
-    { name: "ERP Suite", href: "/products/erp" },
-    { name: "CRM Tool", href: "/products/crm" },
+    { name: "Vexel POS", href: "/products/vexel-pos" },
+    { name: "Vexel Track", href: "/products/vexel-track" },
+    { name: "Vexel Hire", href: "/products/vexel-hire" },
   ],
   company: [
     { name: "About Us", href: "/about" },
@@ -35,14 +35,26 @@ export const navigation = {
     { name: "Events", href: "/events" },
     { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
-  ]
+  ],
 };
 
 export const navLinks = [
-    { id: 'home', label: 'Home', href: '/' },
-    { id: 'services', label: 'Services', href: '/services', isDropdown: true, hasPage: true },
-    { id: 'products', label: 'Products', href: '/products', isDropdown: true, hasPage: true },
-    { id: 'pricing', label: 'Pricing', href: '/pricing' },
-    { id: 'portfolio', label: 'Portfolio', href: '/portfolio' },
-    { id: 'company', label: 'Company', href: '/company', isDropdown: true },
+  { id: "home", label: "Home", href: "/" },
+  {
+    id: "services",
+    label: "Services",
+    href: "/services",
+    isDropdown: true,
+    hasPage: true,
+  },
+  {
+    id: "products",
+    label: "Products",
+    href: "/products",
+    isDropdown: true,
+    hasPage: true,
+  },
+  { id: "pricing", label: "Pricing", href: "/pricing" },
+  { id: "portfolio", label: "Portfolio", href: "/portfolio" },
+  { id: "company", label: "Company", href: "/company", isDropdown: true },
 ];

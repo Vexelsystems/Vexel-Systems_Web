@@ -8,6 +8,7 @@ import {
 import { PRICING_CATEGORIES, PricingCategory } from "@/lib/pricing-data";
 import ComparisonTable from "@/app/pricing/ComparisonTable";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 
 // --- Types ---
@@ -176,42 +177,43 @@ export default function PricingClient() {
       
       {/* Hero Section */}
       <section className="relative w-full mb-12 text-center bg-transparent">
-        
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative">
-            {/* Currency Toggle */}
-            <div className="absolute top-0 right-0 flex bg-white/40 dark:bg-card/40 backdrop-blur-md border border-primary/20 rounded-full p-1 shadow-sm">
-            <button 
-                onClick={() => setCurrency('LKR')}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
-            >
-                LKR
-            </button>
-            <button 
-                onClick={() => setCurrency('USD')}
-                className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
-            >
-                USD
-            </button>
-            </div>
+        <MotionWrapper type="slideUp" duration={1.2}>
+          <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative">
+              {/* Currency Toggle */}
+              <div className="absolute top-0 right-0 flex bg-white/40 dark:bg-card/40 backdrop-blur-md border border-primary/20 rounded-full p-1 shadow-sm">
+              <button 
+                  onClick={() => setCurrency('LKR')}
+                  className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'LKR' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
+              >
+                  LKR
+              </button>
+              <button 
+                  onClick={() => setCurrency('USD')}
+                  className={`px-4 py-1.5 rounded-full text-sm font-bold transition-all ${currency === 'USD' ? 'bg-primary text-white shadow-md' : 'text-foreground/80 hover:text-primary'}`}
+              >
+                  USD
+              </button>
+              </div>
 
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-            Pricing that <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Fits You.</span>
-            </h1>
-            <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-10">
-            Transparent pricing for {currency === 'LKR' ? 'Sri Lankan' : 'International'} businesses. 
-            {currency === 'USD' && <span className="block text-primary font-bold mt-2">✨ International Packages Available</span>}
-            </p>
+              <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+              Pricing that <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Fits You.</span>
+              </h1>
+              <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-10">
+              Transparent pricing for {currency === 'LKR' ? 'Sri Lankan' : 'International'} businesses. 
+              {currency === 'USD' && <span className="block text-primary font-bold mt-2">✨ International Packages Available</span>}
+              </p>
 
-            {/* Quick Summary Pill Grid */}
-            <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
-            {SUMMARY_DATA.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <span className="text-sm font-medium text-foreground/80">{item.type}</span>
-                <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
-                </div>
-            ))}
-            </div>
-        </div>
+              {/* Quick Summary Pill Grid */}
+              <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
+              {SUMMARY_DATA.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <span className="text-sm font-medium text-foreground/80">{item.type}</span>
+                  <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
+                  </div>
+              ))}
+              </div>
+          </div>
+        </MotionWrapper>
       </section>
 
       {/* International Packages (USD Only) */}

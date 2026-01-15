@@ -13,6 +13,8 @@ import { companyDetails } from '@/lib/companydetails';
  * - Integration: Dynamically pulls company details (name, email) from `@/lib/companydetails` configuration.
  */
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function PrivacyPolicy() {
   const lastUpdated = "January 14, 2026";
 
@@ -65,64 +67,70 @@ export default function PrivacyPolicy() {
               <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Legal Center</span>
             </div>
 
-            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
-                <span className="text-foreground">Privacy </span>
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
-                  Policy
-                </span>
-              </h1>
+            <MotionWrapper type="scale">
+              <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+                <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
+                  <span className="text-foreground">Privacy </span>
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                    Policy
+                  </span>
+                </h1>
 
-              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
-                At {companyDetails.name}, we take your privacy seriously.
-              </p>
-              
-              <p className="text-foreground/40 font-bold uppercase tracking-widest text-xs">
-                 Last Updated: {lastUpdated}
-              </p>
-            </div>
+                <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
+                  At {companyDetails.name}, we take your privacy seriously.
+                </p>
+                
+                <p className="text-foreground/40 font-bold uppercase tracking-widest text-xs">
+                  Last Updated: {lastUpdated}
+                </p>
+              </div>
+            </MotionWrapper>
         </div>
       </section>
 
       <div className="max-w-[1000px] mx-auto px-6 lg:px-10 pb-20">
-        <div className="flex flex-col gap-6">
-          {sections.map((section, index) => (
-            <div 
-              key={index}
-              className="group p-8 md:p-10 rounded-3xl bg-white/5 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/30 transition-all hover:bg-white/10 dark:hover:bg-white/10"
-            >
-              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                <div className="shrink-0 w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                  <section.icon size={32} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{section.title}</h3>
-                  <p className="text-foreground/70 leading-relaxed text-base md:text-lg">
-                    {section.content}
-                  </p>
+        <MotionWrapper type="stagger">
+          <div className="flex flex-col gap-6">
+            {sections.map((section, index) => (
+              <div 
+                key={index}
+                className="group p-8 md:p-10 rounded-3xl bg-white/5 dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/30 transition-all hover:bg-white/10 dark:hover:bg-white/10"
+              >
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+                  <div className="shrink-0 w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <section.icon size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{section.title}</h3>
+                    <p className="text-foreground/70 leading-relaxed text-base md:text-lg">
+                      {section.content}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </MotionWrapper>
 
-        <div className="mt-20 p-12 rounded-[40px] bg-primary text-white text-center shadow-2xl shadow-primary/20 relative overflow-hidden">
-             {/* Abstract Background Elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-            
-            <div className="relative z-10">
-                <h2 className="text-3xl font-bold mb-4">Questions about your <span className="text-transparent bg-clip-text bg-linear-to-r from-white/90 to-white/70">data?</span></h2>
-                <p className="text-white/80 mb-8 max-w-md mx-auto">
-                If you have any questions or concerns about our privacy practices, please reach out to our legal team.
-                </p>
-                <a 
-                href={`mailto:legal@${companyDetails.contact.email.split('@')[1]}`}
-                className="inline-block px-10 py-4 bg-white text-primary font-bold rounded-2xl hover:brightness-105 transition-all shadow-xl"
-                >
-                Contact Legal Team
-                </a>
-            </div>
-        </div>
+        <MotionWrapper delay={0.4}>
+          <div className="mt-20 p-12 rounded-[40px] bg-primary text-white text-center shadow-2xl shadow-primary/20 relative overflow-hidden">
+              {/* Abstract Background Elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+              
+              <div className="relative z-10">
+                  <h2 className="text-3xl font-bold mb-4">Questions about your <span className="text-transparent bg-clip-text bg-linear-to-r from-white/90 to-white/70">data?</span></h2>
+                  <p className="text-white/80 mb-8 max-w-md mx-auto">
+                  If you have any questions or concerns about our privacy practices, please reach out to our legal team.
+                  </p>
+                  <a 
+                  href={`mailto:legal@${companyDetails.contact.email.split('@')[1]}`}
+                  className="inline-block px-10 py-4 bg-white text-primary font-bold rounded-2xl hover:brightness-105 transition-all shadow-xl"
+                  >
+                  Contact Legal Team
+                  </a>
+              </div>
+          </div>
+        </MotionWrapper>
       </div>
     </main>
   );

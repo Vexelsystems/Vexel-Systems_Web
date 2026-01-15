@@ -26,6 +26,12 @@ export const metadata = generatePageMetadata({
   path: "/blog",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function BlogPage() {
-  return <BlogClient />;
+  return (
+    <MotionWrapper>
+      <BlogClient />
+    </MotionWrapper>
+  );
 }

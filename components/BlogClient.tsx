@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { blogPosts } from '@/lib/blog-data';
 import { Search, Calendar, Clock, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { MotionWrapper } from '@/components/ui/MotionWrapper';
 
 const categories = ['All', 'Technology', 'Business', 'POS', 'Guides'] as const;
 
@@ -31,34 +32,36 @@ export default function BlogClient() {
   return (
     <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col gap-16 pb-20">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden rounded-[40px] bg-black text-white">
-        <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-transparent"></div>
-        <div className="relative z-10 px-12">
-          <div 
-            className="max-w-3xl"
-          >
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-bold mb-6 border border-primary/30 uppercase tracking-widest">
-              Knowledge Hub
-            </span>
-            <h1 className="text-6xl font-bold mb-6 leading-tight">Insights for the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Next Generation</span> of Business.</h1>
-            <p className="text-xl text-white/80 leading-relaxed mb-8">
-              Explore the latest trends in POS technology, retail growth strategies, and digital transformation tailored for the modern entrepreneur.
-            </p>
-            
-            {/* Search Bar */}
-            <div className="relative max-w-xl">
-              <input 
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-primary/50 focus:bg-white/20 transition-all backdrop-blur-md text-lg"
-              />
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/70" size={24} />
+      <MotionWrapper type="scale" duration={1.2}>
+        <section className="relative py-20 rounded-[40px] bg-black text-white">
+          <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-transparent to-transparent"></div>
+          <div className="relative z-10 px-12">
+            <div 
+              className="max-w-3xl"
+            >
+              <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-bold mb-6 border border-primary/30 uppercase tracking-widest">
+                Knowledge Hub
+              </span>
+              <h1 className="text-6xl font-bold mb-6 leading-tight">Insights for the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Next Generation</span> of Business.</h1>
+              <p className="text-xl text-white/80 leading-relaxed mb-8">
+                Explore the latest trends in POS technology, retail growth strategies, and digital transformation tailored for the modern entrepreneur.
+              </p>
+              
+              {/* Search Bar */}
+              <div className="relative max-w-xl">
+                <input 
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-white/10 border border-white/10 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-primary/50 focus:bg-white/20 transition-all backdrop-blur-md text-lg"
+                />
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-white/70" size={24} />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
       {/* Filter Content */}
       <section className="flex flex-col gap-12">

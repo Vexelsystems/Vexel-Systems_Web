@@ -15,6 +15,12 @@ export const metadata = generatePageMetadata({
   path: "/login",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function LoginPage() {
-  return <LoginClient />;
+  return (
+    <MotionWrapper>
+      <LoginClient />
+    </MotionWrapper>
+  );
 }

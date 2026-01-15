@@ -11,13 +11,14 @@ import { Menu, Lock, X, ChevronDown, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { services } from '@/lib/services';
 import { companyDetails } from '@/lib/companydetails';
 
 // Navigation data structure for mega menus
 const navigation = {
   services: services.map(service => ({
-    name: service.title,
+    name: service.navTitle || service.title,
     href: `/services/${service.slug}`
   })),
   products: [
@@ -100,6 +101,8 @@ export default function Navbar() {
   const getActiveSection = () => {
      if (pathname === '/') return 'home';
      if (pathname.startsWith('/pricing')) return 'pricing';
+     if (pathname.startsWith('/about')) return 'about';
+     if (pathname.startsWith('/contact')) return 'contact';
      
      // Check if current path belongs to a specific dropdown category
      if (navigation.services.some(item => pathname === item.href)) return 'services';
@@ -153,51 +156,64 @@ export default function Navbar() {
                 { id: 'company', label: 'Company', href: '/company', isDropdown: true },
                 
                 { id: 'contact', label: 'Contact Us', href: '/contact' },
-             ].map((item) => (
-                <div 
-                   key={item.id}
-                   className="relative group px-1"
-                   onMouseEnter={() => item.isDropdown && setActiveDropdown(item.id)}
-                >
-                   {/* Animated Background Pill */}
-                   {displayId === item.id && (
-                      <div
-                         className="absolute inset-0 bg-primary/10 rounded-full"
-                      />
-                   )}
-                   
-                   {/* Link / Button Trigger */}
-                   {item.isDropdown && !item.hasPage ? (
-                      <button 
-                         aria-expanded={activeDropdown === item.id}
-                         aria-haspopup="true"
-                         className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${displayId === item.id ? 'text-primary' : 'text-foreground/70 hover:text-primary'}`}
-                      >
-                         {item.label} <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === item.id ? 'rotate-180' : ''}`} aria-hidden="true" />
-                      </button>
-                   ) : (
-                      <Link 
-                         href={item.href} 
-                         className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${displayId === item.id ? 'text-primary' : 'text-foreground/70 hover:text-primary'}`}
-                         onMouseEnter={() => setActiveDropdown(item.id)}
-                      >
-                         {item.label}
-                         {item.isDropdown && <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === item.id ? 'rotate-180' : ''}`} />}
-                      </Link>
-                   )}
+             ].map((item) => {
+                const isActive = currentActiveId === item.id;
+                const isHovered = activeDropdown === item.id;
+                const isShowingActive = isHovered || isActive;
 
-                   {/* Dropdown Portals */}
-                   {item.id === 'services' && activeDropdown === 'services' && (
-                      <DropdownContent items={navigation.services} width="w-[320px]" columns={1} viewAllLink={{ text: 'Explore All Services', href: '/services' }} />
-                   )}
-                   {item.id === 'products' && activeDropdown === 'products' && (
-                      <DropdownContent items={navigation.products} width="w-[240px]" viewAllLink={{ text: 'View All Products', href: '/products' }} />
-                   )}
-                    {item.id === 'company' && activeDropdown === 'company' && (
-                      <DropdownContent items={navigation.company} width="w-[240px]" columns={1} />
-                   )}
-                </div>
-             ))}
+                return (
+                  <div 
+                     key={item.id}
+                     className="relative group px-1"
+                     onMouseEnter={() => item.isDropdown && setActiveDropdown(item.id)}
+                  >
+                     {/* Animated Background Pill */}
+                     {isShowingActive && (
+                        <motion.div
+                           layoutId="activePill"
+                           className="absolute inset-0 bg-primary/10 rounded-full"
+                           initial={false}
+                           transition={{
+                             type: "spring",
+                             stiffness: 260,
+                             damping: 35
+                           }}
+                        />
+                     )}
+                     
+                     {/* Link / Button Trigger */}
+                     {item.isDropdown && !item.hasPage ? (
+                        <button 
+                           aria-expanded={activeDropdown === item.id}
+                           aria-haspopup="true"
+                           className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${isShowingActive ? 'text-primary' : 'text-foreground/70 hover:text-primary'}`}
+                        >
+                           {item.label} <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === item.id ? 'rotate-180' : ''}`} aria-hidden="true" />
+                        </button>
+                     ) : (
+                        <Link 
+                           href={item.href} 
+                           className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${isShowingActive ? 'text-primary font-bold' : 'text-foreground/70 hover:text-primary'}`}
+                           onMouseEnter={() => setActiveDropdown(item.id)}
+                        >
+                           {item.label}
+                           {item.isDropdown && <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === item.id ? 'rotate-180' : ''}`} />}
+                        </Link>
+                     )}
+
+                     {/* Dropdown Portals */}
+                     {item.id === 'services' && activeDropdown === 'services' && (
+                        <DropdownContent items={navigation.services} width="w-[320px]" columns={1} viewAllLink={{ text: 'Explore All Services', href: '/services' }} />
+                     )}
+                     {item.id === 'products' && activeDropdown === 'products' && (
+                        <DropdownContent items={navigation.products} width="w-[240px]" viewAllLink={{ text: 'View All Products', href: '/products' }} />
+                     )}
+                     {item.id === 'company' && activeDropdown === 'company' && (
+                        <DropdownContent items={navigation.company} width="w-[240px]" columns={1} />
+                     )}
+                  </div>
+                );
+             })}
           </div>
 
           {/* Actions */}

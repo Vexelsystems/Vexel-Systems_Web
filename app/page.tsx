@@ -7,6 +7,8 @@
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/HeroSection";
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 // Lazy load sections after initial render to reduce bundle size
 const CoreServicesSection = dynamic(() => import("@/components/CoreServicesSection").then(mod => mod.CoreServicesSection));
 const PortfolioSection = dynamic(() => import("@/components/PortfolioSection").then(mod => mod.PortfolioSection));
@@ -18,16 +20,39 @@ const ContactSection = dynamic(() => import("@/components/ContactSection").then(
 
 export default function Home() {
   return (
-    <main className="flex-1 overflow-x-hidden">
+    <main className="flex-1">
     
-      <HeroSection /> {/* Loaded immediately */}
-      <CoreServicesSection />
-      <ProcessSection />
-      <WhyChooseUsSection />
-      <PortfolioSection />
-      <TechStackSection />
-      <TestimonialSection />
-      <ContactSection />
+      <MotionWrapper type="scale">
+        <HeroSection /> {/* Loaded immediately */}
+      </MotionWrapper>
+      
+      <MotionWrapper type="slideUp" delay={0.1} duration={1.2}>
+        <CoreServicesSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="stagger" duration={1.2}>
+        <ProcessSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="scale" delay={0.2} duration={1.2}>
+        <WhyChooseUsSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="slideLeft" duration={1.2}>
+        <PortfolioSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="slideRight" delay={0.1} duration={1.2}>
+        <TechStackSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="stagger" duration={1.2}>
+        <TestimonialSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="fade" delay={0.2} duration={1.2}>
+        <ContactSection />
+      </MotionWrapper>
     </main>
   );
 }

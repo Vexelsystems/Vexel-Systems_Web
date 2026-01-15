@@ -13,7 +13,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Twitter, Linkedin, Instagram, Facebook, Mail, Phone, MessageCircle, ArrowRight, Globe, ShieldCheck, ChevronDown } from 'lucide-react';
 import { companyDetails } from '@/lib/companydetails';
-import { GlowingBackground } from './GlowingBackground';
 import { useState } from 'react';
 
 
@@ -52,29 +51,20 @@ export default function Footer() {
   );
 
   return (
-    <footer className="bg-background border-t border-primary/10 pt-16 pb-8 relative overflow-hidden">
-      {/* Glowing Background - Light Mode Only */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none dark:hidden hidden md:block">
-        {/* Blue Glow - Top Left */}
-        <div
-          className="absolute top-0 left-0 w-[50%] h-[50%] rounded-full bg-primary/30 blur-[100px]"
-        />
-        {/* Purple Glow - Bottom Right */}
-        <div
-          className="absolute bottom-0 right-0 w-[55%] h-[55%] rounded-full bg-purple-600/25 blur-[110px]"
-        />
-      </div>
-      
+    <footer className="border-t border-primary/10 pt-16 pb-8 relative overflow-hidden">
+        {/* Global Glow Effect */}
+        <div className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/15 blur-[120px] pointer-events-none -z-10" />
+        <div className="absolute -bottom-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-purple-600/10 blur-[120px] pointer-events-none -z-10" />
       <div className="px-6 lg:px-12 relative z-10 text-center md:text-left">
         
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 gap-y-12 mb-16">
           
           {/* Column 1: Brand Identity (Always Visible) */}
-          <div className="col-span-1 lg:col-span-1 flex flex-col gap-4 items-center md:items-start text-center md:text-left backdrop-blur-sm bg-white/5 p-6 rounded-3xl border border-primary/10 lg:border-none lg:bg-transparent lg:p-0">
+          <div className="col-span-1 lg:col-span-1 flex flex-col gap-4 items-center md:items-start text-center md:text-left bg-foreground/5 p-6 rounded-3xl border border-primary/10 lg:border-none lg:bg-transparent lg:p-0">
             <Link href="/" className="flex items-center gap-2">
               <div className="relative size-10 filter drop-shadow-[0_0_8px_rgba(0,119,237,0.5)]">
-                <Image src={companyDetails.logos.main} alt="Vexel" fill className="object-contain" sizes="40px" />
+                <Image src={companyDetails.logos.main} alt={`${companyDetails.name} Logo`} fill className="object-contain" sizes="40px" />
               </div>
               <span className="text-xl font-black tracking-tight text-foreground">{companyDetails.name}</span>
             </Link>
@@ -122,23 +112,23 @@ export default function Footer() {
               {/* Column 4: Company */}
               <FooterSection title="Company">
                  <ul className="space-y-3 text-sm font-medium">
-                    <li><Link href="/about" className="text-foreground/70 hover:text-primary transition-colors">About Us</Link></li>
-                    <li><Link href="/services" className="text-foreground/70 hover:text-primary transition-colors">Services</Link></li>
-                    <li><Link href="/products" className="text-foreground/70 hover:text-primary transition-colors">Products</Link></li>
-                    <li><Link href="/careers" className="text-foreground/70 hover:text-primary transition-colors">Careers</Link></li>
-                    <li><Link href="/events" className="text-foreground/70 hover:text-primary transition-colors">Events</Link></li>
-                    <li><Link href="/faq" className="text-foreground/70 hover:text-primary transition-colors">FAQ</Link></li>
+                    <li><Link href="/about" className="text-foreground/80 hover:text-primary transition-colors">About Us</Link></li>
+                    <li><Link href="/services" className="text-foreground/80 hover:text-primary transition-colors">Services</Link></li>
+                    <li><Link href="/products" className="text-foreground/80 hover:text-primary transition-colors">Products</Link></li>
+                    <li><Link href="/careers" className="text-foreground/80 hover:text-primary transition-colors">Careers</Link></li>
+                    <li><Link href="/events" className="text-foreground/80 hover:text-primary transition-colors">Events</Link></li>
+                    <li><Link href="/faq" className="text-foreground/80 hover:text-primary transition-colors">FAQ</Link></li>
                  </ul>
               </FooterSection>
 
               {/* Column 5: Legal */}
               <FooterSection title="Legal">
                  <ul className="space-y-3 text-sm font-medium">
-                    <li><Link href="/privacy" className="text-foreground/70 hover:text-primary transition-colors">Privacy Policy</Link></li>
-                    <li><Link href="/terms" className="text-foreground/70 hover:text-primary transition-colors">Terms of Service</Link></li>
-                    <li><Link href="/refund-policy" className="text-foreground/70 hover:text-primary transition-colors">Refund Policy</Link></li>
-                    <li><Link href="/cookie-policy" className="text-foreground/70 hover:text-primary transition-colors">Cookie Policy</Link></li>
-                    <li><Link href="/company-policy" className="text-foreground/70 hover:text-primary transition-colors">Company Policy</Link></li>
+                    <li><Link href="/privacy" className="text-foreground/80 hover:text-primary transition-colors">Privacy Policy</Link></li>
+                    <li><Link href="/terms" className="text-foreground/80 hover:text-primary transition-colors">Terms of Service</Link></li>
+                    <li><Link href="/refund-policy" className="text-foreground/80 hover:text-primary transition-colors">Refund Policy</Link></li>
+                    <li><Link href="/cookie-policy" className="text-foreground/80 hover:text-primary transition-colors">Cookie Policy</Link></li>
+                    <li><Link href="/company-policy" className="text-foreground/80 hover:text-primary transition-colors">Company Policy</Link></li>
 
 
                  </ul>
@@ -212,12 +202,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-foreground/60 font-medium">
+        <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-foreground/60 font-medium">
            <p>© {currentYear} {companyDetails.legalName}. All rights reserved.</p>
            <span className="hidden md:inline">•</span>
            <p>Made with ❤️ in Sri Lanka</p>
         </div>
-
       </div>
     </footer>
   );

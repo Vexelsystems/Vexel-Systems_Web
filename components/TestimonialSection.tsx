@@ -10,7 +10,7 @@ const testimonials = [
     name: "Sivalingam Ragavan",
     role: "Owner, Vanni Hardware",
     content: "We tracked our inventory in notebooks for 20 years. Vexel built us a system that handles everything automatically. Now I can check my stock from home.",
-    image: "/home/photo-1550751827-4bd374c3f58b.jpg",
+    image: "https://images.unsplash.com/photo-1556157382-97eda2d622ca?w=400&h=400&fit=crop",
     rating: 5
   },
   {
@@ -18,7 +18,7 @@ const testimonials = [
     name: "Dilshan Perera",
     role: "Manager, City Bakers",
     content: "Managing orders during festival times was a nightmare. The new POS system is fast and simple. Our staff learned it in one day.",
-    image: "/home/photo-1557838923-2985c318be48.jpg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     rating: 5
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     name: "Fathima Rihana",
     role: "Director, EduSmart Academy",
     content: "We needed a way for students to check exam results online. Vexel built a secure portal that works perfectly on every phone.",
-    image: "/home/photo-1498050108023-c5249f4df085.jpg",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
     rating: 5
   },
   {
@@ -34,7 +34,7 @@ const testimonials = [
     name: "Kumara Bandara",
     role: "CEO, Lanka Logistics",
     content: "Tracking our delivery trucks used to be phone calls and guess work. Now we see everything in real-time. It saved us so much time.",
-    image: "/home/photo-1460925895917-afdab827c52f.jpg",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
     rating: 5
   },
   {
@@ -42,7 +42,7 @@ const testimonials = [
     name: "Meera Jasmine",
     role: "Founder, Style House",
     content: "I wanted a website that looks international but feels local. Vexel understood exactly what I needed. Sales increased immediately.",
-    image: "/home/photo-1451187580459-43490279c0fa.jpg",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     rating: 5
   },
   {
@@ -50,7 +50,7 @@ const testimonials = [
     name: "Mohamed Afran",
     role: "Owner, Afran Motors",
     content: "Simple, fast, and no errors. The booking system they made for our service station sends automatic reminders to customers. Brilliant.",
-    image: "/home/photo-1521737604893-d14cc237f11d.jpg",
+    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop",
     rating: 5
   },
 ];

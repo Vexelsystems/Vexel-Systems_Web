@@ -1,57 +1,39 @@
-/**
- * SERVICE DETAIL PAGE (Dynamic Route)
- * 
- * Technical Implementation:
- * - Uses generateMetadata for dynamic SEO injection
- * - Implements generateStaticParams for SSG (Static Site Generation) at build time
- * - Handles async params pattern required by Next.js 15
- */
-
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getServiceBySlug, services } from "@/lib/services";
-import { generateDynamicMetadata, generateServiceSchema, BASE_URL } from "@/lib/seo";
-import { CheckCircle, ArrowRight, ShieldCheck, Megaphone } from "lucide-react";
+import { services, getServiceBySlug } from "@/lib/services";
+import { generateDynamicMetadata } from "@/lib/seo";
+import { 
+  HelpCircle, Rocket, Zap, Star, Activity, 
+  Quote, ShieldCheck, CheckCircle2, ArrowRight,
+  Cpu, Globe, Smartphone, BarChart3, Settings, Monitor
+} from "lucide-react";
 import type { Metadata } from "next";
-import { SnapCarousel } from "@/components/ui/SnapCarousel";
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+import { TechCard } from "@/components/ui/TechCard";
+import { HeroBackground } from "@/components/hero/HeroBackground";
+import { TypewriterText } from "@/components/hero/TypewriterText";
 
-/**
- * GENERATE METADATA
- * Dynamically constructs SEO tags based on the service slug.
- * 
- * @param params - Promise resolving to route parameters
- * @returns Metadata object with Open Graph and Twitter card settings
- */
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   
-  if (!service) {
-    return {};
-  }
+  if (!service) return {};
 
-  // Use the actual service title for Open Graph and page title
   return generateDynamicMetadata({
-    title: service.title, // e.g., "AI-Powered Automation for Smarter Businesses"
+    title: service.title,
     description: service.description,
     keywords: [
-      ...service.techStack,
-      service.subtitle,
-      'Service',
-      'Vexel Systems',
+      service.title,
+      ...(service.techStack?.map(t => t.name) || []),
+      "Vexel Systems",
+      "Software Solutions",
     ],
     path: `/services/${service.slug}`,
     image: service.heroImage,
-    type: 'website',
   });
 }
 
-/**
- * GENERATE STATIC PARAMS
- * Defines which paths should be statically generated at build time.
- * Improves performance by pre-rendering all known service pages.
- */
 export async function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
@@ -59,507 +41,491 @@ export async function generateStaticParams() {
 }
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
-  // Await params to access slug (Next.js 15 requirement)
   const { slug } = await params;
   const service = getServiceBySlug(slug);
 
-  if (!service) {
-    notFound();
-  }
+  if (!service) notFound();
+
+  // Slug-specific design tokens
+  const isAI = slug === 'ai-ml-solutions';
+  const isWeb = slug === 'web-development';
+  const isIoT = slug === 'smart-iot-hardware-solutions';
+  
+  const themeColor = isAI ? 'text-purple-500' : isWeb ? 'text-blue-500' : isIoT ? 'text-emerald-500' : 'text-primary';
+  const themeBg = isAI ? 'bg-purple-500/10' : isWeb ? 'bg-blue-500/10' : isIoT ? 'bg-emerald-500/10' : 'bg-primary/10';
 
   return (
-    <main className="flex flex-col">
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateServiceSchema({
-            name: service.title,
-            description: service.description,
-            url: `${BASE_URL}/services/${service.slug}`,
-            image: service.heroImage,
-          }))
-        }}
-      />
-      
-      {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 overflow-hidden flex flex-col items-center justify-start text-center">
-        {/* Background Gradients & Grid */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
-
-        {/* Back Link */}
-        <div className="absolute top-24 left-6 md:left-10 z-20">
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-bold text-foreground/60 hover:text-primary transition-all hover:gap-3 bg-white/5 dark:bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-sm">
-                <ArrowRight className="rotate-180" size={16} /> Back to Services
-            </Link>
+    <main className="min-h-screen bg-transparent relative selection:bg-primary/20">
+      {/* 1. BESPOKE HERO SECTION */}
+      <section className="relative min-h-[85vh] pt-32 pb-20 overflow-hidden flex flex-col items-center justify-center text-foreground">
+        <HeroBackground />
+        
+        {/* Breadcrumb / Back Link */}
+        <div className="absolute top-24 left-6 md:left-12 z-20">
+          <Link href="/services" className="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-foreground/40 hover:text-primary transition-all">
+            <ArrowRight className="rotate-180 transition-transform group-hover:-translate-x-1" size={14} />
+            Back to Solutions
+          </Link>
         </div>
 
-        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
-            
-            {/* Hero Badge */}
-            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
-              <div className="size-2 rounded-full bg-primary"></div>
-              <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">{service.subtitle || "Service Overview"}</span>
-            </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <MotionWrapper type={isAI ? "scale" : "slideUp"} duration={1.2}>
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${themeBg} border border-white/10 mb-8`}>
+                <div className={`size-2 rounded-full animate-pulse ${themeColor.replace('text', 'bg')}`} />
+                <span className={`text-[10px] font-black uppercase tracking-[0.3em] ${themeColor}`}>Service Detail • {service.slug.replace(/-/g, ' ')}</span>
+              </div>
 
-            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
-              {/* Dynamic Title with Gradient Logic */}
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-1 mb-6">
-                 {service.title.split(" ").map((word, i) => {
-                    // Logic to detect keywords for gradient - can be expanded or made smarter if needed
-                    const isHighlight = ["automation", "smarter", "businesses", "solutions", "development", "ai", "cloud", "mobile", "web"].some(k => word.toLowerCase().includes(k));
-                    return (
-                        <span key={i} className={isHighlight ? "text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2" : "text-foreground pb-2"}>
-                            {word}
-                        </span>
-                    );
-                 })}
+              <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-foreground leading-[0.9] tracking-tighter mb-8 italic">
+                {service.title.split(' ').map((word, i) => (
+                  <span key={i} className={i === 0 ? 'text-primary block not-italic uppercase' : ''}>{word} </span>
+                ))}
               </h1>
 
-              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-
-            {/* Hero Actions */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
-                 <Link href="#contact">
-                    <button 
-                        className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden"
-                    >
-                        Automate Your Business
-                         <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                 </Link>
-
-                  <a 
-                    href={`https://wa.me/94740968108?text=${encodeURIComponent(`Hi, I am interested in learning more about ${service.title} services.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all backdrop-blur-sm flex items-center gap-2"
-                  >
-                     WhatsApp
-                  </a>
-            </div>
-        </div>
-      </section>
-
-      {/* Trust Badges / Certifications */}
-      {service.certifications && service.certifications.length > 0 && (
-        <section className="py-12 border-y border-foreground/5 bg-foreground/5">
-            <div className="max-w-7xl mx-auto px-6 lg:px-10">
-                <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-foreground/40 mb-10">Trusted & Certified By Global Standards</p>
-                <div className="flex flex-wrap justify-center items-center gap-12 opacity-50 hover:opacity-100 transition-all cursor-default">
-                    {service.certifications.map((cert, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xl font-bold italic text-foreground">
-                            <cert.icon className="text-primary" size={24} />
-                            {cert.title}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-      )}
-
-      {/* Sub-Services Grid */}
-      <section className="py-24 bg-foreground/5" id="services">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-foreground">Our Capabilities</h2>
-            <div className="h-1 w-20 bg-primary"></div>
-          </div>
-          <SnapCarousel>
-            {service.subServices.map((sub, idx) => (
-              <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center p-8 rounded-xl transition-all group bg-white dark:bg-card border border-gray-100 dark:border-gray-800 hover:border-primary/40 hover:bg-primary/5 shadow-sm hover:shadow-lg flex flex-col">
-                {sub.image && (
-                    <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
-                         <Image 
-                            src={sub.image} 
-                            alt={sub.title} 
-                            fill 
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    </div>
-                )}
-                {!sub.image && (
-                    <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 transition-transform">
-                        <sub.icon size={32} />
-                    </div>
-                )}
-                
-                {sub.image && (
-                     <div className="flex items-center gap-3 mb-3 text-primary">
-                        <sub.icon size={28} />
-                        <h3 className="text-xl font-bold text-foreground">{sub.title}</h3>
-                     </div>
-                )}
-                {!sub.image && <h3 className="text-xl font-bold mb-3 text-foreground">{sub.title}</h3>}
-                
-                <p className="text-foreground/60 leading-relaxed mb-4">{sub.description}</p>
-
-                {sub.features && (
-                   <ul className="mt-auto space-y-2 pt-4 border-t border-gray-100 dark:border-gray-800">
-                     {sub.features.map((feature, i) => (
-                       <li key={i} className="flex items-center gap-2 text-sm text-foreground/70">
-                         <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
-                         {feature}
-                       </li>
-                     ))}
-                   </ul>
-                )}
-              </div>
-            ))}
-          </SnapCarousel>
-        </div>
-      </section>
-
-      {/* Why Us Section */}
-      {service.whyUs && (
-        <section className="py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 relative rounded-2xl overflow-hidden border border-primary/20 aspect-4/5 shadow-2xl">
-                 <Image 
-                    src={service.whyUs.image} 
-                    alt="Why Us" 
-                    fill 
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+              <div className="flex flex-col items-center gap-6">
+                <TypewriterText 
+                  phrases={[service.subtitle, "Bespoke Engineering.", "Global Standards.", "Future Ready."]} 
+                  className="text-xl md:text-2xl font-bold text-foreground/60"
                 />
-                <div className="absolute bottom-6 right-6 bg-primary p-6 rounded-xl shadow-xl">
-                    <p className="text-background-dark font-black text-4xl">10X</p>
-                    <p className="text-background-dark/80 text-xs font-bold uppercase tracking-wider">Average ROI Scale</p>
-                </div>
-            </div>
-            <div className="order-1 md:order-2 space-y-8">
-                <div className="space-y-4">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">{service.whyUs.title}</h2>
-                    <p className="text-foreground/60">{service.whyUs.description}</p>
-                </div>
-                <div className="space-y-6">
-                    {service.whyUs.points.map((point, idx) => (
-                        <div key={idx} className="flex gap-4">
-                            <div className="shrink-0 text-primary">
-                                <point.icon size={32} />
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-lg mb-1 text-foreground">{point.title}</h4>
-                                <p className="text-sm text-foreground/60">{point.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Case Studies Section */}
-      {service.caseStudies && service.caseStudies.length > 0 && (
-        <section className="py-24 bg-foreground/5">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-             <div className="flex justify-between items-end mb-10">
-                <div>
-                   <h2 className="text-3xl font-black mb-2 text-foreground">Proven Impact</h2>
-                   <p className="text-foreground/60">Real results for our partners across the globe.</p>
-                </div>
-             </div>
-             <SnapCarousel>
-                {service.caseStudies.map((study, idx) => (
-                   <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center group relative bg-black/10 dark:bg-black/40 rounded-2xl overflow-hidden aspect-video">
-                      <Image 
-                         src={study.image} 
-                         alt={study.title} 
-                         fill 
-                         className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
-                         sizes="(max-width: 768px) 85vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent p-8 flex flex-col justify-end">
-                         <span className="bg-primary px-3 py-1 rounded text-[10px] font-bold text-background-dark uppercase w-fit mb-3">{study.category}</span>
-                         <h3 className="text-white text-2xl font-bold mb-2">{study.title}</h3>
-                         <p className="text-primary text-3xl font-black">{study.stat} <span className="text-white/80 text-sm font-normal ml-2">{study.statDescription}</span></p>
-                      </div>
-                   </div>
-                ))}
-            </SnapCarousel>
-          </div>
-        </section>
-      )}
-
-      {/* Benefits Section */}
-      {service.benefits && service.benefits.length > 0 && (
-        <section className="py-24" id="benefits">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="flex flex-col lg:flex-row gap-16 items-center">
-              <div className="lg:w-1/2">
-                <h2 className="text-4xl font-bold mb-6 text-foreground">The Benefits of <span className="text-primary">Transformation</span></h2>
-                <p className="text-foreground/60 text-lg mb-10">Modernizing your business with Vexel Systems isn't just about new tech—it's about measurable ROI and operational freedom.</p>
-                <SnapCarousel scrollContainerClassName="sm:grid sm:grid-cols-2 gap-8">
-                  {service.benefits.map((benefit, idx) => (
-                    <div key={idx} className="min-w-[75vw] sm:min-w-0 snap-center flex flex-col gap-4">
-                      {benefit.image && (
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-md">
-                          <Image 
-                            src={benefit.image} 
-                            alt={benefit.title} 
-                            fill 
-                            className="object-cover"
-                            sizes="(max-width: 768px) 75vw, 50vw"
-                          />
-                        </div>
-                      )}
-                      
-                      <div className="flex gap-4">
-                        {!benefit.image && (
-                            <div className="shrink-0 text-primary">
-                                {benefit.icon ? <benefit.icon size={24} /> : <CheckCircle size={24} />}
-                            </div>
-                        )}
-                        <div>
-                          <h4 className="font-bold text-lg mb-1 text-foreground">{benefit.title}</h4>
-                          <p className="text-sm text-foreground/60">{benefit.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </SnapCarousel>
-              </div>
-              <div className="lg:w-1/2 relative">
-                <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative aspect-video">
-                  <Image 
-                      src="/products/photo-1551288049-bebda4e38f71.jpg"
-                      alt="High-tech dashboard"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -left-6 bg-white dark:bg-black p-6 rounded-xl border border-primary/30 max-w-[200px] shadow-lg">
-                  <p className="text-3xl font-bold text-primary mb-1">70%</p>
-                  <p className="text-xs uppercase tracking-tighter text-foreground/60">Average Efficiency Gain</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Technologies Grid */}
-      <section className="py-16 border-y border-foreground/5 bg-foreground/5" id="tech">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-foreground/40 mb-10">Powered by Leading Tech</p>
-          <div className="overflow-hidden">
-             <div className="flex tech-scroll whitespace-nowrap">
-                {/* Set 1 */}
-                <div className="flex items-center gap-20 px-10">
-                    {service.techStack.map((tech, idx) => (
-                        <div key={idx} className="text-xl font-bold italic tracking-tighter text-foreground/50 hover:text-foreground transition-colors">{tech}</div>
-                    ))}
-                </div>
-                {/* Set 2 (Duplicated for seamless scroll if needed, though techStack in data is already doubled for some) */}
-                 <div className="flex items-center gap-20 px-10">
-                    {service.techStack.map((tech, idx) => (
-                        <div key={`dup-${idx}`} className="text-xl font-bold italic tracking-tighter text-foreground/50 hover:text-foreground transition-colors">{tech}</div>
-                    ))}
-                </div>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      {service.industries && service.industries.length > 0 && (
-        <section className="py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Versatile Solutions for Every Sector</h2>
-              <p className="text-foreground/60 max-w-xl mx-auto">Vexel Systems adapts its automation engine to the unique constraints and requirements of your industry.</p>
-            </div>
-            <SnapCarousel>
-              {service.industries.map((ind, idx) => (
-                  <div key={idx} className="min-w-[40vw] md:min-w-0 snap-center group relative overflow-hidden rounded-xl bg-white dark:bg-black/20 border border-gray-100 dark:border-gray-800 transition-all">
-                      {ind.image ? (
-                          <>
-                            <div className="relative w-full aspect-video">
-                                <Image
-                                    src={ind.image}
-                                    alt={ind.name}
-                                    fill
-                                    className="object-cover transition-transform duration-500"
-                                    sizes="(max-width: 768px) 40vw, 25vw"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
-                                <div className="absolute bottom-4 left-4 right-4">
-                                    <div className="flex items-center gap-2 mb-1 text-white">
-                                        {ind.icon && <ind.icon className="text-primary" size={20} />}
-                                        <h3 className="font-bold text-lg">{ind.name}</h3>
-                                    </div>
-                                    {ind.description && (
-                                        <p className="text-white/80 text-xs leading-relaxed">{ind.description}</p>
-                                    )}
-                                </div>
-                            </div>
-                          </>
-                      ) : (
-                          <div className="p-6 text-center">
-                              <div className="mb-3 flex justify-center">
-                                  {ind.icon && <ind.icon className="text-primary" size={32} />}
-                              </div>
-                              <p className="font-medium text-foreground">{ind.name}</p>
-                              {ind.description && (
-                                  <p className="text-xs text-foreground/60 mt-2">{ind.description}</p>
-                              )}
-                          </div>
-                      )}
-                  </div>
-              ))}
-            </SnapCarousel>
-          </div>
-        </section>
-      )}
-
-      {/* Process Section */}
-      {service.process && service.process.length > 0 && (
-        <section className="py-24 bg-foreground/5 text-foreground" id="process">
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Our Simplified Process</h2>
-              <p className="text-foreground/60 max-w-2xl mx-auto">From concept to deployment, we handle the technical heavy lifting.</p>
-            </div>
-            <div className="relative flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-4 gap-8 md:gap-12 pb-12 md:pb-0 scrollbar-hide -mx-6 px-6 md:mx-auto md:px-0">
-              {service.process.map((step, idx) => (
-                <div key={idx} className="min-w-[70vw] md:min-w-0 snap-center relative z-10 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold mb-6 text-white">{idx + 1}</div>
-                  <h5 className="text-xl font-bold mb-2">{step.title}</h5>
-                  <p className="text-sm text-foreground/60">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-      
-      {/* FAQ Section */}
-      {service.faq && service.faq.length > 0 && (
-        <section className="py-24" id="faq">
-          <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Frequently Asked Questions</h2>
-              <p className="text-foreground/60">Everything you need to know about starting your project with us.</p>
-            </div>
-            <div className="space-y-4">
-              {service.faq.map((item, idx) => (
-                <details key={idx} className="group border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-black/20 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                  <summary className="flex items-center justify-between gap-4">
-                    <h3 className="font-bold text-lg text-foreground">{item.question}</h3>
-                    <div className="text-primary group-open:rotate-180 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
-                    </div>
-                  </summary>
-                  <p className="mt-4 text-foreground/60 leading-relaxed">
-                    {item.answer}
-                  </p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Testimonial Section */}
-      {service.testimonial && (
-        <section className="py-24 border-y border-foreground/5">
-            <div className="max-w-4xl mx-auto px-6 text-center">
-                <div className="mb-8 text-primary flex justify-center">
-                    <Megaphone className="text-primary -rotate-12" size={48} />
-                </div>
-                <blockquote className="text-2xl md:text-3xl font-medium leading-snug mb-10 text-foreground">
-                    "{service.testimonial.quote}"
-                </blockquote>
-                <div className="flex items-center justify-center gap-4">
-                    <div className="size-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                        {service.testimonial.author[0]}
-                    </div>
-                    <div className="text-left">
-                        <p className="font-bold text-foreground">{service.testimonial.author}</p>
-                        <p className="text-xs text-primary uppercase tracking-wider">{service.testimonial.role}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-      )}
-
-      {/* Privacy Section */}
-      {service.privacy && (
-        <section className="py-20" id="privacy">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="bg-primary/5 rounded-3xl p-10 md:p-16 border border-primary/10 flex flex-col md:flex-row items-center gap-12">
-              <div className="flex-1 text-center md:text-left">
-                <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
-                  <ShieldCheck className="text-primary" size={24} />
-                  <span className="text-primary font-bold tracking-wide uppercase text-xs">Security & Privacy First</span>
-                </div>
-                <h2 className="text-3xl font-bold mb-6 text-foreground">You provide the data and goal - we build the AI.</h2>
-                <p className="text-foreground/60 text-lg leading-relaxed">
-                  {service.privacy.description}
+                <p className="max-w-2xl text-lg font-medium text-foreground/80 leading-relaxed italic">
+                   {service.description}
                 </p>
               </div>
-              <div className="w-full max-w-[280px] grid grid-cols-2 gap-4">
-                {service.privacy.features.map((feature, idx) => (
-                  <div key={idx} className="aspect-square bg-white dark:bg-black/20 rounded-xl flex flex-col items-center justify-center p-4 text-center shadow-sm border border-gray-100 dark:border-gray-800">
-                    <div className="mb-2 text-primary">
-                        <feature.icon size={32} />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase text-foreground/60">{feature.title}</span>
+
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-12">
+                <Link href="/contact">
+                  <button className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black shadow-2xl shadow-primary/40 hover:scale-105 transition-all flex items-center gap-3 group">
+                    Start Your Project
+                    <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+                <Link href="/portfolio">
+                  <button className="px-10 py-5 rounded-2xl text-lg font-black border border-foreground/10 hover:bg-foreground/5 transition-all">
+                    Browse Portfolio
+                  </button>
+                </Link>
+              </div>
+            </MotionWrapper>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. UNIQUE ABOUT SECTION - "The Vexel DNA" */}
+      <section className="py-32 px-6 relative" id="about">
+         <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+               <MotionWrapper type="slideLeft">
+                  <div className="space-y-8">
+                     <div className="inline-block px-4 py-1 rounded-lg bg-primary/5 border border-primary/20 text-primary text-[10px] font-black tracking-[0.4em] uppercase">Core Philosophy</div>
+                     <h2 className="text-4xl md:text-5xl font-black text-foreground leading-tight tracking-tighter">
+                        Architecting <span className="text-primary italic">Excellence</span> through precision.
+                     </h2>
+                     <div className="p-10 rounded-[3rem] bg-white/40 dark:bg-white/5 backdrop-blur-3xl border border-black/5 dark:border-white/5 relative group overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                        <blockquote className="text-2xl italic font-black text-foreground leading-snug relative z-10 transition-transform group-hover:scale-[1.02]">
+                           "{service.aboutDetail}"
+                        </blockquote>
+                     </div>
+                     <div className="grid grid-cols-2 gap-6">
+                        <div className="p-6 rounded-4xl bg-foreground/5 border border-foreground/5 flex flex-col gap-2 group hover:bg-primary transition-colors">
+                           <span className="text-4xl font-black group-hover:text-primary-foreground group-hover:text-white">100%</span>
+                           <span className="text-[10px] font-black uppercase tracking-widest opacity-40 group-hover:text-white/60">Deployment Success</span>
+                        </div>
+                        <div className="p-6 rounded-4xl bg-primary/5 border border-primary/5 flex flex-col gap-2 group hover:bg-foreground transition-colors">
+                           <span className="text-4xl font-black text-primary group-hover:text-background">24/7</span>
+                           <span className="text-[10px] font-black uppercase tracking-widest text-primary/60 group-hover:text-white/40">Active Monitoring</span>
+                        </div>
+                     </div>
                   </div>
-                ))}
+               </MotionWrapper>
+
+               <MotionWrapper type="slideRight">
+                  <div className="relative">
+                     <div className="absolute -inset-4 bg-primary/20 rounded-[4rem] blur-2xl -z-10 animate-pulse" />
+                     <div className="relative aspect-4/5 rounded-3xl overflow-hidden group">
+                        <Image src={service.heroImage} alt={service.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-60" />
+                        <div className="absolute bottom-10 left-10 p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20">
+                           <p className="text-white text-xs font-black uppercase tracking-[0.3em] mb-2">Internal Codebase</p>
+                           <h4 className="text-white text-2xl font-black italic">Vexel Engine v4.2</h4>
+                        </div>
+                     </div>
+                  </div>
+               </MotionWrapper>
+            </div>
+         </div>
+      </section>
+
+      {/* 3. CAPABILITIES GRID - Unique to Services */}
+      <section className="py-32 px-6 bg-zinc-950 text-white overflow-hidden relative">
+         <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-primary/20 to-transparent" />
+         <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+               <div className="max-w-2xl">
+                  <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 italic">Core <span className="text-primary not-italic">Capabilities.</span></h2>
+                  <p className="text-white/60 text-lg font-medium">Specialized solutions engineered to push the boundaries of what's possible in the {service.slug.replace(/-/g, ' ')} space.</p>
+               </div>
+               <div className="hidden md:block">
+                  <div className="size-24 rounded-full border border-white/10 flex items-center justify-center animate-spin-slow">
+                     <Settings className="text-primary" size={32} />
+                  </div>
+               </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+               {service.subServices.map((sub, idx) => {
+                  const Icon = sub.icon || Monitor;
+                  return (
+                     <MotionWrapper key={idx} type="scale" delay={idx * 0.1}>
+                        <div className="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-primary/50 transition-all group h-full">
+                           <div className="size-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform">
+                              <Icon size={32} />
+                           </div>
+                           <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors uppercase tracking-tight">{sub.title}</h3>
+                           <p className="text-white/50 text-sm font-medium leading-relaxed mb-8">{sub.description}</p>
+                           <ul className="space-y-3">
+                              {sub.features?.map((feat, fidx) => (
+                                 <li key={fidx} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/30 group-hover:text-white/60 transition-colors">
+                                    <div className="size-1 bg-primary rounded-full" />
+                                    {feat}
+                                 </li>
+                              ))}
+                           </ul>
+                        </div>
+                     </MotionWrapper>
+                  );
+               })}
+            </div>
+         </div>
+      </section>
+
+      {/* 4. TECH STACK - Unique Horizontal Scroll/Grid */}
+      <section className="py-32 px-6 relative overflow-hidden">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+               <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 italic">The <span className="text-primary not-italic">Power</span> Stack</h2>
+               <p className="text-foreground/40 text-lg font-bold uppercase tracking-[.2em]">Our Industry-Leading Technology Suite</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+               {service.techStack.map((tech, idx) => (
+                  <TechCard
+                     key={idx}
+                     name={tech.name}
+                     iconName={tech.iconName}
+                     explanation={tech.explanation}
+                     index={idx}
+                  />
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* 5. ROADMAP - Bespoke Timeline */}
+      {service.roadmap && (
+         <section className="py-32 px-6 bg-zinc-900 overflow-hidden relative text-white">
+            <div className="max-w-7xl mx-auto relative z-10">
+               <div className="flex items-center gap-4 mb-20">
+                  <div className="h-[2px] w-20 bg-primary" />
+                  <h2 className="text-white text-3xl md:text-5xl font-black tracking-tight uppercase">Operational Roadmap</h2>
+               </div>
+
+               <div className="relative grid md:grid-cols-3 gap-px bg-white/5 p-px">
+                  {service.roadmap.map((item, idx) => (
+                     <MotionWrapper key={idx} type="slideUp" delay={idx * 0.1}>
+                        <div className={`p-12 h-full relative group hover:bg-white/5 transition-all ${item.status === 'current' ? 'bg-primary/10' : ''}`}>
+                           {item.status === 'current' && (
+                              <div className="absolute top-6 right-6 px-3 py-1 rounded-full bg-primary text-[8px] font-black text-white uppercase tracking-widest animate-pulse">Running Now</div>
+                           )}
+                           <span className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-4 block">{item.date}</span>
+                           <h4 className="text-white text-2xl font-black mb-6 italic tracking-tight uppercase">{item.phase}</h4>
+                           <p className="text-white/40 text-sm font-medium leading-relaxed mb-8">{item.description}</p>
+                           <div className="flex flex-wrap gap-2">
+                              {item.items.map((it, iidx) => (
+                                 <span key={iidx} className="px-2 py-1 rounded bg-white/5 text-[9px] font-bold text-white/50 border border-white/5">{it}</span>
+                              ))}
+                           </div>
+                        </div>
+                     </MotionWrapper>
+                  ))}
+               </div>
+            </div>
+         </section>
+      )}
+
+      {/* 6. THE BLUEPRINT (Process) */}
+      {service.process && (
+        <section className="py-32 px-6">
+           <div className="max-w-7xl mx-auto">
+              <div className="mb-20">
+                 <h2 className="text-5xl md:text-7xl font-black tracking-tighter italic">The <span className="text-primary not-italic">Blueprint.</span></h2>
+                 <p className="text-foreground/40 mt-4 text-xl font-medium tracking-tight">Our rigid deployment sequence for guaranteed success.</p>
+              </div>
+
+              <div className="grid md:grid-cols-5 gap-4">
+                 {service.process.map((step, idx) => (
+                   <MotionWrapper key={idx} type="fade" delay={idx * 0.1}>
+                     <div className="group p-8 rounded-[2.5rem] bg-white/40 dark:bg-white/5 border border-black/5 dark:border-white/5 h-full relative overflow-hidden transition-all hover:translate-y-[-10px]">
+                        <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors" />
+                        <span className="text-7xl font-black text-black/5 dark:text-white/5 absolute -right-4 -bottom-4 tracking-tighter leading-none">{idx + 1}</span>
+                        <h4 className="text-xl font-black mb-4 relative z-10">{step.title}</h4>
+                        <p className="text-xs font-semibold text-foreground/50 leading-relaxed relative z-10">{step.description}</p>
+                     </div>
+                   </MotionWrapper>
+                 ))}
+              </div>
+           </div>
+        </section>
+      )}
+
+      {/* 7. CASE STUDIES / PROJECTS */}
+      {service.caseStudies && (
+        <section className="py-32 px-6 bg-zinc-900 overflow-hidden relative text-white">
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+              <div className="max-w-2xl">
+                <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 italic">Proven <span className="text-primary not-italic">Impact.</span></h2>
+                <p className="text-white/40 text-lg font-medium">Real-world results delivered to our enterprise partners.</p>
+              </div>
+              <div className="hidden md:block">
+                <div className="flex items-center gap-4 text-primary font-black uppercase tracking-widest text-xs">
+                  Reviewing 2 of 14 cases <ArrowRight size={14} />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              {service.caseStudies.map((study, idx) => (
+                <MotionWrapper key={idx} type="slideUp" delay={idx * 0.1}>
+                  <div className="group relative rounded-[4rem] overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all">
+                    <div className="aspect-video relative overflow-hidden">
+                      <Image 
+                        src={study.image} 
+                        alt={study.title} 
+                        fill 
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+                      
+                      <div className="absolute top-8 left-8">
+                        <span className="px-4 py-2 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-[0.3em]">
+                          {study.category}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <div className="flex items-end justify-between gap-4">
+                          <div>
+                            <h4 className="text-3xl font-black text-white italic mb-2">{study.title}</h4>
+                            <p className="text-white/60 text-sm font-bold uppercase tracking-widest">{study.statDescription}</p>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-5xl font-black text-primary leading-none tracking-tighter">{study.stat}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </MotionWrapper>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 8. THE WINNING EDGE (Benefits) */}
+      {service.benefits && (
+        <section className="py-32 px-6 bg-zinc-950 text-white">
+           <div className="max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-3 gap-16 items-start">
+                 <div className="lg:col-span-1 border-l-4 border-primary pl-8">
+                    <h2 className="text-5xl font-black tracking-tighter italic leading-none mb-8 text-white">The <span className="text-primary">Winning</span> Edge.</h2>
+                    <p className="text-white/40 font-medium">Quantifiable advantages that separate our partners from their competition.</p>
+                 </div>
+                 <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
+                    {service.benefits.map((benefit, idx) => (
+                       <MotionWrapper key={idx} type="scale" delay={idx * 0.1}>
+                          <div className="p-10 rounded-[3rem] bg-white/5 border border-white/10 h-full flex flex-col gap-4 group hover:bg-primary transition-colors text-white">
+                             <h4 className="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors">{benefit.title}</h4>
+                             <p className="text-sm font-medium text-white/50 leading-relaxed group-hover:text-white/80">{benefit.description}</p>
+                          </div>
+                       </MotionWrapper>
+                    ))}
+                 </div>
+              </div>
+           </div>
+        </section>
+      )}
+
+      {/* 9. IMPACT STORIES (Testimonial) */}
+      {service.testimonial && (
+        <section className="py-32 px-6 relative overflow-hidden">
+           <div className="absolute inset-0 bg-primary/5 -z-10" />
+           <div className="max-w-5xl mx-auto">
+             <MotionWrapper type="scale">
+               <div className="p-20 rounded-[4rem] bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 shadow-2xl relative text-center">
+                 <Quote className="absolute top-12 left-12 text-primary/10" size={120} />
+                 <p className="text-3xl md:text-5xl font-black italic text-foreground mb-12 leading-[1.1] tracking-tighter relative z-10">
+                   "{service.testimonial.quote}"
+                 </p>
+                 <div className="flex flex-col items-center gap-4">
+                    <div className="h-1 w-20 bg-primary" />
+                    <div>
+                       <h4 className="text-2xl font-black text-primary uppercase tracking-widest leading-none">{service.testimonial.author}</h4>
+                       <p className="text-xs font-bold text-foreground/40 mt-1">{service.testimonial.role}</p>
+                    </div>
+                 </div>
+               </div>
+             </MotionWrapper>
+           </div>
+        </section>
+      )}
+
+      {/* Comparison Section (New) */}
+      {service.comparison && (
+        <section className="py-24 px-6 bg-zinc-50 dark:bg-zinc-900/30">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-black uppercase tracking-widest italic">Vexel vs <span className="text-primary not-italic">Others</span></h2>
+            </div>
+            <div className="bg-white dark:bg-zinc-900 rounded-4xl shadow-xl overflow-hidden border border-black/5 dark:border-white/5">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-zinc-100 dark:bg-zinc-950 text-xs font-black uppercase tracking-widest">
+                      <th className="p-6">Feature</th>
+                      <th className="p-6 text-primary">Vexel Systems</th>
+                      <th className="p-6 opacity-40">Typical Agency</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm font-medium">
+                    {service.comparison.map((item, idx) => (
+                      <tr key={idx} className="border-b border-zinc-100 dark:border-white/5 last:border-0 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                        <td className="p-6 font-bold">{item.feature}</td>
+                        <td className="p-6 text-primary font-bold flex items-center gap-2">
+                          {item.vexel === true ? <CheckCircle2 size={16} /> : item.vexel}
+                        </td>
+                        <td className="p-6 opacity-50">
+                          {item.others === false ? <span className="text-red-500 font-bold">✕</span> : item.others}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Lead Capture */}
-      <section className="py-24 relative overflow-hidden" id="contact">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="p-10 lg:p-16 rounded-2xl border border-primary/20 bg-white/50 dark:bg-black/40 backdrop-blur-md">
-            <div className="grid lg:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-4xl font-bold mb-6 text-foreground">Let's Build the Future Together</h2>
-                <p className="text-foreground/60 mb-8 leading-relaxed">Book a free consultation to discuss your automation goals. Our architects will help you identify the highest ROI opportunities.</p>
-                <ul className="space-y-4">
-                    {["Full architectural assessment", "Feasibility study", "Custom implementation roadmap"].map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-3 text-sm text-foreground/80">
-                            <span className="size-6 rounded-full bg-primary/20 flex items-center justify-center">
-                            <CheckCircle size={14} className="text-primary" />
-                            </span>
-                            {item}
-                        </li>
-                    ))}
-                </ul>
+      {/* 10. PRICING / INVESTMENT */}
+      {service.pricing && (
+        <section className="py-32 px-6 bg-zinc-950 text-white">
+           <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-20">
+                 <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 text-white">Investment <span className="text-primary italic">Tiers</span></h2>
+                 <p className="text-white/40 text-lg font-medium max-w-2xl mx-auto">{service.pricing.description}</p>
               </div>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2">Name</label>
-                  <input className="w-full bg-background border border-foreground/10 rounded-lg px-4 py-3 focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="John Doe" type="text"/>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2">Email Address</label>
-                  <input className="w-full bg-background border border-foreground/10 rounded-lg px-4 py-3 focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="john@company.com" type="email"/>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-foreground/50 mb-2">Automation Goals</label>
-                  <textarea className="w-full bg-background border border-foreground/10 rounded-lg px-4 py-3 focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="Describe your current bottleneck..." rows={4}></textarea>
-                </div>
-                <button className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:shadow-[0_0_20px_rgba(19,164,236,0.4)] transition-all" type="submit">
-                  Send Request
-                </button>
-              </form>
-            </div>
-          </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                {service.pricing.options.map((option, idx) => (
+                  <MotionWrapper key={idx} type="slideUp" delay={idx * 0.1}>
+                    <div className={`p-12 rounded-[3.5rem] border h-full flex flex-col relative transition-all duration-500 hover:translate-y-[-10px] ${idx === 1 ? 'bg-primary text-white border-primary shadow-[0_50px_100px_-20px_rgba(239,68,68,0.3)] scale-105 z-10' : 'bg-white/5 border-white/5 hover:border-white/20'}`}>
+                      {idx === 1 && <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-2 rounded-full bg-white text-primary text-[10px] font-black uppercase tracking-[0.3em] shadow-xl">Recommended Solution</span>}
+                      <h4 className="text-sm font-black uppercase tracking-[0.3em] mb-4 opacity-60">{option.name}</h4>
+                      <p className="text-6xl font-black mb-10 tracking-[0.05em]">{option.price}</p>
+                       <div className="grid md:grid-cols-2 gap-4 mb-12 grow">
+                          {option.features.map((f, fi) => (
+                             <div key={fi} className="flex items-center gap-2 text-xs font-bold">
+                                <CheckCircle2 size={14} className={idx === 1 ? 'text-white' : 'text-primary'} />
+                                <span className={idx === 1 ? 'text-white opacity-80 leading-relaxed uppercase tracking-tighter' : 'text-white/80 leading-relaxed uppercase tracking-tighter'}>{f}</span>
+                             </div>
+                          ))}
+                       </div>
+                       <Link href={`/contact?subject=${service.title} - ${option.name}`}>
+                         <button className={`w-full py-6 rounded-2xl font-black text-xl transition-all shadow-2xl ${idx === 1 ? 'bg-white text-primary hover:bg-zinc-100 hover:scale-105' : 'bg-primary text-white hover:bg-primary/90 hover:scale-105 shadow-primary/20'}`}>
+                           Initialize
+                         </button>
+                       </Link>
+                    </div>
+                  </MotionWrapper>
+                ))}
+              </div>
+           </div>
+        </section>
+      )}
+
+      {/* 11. FAQs */}
+      {service.faq && (
+        <section className="py-32 px-6">
+           <div className="max-w-4xl mx-auto">
+              <div className="text-left mb-20 border-l-4 border-primary pl-8">
+                 <h2 className="text-5xl font-black tracking-tighter mb-4 italic">Expert <span className="not-italic">Intel.</span></h2>
+                 <p className="text-foreground/40 text-lg font-bold uppercase tracking-[.2em]">Operational Q&A</p>
+              </div>
+              <div className="space-y-6">
+                {service.faq.map((item, idx) => (
+                  <MotionWrapper key={idx} type="slideUp" delay={idx * 0.05}>
+                    <div className="p-10 rounded-[2.5rem] bg-white/40 dark:bg-white/5 border border-black/5 dark:border-white/5 group hover:border-primary/40 transition-all cursor-help">
+                       <h4 className="text-xl font-black text-foreground mb-4 flex items-center gap-4">
+                          <HelpCircle className="text-primary shrink-0" size={24} />
+                          {item.question}
+                       </h4>
+                       <p className="text-sm font-medium text-foreground/50 leading-relaxed pl-10 border-l border-black/5 dark:border-white/5">
+                          {item.answer}
+                       </p>
+                    </div>
+                  </MotionWrapper>
+                ))}
+              </div>
+           </div>
+        </section>
+      )}
+
+      {/* 12. LEAD IGNITION / CTA */}
+      <section className="py-24 px-6 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10">
+           <div className="p-20 rounded-[5rem] bg-zinc-900 border border-white/5 shadow-2xl relative overflow-hidden text-center md:text-left">
+              <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/30 rounded-full blur-[150px] -z-10 translate-x-1/2 -translate-y-1/2 opacity-20 text-white"></div>
+              
+              <div className="grid lg:grid-cols-2 gap-20 items-center">
+                <MotionWrapper type="slideLeft">
+                   <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-none mb-8 tracking-tighter">
+                     Ready to <span className="text-primary italic">Scale</span> {service.title}?
+                   </h2>
+                   <p className="text-white/50 text-xl font-medium mb-12 max-w-lg leading-relaxed italic">
+                     Deployment awaits. Let's translate your vision into high-performance architecture.
+                   </p>
+                   <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+                      <Link href="/contact">
+                        <button className="bg-primary text-white px-12 py-6 rounded-3xl text-xl font-black shadow-2xl shadow-primary/40 hover:scale-105 transition-all flex items-center gap-4 group">
+                           Book Session
+                           <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      </Link>
+                      <Link href="/contact?subject=Availability">
+                        <button className="px-12 py-6 rounded-3xl text-xl font-black border border-white/10 text-white hover:bg-white/5 transition-all">
+                           Check Availability
+                        </button>
+                      </Link>
+                   </div>
+                </MotionWrapper>
+
+                <MotionWrapper type="slideRight">
+                   <div className="p-12 rounded-[4rem] bg-white/5 border border-white/10 backdrop-blur-3xl text-center relative overflow-hidden text-white">
+                      <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
+                      <div className="size-24 rounded-4xl bg-primary/10 flex items-center justify-center text-primary mx-auto mb-8">
+                        <Activity size={48} />
+                      </div>
+                      <h4 className="text-3xl font-black text-white mb-4 italic tracking-tight uppercase">High Priority</h4>
+                      <p className="text-white/40 font-medium mb-10 text-sm">Typical response within 180 minutes for enterprise inquiries.</p>
+                      <Link href="/contact" className="text-primary font-black uppercase tracking-[0.3em] text-[10px] hover:tracking-[0.5em] transition-all flex items-center justify-center gap-2">
+                        Start Encrypted Thread <ArrowRight size={14} />
+                      </Link>
+                   </div>
+                </MotionWrapper>
+              </div>
+           </div>
         </div>
       </section>
     </main>

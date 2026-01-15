@@ -25,6 +25,12 @@ export const metadata = generatePageMetadata({
   path: "/contact",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function ContactPage() {
-  return <ContactClient />;
+  return (
+    <MotionWrapper>
+      <ContactClient />
+    </MotionWrapper>
+  );
 }

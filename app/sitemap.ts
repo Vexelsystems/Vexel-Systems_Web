@@ -95,14 +95,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
-      images: [`${baseUrl}/VLogo.png`],
+      images: [`${baseUrl}/favicon.ico`],
     })),
     ...blogRoutes.map((route, idx) => ({
       ...route,
       images: [
         blogPosts[idx].image
           ? `${baseUrl}${blogPosts[idx].image}`
-          : `${baseUrl}/VLogo.png`,
+          : `${baseUrl}/favicon.ico`,
       ],
     })),
     ...serviceRoutes.map((route, idx) => ({
@@ -110,7 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         services[idx].heroImage
           ? `${baseUrl}${services[idx].heroImage}`
-          : `${baseUrl}/VLogo.png`,
+          : `${baseUrl}/favicon.ico`,
       ],
     })),
     ...productRoutes.map((route, idx) => ({
@@ -118,12 +118,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         products[idx].mainImage
           ? `${baseUrl}${products[idx].mainImage}`
-          : `${baseUrl}/VLogo.png`,
+          : `${baseUrl}/favicon.ico`,
       ],
     })),
     ...pricingRoutes.map((route) => ({
       ...route,
-      images: [`${baseUrl}/VLogo.png`],
+      images: [`${baseUrl}/favicon.ico`],
     })),
   ];
 

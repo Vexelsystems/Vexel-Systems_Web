@@ -5,32 +5,22 @@ import React from 'react';
 /**
  * GLOWING BACKGROUND
  * 
- * Functional Overview:
- * - Performance: Uses `fixed` positioning and `pointer-events-none` to prevent layout reflows and interaction blocking.
- * - Visibility: Hidden on mobile/dark mode specific configurations via Tailwind classes.
+ * Purpose:
+ * - Provides a subtle, global ambient glow (blue and purple) across the whole page.
+ * - Optimized with high blur and low opacity to avoid performance issues.
+ * - Uses fixed positioning to stay behind all content.
  */
 
 export const GlowingBackground = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50 select-none dark:hidden hidden md:block">
-      {/* Top Left - Deep Primary (Blue) */}
+    <div className="fixed inset-0 overflow-hidden pointer-events-none -z-40 select-none">
+      {/* Blue Glow - Top Left */}
       <div
-        className="absolute -top-[15%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/30 blur-[130px]"
+        className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/15 blur-[120px] dark:bg-primary/10"
       />
-
-      {/* Bottom Right - Deep Purple */}
+      {/* Purple Glow - Bottom Right */}
       <div
-        className="absolute -bottom-[15%] -right-[15%] w-[80%] h-[80%] rounded-full bg-purple-600/25 blur-[140px]"
-      />
-
-      {/* Center Top - Vibrant Mixed Glow */}
-      <div
-        className="absolute top-[5%] left-[20%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[150px]"
-      />
-
-      {/* Mid Left - Purple Accent */}
-      <div
-        className="absolute top-[40%] -left-[5%] w-[40%] h-[40%] rounded-full bg-purple-500/20 blur-[120px]"
+        className="absolute -bottom-[10%] -right-[10%] w-[70%] h-[70%] rounded-full bg-purple-600/10 blur-[120px] dark:bg-purple-600/5"
       />
     </div>
   );

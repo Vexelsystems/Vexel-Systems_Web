@@ -11,6 +11,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Calendar, Users, Video, MapPin, Mic, Clock, ArrowRight, Tag } from 'lucide-react';
+import { MotionWrapper } from '@/components/ui/MotionWrapper';
 
 const events = [
   {
@@ -73,64 +74,66 @@ export default function EventsClient() {
       </div>
 
       {/* Event Grid */}
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-        {filteredEvents.map((event) => (
-          <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30">
-            <div className="relative h-48 w-full overflow-hidden">
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700"
-              />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-black text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                 <Tag size={12} className="text-primary" />
-                 {event.category}
-              </div>
-            </div>
-            
-            <div className="p-8">
-              <div className="flex items-center gap-2 text-xs font-bold text-primary mb-3">
-                 <Calendar size={14} />
-                 <span>{event.date}</span>
-                 <span className="w-1 h-1 rounded-full bg-primary/20"></span>
-                 <Clock size={14} className="ml-1" />
-                 <span>{event.time}</span>
+      <MotionWrapper type="slideUp" delay={0.2} duration={1.2}>
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          {filteredEvents.map((event) => (
+            <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30">
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={event.image}
+                  alt={event.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700"
+                />
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-black text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+                   <Tag size={12} className="text-primary" />
+                   {event.category}
+                </div>
               </div>
               
-              <h3 className="text-2xl font-bold mb-3 leading-tight transition-colors">
-                {event.title}
-              </h3>
-              
-              <p className="text-sm text-foreground/60 mb-6 line-clamp-2">
-                {event.description}
-              </p>
+              <div className="p-8">
+                <div className="flex items-center gap-2 text-xs font-bold text-primary mb-3">
+                   <Calendar size={14} />
+                   <span>{event.date}</span>
+                   <span className="w-1 h-1 rounded-full bg-primary/20"></span>
+                   <Clock size={14} className="ml-1" />
+                   <span>{event.time}</span>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-3 leading-tight transition-colors">
+                  {event.title}
+                </h3>
+                
+                <p className="text-sm text-foreground/60 mb-6 line-clamp-2">
+                  {event.description}
+                </p>
 
-              <div className="flex items-center gap-2 text-xs font-bold text-foreground/50 mb-8">
-                 {event.type === 'Virtual' ? <Video size={14} /> : <MapPin size={14} />}
-                 {event.location}
-              </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-foreground/50 mb-8">
+                   {event.type === 'Virtual' ? <Video size={14} /> : <MapPin size={14} />}
+                   {event.location}
+                </div>
 
-              <div className="pt-6 border-t border-primary/10 flex justify-between items-center bg-gray-50/50 dark:bg-black/20 -m-8 mt-0 p-6 px-8">
-                 <div className="flex -space-x-2">
-                    {[1,2,3].map((i) => (
-                       <div key={i} className="size-8 rounded-full border-2 border-white dark:border-zinc-800 bg-gray-200 dark:bg-zinc-700 flex items-center justify-center text-[8px] font-bold text-gray-500">
-                          U{i}
-                       </div>
-                    ))}
-                    <div className="size-8 rounded-full border-2 border-white dark:border-zinc-800 bg-primary text-white flex items-center justify-center text-[10px] font-bold">
-                      +42
-                    </div>
-                 </div>
-                 <button className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Register Now <ArrowRight size={16} />
-                 </button>
+                <div className="pt-6 border-t border-primary/10 flex justify-between items-center bg-gray-50/50 dark:bg-black/20 -m-8 mt-0 p-6 px-8">
+                   <div className="flex -space-x-2">
+                      {[1,2,3].map((i) => (
+                         <div key={i} className="size-8 rounded-full border-2 border-white dark:border-zinc-800 bg-gray-200 dark:bg-zinc-700 flex items-center justify-center text-[8px] font-bold text-gray-500">
+                            U{i}
+                         </div>
+                      ))}
+                      <div className="size-8 rounded-full border-2 border-white dark:border-zinc-800 bg-primary text-white flex items-center justify-center text-[10px] font-bold">
+                        +42
+                      </div>
+                   </div>
+                   <button className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                      Register Now <ArrowRight size={16} />
+                   </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </MotionWrapper>
 
       {/* Empty State */}
       {filteredEvents.length === 0 && (

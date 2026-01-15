@@ -25,25 +25,31 @@ export const metadata = generatePageMetadata({
   path: "/careers",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function CareersPage() {
   return (
     <div className="flex flex-col gap-20 pb-20">
       {/* Hero */}
       <section className="text-center max-w-4xl mx-auto py-12">
-        <div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6"
-        >
-          <Star size={16} />
-          Join the Revolution
-        </div>
-        <h1 className="text-6xl font-bold mb-6">Build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Future of Commerce</span> with Us.</h1>
-        <p className="text-xl text-foreground/60 leading-relaxed">
-          We're a team of innovators, dreamers, and doers on a mission to empower 
-          businesses across Asia. Find your role and help us change the world of retail.
-        </p>
+        <MotionWrapper type="scale">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm mb-6"
+          >
+            <Star size={16} />
+            Join the Revolution
+          </div>
+          <h1 className="text-6xl font-bold mb-6">Build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Future of Commerce</span> with Us.</h1>
+          <p className="text-xl text-foreground/60 leading-relaxed">
+            We're a team of innovators, dreamers, and doers on a mission to empower 
+            businesses across Asia. Find your role and help us change the world of retail.
+          </p>
+        </MotionWrapper>
       </section>
 
-      <CareersClient />
+      <MotionWrapper delay={0.2}>
+        <CareersClient />
+      </MotionWrapper>
     </div>
   );
 }

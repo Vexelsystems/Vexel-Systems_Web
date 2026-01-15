@@ -20,33 +20,58 @@ const categories = ["All", "Fintech", "Retail & AI", "Healthcare", "Logistics"];
 const projects = [
   {
     id: 1,
-    title: "SecurePay Dashboard",
-    category: "Fintech",
-    problem: "High latency in cross-border settlements.",
-    solution: "A blockchain-powered real-time tracking engine reducing settlement time from days to seconds.",
-    tech: ["React", "Node.js", "AWS"],
-    image: "/products/photo-1551288049-bebda4e38f71.jpg",
-    isLive: true
+    title: "Vexel POS",
+    category: "Retail & AI",
+    problem: "Inefficient manual sales tracking.",
+    solution: "Hybrid Point of Sale system with offline sync and AI inventory predictions.",
+    tech: ["Next.js", "Electron", "PostgreSQL"],
+    image: "/products/photo-1556742502-ec7c0e9f34b1.jpg",
+    isLive: true,
+    href: "/products/vexel-pos"
   },
   {
     id: 2,
-    title: "ShopFlow Mobile",
-    category: "Retail & AI",
-    problem: "Manual stock counting leading to 15% wastage.",
-    solution: "ML-driven predictive analytics that automates supply chain restocking for 200+ outlets.",
-    tech: ["Python", "PostgreSQL", "TensorFlow"],
-    image: "/pages/photo-1542744173-8e7e53415bb0.jpg"
+    title: "Vexel Track",
+    category: "Logistics",
+    problem: "Lack of real-time fleet visibility.",
+    solution: "GPS tracking engine with driver behavior analytics and fuel monitoring.",
+    tech: ["IoT", "Real-time DB", "Google Maps"],
+    image: "/products/photo-1551288049-bebda4e38f71.jpg",
+    isLive: true,
+    href: "/products/vexel-track"
   },
   {
     id: 3,
-    title: "Insight Engine Pro",
+    title: "Vexel Hire",
     category: "SaaS",
-    problem: "Limited market intelligence in rural regions.",
-    solution: "Video-consultation platform with low-bandwidth optimization for rural connectivity.",
-    tech: ["Flutter", "WebRTC", "Docker"],
-    image: "/home/photo-1460925895917-afdab827c52f.jpg",
-    isLive: true
-  }
+    problem: "Time-consuming manual recruitment.",
+    solution: "AI-powered Applicant Tracking System (ATS) with automated scoring.",
+    tech: ["AI/ML", "Next.js", "Cloud"],
+    image: "/products/photo-1586281380349-632531db7ed4.jpg",
+    isLive: false,
+    href: "/products/vexel-hire"
+  },
+  {
+    id: 4,
+    title: "SecurePay Dashboard",
+    category: "Fintech",
+    problem: "High latency in cross-border settlements.",
+    solution: "A blockchain-powered real-time tracking engine reducing settlement time.",
+    tech: ["React", "Node.js", "AWS"],
+    image: "/products/photo-1551288049-bebda4e38f71.jpg", // Reusing image as placeholder if needed, or keep original
+    isLive: true,
+    href: "#"
+  },
+  {
+    id: 5,
+    title: "ShopFlow Mobile",
+    category: "Retail & AI",
+    problem: "Manual stock counting wastage.",
+    solution: "ML-driven predictive analytics that automates supply chain restocking.",
+    tech: ["Python", "PostgreSQL", "TensorFlow"],
+    image: "/pages/photo-1542744173-8e7e53415bb0.jpg",
+    href: "#"
+  },
 ];
 
 export default function PortfolioClient() {
@@ -91,9 +116,10 @@ export default function PortfolioClient() {
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
            <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
-              <div 
+              <Link
+                href={project.href}
                 key={project.id} 
-                className="min-w-[85vw] md:min-w-0 snap-center group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
+                className="block min-w-[85vw] md:min-w-0 snap-center group relative aspect-4/3 rounded-3xl overflow-hidden bg-white/40 dark:bg-white/5 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500"
               >
                 <Image 
                   src={project.image} 
@@ -121,7 +147,7 @@ export default function PortfolioClient() {
                       ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
            </SnapCarousel>
            {filteredProjects.length === 0 && (

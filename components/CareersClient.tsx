@@ -13,6 +13,8 @@ import React, { useState } from 'react';
 import { jobPositions } from '@/lib/career-data';
 import { Briefcase, MapPin, Clock, DollarSign, Upload, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { MotionWrapper } from '@/components/ui/MotionWrapper';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CareersClient() {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
@@ -61,8 +63,9 @@ export default function CareersClient() {
   return (
     <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
       {/* Job Listings */}
-      <div className="flex flex-col gap-6">
-        <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
+      <MotionWrapper type="slideUp" duration={1.2}>
+        <div className="flex flex-col gap-6">
+          <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
         {jobPositions.map((job) => (
           <div 
             key={job.id}
@@ -164,6 +167,7 @@ export default function CareersClient() {
           </div>
         </div>
       </div>
+      </MotionWrapper>
 
       {/* Application Form */}
       <aside id="apply-form" className="lg:sticky lg:top-32 h-fit">
@@ -272,7 +276,7 @@ export default function CareersClient() {
                       {formData.file ? <CheckCircle2 size={20} /> : <Upload size={20} />}
                     </div>
                     <p className="text-xs font-bold text-foreground/80 uppercase tracking-widest">
-                      {formData.file ? formData.file.name : "Click to upload CV"}
+                      {formData.file ? (formData.file as File).name : "Click to upload CV"}
                     </p>
                     <p className="text-[10px] text-foreground/70 mt-1">Max file size: 5MB</p>
                   </div>

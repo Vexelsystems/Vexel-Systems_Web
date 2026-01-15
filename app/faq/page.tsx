@@ -24,6 +24,12 @@ export const metadata = generatePageMetadata({
   path: "/faq",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function FAQPage() {
-  return <FaqClient />;
+  return (
+    <MotionWrapper>
+      <FaqClient />
+    </MotionWrapper>
+  );
 }

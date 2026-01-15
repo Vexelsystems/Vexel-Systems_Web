@@ -28,6 +28,8 @@ export const metadata = generatePageMetadata({
   path: "/company-policy",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function CompanyPolicy() {
   const categories = [
     {
@@ -78,60 +80,68 @@ export default function CompanyPolicy() {
               <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">Corporate Governance</span>
             </div>
 
-            <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
-                <span className="text-foreground">Company </span>
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
-                  Policy
-                </span>
-              </h1>
+            <MotionWrapper type="scale">
+              <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
+                <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-6 text-center">
+                  <span className="text-foreground">Company </span>
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
+                    Policy
+                  </span>
+                </h1>
 
-              <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
-                The Vexel Standard of Excellence.
-              </p>
-            </div>
+                <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed mb-4">
+                  The Vexel Standard of Excellence.
+                </p>
+              </div>
+            </MotionWrapper>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pb-20">
-        <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-16 text-foreground/70 leading-relaxed text-center">
-        <p className="text-xl">
-          At {companyDetails.name}, our policies are not just rules—they are the foundation of our culture and our promise to clients, employees, and the global community.
-        </p>
-      </div>
+        <MotionWrapper delay={0.2}>
+          <div className="prose prose-lg dark:prose-invert max-w-4xl mx-auto mb-16 text-foreground/70 leading-relaxed text-center">
+            <p className="text-xl">
+              At {companyDetails.name}, our policies are not just rules—they are the foundation of our culture and our promise to clients, employees, and the global community.
+            </p>
+          </div>
+        </MotionWrapper>
 
-      <div className="flex flex-col gap-6">
-        {categories.map((category, index) => (
-          <div 
-            key={index}
-            className="p-8 rounded-[24px] bg-white dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all group flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8"
-          >
-            <div className="w-16 h-16 shrink-0 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-              {category.icon}
-            </div>
-            <div className="text-left">
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{category.title}</h3>
-                <p className="text-foreground/70 leading-relaxed text-lg">
-                {category.content}
-                </p>
+        <MotionWrapper type="stagger">
+          <div className="flex flex-col gap-6">
+            {categories.map((category, index) => (
+              <div 
+                key={index}
+                className="p-8 rounded-[24px] bg-white dark:bg-white/5 border border-black/5 dark:border-white/5 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all group flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8"
+              >
+                <div className="w-16 h-16 shrink-0 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  {category.icon}
+                </div>
+                <div className="text-left">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{category.title}</h3>
+                    <p className="text-foreground/70 leading-relaxed text-lg">
+                    {category.content}
+                    </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </MotionWrapper>
+
+        <MotionWrapper delay={0.4}>
+          <div className="mt-20 p-12 rounded-[48px] bg-zinc-900 border border-white/5 text-white text-center">
+            <h2 className="text-3xl font-bold mb-6 italic">"Excellence is not an act, but a habit."</h2>
+              <p className="text-primary mb-8 max-w-3xl mx-auto">
+                At {companyDetails.name}, we are committed to conducting our business with the highest standards of integrity, 
+                transparency, and social responsibility. Our policies guide our operations and ensure we deliver exceptional 
+                value to our clients, partners, and communities.
+              </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">ISO 9001 Certified</div>
+              <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">GDPR Compliant</div>
+              <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">Carbon Neutral Cloud</div>
             </div>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-20 p-12 rounded-[48px] bg-zinc-900 border border-white/5 text-white text-center">
-        <h2 className="text-3xl font-bold mb-6 italic">"Excellence is not an act, but a habit."</h2>
-          <p className="text-primary mb-8 max-w-3xl mx-auto">
-            At {companyDetails.name}, we are committed to conducting our business with the highest standards of integrity, 
-            transparency, and social responsibility. Our policies guide our operations and ensure we deliver exceptional 
-            value to our clients, partners, and communities.
-          </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">ISO 9001 Certified</div>
-          <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">GDPR Compliant</div>
-          <div className="px-6 py-2 bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest">Carbon Neutral Cloud</div>
-        </div>
-      </div>
+        </MotionWrapper>
       </div>
     </main>
   );

@@ -283,7 +283,9 @@ export function generateDynamicMetadata({
   const ogImage = image || DEFAULT_SEO.openGraph.images[0].url;
 
   const metadata: Metadata = {
-    title: title, // Use raw title so app/layout.tsx template "%s | Vexel Systems" applies WITHOUT duplication
+    title: {
+      absolute: fullTitle,
+    },
     description,
     keywords: [...DEFAULT_SEO.keywords, ...keywords],
     authors: author ? [{ name: author }] : DEFAULT_SEO.authors,
@@ -297,20 +299,20 @@ export function generateDynamicMetadata({
       locale: DEFAULT_SEO.openGraph.locale,
       url,
       siteName: DEFAULT_SEO.openGraph.siteName,
-      title: title, // Use exact content title for Open Graph (social sharing)
+      title: fullTitle, // Use full title for Open Graph (social sharing)
       description,
       images: [
         {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: fullTitle,
         },
       ],
     },
     twitter: {
       ...DEFAULT_SEO.twitter,
-      title: title, // Use exact content title for Twitter Card
+      title: fullTitle, // Use full title for Twitter Card
       description,
       images: [ogImage],
     },

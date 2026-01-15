@@ -11,13 +11,15 @@ import dynamic from "next/dynamic";
 // Lazy loaded with ssr:false - loads after initial render
 const LiveChat = dynamic(() => import("@/components/LiveChat"), { ssr: false });
 const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const GlowingBackground = dynamic(() => import("@/components/GlowingBackground"), { ssr: false });
 
-export default function GlobalClientWrapper() {
+export default function GlobalClientWrapper({ children }: { children?: React.ReactNode }) {
   return (
     <>
-      
       <LiveChat />
       <CookieConsent />
+     <GlowingBackground />
+      {children}
     </>
   );
 }

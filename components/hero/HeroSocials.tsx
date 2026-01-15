@@ -17,7 +17,7 @@ export function HeroSocials() {
             key={i} 
             className="size-10 rounded-full border-4 border-background bg-zinc-800 relative overflow-hidden cursor-pointer shadow-lg"
           >
-            <Image src={`https://i.pravatar.cc/100?u=${i}`} alt="Client" fill sizes="40px" priority />
+            <Image src={`https://i.pravatar.cc/100?u=${i}`} alt={`Trusted Client Avatar ${i}`} fill sizes="40px" priority />
           </div>
         ))}
       </div>

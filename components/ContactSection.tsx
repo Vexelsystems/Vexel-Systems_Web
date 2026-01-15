@@ -12,12 +12,15 @@ import { Mail, Phone, Share, MapPin } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";
 import { toast } from "sonner";
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export function ContactSection() {
   return (
     <section className="py-24 bg-transparent overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-1/2"></div>
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <MotionWrapper type="slideLeft">
             <div className="flex flex-col gap-8">
                 <h2 className="text-3xl lg:text-4xl font-black text-foreground leading-tight">Ready to <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Grow?</span></h2>
               <p className="text-lg text-foreground/60">
@@ -50,6 +53,9 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
+            </MotionWrapper>
+            
+            <MotionWrapper type="slideRight">
             <div className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 rounded-3xl shadow-2xl shadow-primary/5 border border-gray-200 dark:border-gray-800">
               <form className="flex flex-col gap-6" onSubmit={(e) => {
                   e.preventDefault();
@@ -96,8 +102,9 @@ export function ContactSection() {
                 </button>
               </form>
             </div>
+            </MotionWrapper>
           </div>
         </div>
-      </section>
+    </section>
   );
 }

@@ -86,7 +86,9 @@ export default function ServicesClient() {
       const matchTitle = service.title.toLowerCase().includes(q);
       const matchDesc = service.description.toLowerCase().includes(q);
       const matchSlug = service.slug.toLowerCase().replace(/-/g, " ").includes(q);
-      const matchTech = service.techStack?.some(tech => tech.toLowerCase().includes(q));
+      const matchTech = service.techStack?.some(tech => 
+        tech.name.toLowerCase().includes(q) || tech.explanation.toLowerCase().includes(q)
+      );
       const matchSub = service.subServices?.some(sub => sub.title.toLowerCase().includes(q) || sub.description.toLowerCase().includes(q));
 
       return matchTitle || matchDesc || matchSlug || matchTech || matchSub;

@@ -23,6 +23,12 @@ export const metadata = generatePageMetadata({
   path: "/pricing",
 });
 
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+
 export default function PricingPage() {
-  return <PricingClient />;
+  return (
+    <MotionWrapper>
+      <PricingClient />
+    </MotionWrapper>
+  );
 }
