@@ -19,6 +19,7 @@ const ContactSection = dynamic(() => import("@/components/ContactSection").then(
 export default function Home() {
   return (
     <main className="flex-1 overflow-x-hidden">
+    
       <HeroSection /> {/* Loaded immediately */}
       <CoreServicesSection />
       <ProcessSection />
