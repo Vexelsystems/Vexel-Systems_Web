@@ -24,7 +24,6 @@ import GlobalClientWrapper from "@/components/GlobalClientWrapper"; // Wrapper f
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
 import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
-import SplashScreen from "@/components/SplashScreen"; // Initial load splash screen
 
 
 /**
@@ -251,7 +250,6 @@ export default function RootLayout({
         */}
         <Toaster position="bottom-right" richColors />
         <GoogleAnalytics GA_MEASUREMENT_ID="G-TG3FQ4DYYZ" />
-        <SplashScreen />
       </body>
     </html>
   );
