@@ -1,214 +1,137 @@
-# Vexel Systems Web Platform
+# Vexel Systems - Corporate Website
 
-> A premium, high-performance corporate platform built for Vexel Systems, designed to showcase enterprise software solutions with a cutting-edge digital presence.
+## 🚀 Project Overview
 
-![Status](https://img.shields.io/badge/Status-Production_Ready-success)
-![Framework](https://img.shields.io/badge/Next.js-15.1-black)
-![Styling](https://img.shields.io/badge/Tailwind_CSS-v4.0-blue)
-![Language](https://img.shields.io/badge/TypeScript-5.0-blue)
+This is the official corporate website for **Vexel Systems**, built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**. The project is designed to be high-performance, SEO-optimized, and visually premium, featuring dynamic service pages, product showcases, and a data-driven content architecture.
 
----
+## 🛠️ Tech Stack
 
-## 📖 Table of Contents
-
-- [Project Philosophy](#-project-philosophy)
-- [Architecture & Patterns](#-architecture--patterns)
-  - [The Server Shell](#the-server-shell)
-  - [Hybrid Rendering Strategy](#hybrid-rendering-strategy)
-- [Directory Structure](#-directory-structure)
-- [Data Layer](#-data-layer)
-- [Styling System](#-styling-system)
-- [SEO & Metadata](#-seo--metadata)
-- [Development Workflow](#-development-workflow)
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: CSS Transitions & Framer Motion (implied usage in components)
+- **Deployment**: Vercel (recommended)
 
 ---
 
-## 🎯 Project Philosophy
+## 📂 Project Structure
 
-The **Vexel Systems** web platform is engineered with three core principles:
+### Root Directories
 
-1.  **Performance First**: Utilizing Next.js Server Components to minimize client-side JavaScript, ensuring lightning-fast First Contentful Paint (FCP) and Largest Contentful Paint (LCP).
-2.  **SEO Dominance**: Every page, product, and blog post generates dynamic, type-safe metadata to ensure maximum visibility on search engines.
-3.  **Maintainability**: A strict "Single Source of Truth" architecture for data, preventing content drift and making updates effortless.
-
----
-
-## 🏗 Architecture & Patterns
-
-### The "Server Shell"
-
-We utilize a pattern known as the **Server Shell** to optimize performance.
-
-- **Concept**: The outer implementation of every page (the "Shell") is a **Server Component**.
-- **Execution**: Data fetching (SEO data, content) happens on the server.
-- **Interactivity**: Interactive elements (Forms, Carousels, Radios) are pushed to the "leaves" of the component tree as isolated **Client Components**.
-- **Benefit**: This drastically reduces the JavaScript bundle size kept in the browser, as static content is sent as pure HTML.
-
-**Example Flow:**
-
-```mermaid
-graph TD
-    A[Page (Server)] -->|Fetches Data| B(Database/Lib)
-    A --> C[Static Content (Server)]
-    A --> D[Interactive Component (Client)]
-```
-
-### Hybrid Rendering Strategy
-
-- **`app/page.tsx`**: Server-side. Fetches metadata and renders the layout.
-- **`components/Hero.tsx`**: Client-side (if animations/state needed).
-- **`lib/*`**: Pure TypeScript functions (Server-compatible).
+- **`app/`**: Contains all routes, pages, and layouts (App Router).
+- **`components/`**: Reusable React components.
+- **`lib/`**: Data files, utility functions, and constants (The "Brain" of the content).
+- **`public/`**: Static assets like images, fonts, and icons.
 
 ---
 
-## 📂 Directory Structure
+## 🗺️ Route Structure & Pages
 
-A detailed breakdown of the project's organization.
+The application uses the Next.js **App Router**. Each folder inside `app/` represents a route. `page.tsx` is the UI for that route.
 
-### `app/` (The Routing Layer)
+### Core Pages
 
-The App Router handles all navigation and page rendering.
+- **`/` (`app/page.tsx`)**: The **Home Page**. Features a Hero section, Core Services preview, "Why Choose Us", Recent Work, and Client Testimonials.
+- **`/about` (`app/about/page.tsx`)**: Company story, mission, vision, and team.
+- **`/contact` (`app/contact/page.tsx`)**: Contact form, office details, and map integration.
+- **`/careers` (`app/careers/page.tsx`)**: Job openings and company culture.
 
-- `(routes)/`: Standard pages like `about`, `contact`, `services`.
-- `api/`: Backend Route Handlers (e.g., `api/contact` for form submissions).
-- `globals.css`: The global stylesheet containing Tailwind v4 configuration.
-- `layout.tsx`: The root layout wrapping the entire application.
-- `robots.ts` & `sitemap.ts`: Dynamic SEO file generators.
+### Products (Vexel Suite)
 
-### `components/` (The UI Layer)
+All product pages are static and highly optimized for SEO.
 
-Reusable UI elements, separated by domain logic.
+- **`/products/vexel-pos`**: **Vexel POS** - Point of Sale solution.
+- **`/products/vexel-track`**: **Vexel Track** - Agile Project Management tool.
+- **`/products/vexel-hire`**: **Vexel Hire** - AI-powered CV Search Engine.
+  _(Note: Old dynamic route `/products/[slug]` has been deprecated in favor of these static pages for better design control.)_
 
-- **`ui/`**: Atomic, dumb components (Buttons, Inputs, Cards).
-- **`[Feature]Client`**: Smart Client Components with state (e.g., `PricingClient.tsx`, `FaqClient.tsx`).
-- **`[Feature]Section`**: Presentational sections used to build pages (e.g., `HeroSection.tsx`, `WhyChooseUsSection.tsx`).
-- **Shared**: Global components like `Navbar.tsx`, `Footer.tsx`.
+### Services (Dynamic)
 
-### `lib/` (The Data Layer)
+- **`/services`**: Service Hub listing all offerings.
+- **`/services/[slug]`**: **Dynamic Service Layout**.
+  - **Mechanic**: Uses `lib/services.ts` to fetch data based on the URL slug (e.g., `/services/web-development`).
+  - **Features**: Generates a custom Hero, Features list, Process timeline, Benefits, and FAQ section dynamically.
 
-The application's "Mock Database" and utility belt. **Crucial for maintenance.**
+### Resources & Legal
 
-- **`companydetails.ts`**: **THE SINGLE SOURCE OF TRUTH**. Contains phone numbers, emails, addresses, and social links. Updating this one file updates the Header, Footer, Contact Page, and SEO Schema instantly.
-- **`seo.ts`**: Utilities for generating Open Graph and Twitter metadata.
-- **`navigation.ts`**: Centralized menu links for Header/Footer.
-- **`products.ts`**: Static database of Vexel products (POS, Attendance, etc.).
-- **`services.ts`**: Comprehensive service catalogue.
-
----
-
-## 💾 Data Layer
-
-We avoid hardcoding values in UI components. Instead, we treat `lib/` files as our database.
-
-### 1. `companydetails.ts`
-
-Holds all "Global Variables" for the business.
-
-```typescript
-// Example usage in component
-import { companyDetails } from "@/lib/companydetails";
-
-export function ContactInfo() {
-  return (
-    <a href={`tel:${companyDetails.contact.phone}`}>
-      {companyDetails.contact.phone}
-    </a>
-  );
-}
-```
-
-### 2. `products.ts` & `services.ts`
-
-Structure data arrays that power dynamic routes (e.g., `/services/[slug]`).
-
-- **Type Safety**: All data is validated against TypeScript interfaces (`Product`, `ServiceData`).
+- **`/blog`**: Industry insights and news.
+- **`/portfolio`**: Showcase of past projects (Case Studies).
+- **`/pricing`**: Service pricing tiers.
+- **Legal Pages**: `/privacy`, `/terms`, `/refund-policy`, `/cookie-policy`, `/company-policy`.
 
 ---
 
-## 🎨 Styling System
+## 🧠 Data Architecture (The `lib/` Folder)
 
-We use **Tailwind CSS v4** with a "CSS-First" configuration approach.
+We use a **Data-Driven Architecture**. Content is separated from the UI logic, stored in structured TypeScript files in `lib/`. This makes updates easy without touching components.
 
-- **No `tailwind.config.ts`**: Configuration is handled directly in `app/globals.css`.
-- **Theming**: We use CSS variables for dynamic theming (Dark Mode support).
-  - `@theme`: Defines custom colors, fonts, and spacing.
-  - `:root`: Defines the light mode variable values.
-  - `@media (prefers-color-scheme: dark)`: Overrides variables for dark mode.
-
-**Key Theme Variables:**
-
-- `--primary`: Brand Blue (#0077ed)
-- `--secondary`: Brand Purple (#9333ea)
-- `--background`: Page background
-- `--foreground`: Text color
+- **`lib/companydetails.ts`**: **Global Configuration**. Contains Name, Address, Contact Info, Social Links, and Logo paths. Used by Navbar, Footer, and Contact pages. **Edit this to update global info.**
+- **`lib/services.ts`**: Defines content for all service pages (titles, descriptions, features, FAQs).
+- **`lib/products.ts`**: Defines content for product pages (features, roadmaps, specs).
+- **`lib/seo.ts`**: Helper functions for generating dynamic metadata (Open Graph, Twitter Cards).
 
 ---
 
-## 🔍 SEO & Metadata
+## 🧩 Key Components (`components/`)
 
-The project implements a "Set and Forget" technical SEO strategy.
-
-### Dynamic Generation
-
-Utilities in `lib/seo.ts` allow us to generate metadata dynamically.
-
-```typescript
-// app/services/[slug]/page.tsx
-export async function generateMetadata({ params }) {
-  const service = getServiceBySlug(params.slug);
-  return generateDynamicMetadata({
-    title: service.title,
-    description: service.subtitle,
-  });
-}
-```
-
-### Automated Artifacts
-
-- **`sitemap.ts`**: Automatically finds all blog posts, products, and services to build a valid XML sitemap.
-- **`robots.ts`**: Directs crawlers and prevents indexing of admin/API routes.
-- **JSON-LD**: Structured data is injected into pages to help Google understand the "Organization", "Product", and "Article" contexts.
+- **`Navbar.tsx`**: Responsive navigation bar. Handles mobile menu state.
+- **`Footer.tsx`**: Global footer. Responsive grid layout with "Glowing Background" effect.
+- **`ui/`**: Generic UI elements (Buttons, Cards, Inputs).
+- **`hero/`**: specialized Hero section components used across pages.
+- **`GlobalClientWrapper.tsx`**: Handles client-side logic that needs to run globally (e.g., preventing hydration mismatches).
 
 ---
 
-## 💻 Development Workflow
+## 🎨 Working Style & Patterns
 
-### Prerequisites
+### 1. Server vs. Client Components
 
-- Node.js 18+
-- npm
+- **Server Components (Default)**: We use Server Components for all pages (`page.tsx`) to ensure fast FP (First Paint) and SEO.
+- **Client Components (`"use client"`)**: Used **only** when interactivity is needed (e.g., `useState`, `onClick`, `useEffect`).
+  - _Example_: `Navbar.tsx` needs to toggle the mobile menu, so it is a Client Component.
 
-### Installation
+### 2. Styling Strategy
 
-```bash
-npm install
-```
+- **Tailwind First**: All styling is done via Tailwind utility classes.
+- **Responsive Design**: We use `md:`, `lg:`, `xl:` prefixes to ensure layouts adapt to all devices.
+- **Theming**: Colors use CSS variables (e.g., `bg-background`, `text-foreground`, `bg-primary`) to support potential Dark/Light mode switching.
 
-### Running Locally
+### 3. SEO Optimization
 
-```bash
-npm run dev
-# Opens http://localhost:3000
-```
+- Metadata is generated dynamically in every `page.tsx` using the `generateMetadata` API.
+- We use the `companyDetails` object to ensure the company name and defaults are consistent across all meta tags.
 
-### Building for Production
+### 4. Image Optimization
 
-```bash
-npm run build
-# Generates .next folder with static assets and server functions
-```
+- All images use the `next/image` component for automatic resizing and lazy loading.
+- Real/Stock images are preferred over avatars/cartoons to maintain a premium corporate aesthetic.
 
 ---
 
-## 🤝 Contribution Guidelines
+## 🚀 How to Run
 
-1. **Naming Conventions**:
-   - Files: `kebab-case.tsx` (e.g., `faq-client.tsx`)
-   - Components: `PascalCase.tsx` (e.g., `FaqClient.tsx`)
-   - Utilities: `camelCase.ts` (e.g., `formatDate.ts`)
-2. **Commit Messages**: Use semantic commits (e.g., `feat: add new pricing calculator`, `fix: nav casing issues`).
-3. **New Pages**: Always create a `page.tsx` for the route and a `[Feature]Client.tsx` for the interactivity.
+1. **Install Dependencies**:
 
----
+   ```bash
+   npm install
+   ```
 
-**© 2026 Vexel Systems. All Rights Reserved.**
+2. **Run Development Server**:
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000).
+
+3. **Build for Production**:
+
+   ```bash
+   npm run build
+   ```
+
+4. **Start Production Server**:
+   ```bash
+   npm start
+   ```
