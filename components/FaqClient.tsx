@@ -153,7 +153,7 @@ export default function FaqClient() {
               filteredFaqs.map((faq, index) => (
                 <div 
                   key={index} 
-                  className="bg-white dark:bg-white/5 rounded-2xl border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 active:scale-[0.99]"
+                  className="bg-white dark:bg-white/5 rounded-2xl border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 active:scale-[0.99] hover:-translate-y-1"
                 >
                   <button 
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -208,14 +208,14 @@ export default function FaqClient() {
           {/* Tech Support Cards (if active) */}
           {activeCategory === 'tech-support' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-card p-6 rounded-xl border border-primary/10">
+              <div className="bg-card p-6 rounded-xl border border-primary/10 hover:shadow-lg hover:-translate-y-1 transition-all">
                 <h3 className="text-lg font-bold mb-2">Remote Assistance</h3>
                 <p className="text-sm text-foreground/70 mb-4">Allow our engineers to securely access your system to fix issues in real-time.</p>
                 <button className="text-primary font-bold text-sm flex items-center gap-2 hover:underline">
                   Launch Remote Support <Share2 size={16} />
                 </button>
               </div>
-              <div className="bg-card p-6 rounded-xl border border-primary/10">
+              <div className="bg-card p-6 rounded-xl border border-primary/10 hover:shadow-lg hover:-translate-y-1 transition-all">
                 <h3 className="text-lg font-bold mb-2">System Status</h3>
                 <p className="text-sm text-foreground/70 mb-4">Check for any known outages or scheduled maintenance windows.</p>
                 <div className="flex items-center gap-2">

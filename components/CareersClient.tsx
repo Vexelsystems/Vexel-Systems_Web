@@ -66,7 +66,7 @@ export default function CareersClient() {
         {jobPositions.map((job) => (
           <div 
             key={job.id}
-            className="bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all shadow-xl shadow-primary/5"
+            className="bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all shadow-xl shadow-primary/5 hover:shadow-2xl hover:border-primary/20 hover:-translate-y-1"
           >
             <button 
               onClick={() => setSelectedJob(selectedJob === job.id ? null : job.id)}

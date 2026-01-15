@@ -88,7 +88,7 @@ export default function BlogClient() {
             >
               <Link 
                 href={`/blog/${post.slug}`}
-                className="group block h-full bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-500 shadow-sm"
+                className="group block h-full bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-500 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-primary/20"
               >
                 {/* Image Container */}
                 <div className="relative h-64 overflow-hidden">

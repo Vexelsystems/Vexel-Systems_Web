@@ -19,9 +19,9 @@ export function ContactSection() {
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col gap-8">
-                <h2 className="text-3xl lg:text-4xl font-black text-foreground leading-tight">Ready to build the <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">future</span> of your business?</h2>
+                <h2 className="text-3xl lg:text-4xl font-black text-foreground leading-tight">Ready to <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Grow?</span></h2>
               <p className="text-lg text-foreground/60">
-                Whether you're a startup or an enterprise, we have the technical prowess to help you scale. Reach out for a discovery session.
+                You have ideas, we have the skills. Let's talk about how we can help you build something amazing.
               </p>
               <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-4">

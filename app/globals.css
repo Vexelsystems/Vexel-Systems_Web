@@ -14,6 +14,7 @@
   --background: #ffffff;
   --foreground: #1d1d1f;
   --primary: #0077ed;
+  --primary-rgb: 0, 119, 237;
   --secondary: #9333ea; /* purple-600 */
 
   /* Additional Palette Variables required by tailwind.config.ts */

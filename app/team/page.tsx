@@ -196,10 +196,10 @@ export default function TeamPage() {
                      <h2 className="text-3xl font-bold tracking-tight text-foreground">Our Team <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Culture</span></h2>
                      <div className="grid gap-6">
                         {[
-                            { title: "Innovation with purpose", desc: "We don't just build; we solve problems." },
-                            { title: "Transparency and trust", desc: "Open communication is our foundation." },
-                            { title: "Customer-first thinking", desc: "Your success is our success." },
-                            { title: "Continuous learning", desc: "We evolve as technology evolves." }
+                            { title: "We Build Useful Things", desc: "We don't just build; we solve problems." },
+                            { title: "No Secrets", desc: "Open communication is our foundation." },
+                            { title: "We Care About You", desc: "Your success is our success." },
+                            { title: "Always Learning", desc: "We evolve as technology evolves." }
                         ].map((item, i) => (
                             <div key={i} className="flex items-start gap-4 p-6 bg-background rounded-xl shadow-sm border border-foreground/5 cursor-default hover:border-primary/30 transition-colors">
                                 <div className="p-3 bg-primary/10 text-primary rounded-lg">

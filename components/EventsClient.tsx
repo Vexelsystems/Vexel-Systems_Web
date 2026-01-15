@@ -75,7 +75,7 @@ export default function EventsClient() {
       {/* Event Grid */}
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
         {filteredEvents.map((event) => (
-          <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all">
+          <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30">
             <div className="relative h-48 w-full overflow-hidden">
               <Image
                 src={event.image}

@@ -1,0 +1,53 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+export function HeroBackground() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { left, top, width, height } = container.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+
+      container.style.setProperty("--mouse-x", x.toString());
+      container.style.setProperty("--mouse-y", y.toString());
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      {/* 
+        Optimization: Removed initial opacity transition to prevent "pop-in" effect.
+        The gradient now has a default fallback (centered) via CSS variables.
+      */}
+      <div
+        className="absolute inset-0 opacity-40 dark:opacity-20"
+        style={{
+          background: `
+            radial-gradient(
+              800px circle at calc(var(--mouse-x, 0.5) * 100%) calc(var(--mouse-y, 0.5) * 100%),
+              rgba(var(--primary-rgb), 0.15),
+              transparent 40%
+            )
+          `,
+        }}
+      />
+      
+    </div>
+  );
+}

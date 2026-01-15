@@ -24,8 +24,8 @@ export function PortfolioSection() {
             </a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group flex flex-col gap-4">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
+            <div className="group flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 group-hover:shadow-2xl group-hover:border-primary/20 transition-all duration-300">
                 <Image 
                   src="/products/photo-1551288049-bebda4e38f71.jpg"
                   alt="Fintech dashboard" 
@@ -40,8 +40,8 @@ export function PortfolioSection() {
               </div>
             </div>
 
-            <div className="group flex flex-col gap-4">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
+            <div className="group flex flex-col gap-4 hover:-translate-y-2 transition-all duration-300">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 group-hover:shadow-2xl group-hover:border-primary/20 transition-all duration-300">
                 <Image 
                   src="/pages/photo-1542744173-8e7e53415bb0.jpg"
                   alt="E-commerce mobile app" 
@@ -56,8 +56,8 @@ export function PortfolioSection() {
               </div>
             </div>
 
-            <div className="group flex flex-col gap-4 lg:col-span-1 md:col-span-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800">
+            <div className="group flex flex-col gap-4 lg:col-span-1 md:col-span-2 hover:-translate-y-2 transition-all duration-300">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 group-hover:shadow-2xl group-hover:border-primary/20 transition-all duration-300">
                 <Image 
                   src="/home/photo-1460925895917-afdab827c52f.jpg"
                   alt="Analytics platform" 

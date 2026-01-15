@@ -215,7 +215,7 @@ export default function ServicesClient() {
               return (
                 <div 
                   key={service.slug} 
-                  className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 h-full"
+                  className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 h-full"
                 >
                    {/* Gradient Hover Overlay */}
                    <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

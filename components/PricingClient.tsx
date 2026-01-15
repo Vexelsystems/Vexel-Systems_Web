@@ -205,7 +205,7 @@ export default function PricingClient() {
             {/* Quick Summary Pill Grid */}
             <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto mb-12">
             {SUMMARY_DATA.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm">
+                <div key={idx} className="flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-full border border-primary/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <span className="text-sm font-medium text-foreground/80">{item.type}</span>
                 <span className="text-sm font-bold text-primary">starts {currency === 'LKR' ? item.priceLKR : item.priceUSD}</span>
                 </div>
@@ -230,7 +230,7 @@ export default function PricingClient() {
 
              <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-3 gap-6 relative z-10 pb-8 md:pb-0 scrollbar-hide -mx-8 px-8 md:mx-0 md:px-0">
                 {INTERNATIONAL_PACKAGES.map((pkg, idx) => (
-                  <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-colors">
+                  <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                     <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
                     <div className="text-4xl font-black mb-6 text-transparent bg-clip-text bg-linear-to-r from-blue-200 to-white">{pkg.price}</div>
                     <ul className="space-y-3 mb-8">
@@ -325,7 +325,7 @@ export default function PricingClient() {
                       }
 
                       return (
-                      <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center group relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-gray-100 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-1 transition-all duration-300 flex flex-col">
+                      <div key={idx} className="min-w-[85vw] md:min-w-0 snap-center group relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-gray-100 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-2 transition-all duration-300 flex flex-col">
                           <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors pointer-events-none" />
                           
                           <div className="flex justify-between items-start mb-4">

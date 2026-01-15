@@ -119,6 +119,8 @@ import {
   FilePenLine as EditDocument, // Maps to edit_document
   Navigation,
   Coins as Token, // Maps to token
+  Monitor,
+  Briefcase,
   ChevronRight,
   ChevronDown,
   CheckCircle,
@@ -226,667 +228,221 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
-    slug: "api-development-integration",
-    title: "API Development & System Integration",
-    subtitle: "Connectivity Solutions",
-    description:
-      "Connect systems, platforms, and applications securely. We build robust bridges for your data to flow effortlessly across your entire ecosystem.",
-    heroImage: "/home/photo-1451187580459-43490279c0fa.jpg",
-    subServices: [
-      {
-        title: "REST API Development",
-        description:
-          "High-performance, scalable endpoints built with industry standards for your business needs.",
-        icon: Cloud,
-      },
-      {
-        title: "Third-party Integration",
-        description:
-          "Connecting CRM, ERP, and SaaS tools like Salesforce, Hubspot, and SAP seamlessly.",
-        icon: Workflow,
-      },
-      {
-        title: "Payment Gateways",
-        description:
-          "Secure Stripe, PayPal, and custom banking gateway setups for global transactions.",
-        icon: DollarSign,
-      },
-      {
-        title: "Mobile & Web Backend",
-        description:
-          "Powering robust mobile and web experiences with speed, security, and low latency.",
-        icon: Smartphone,
-      },
-    ],
-    techStack: ["NODE.JS", "JAVA SPRING", "LARAVEL", "GRAPHQL"],
-  },
-  {
-    slug: "cloud-devops-infrastructure",
-    title: "Scalable Cloud & DevOps Solutions",
-    subtitle: "Next-Gen Infrastructure",
-    description:
-      "Deploy, manage, and scale applications securely on the cloud. We build the architecture that powers high-performance systems.",
-    heroImage: "/home/photo-1451187580459-43490279c0fa.jpg",
-    subServices: [
-      {
-        title: "Cloud Architecture",
-        description:
-          "Designing resilient, distributed infrastructures built for infinite scale and reliability.",
-        icon: DraftingCompass,
-      },
-      {
-        title: "AWS/Azure/GCP Setup",
-        description:
-          "Expert multi-cloud configuration and management across the world's leading providers.",
-        icon: Cloud,
-      },
-      {
-        title: "CI/CD Pipelines",
-        description:
-          "Fully automated delivery workflows that accelerate your development velocity by 10x.",
-        icon: Workflow,
-      },
-      {
-        title: "Cloud Migration",
-        description:
-          "Zero-downtime transition strategies for moving legacy systems to modern cloud environments.",
-        icon: UploadCloud,
-      },
-      {
-        title: "Server Automation",
-        description:
-          "Infrastructure as Code (IaC) implementation to eliminate manual errors and configuration drift.",
-        icon: Settings,
-      },
-    ],
-    benefits: [
-      {
-        title: "High Availability",
-        description:
-          "Redundant architectures that ensure your services are reachable from anywhere, anytime.",
-      },
-      {
-        title: "Reduced Downtime",
-        description:
-          "Self-healing systems and proactive monitoring to fix issues before they impact users.",
-      },
-      {
-        title: "Cost Optimization",
-        description:
-          "Right-sizing instances and implementing auto-scaling to pay only for what you use.",
-      },
-      {
-        title: "Secure Deployments",
-        description:
-          "DevSecOps principles integrated into every stage of your delivery pipeline.",
-      },
-    ],
-    techStack: ["AWS", "DOCKER", "KUBERNETES", "AZURE", "GITHUB"],
-  },
-  {
     slug: "ai-ml-solutions",
-    title: "AI & Machine Learning Solutions",
-    subtitle: "Next-Gen Intelligence",
+    title: "AI & Smart Automation Experts",
+    subtitle: "The Only AI Company in Vavuniya",
     description:
-      "Turn vast amounts of complex data into actionable insights using advanced AI/ML models engineered for performance and scale.",
+      "We are the only company in Vavuniya building real, expert-level Artificial Intelligence solutions. From automating your daily tasks to creating smart systems that 'think' for you, we turn complex AI technology into simple tools that actually grow your business.",
     heroImage: "/home/photo-1531482615713-2afd69097998.jpg",
     subServices: [
       {
-        title: "Predictive Analytics",
+        title: "Intelligent Automation",
         description:
-          "Forecast future trends, customer behaviors, and market shifts with statistical accuracy.",
-        icon: TrendingUp,
-      },
-      {
-        title: "Custom AI Solutions",
-        description:
-          "We help professionals use AI to automate complex tasks without needing to write code.",
-        icon: BrainCircuit,
-      },
-      {
-        title: "AI-Powered Automation",
-        description:
-          "Revolutionize workflows with cutting-edge Model Context Protocol (MCP) and AI automation tools.",
+          "Stop doing the same boring tasks over and over. We build AI that handles your data entry, scheduling, and customer replies automatically.",
         icon: Zap,
       },
       {
-        title: "Recommendation Systems",
+        title: "Smart Business Tools",
         description:
-          "Boost conversion rates by delivering hyper-personalized content and product experiences.",
-        icon: Sparkles,
+          "Custom tools that understand your business language. Ask questions, get reports, and make decisions faster than ever.",
+        icon: BrainCircuit,
       },
       {
-        title: "Image & Video Analysis",
+        title: "Predictive Insights",
         description:
-          "Automate visual inspections, object detection, and biometric security systems.",
+          "Know what your customers want before they do. Our systems analyze patterns to help you stock the right products and offer the right deals.",
+        icon: TrendingUp,
+      },
+      {
+        title: "Visual Intelligence",
+        description:
+          "Cameras that can count stock, secure your premises, or analyze foot traffic without you watching a single screen.",
         icon: Eye,
       },
     ],
-    techStack: [
-      "PYTHON",
-      "TENSORFLOW",
-      "PYTORCH",
-      "OPENAI",
-      "LANGCHAIN",
-      "SCIKIT_LEARN",
-    ],
+    techStack: ["PYTHON", "TENSORFLOW", "OPENAI", "LANGCHAIN", "PYTORCH"],
     industries: [
+      {
+        name: "Retail Shops",
+        icon: Store,
+        description: "Smart inventory and customer tracking",
+      },
       {
         name: "Healthcare",
         icon: Stethoscope,
-        description:
-          "Medical data analysis, image screening, and predictive patient outcomes",
+        description: "Patient management and smart diagnostics",
       },
       {
         name: "Finance",
         icon: Landmark,
-        description:
-          "Fraud detection, risk assessment, and predictive analytics",
+        description: "Automated accounting and fraud prevention",
       },
-      {
-        name: "Retail",
-        icon: Store,
-        description:
-          "Personalized recommendations and customer behavior analysis",
-      },
-      {
-        name: "Manufacturing",
-        icon: Factory,
-        description: "Predictive maintenance and quality control",
-      },
-    ],
-  },
-  {
-    slug: "custom-business-software",
-    title: "Custom Business Software Solutions",
-    subtitle: "Built Exactly for Your Business",
-    description:
-      "Stop struggling with generic tools. We build custom management systems designed to solve your specific operational headaches.",
-    heroImage: "/home/photo-1460925895917-afdab827c52f.jpg",
-    subServices: [
-      {
-        title: "Business Management Systems",
-        description:
-          "Custom ERP, CRM, and workflow automation tailored to your operations.",
-        icon: Settings2,
-      },
-      {
-        title: "Staff & HR Management",
-        description:
-          "Centralize employee data, roles, compliance, and payroll tracking.",
-        icon: UsersRound,
-      },
-      {
-        title: "Industry-Specific Solutions",
-        description:
-          "Software designed for healthcare, education, manufacturing, and retail industries.",
-        icon: Building2,
-      },
-      {
-        title: "Retail POS Systems",
-        description:
-          "High-performance retail management with inventory, loyalty, and multi-terminal sync.",
-        icon: PointOfSale,
-      },
-    ],
-    benefits: [
-      {
-        title: "Reduce Manual Work",
-        description:
-          "Automate time-consuming tasks so your team can focus on growth.",
-      },
-      {
-        title: "Accurate Records",
-        description:
-          "Reliable, immutable data storage you can trust for compliance.",
-      },
-      {
-        title: "Easy Reporting",
-        description: "Generate deep business insights with a single click.",
-      },
-      {
-        title: "Prevent Fraud",
-        description: "Biometric verification and secure access controls.",
-      },
-    ],
-    techStack: ["PYTHON", "REACT", "NODE.JS", "PSQL", "AWS"],
-    industries: [
-      { name: "Offices", icon: Building2 },
-      { name: "Healthcare", icon: Hospital },
-      { name: "Education", icon: GraduationCap },
-      { name: "Retail", icon: Store },
-      { name: "Manufacturing", icon: Factory },
-    ],
-  },
-  {
-    slug: "digital-marketing",
-    title: "Digital Marketing That Delivers Real Results",
-    subtitle: "Growth Driven Marketing",
-    description:
-      "Empowering your brand with data-driven strategies and targeted growth solutions. We combine technology and creativity to scale your business.",
-    heroImage: "/home/photo-1557838923-2985c318be48.jpg",
-    subServices: [
-      {
-        title: "SEO & Local SEO",
-        description:
-          "Rank higher on search engines and dominate local search results with technical optimization.",
-        icon: Search,
-      },
-      {
-        title: "Social Media Marketing",
-        description:
-          "Engage your audience across all platforms with viral content and strategic community management.",
-        icon: Share2,
-      },
-      {
-        title: "Paid Advertising",
-        description:
-          "High-converting PPC campaigns on Google, Facebook, Instagram, and LinkedIn.",
-        icon: MousePointerClick,
-      },
-      {
-        title: "Email Marketing",
-        description:
-          "Nurturing leads with value-driven automated campaigns and newsletters.",
-        icon: Mail,
-      },
-      {
-        title: "Content Marketing",
-        description:
-          "Building brand authority through quality content that positions you as an industry leader.",
-        icon: FileText,
-      },
-    ],
-    benefits: [
-      {
-        title: "Brand Awareness",
-        description: "Visible Everywhere",
-        icon: TrendingUp,
-      },
-      {
-        title: "Lead Generation",
-        description: "Consistent Pipeline",
-        icon: UserPlus,
-      },
-      {
-        title: "Higher ROI",
-        description: "Optimized Spend",
-        icon: DollarSign,
-      },
-      {
-        title: "Business Growth",
-        description: "Market Dominance",
-        icon: Rocket,
-      },
-    ],
-    techStack: [
-      "GOOGLE ADS",
-      "FACEBOOK",
-      "LINKEDIN",
-      "HUBSPOT",
-      "GA4",
-      "SEMRUSH",
     ],
   },
   {
     slug: "web-development",
-    title: "Professional Web Development",
-    subtitle: "Next-Gen Web Solutions",
+    title: "Modern Web Design & Development",
+    subtitle: "Websites That Sell",
     description:
-      "High-performance, scalable web solutions tailored for your brand's success. We turn complex ideas into digital realities with cutting-edge technologies.",
+      "Your website is your digital face. We don't just put code on a screen; we craft beautiful, high-speed websites that tell your story and turn visitors into paying customers.",
     heroImage: "/home/photo-1498050108023-c5249f4df085.jpg",
     subServices: [
       {
-        title: "Custom Websites",
+        title: "Stunning Business Websites",
         description:
-          "Performance-focused brand presence built with cutting-edge front-end technologies.",
-        icon: Languages,
+          "A sleek, professional site that looks amazing on every phone and computer.",
+        icon: Monitor,
       },
       {
-        title: "E-Commerce Platforms",
+        title: "E-Commerce Stores",
         description:
-          "Conversion-ready online stores with seamless payment integrations and UX flow.",
+          "Sell your products online 24/7 with a shop that's easy to manage and safe for payments.",
         icon: ShoppingCart,
       },
       {
         title: "Web Applications",
         description:
-          "Scalable logic and cloud infrastructure for complex business requirements.",
-        icon: DataObject,
-      },
-      {
-        title: "CMS Development",
-        description:
-          "Customized content management systems giving you full control over your media.",
-        icon: EditDocument,
-      },
-      {
-        title: "Progressive Web Apps (PWA)",
-        description:
-          "App-like experiences that run directly in the browser with offline capabilities.",
+          "Need more than a brochure? We build powerful web apps that run your entire business online.",
         icon: AppWindow,
       },
     ],
     process: [
       {
-        title: "Analysis",
-        description: "Defining goals and technical requirements.",
+        title: "Discovery",
+        description:
+          "We chat about your goals and what makes your brand special.",
       },
       {
         title: "Design",
-        description: "UI/UX prototyping and system architecture.",
+        description: "We create a visual look that you'll fall in love with.",
       },
       {
-        title: "Development",
-        description: "Clean code and robust implementation.",
+        title: "Build",
+        description: "We code everything to run fast and error-free.",
       },
       {
-        title: "Testing",
-        description: "QA, security audits, and performance optimization.",
-      },
-      {
-        title: "Support",
-        description: "Deployment and 24/7 technical maintenance.",
+        title: "Launch",
+        description: "We put you online and teach you how to use it.",
       },
     ],
-    techStack: [
-      "REACT",
-      "NEXT.JS",
-      "TYPESCRIPT",
-      "NODE.JS",
-      "POSTGRESQL",
-      "TAILWIND",
-    ],
+    techStack: ["NEXT.JS", "REACT", "TAILWIND", "NODE.JS"],
   },
   {
     slug: "mobile-app-development",
-    title: "Mobile App Development",
-    subtitle: "iOS & Android Solutions",
+    title: "iOS & Android Mobile Apps",
+    subtitle: "Your Business in Their Pocket",
     description:
-      "We develop intuitive, high-performance mobile applications for Android and iOS tailored to your unique business needs. From concept to deployment, we build tools that scale.",
+      "Get closer to your customers with a custom mobile app. Whether it's for shopping, booking, or managing your team, we build apps that are a joy to use.",
     heroImage: "/home/photo-1512941937669-90a1b58e7e9c.jpg",
     subServices: [
       {
-        title: "iOS Development",
+        title: "iPhone & Android Apps",
         description:
-          "High-performance native apps built specifically for the Apple ecosystem.",
+          "One app that works perfectly on every device, saving you time and money.",
         icon: Smartphone,
       },
       {
-        title: "Android Development",
+        title: "Customer Loyalty Apps",
         description:
-          "Scalable applications designed for the diverse Android device market.",
-        icon: Smartphone,
+          "Keep them coming back with rewards, notifications, and easy ordering.",
+        icon: Star,
       },
       {
-        title: "Cross-Platform",
+        title: "Internal Business Apps",
         description:
-          "Single codebase solutions with Flutter or React Native that work perfectly on both platforms.",
-        icon: Smartphone,
-      },
-      {
-        title: "App Maintenance",
-        description:
-          "Post-launch support, security updates, and performance optimization.",
-        icon: Settings,
+          "Tools for your team to track work, sales, and inventory on the go.",
+        icon: Briefcase,
       },
     ],
-    process: [
-      { title: "Idea", description: "Concept validation & strategy" },
-      { title: "Design", description: "Native UI/UX prototyping" },
-      { title: "Coding", description: "Agile development sprints" },
-      { title: "Testing", description: "Device compatibility & QA" },
-      { title: "Launch", description: "App Store & Play Store deployment" },
-    ],
-    techStack: ["FLUTTER", "SWIFT", "KOTLIN", "REACT NATIVE", "FIREBASE"],
+    techStack: ["FLUTTER", "REACT NATIVE", "FIREBASE"],
   },
   {
-    slug: "iot-solutions",
-    title: "Smart IoT Solutions for Connected Businesses",
-    subtitle: "Connected Future",
+    slug: "digital-marketing",
+    title: "Digital Marketing & Growth",
+    subtitle: "Get Found Online",
     description:
-      "Monitor, control, and automate your devices using intelligent IoT systems designed for scalability and security.",
-    heroImage: "/pages/photo-1518770660439-4636190af475.jpg",
+      "Having a great product isn't enough if nobody knows about it. We help you reach the right people, get more clicks, and grow your brand across social media and Google.",
+    heroImage: "/home/photo-1557838923-2985c318be48.jpg",
     subServices: [
       {
-        title: "Device Integration",
+        title: "Social Media Management",
         description:
-          "Connecting legacy hardware and modern sensors seamlessly.",
-        icon: Settings,
+          "We handle your Facebook, Instagram, and LinkedIn so you stay active and relevant.",
+        icon: Share2,
       },
       {
-        title: "Sensor Systems",
-        description: "End-to-end data collection and environmental monitoring.",
-        icon: Radio,
-      },
-      {
-        title: "Monitoring Dashboards",
+        title: "Search Engine Optimization (SEO)",
         description:
-          "Real-time data visualization with intuitive user interfaces.",
-        icon: LayoutDashboard,
+          "Get your business to the top of Google when people search for what you offer.",
+        icon: Search,
       },
       {
-        title: "Real-time Analytics",
+        title: "Paid Advertising",
         description:
-          "AI/ML powered insights to predict failures and optimize flows.",
-        icon: TrendingUp,
-      },
-    ],
-    industries: [
-      {
-        name: "Smart Offices",
-        description: "Automated lighting, climate, and occupancy tracking.",
-        icon: Building2,
-      },
-      {
-        name: "Industrial Automation",
-        description: "Predictive maintenance and production line monitoring.",
-        icon: Factory,
-      },
-      {
-        name: "Smart Agriculture",
-        description: "Soil moisture sensing and precision irrigation.",
-        icon: "Tractor",
-      },
-      {
-        name: "Smart Retail",
-        description: "Inventory tracking and personalized customer flow.",
-        icon: Store,
-      },
-    ],
-    techStack: ["ARDUINO", "RASPBERRY_PI", "MQTT", "AWS_IOT", "NODE_PYTHON"],
-  },
-  {
-    slug: "cybersecurity",
-    title: "Advanced Cybersecurity Solutions",
-    subtitle: "Next-Gen Threat Mitigation",
-    description:
-      "Secure applications, servers, and data from modern threats. Military-grade defense for the evolving digital landscape.",
-    heroImage: "/home/photo-1550751827-4bd374c3f58b.jpg",
-    subServices: [
-      {
-        title: "Application Security Testing",
-        description:
-          "Rigorous penetration testing and automated scanning to identify and mitigate risks.",
-        icon: Shield,
-      },
-      {
-        title: "Network Security",
-        description:
-          "Fortify infrastructure perimeter with managed firewalls and secure architecture.",
-        icon: Globe,
-      },
-      {
-        title: "Data Encryption",
-        description:
-          "End-to-end military-grade protection for sensitive data at rest and in transit.",
-        icon: Lock,
-      },
-      {
-        title: "Security Audits & Compliance",
-        description:
-          "Compliance mapping and risk analysis for regulatory requirements.",
-        icon: ScanSearch,
-      },
-    ],
-    certifications: [
-      { title: "ISO 27001", icon: BadgeCheck },
-      { title: "SOC2 TYPE II", icon: ShieldLock },
-      { title: "HIPAA", icon: HeartPulse },
-      { title: "PCI DSS", icon: CreditCard },
-      { title: "GDPR", icon: Gavel },
-    ],
-    industries: [
-      {
-        name: "Finance",
-        description:
-          "Strict compliance and fraud prevention for banking and fintech.",
-        icon: CorporateFare,
-      },
-      {
-        name: "Healthcare",
-        description:
-          "HIPAA-aligned data privacy solutions for clinics and health systems.",
-        icon: HeartPulse,
-      },
-      {
-        name: "E-commerce",
-        description:
-          "Secure PCI-DSS payment gateways and global supply chain protection.",
-        icon: Store,
-      },
-      {
-        name: "Enterprises",
-        description:
-          "Scalable threat mitigation for global firms and government agencies.",
-        icon: Building2,
-      },
-    ],
-    techStack: [
-      "PENTESTING",
-      "FIREWALLS",
-      "ENCRYPTION",
-      "WIRESHARK",
-      "KALI_LINUX",
-    ],
-  },
-  {
-    slug: "qa-testing",
-    title: "Professional QA & Testing Services",
-    subtitle: "Deliver Bug-Free Software",
-    description:
-      "Ensure performance, security, and reliability through our comprehensive QA methodologies. We catch what others miss.",
-    heroImage: "/home/photo-1517694712202-14dd9538aa97.jpg",
-    subServices: [
-      {
-        title: "Manual Testing",
-        description:
-          "Human-centric UX and exploratory testing to ensure your software feels as good as it looks.",
-        icon: MousePointerClick,
-      },
-      {
-        title: "Automated Testing",
-        description:
-          "Speed and efficiency for CI/CD pipelines using industry-standard automation frameworks.",
-        icon: Terminal,
-      },
-      {
-        title: "Performance Testing",
-        description:
-          "Stress and load management to ensure stability under peak traffic.",
-        icon: Zap,
-      },
-      {
-        title: "Security Testing",
-        description:
-          "Comprehensive vulnerability and penetration checks to protect your data.",
-        icon: ShieldCheck,
+          "Targeted ads that bring immediate traffic and leads to your business.",
+        icon: Megaphone,
       },
     ],
     benefits: [
       {
-        title: "Enhanced UX",
-        description:
-          "Create frictionless experiences that users love and recommend.",
-        icon: Laugh,
+        title: "More Visibility",
+        description: "Be seen by thousands of potential local customers.",
+        icon: Eye,
       },
       {
-        title: "Reduced Costs",
-        description:
-          "Fixing bugs early is 10x cheaper than post-release patching.",
-        icon: PiggyBank,
-      },
-      {
-        title: "Faster Launch",
-        description:
-          "Predictable release cycles with automated regression testing.",
-        icon: Rocket,
-      },
-      {
-        title: "Trust & Security",
-        description:
-          "Build a reputation for rock-solid, secure enterprise software.",
-        icon: Shield,
+        title: "Real Leads",
+        description: "Stop guessing and start getting calls and messages.",
+        icon: Users,
       },
     ],
-    techStack: ["SELENIUM", "POSTMAN", "JMETER", "APPIUM"],
+    techStack: ["GOOGLE ADS", "FACEBOOK", "INSTAGRAM", "ANALYTICS"],
   },
   {
     slug: "it-consulting-support",
-    title: "IT Consulting & Support Services",
-    subtitle: "Transform Your Business Technology",
+    title: "IT Support & Strategy",
+    subtitle: "We Are Your Tech Partner",
     description:
-      "Strategic technology solutions and reliable support tailored for business growth, efficiency, and future-proof digital transformation.",
+      "Technology can be confusing. We are here to simplify it. From fixing day-to-day issues to planning your future tech roadmap, think of us as your external IT department.",
     heroImage: "/home/photo-1521737604893-d14cc237f11d.jpg",
     subServices: [
       {
-        title: "IT Strategy & Consulting",
+        title: "Tech Consultation",
         description:
-          "Aligning technology investments with your long-term business goals for maximum ROI.",
-        icon: TrendingUp,
+          "Not sure what software to buy? We advise you on the best tools for your budget.",
+        icon: Lightbulb,
+      },
+      {
+        title: "System Maintenance",
+        description:
+          "We keep your websites and apps updated, secure, and running smoothly.",
+        icon: Settings,
       },
       {
         title: "Digital Transformation",
         description:
-          "Seamlessly integrating cloud, AI, and data solutions into your daily operations.",
-        icon: Sparkles,
-      },
-      {
-        title: "IT Maintenance & Support",
-        description:
-          "24/7 monitoring, proactive updates, and expert technical support.",
-        icon: Server,
-      },
-      {
-        title: "System Modernization",
-        description:
-          "Upgrading legacy infrastructure for improved speed, scale, and efficiency.",
+          "Moving your traditional business processes to digital systems to save time.",
         icon: RefreshCw,
       },
     ],
     process: [
       {
-        title: "Initial Assessment",
-        description:
-          "Deep-dive analysis of your current IT infrastructure and business challenges.",
+        title: "Assess",
+        description: "We look at what you have and what you need.",
       },
       {
-        title: "Strategic Roadmap",
-        description:
-          "Phased implementation plan prioritizing high-impact technological upgrades.",
+        title: "Plan",
+        description: "We give you a simple, clear roadmap.",
       },
       {
-        title: "Seamless Implementation",
-        description:
-          "Full execution management ensuring minimal disruption and immediate value.",
+        title: "Execute",
+        description: "We implement the changes for you.",
       },
       {
-        title: "Ongoing Support",
-        description:
-          "24/7 monitoring, maintenance, and continuous optimization.",
+        title: "Support",
+        description: "We're always a phone call away.",
       },
     ],
-    techStack: ["AWS", "AZURE", "DOCKER", "KUBERNETES", "LINUX", "PYTHON"],
+    techStack: ["CLOUD", "SECURITY", "STRATEGY"],
   },
 ];
 

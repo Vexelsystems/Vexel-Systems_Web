@@ -6,47 +6,47 @@ import { Search, PenTool, Code, CheckSquare, Rocket, FileText, Layout, Keyboard,
 const phases = [
   {
     number: "01",
-    title: "Discovery",
-    description: "Requirement gathering and stakeholder alignment.",
+    title: "We Listen",
+    description: "We start by sitting down with you to understand your real problems and goals.",
     icon: <Search className="w-10 h-10" />,
-    activities: ["Stakeholder Interviews", "Market Research", "Technical Feasibility"]
+    activities: ["Honest Conversations", "Market Check", "Clear Goals"]
   },
   {
     number: "02",
-    title: "Design",
-    description: "Architecture design and UI/UX wireframing.",
+    title: "We Plan",
+    description: "We map out exactly what your software needs to do to succeed.",
     icon: <PenTool className="w-10 h-10" />,
-    activities: ["System Architecture", "Interactive Prototypes", "Tech Stack Selection"]
+    activities: ["Smart Blueprints", "Interactive Models", "Technology Choice"]
   },
   {
     number: "03",
-    title: "Development",
-    description: "Agile sprints and high-quality coding.",
+    title: "We Build",
+    description: "Our experts code your system using the latest secure technology.",
     icon: <Code className="w-10 h-10" />,
-    activities: ["Bi-weekly Sprints", "Code Reviews", "Weekly Demos"]
+    activities: ["Fast Progress", "Quality Checks", "Weekly Updates"]
   },
   {
     number: "04",
-    title: "Testing",
-    description: "End-to-end testing and quality assurance.",
+    title: "We Test",
+    description: "We make sure everything works perfectly before your customers see it.",
     icon: <CheckSquare className="w-10 h-10" />,
-    activities: ["Automated Testing", "Performance Tuning", "User Acceptance (UAT)"]
+    activities: ["Bug Stomping", "Speed Tests", "Human Verification"]
   },
   {
     number: "05",
-    title: "Deployment",
-    description: "Live system launch and maintenance.",
+    title: "You Launch",
+    description: "We help you go live and stay by your side to ensure success.",
     icon: <Rocket className="w-10 h-10" />,
-    activities: ["CI/CD Implementation", "Production Monitoring", "24/7 Support Plan"]
+    activities: ["Go-Live Support", "Monitoring", "Always Helping"]
   }
 ];
 
 const outcomes = [
-  { title: "Discovery", description: "Project roadmap, BRD documentation", icon: <FileText className="w-8 h-8" /> },
-  { title: "Planning", description: "Figma prototypes, architecture diagrams", icon: <Layout className="w-8 h-8" /> },
-  { title: "Development", description: "Clean source code, beta build", icon: <Keyboard className="w-8 h-8" /> },
-  { title: "QA", description: "Bug-free build, UAT reports", icon: <Flag className="w-8 h-8" /> },
-  { title: "Deployment", description: "Live platform, monitoring tools", icon: <Cloud className="w-8 h-8" /> }
+  { title: "Understanding", description: "A clear plan for your business growth", icon: <FileText className="w-8 h-8" /> },
+  { title: "Visuals", description: "Seeing your idea come to life", icon: <Layout className="w-8 h-8" /> },
+  { title: "Software", description: "A powerful, working system", icon: <Keyboard className="w-8 h-8" /> },
+  { title: "Quality", description: "No bugs, just smooth operation", icon: <Flag className="w-8 h-8" /> },
+  { title: "Success", description: "Your business running better", icon: <Cloud className="w-8 h-8" /> }
 ];
 
 
@@ -78,7 +78,7 @@ export const ProcessSection = () => {
             {phases.map((phase) => (
               <div 
                 key={phase.number} 
-                className="flex flex-col items-center group cursor-default"
+                className="flex flex-col items-center group cursor-default hover:-translate-y-2 transition-transform duration-300"
               >
                 <div 
                   className="size-20 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md border-4 border-background group-hover:bg-purple-600 transition-colors duration-300"
@@ -123,7 +123,7 @@ export const ProcessSection = () => {
             {outcomes.map((outcome, i) => (
               <div 
                 key={i} 
-                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40"
+                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40 hover:shadow-2xl hover:-translate-y-1 duration-300"
               >
                 <div className="text-primary group-hover:text-purple-600 transition-colors">
                   {outcome.icon}

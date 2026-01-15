@@ -48,18 +48,18 @@ export default function ServicesPage() {
 
             <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
               <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
-                Global Tech Solutions
+                What We Do
               </h2>
               
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
-                <span className="text-foreground">Explore Our</span>
+                <span className="text-foreground">Everything You Need</span>
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
-                  Comprehensive Services.
+                  to Grow.
                 </span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                Discover the perfect technology solutions tailored to your business goals. From custom software to AI integration, we build for the future.
+                From building your first website to creating complex AI systems, we have the skills to help you succeed.
               </p>
             </div>
 

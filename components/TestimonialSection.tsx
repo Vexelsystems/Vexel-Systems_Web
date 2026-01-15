@@ -7,50 +7,50 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    role: "CTO, FinFlow",
-    content: "Vexel Systems transformed our legacy infrastructure into a cloud-native powerhouse. Their team operates with a level of precision we rarely see.",
-    image: "https://ui-avatars.com/api/?name=Sarah+Jenkins&background=0D8ABC&color=fff",
+    name: "Sivalingam Ragavan",
+    role: "Owner, Vanni Hardware",
+    content: "We tracked our inventory in notebooks for 20 years. Vexel built us a system that handles everything automatically. Now I can check my stock from home.",
+    image: "/home/photo-1550751827-4bd374c3f58b.jpg",
     rating: 5
   },
   {
     id: 2,
-    name: "David Chen",
-    role: "Founder, RetailX",
-    content: "The POS system they built for us reduced checkout times by 40%. It's not just software; it's a competitive advantage.",
-    image: "https://ui-avatars.com/api/?name=David+Chen&background=10B981&color=fff",
+    name: "Dilshan Perera",
+    role: "Manager, City Bakers",
+    content: "Managing orders during festival times was a nightmare. The new POS system is fast and simple. Our staff learned it in one day.",
+    image: "/home/photo-1557838923-2985c318be48.jpg",
     rating: 5
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
-    role: "Director of Ops, HealthFirst",
-    content: "Security was our top concern. Vexel's rigorous compliance standards gave us the confidence to digitize our patient records.",
-    image: "https://ui-avatars.com/api/?name=Elena+Rodriguez&background=8B5CF6&color=fff",
+    name: "Fathima Rihana",
+    role: "Director, EduSmart Academy",
+    content: "We needed a way for students to check exam results online. Vexel built a secure portal that works perfectly on every phone.",
+    image: "/home/photo-1498050108023-c5249f4df085.jpg",
     rating: 5
   },
   {
     id: 4,
-    name: "Michael Ross",
-    role: "CEO, Ross Logistics",
-    content: "Their custom ERP solution automated 80% of our manual tracking. We are saving thousands of man-hours annually.",
-    image: "https://ui-avatars.com/api/?name=Michael+Ross&background=F59E0B&color=fff",
+    name: "Kumara Bandara",
+    role: "CEO, Lanka Logistics",
+    content: "Tracking our delivery trucks used to be phone calls and guess work. Now we see everything in real-time. It saved us so much time.",
+    image: "/home/photo-1460925895917-afdab827c52f.jpg",
     rating: 5
   },
   {
     id: 5,
-    name: "Anita Patel",
-    role: "VP Marketing, BrandBoost",
-    content: "The mobile app experience they designed is simply world-class. Our user retention doubled within three months of launch.",
-    image: "https://ui-avatars.com/api/?name=Anita+Patel&background=EC4899&color=fff",
+    name: "Meera Jasmine",
+    role: "Founder, Style House",
+    content: "I wanted a website that looks international but feels local. Vexel understood exactly what I needed. Sales increased immediately.",
+    image: "/home/photo-1451187580459-43490279c0fa.jpg",
     rating: 5
   },
   {
     id: 6,
-    name: "James Wilson",
-    role: "Operations Manager, CityEat",
-    content: "Reliability is key in food delivery. Vexel's backend architecture hasn't flinched once, even during our busiest super bowl weekend.",
-    image: "https://ui-avatars.com/api/?name=James+Wilson&background=6366F1&color=fff",
+    name: "Mohamed Afran",
+    role: "Owner, Afran Motors",
+    content: "Simple, fast, and no errors. The booking system they made for our service station sends automatic reminders to customers. Brilliant.",
+    image: "/home/photo-1521737604893-d14cc237f11d.jpg",
     rating: 5
   },
 ];
@@ -84,7 +84,7 @@ export const TestimonialSection = () => {
             {testimonials.map((t) => (
                <div 
                  key={t.id} 
-                 className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 transition-all duration-300 flex flex-col h-full"
+                 className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
                >
                   <Quote className="absolute top-8 right-8 text-primary/10 w-16 h-16 transform rotate-180" />
                   
@@ -131,7 +131,7 @@ export const TestimonialSection = () => {
             ].map((stat, idx) => (
                <div 
                  key={idx} 
-                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/40 transition-all duration-300 text-center"
+                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/40 hover:-translate-y-2 transition-all duration-300 text-center"
                >
                   <h3 className="text-4xl md:text-5xl font-black text-primary mb-2">{stat.number}</h3>
                   <p className="text-sm font-bold text-foreground/80 uppercase tracking-wide">{stat.label}</p>
@@ -166,7 +166,7 @@ export const TestimonialSection = () => {
             ].map((industry, idx) => (
                <div 
                  key={idx} 
-                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 text-center"
+                 className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 text-center"
                >
                   <div className="text-4xl mb-3">{industry.icon}</div>
                   <h3 className="text-lg font-black text-foreground mb-1">{industry.name}</h3>
@@ -187,15 +187,15 @@ export const TestimonialSection = () => {
 
          <div className="max-w-3xl mx-auto space-y-4">
             {[
-              { q: "What is your typical project timeline?", a: "Most projects take 8-16 weeks depending on complexity. We provide detailed timelines during consultation." },
-              { q: "Do you offer post-launch support?", a: "Yes! We provide 24/7 support and maintenance packages to ensure your systems run smoothly." },
-              { q: "What technologies do you specialize in?", a: "We work with modern tech stacks including React, Next.js, Node.js, Python, AWS, and more. Check our Tech Stack section for details." },
-              { q: "Can you work with our existing team?", a: "Absolutely! We seamlessly integrate with your in-house team and follow your development processes." },
-              { q: "What are your payment terms?", a: "We offer flexible payment plans with milestone-based payments. Contact us for custom pricing." }
+              { q: "How long will it actually take?", a: "It depends on what you need, but usually 8-12 weeks. We give you a real timeline before we start, so you're not guessing." },
+              { q: "Will you help us after the website is live?", a: "Yes. We don't just build and run. We stick around to fix bugs, make updates, and make sure everything keeps working perfectly." },
+              { q: "Do I need to know about servers and coding?", a: "No. We handle all the technical boring stuff. You just tell us what you want your business to do, and we make it happen." },
+              { q: "Can you work with my current IT guy?", a: "Absolutely. We play nice with others. We can work alongside your existing team or handle everything ourselves." },
+              { q: "How do payments work?", a: "We're flexible. Usually, we break it down into milestones: a deposit to start, payments as we finish big chunks, and the rest when we launch." }
             ].map((faq, idx) => (
                <details 
                  key={idx}
-                 className="group bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                 className="group bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                >
                   <summary className="font-bold text-foreground flex items-center justify-between cursor-pointer">
                      {faq.q}

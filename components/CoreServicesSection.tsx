@@ -19,14 +19,14 @@ export function CoreServicesSection() {
           </div>
           
           <SnapCarousel>
-               <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+               <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/20 transition-all duration-300">
                   <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Globe size={36} />
                   </div>
                   <div className="flex flex-col gap-3">
                     <h3 className="text-foreground text-2xl font-bold">Web Development</h3>
                     <p className="text-foreground/60 text-lg leading-relaxed">
-                      Scalable and responsive web applications built with modern frameworks and cloud-native architecture.
+                      Beautiful, fast websites that make your business look professional and trustworthy to every visitor.
                     </p>
                   </div>
                   <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="/services/web-development" aria-label="Learn more about Web Development">
@@ -34,14 +34,14 @@ export function CoreServicesSection() {
                   </a>
                 </div>
 
-                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 shadow-sm transition-all duration-300">
+                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-primary/20 transition-all duration-300">
                   <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Smartphone size={36} />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-foreground text-2xl font-bold">Mobile Development</h3>
+                    <h3 className="text-foreground text-2xl font-bold">Mobile Apps</h3>
                     <p className="text-foreground/60 text-lg leading-relaxed">
-                      High-performance native and cross-platform mobile apps tailored for seamless user experiences.
+                      Put your business in your customers' pockets with custom iPhone and Android apps that people love to use.
                     </p>
                   </div>
                   <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="/services/mobile-app-development" aria-label="Learn more about Mobile App Development">
@@ -49,14 +49,14 @@ export function CoreServicesSection() {
                   </a>
                 </div>
 
-                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 shadow-sm transition-all duration-300">
+                <div className="min-w-[85vw] md:min-w-0 h-full group flex flex-col gap-6 rounded-3xl border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-8 md:p-10 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-primary/20 transition-all duration-300">
                   <div className="size-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <Terminal size={36} />
                   </div>
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-foreground text-2xl font-bold">Custom Software</h3>
+                    <h3 className="text-foreground text-2xl font-bold">AI Solutions</h3>
                     <p className="text-foreground/60 text-lg leading-relaxed">
-                      Bespoke software solutions designed to solve your unique business challenges and drive operational efficiency.
+                      Smart systems that automate your boring tasks and help you make better business decisions automatically.
                     </p>
                   </div>
                   <a className="mt-auto text-primary font-bold text-base flex items-center gap-2" href="/services/custom-software" aria-label="Learn more about Custom Software">

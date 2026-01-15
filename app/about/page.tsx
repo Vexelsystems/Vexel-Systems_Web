@@ -47,18 +47,18 @@ export default function About() {
 
             <div className="flex flex-col items-center overflow-hidden text-center max-w-4xl mx-auto">
               <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
-                Pioneering Digital Excellence
+                We Are Vexel Systems
               </h2>
               
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
-                <span className="text-foreground">Bridging Global</span>
+                <span className="text-foreground">Real People Building</span>
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
-                  Innovation & Tech.
+                  Real Solutions.
                 </span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                A premier software and technology solutions provider, bridging the gap between Sri Lankan innovation and global business needs. We empower enterprises with future-ready digital transformations.
+                We are a technology team from Sri Lanka. We don't just write code; we build software that works, helps you grow, and doesn't complicate your life.
               </p>
             </div>
 

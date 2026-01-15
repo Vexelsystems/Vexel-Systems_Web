@@ -24,6 +24,7 @@ import GlobalClientWrapper from "@/components/GlobalClientWrapper"; // Wrapper f
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
 import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
+import GlowingBackground from "@/components/GlowingBackground";
 
 
 /**
@@ -148,6 +149,7 @@ export default function RootLayout({
           - Better local SEO
           - Enhanced brand visibility
         */}
+         <GlowingBackground />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
