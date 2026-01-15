@@ -9,6 +9,10 @@ export function HeroBackground() {
     const container = containerRef.current;
     if (!container) return;
 
+    // Optimization: Only attach listener on devices that support hover (desktops)
+    // This saves TBT/CPU on mobile devices where "mousemove" is less relevant or polyfilled poorly
+    if (window.matchMedia("(hover: none)").matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       const { left, top, width, height } = container.getBoundingClientRect();
       const x = (e.clientX - left) / width;

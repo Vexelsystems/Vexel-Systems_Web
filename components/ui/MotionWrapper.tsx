@@ -22,6 +22,8 @@ export const MotionWrapper = ({
 
   React.useEffect(() => {
     // Small delay to ensure "main thing" is loaded
+    // Optimization: On mobile, we can skip the mounting animation or keep it simple
+    // For now, we just proceed as normal but the delay helps main thread
     const timer = setTimeout(() => setIsMounted(true), 100);
     return () => clearTimeout(timer);
   }, []);

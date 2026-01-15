@@ -34,6 +34,7 @@ import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 /**

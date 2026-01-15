@@ -33,10 +33,36 @@ export default function LiveChat() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
+  // Optimization: Delay initialization
+  const [isInitialized, setIsInitialized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Delay heavy logic until 5s after mount or interaction
+    const init = () => {
+      setIsInitialized(true);
+      window.removeEventListener('mousemove', init);
+      window.removeEventListener('scroll', init);
+      window.removeEventListener('touchstart', init);
+    };
+
+    const timer = setTimeout(init, 5000);
+    window.addEventListener('mousemove', init);
+    window.addEventListener('scroll', init);
+    window.addEventListener('touchstart', init);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('mousemove', init);
+      window.removeEventListener('scroll', init);
+      window.removeEventListener('touchstart', init);
+    };
+  }, []);
 
   // Check operating hours (9 AM - 6 PM Colombo Time)
   useEffect(() => {
+    if (!isInitialized) return;
+
     const checkStatus = () => {
       const now = new Date();
       // Colombo is UTC +5.5
@@ -53,14 +79,15 @@ export default function LiveChat() {
     checkStatus();
     const interval = setInterval(checkStatus, 60000); // Re-check every minute
     return () => clearInterval(interval);
-  }, []);
+  }, [isInitialized]);
 
   // Global event listener for opening chat
   useEffect(() => {
+    if (!isInitialized) return;
     const handleToggle = () => setIsOpen(true);
     window.addEventListener('vexel-chat-open', handleToggle);
     return () => window.removeEventListener('vexel-chat-open', handleToggle);
-  }, []);
+  }, [isInitialized]);
 
   // Load identity from localStorage
   useEffect(() => {
@@ -191,6 +218,9 @@ export default function LiveChat() {
 
   return (
     <div className="fixed bottom-8 right-8 z-100 font-sans">
+      {/* Delayed Render */}
+      {!isInitialized ? null : (
+      <>
       {/* Chat Window */}
       {isOpen && (
         <div
@@ -350,6 +380,8 @@ export default function LiveChat() {
           </span>
         )}
       </button>
+      </>
+      )}
     </div>
   );
 }
