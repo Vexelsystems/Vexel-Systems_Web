@@ -50,7 +50,8 @@ export const BASE_URL = "https://www.vexelsystems.lk";
 export const DEFAULT_SEO = {
   siteName: companyDetails.name,
   title: `${companyDetails.name} | ${companyDetails.tagline}`,
-  description: companyDetails.description,
+  description:
+    "We build sensible software for growing businesses. Based in Vavuniya, we help Sri Lankan companies thrive with custom websites, POS systems, and reliable tech support.",
 
   /**
    * KEYWORDS
@@ -67,6 +68,14 @@ export const DEFAULT_SEO = {
    * - Business: Business-oriented terms
    */
   keywords: [
+    // Global Brand Keywords
+    "Vexel Systems",
+    "Vexel Systems Sri Lanka",
+    "Vexel Systems Vavuniya",
+    "software company in Sri Lanka",
+    "custom software development Sri Lanka",
+    "technology solutions Sri Lanka",
+
     // Core Services
     "POS Systems",
     "Point of Sale",
@@ -487,7 +496,7 @@ export function generateServiceSchema({
  * Generate JSON-LD structured data for BreadcrumbList
  */
 export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
+  items: { name: string; url: string }[],
 ) {
   return {
     "@context": "https://schema.org",

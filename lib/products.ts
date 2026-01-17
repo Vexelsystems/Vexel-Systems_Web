@@ -137,7 +137,7 @@ export const products: Product[] = [
     badge: "Logistics Engine",
     category: "MANAGEMENT SOLUTION",
     shortDescription:
-      "Track your vehicles, assets, and deliveries in real time – anywhere, anytime. The ultimate GPS-based fleet management system for Sri Lankan logistics.",
+      "Know exactly where your vehicles are, anytime. A simple, reliable GPS tracking system designed to help Sri Lankan businesses save fuel and reduce delays.",
     fullDescription:
       "Vexel Track is more than just a dot on a map. It's a comprehensive fleet intelligence system designed to reduce operational costs and increase efficiency. From logistics companies to corporate fleets, our system provides real-time visibility, automated maintenance alerts, and driver behavior analysis. Stop guessing where your assets are and start optimizing how they move.",
     mainImage: "/products/photo-1551288049-bebda4e38f71.jpg",
@@ -454,7 +454,7 @@ export const products: Product[] = [
     badge: "Market Benchmark",
     category: "RETAIL & WHOLESALE SOLUTION",
     shortDescription:
-      "More than just a register. A cloud-hybrid ecosystem that manages sales, inventory, and customer data with military-grade precision.",
+      "Run your shop without the stress. A smart, easy-to-use point of sale that handles sales, inventory, and customers so you can focus on growth.",
     fullDescription:
       "Vexel POS is the nervous system of modern retail. We've reimagined the point of sale from a passive recorder to an active growth engine. Built on a hybrid architecture, it ensures your business never stops—processing transactions offline and syncing to the cloud instantly when connectivity returns. From predicting inventory needs to automating customer loyalty via WhatsApp, Vexel POS gives you the data-driven superpowers previously reserved for retail giants.",
     mainImage: "/products/photo-1556742502-ec7c0e9f34b1.jpg",
@@ -731,7 +731,7 @@ export const products: Product[] = [
     badgeColor: "bg-purple-500",
     category: "RECRUITMENT TECH",
     shortDescription:
-      "A semantic search engine for your CV bank. Upload bulk resumes, define your needs, and let AI shortlist the perfect candidates instantly.",
+      "Stop drowning in resumes. Just upload your CVs, tell us who you're looking for, and let our AI find the perfect candidate for you in seconds.",
     fullDescription:
       "Vexel Hire turns your dormant folder of PDF resumes into a searchable, intelligent talent pool. Stop manually screening hundreds of CVs. Simply drag-and-drop your bulk resume files, and our AI indexes every skill, experience, and nuance. When a new role opens, just describe your ideal candidate in plain English, and Vexel Hire instantly filters and ranks the best matches from your own database. It's not just an ATS; it's a recruitment brain.",
     mainImage: "/products/photo-1551288049-bebda4e38f71.jpg",

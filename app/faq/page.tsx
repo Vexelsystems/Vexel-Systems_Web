@@ -11,15 +11,25 @@ import FaqClient from "@/components/FaqClient";
 
 export const metadata = generatePageMetadata({
   title: "FAQ Center - Common Questions & Support",
-  description: "Find answers to common questions about Vexel Systems services, pricing, POS systems, and technical support in our comprehensive FAQ center.",
+  description: "Got questions? We've got answers. Find quick help on our services, pricing, and support.",
   keywords: [
-    "FAQ",
-    "Help Center",
-    "Support",
-    "Pricing Questions",
-    "POS Troubleshooting",
-    "Technical Support",
-    "Vexel Systems Help",
+    "Vexel Systems FAQ",
+    "POS system questions",
+    "ERP system questions",
+    "software product questions",
+    "software support FAQ",
+    "business software FAQ",
+    "startup software FAQ",
+    "IT solution questions Sri Lanka",
+    "AI software FAQ",
+    "digital solutions FAQ",
+    "Vavuniya tech FAQ",
+    "software troubleshooting",
+    "user support Vexel Systems",
+    "ERP FAQ Sri Lanka",
+    "POS software FAQ",
+    "SaaS questions",
+    "Vexel customer support FAQ"
   ],
   path: "/faq",
 });

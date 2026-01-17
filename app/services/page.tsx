@@ -19,15 +19,24 @@ import { TypewriterText } from "@/components/hero/TypewriterText";
 
 export const metadata = generatePageMetadata({
   title: "Our Services - Web, Mobile & AI Solutions",
-  description: "Explore Vexel Systems' comprehensive range of services including Custom Software Development, AI Solutions, Web & Mobile App Development, and Cloud Infrastructure.",
+  description: "From custom websites to complex software, we build it all. Explore how our engineering team can help upgrade your business.",
   keywords: [
-    "Vexel Services",
-    "Software Development Services",
-    "AI Solutions Sri Lanka",
-    "Web Development",
-    "Mobile App Development",
-    "Cloud Services",
-    "IT Consulting",
+    "Vexel Systems services",
+    "software services Sri Lanka",
+    "AI & ML development",
+    "mobile app development Sri Lanka",
+    "web development services",
+    "IT solutions Sri Lanka",
+    "IoT solutions",
+    "digital marketing Sri Lanka",
+    "business automation software",
+    "custom software solutions",
+    "startup technology services",
+    "enterprise software solutions",
+    "AI-powered platforms",
+    "Vavuniya software company",
+    "technology solutions global",
+    "POS & ERP services"
   ],
   path: "/services",
 });

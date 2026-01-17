@@ -19,14 +19,21 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Our Products - Proprietary Software Solutions",
-  description: "Discover Vexel Systems' proprietary software solutions including POS systems, HRM, and more. Tailored for modern businesses.",
+  description: "Tools that work as hard as you do. Explore our range of POS systems, tracking software, and hiring tools designed for Sri Lankan businesses.",
   keywords: [
-    "Vexel Products",
-    "Proprietary Software",
-    "POS Systems",
-    "HRM Software",
-    "Business Solutions",
-    "Retail Technology"
+    "Vexel Systems products",
+    "Vexel POS",
+    "Vexel Track",
+    "Vexel Hire",
+    "business software suite",
+    "enterprise solutions Sri Lanka",
+    "startup software tools",
+    "ready-made software solutions",
+    "SaaS products Sri Lanka",
+    "HR software",
+    "inventory management system",
+    "fleet tracking software",
+    "Vexel software ecosystem"
   ],
   path: "/products",
 });

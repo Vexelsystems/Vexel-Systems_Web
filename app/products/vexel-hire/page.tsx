@@ -1,11 +1,24 @@
 
-import { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/seo";
 import VexelHireClient from "./client";
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
   title: "Vexel Hire",
-  description: "Smart Recruitment & Staff Management System. AI-powered Applicant Tracking System (ATS) for Sri Lankan businesses.",
-};
+  description: "Stop drowning in resumes. Just upload your CVs, tell us who you're looking for, and let our AI find the perfect candidate for you in seconds.",
+  keywords: [
+    "Vexel Hire",
+    "AI recruitment software",
+    "smart hiring system Sri Lanka",
+    "resume filtering AI",
+    "automated recruitment tool",
+    "HR tech Sri Lanka",
+    "talent acquisition software",
+    "best hiring platform",
+    "Vexel Systems products",
+    "recruitment automation Vavuniya"
+  ],
+  path: "/products/vexel-hire",
+});
 
 export default function VexelHirePage() {
   return <VexelHireClient />;

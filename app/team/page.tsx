@@ -69,14 +69,18 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Our Team - The People Behind Vexel",
-  description: "Meet the visionary leaders and talented developers at Vexel Systems dedicated to your success. A founder-driven startup focused on innovation.",
+  description: "The people behind the code. Meet the developers, designers, and thinkers who make Vexel Systems tick.",
   keywords: [
-    "Vexel Team",
-    "Software Developers Sri Lanka",
-    "Tech Leadership",
-    "Jathushan Varnakulasingam",
-    "Kajakaran Sivananthan",
-    "Vexel Founders"
+    "Vexel Systems team",
+    "software developers Sri Lanka",
+    "IT experts Vavuniya",
+    "tech leadership team",
+    "hire software engineers",
+    "Vexel founders",
+    "software company culture",
+    "talented developers Sri Lanka",
+    "tech team Vavuniya",
+    "engineering team Vexel"
   ],
   path: "/team",
 });

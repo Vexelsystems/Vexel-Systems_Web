@@ -12,14 +12,25 @@ import ConsultationClient from "./ConsultationClient";
 
 export const metadata = generatePageMetadata({
   title: "Schedule a Consultation - Let's Build Your Future",
-  description: "Book a strategic consultation with Vexel Systems experts. Discuss your project requirements, technology needs, and digital transformation goals with our team.",
+  description: "Not sure where to start? Let's sit down and talk. We offer expert advice on how technology can solve your specific business problems.",
   keywords: [
-    "Schedule Consultation",
-    "Book a Meeting",
-    "Digital Strategy Consultation",
-    "Tech Consulting Sri Lanka",
-    "Vexel Systems Appointment",
-    "Software Project Discovery",
+    "software consultation Sri Lanka",
+    "IT consulting Vavuniya",
+    "business technology consulting",
+    "startup software consultation",
+    "digital strategy consulting",
+    "POS consulting Sri Lanka",
+    "ERP software consulting",
+    "AI software consultation",
+    "IT solutions Vavuniya",
+    "custom software consultation",
+    "technology consulting company",
+    "Vexel consulting",
+    "business process automation",
+    "SaaS consulting Sri Lanka",
+    "IT advisory services",
+    "software project consulting",
+    "enterprise software consulting"
   ],
   path: "/consultation",
 });

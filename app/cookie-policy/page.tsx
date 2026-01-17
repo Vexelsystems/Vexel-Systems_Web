@@ -14,13 +14,25 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Cookie Policy",
-  description: "Transparency at Vexel Systems: How we use cookies to improve your digital experience. Learn about session, performance, and essential cookies.",
+  description: "We value your privacy. Learn how we use cookies to improve your experience on Vexel Systems.",
   keywords: [
-    "Cookie Policy",
-    "Privacy",
-    "Data Usage",
-    "Tracking Cookies",
-    "GDPR Compliance"
+    "cookie policy",
+    "website cookies Vexel Systems",
+    "privacy cookies Sri Lanka",
+    "GDPR compliance Sri Lanka",
+    "website tracking cookies",
+    "user consent cookies",
+    "session cookies",
+    "performance cookies",
+    "third-party cookies",
+    "website data policy",
+    "digital privacy policy",
+    "cookies Sri Lanka",
+    "cookie management",
+    "Vexel Systems privacy",
+    "website cookie consent",
+    "cookies transparency",
+    "user data cookies"
   ],
   path: "/cookie-policy",
 });

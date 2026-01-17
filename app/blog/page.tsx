@@ -14,14 +14,25 @@ import BlogClient from "@/components/BlogClient";
 
 export const metadata = generatePageMetadata({
   title: "Blog - Insights, News & Tech Trends",
-  description: "Stay updated with the latest insights from Vexel Systems. Articles on technology trends, digital transformation, retail solutions, and more.",
+  description: "Insights, updates, and tech tips from our team. Read about the latest in software, business automation, and digital growth in Sri Lanka.",
   keywords: [
-    "Vexel Blog",
-    "Tech Insights",
-    "Software Development Blog",
-    "Digital Transformation News",
-    "Retail Technology",
-    "AI Trends",
+    "Vexel Systems blog",
+    "software blog Sri Lanka",
+    "POS blog",
+    "ERP blog",
+    "AI software insights",
+    "technology articles Sri Lanka",
+    "business automation blog",
+    "software development tips",
+    "startup technology Sri Lanka",
+    "digital transformation",
+    "Vavuniya tech blog",
+    "business software advice",
+    "software solutions trends",
+    "SaaS tips Sri Lanka",
+    "technology news Sri Lanka",
+    "Vexel insights",
+    "enterprise software articles"
   ],
   path: "/blog",
 });

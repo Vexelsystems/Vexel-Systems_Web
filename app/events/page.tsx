@@ -15,13 +15,24 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export const metadata = generatePageMetadata({
   title: "Events & Webinars - Community & Learning",
-  description: "Join upcoming events, webinars, and workshops hosted by Vexel Systems. Connect with industry leaders and learn about the future of tech.",
+  description: "Join us at our next workshop or meetup. We love connecting with the local tech community and sharing what we know.",
   keywords: [
-    "Tech Events Sri Lanka",
-    "Webinars",
-    "Workshops",
-    "Vexel Events",
-    "Software Summits",
+    "tech events Sri Lanka",
+    "Vexel Systems events",
+    "software workshops Vavuniya",
+    "POS system events",
+    "ERP software events",
+    "business software workshops",
+    "startup tech events",
+    "AI software workshops",
+    "IT training Sri Lanka",
+    "digital transformation events",
+    "technology seminars Sri Lanka",
+    "Vexel Systems workshops",
+    "enterprise software events",
+    "software conference Vavuniya",
+    "software learning Sri Lanka",
+    "technology education events"
   ],
   path: "/events",
 });

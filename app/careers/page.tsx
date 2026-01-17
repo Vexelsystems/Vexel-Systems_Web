@@ -14,13 +14,25 @@ import CareersClient from "@/components/CareersClient";
 
 export const metadata = generatePageMetadata({
   title: "Careers - Join the Vexel Team",
-  description: "Join Vexel Systems and help build the future of technology in Sri Lanka. Explore open positions in software development, AI, and more.",
+  description: "Do you love building things? We're always looking for smart, creative people to join our team in Vavuniya.",
   keywords: [
-    "Jobs at Vexel",
-    "Careers in Tech Sri Lanka",
-    "Software Engineer Jobs Vavuniya",
-    "Tech Careers",
-    "Work at Vexel Systems",
+    "careers Vexel Systems",
+    "software jobs Sri Lanka",
+    "IT jobs Vavuniya",
+    "software developer jobs Sri Lanka",
+    "software engineering careers",
+    "tech jobs Sri Lanka",
+    "ERP developer jobs",
+    "POS system jobs",
+    "AI software developer",
+    "startup jobs Sri Lanka",
+    "IT careers Vavuniya",
+    "business software careers",
+    "Vexel team hiring",
+    "software intern Sri Lanka",
+    "remote software jobs",
+    "custom software developer",
+    "software development roles"
   ],
   path: "/careers",
 });

@@ -5,13 +5,16 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export const metadata = generatePageMetadata({
   title: "Refund & Cancellation Policy",
-  description: "Read Vexel Systems' refund and cancellation policies for software licenses and subscriptions. We value transparency and fairness.",
+  description: "Our promise to you. Read our clear, fair refund and cancellation policy for software and services.",
   keywords: [
-    "Refund Policy",
-    "Cancellation Policy",
-    "Software License Terms",
-    "Subscription Cancellation",
-    "Money Back Guarantee"
+    "refund policy Vexel Systems",
+    "cancellation policy software",
+    "service refund terms",
+    "money back guarantee Sri Lanka",
+    "subscription cancellation",
+    "software licensing refunds",
+    "Vexel refund guidelines",
+    "business fairness policy"
   ],
   path: "/refund-policy",
 });

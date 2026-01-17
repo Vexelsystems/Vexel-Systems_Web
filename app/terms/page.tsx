@@ -11,6 +11,25 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
  * - Sticky Sidebar Navigation for sections.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Terms of Service - The Rules",
+  description: "The rules of the road. Read the terms and conditions for using Vexel Systems' websites and services.",
+  keywords: [
+    "terms of service Vexel Systems",
+    "software usage agreement",
+    "business terms Sri Lanka",
+    "IT service contract",
+    "software license agreement",
+    "legal terms Vavuniya",
+    "website terms of use",
+    "client service agreement",
+    "Vexel legal terms"
+  ],
+  path: "/terms",
+});
+
 export default function Terms() {
   return (
     <main className="min-h-screen">

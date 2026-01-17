@@ -16,7 +16,7 @@ import { TypewriterText } from "@/components/hero/TypewriterText";
 
 export const metadata = generatePageMetadata({
   title: "About Us - Our Story, Mission & Vision",
-  description: "Learn about Vexel Systems, a premier software and technology solutions provider from Sri Lanka. Discover our mission to empower businesses through digital excellence and innovative solutions.",
+  description: "Get to know the team behind Vexel Systems. We’re a group of passionate developers in Vavuniya dedicated to building software that actually solves real problems.",
   keywords: [
     "About Vexel Systems",
     "Software Company Sri Lanka",

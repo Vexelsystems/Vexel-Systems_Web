@@ -13,13 +13,21 @@ import { Star } from 'lucide-react';
 
 export const metadata = generatePageMetadata({
   title: "Portfolio - Our Success Stories",
-  description: "Explore Vexel Systems' portfolio of successful projects. See how we've helped businesses transform with custom software, AI, and mobile solutions.",
+  description: "See what we've built. From local shops to global enterprises, check out the projects we're proud of.",
   keywords: [
-    "Vexel Portfolio",
-    "Case Studies",
-    "Software Projects",
-    "Success Stories",
-    "Client Reviews",
+    "Vexel Systems portfolio",
+    "software case studies Sri Lanka",
+    "web design portfolio",
+    "app development projects",
+    "POS system examples",
+    "success stories Vexel",
+    "client projects Vavuniya",
+    "software portfolio Sri Lanka",
+    "tech project showcase",
+    "innovative software solutions",
+    "enterprise projects Sri Lanka",
+    "startup success stories",
+    "digital transformation examples"
   ],
   path: "/portfolio",
 });

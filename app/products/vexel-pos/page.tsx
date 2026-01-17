@@ -1,11 +1,24 @@
 
-import { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/seo";
 import VexelPOSClient from "./client";
 
-export const metadata: Metadata = {
+export const metadata = generatePageMetadata({
   title: "Vexel POS",
-  description: "The Retail OS That Never Stops. Hybrid POS system for modern retail and wholesale businesses in Sri Lanka.",
-};
+  description: "Run your shop without the stress. A smart, easy-to-use point of sale that handles sales, inventory, and customers so you can focus on growth.",
+  keywords: [
+    "Vexel POS",
+    "point of sale Sri Lanka",
+    "retail POS system",
+    "restaurant billing software",
+    "inventory management POS",
+    "cloud POS Sri Lanka",
+    "best POS software Vavuniya",
+    "shop management system",
+    "business billing solutions",
+    "Vexel Systems POS"
+  ],
+  path: "/products/vexel-pos",
+});
 
 export default function VexelPOSPage() {
   return (

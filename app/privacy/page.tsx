@@ -13,6 +13,25 @@ import { companyDetails } from '@/lib/companydetails';
  * - Integration: Dynamically pulls company details (name, email) from `@/lib/companydetails` configuration.
  */
 
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Privacy Policy - Your Data is Safe",
+  description: "Your data is safe with us. Read our privacy policy to understand how we collect, use, and protect your information.",
+  keywords: [
+    "privacy policy Vexel Systems",
+    "data protection Sri Lanka",
+    "user privacy agreement",
+    "software data privacy",
+    "GDPR policy Sri Lanka",
+    "personal data protection",
+    "Vexel privacy guidelines",
+    "secure data handling",
+    "client confidentiality agreement"
+  ],
+  path: "/privacy",
+});
+
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export default function PrivacyPolicy() {

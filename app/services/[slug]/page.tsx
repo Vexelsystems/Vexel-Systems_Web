@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     keywords: [
       service.title,
       ...(service.techStack?.map(t => t.name) || []),
+      ...(service.keywords || []),
       "Vexel Systems",
       "Software Solutions",
     ],
