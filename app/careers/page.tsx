@@ -62,6 +62,7 @@ export default function CareersPage() {
       <MotionWrapper delay={0.2}>
         <CareersClient />
       </MotionWrapper>
+
     </div>
   );
 }

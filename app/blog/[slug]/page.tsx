@@ -16,6 +16,7 @@ import { Calendar, User, Clock, ChevronLeft, Share2, Facebook, Linkedin, Twitter
 import type { Metadata } from 'next';
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import Image from 'next/image';
+import Newsletter from '@/components/Newsletter';
 
 /**
  * GENERATE METADATA
@@ -218,24 +219,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           </div>
 
           {/* Newsletter / CTA */}
-          <div className="p-8 bg-primary rounded-[32px] text-white shadow-2xl shadow-primary/20">
-            <h4 className="text-2xl font-bold mb-4">Stay Informed</h4>
-            <p className="text-white/80 text-sm leading-relaxed mb-6">
-              Get the latest insights on business automation and POS trends delivered to your inbox weekly.
-            </p>
-            <form className="flex flex-col gap-3">
-              <input 
-                type="email" 
-                placeholder="email@example.com"
-                className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm outline-none focus:bg-white/20 transition-all placeholder:text-white/40"
-              />
-              <button 
-                className="w-full bg-white text-primary py-3 rounded-xl font-bold hover:brightness-105 transition-all text-sm"
-              >
-                Join Newsletter
-              </button>
-            </form>
-          </div>
+          <Newsletter category="Blog" />
         </aside>
       </div>
     </div>

@@ -2,6 +2,7 @@
 import { generatePageMetadata } from "@/lib/seo";
 import EventsClient from "@/components/EventsClient";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
+import Newsletter from "@/components/Newsletter";
 
 /**
  * EVENTS ROOT PAGE
@@ -53,6 +54,10 @@ export default function EventsPage() {
           
           <MotionWrapper delay={0.2}>
             <EventsClient />
+          </MotionWrapper>
+
+          <MotionWrapper delay={0.3} className="mt-20 max-w-2xl mx-auto">
+             <Newsletter category="Events" />
           </MotionWrapper>
         </div>
       </main>

@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/HeroSection";
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
+import Newsletter from "@/components/Newsletter";
 
 // Lazy load sections after initial render to reduce bundle size
 const CoreServicesSection = dynamic(() => import("@/components/CoreServicesSection").then(mod => mod.CoreServicesSection));
@@ -84,6 +85,25 @@ export default function Home() {
 
       <MotionWrapper type="stagger" duration={1.2}>
         <TestimonialSection />
+      </MotionWrapper>
+
+      <MotionWrapper type="fade" delay={0.2} duration={1.2}>
+        <div className="container mx-auto px-4 py-12">
+           <div className="bg-zinc-900 text-white rounded-[32px] p-8 md:p-16 flex flex-col items-center text-center gap-8 relative overflow-hidden">
+             {/* Background Glow */}
+             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-primary/10 to-transparent pointer-events-none"></div>
+             
+             <div className="relative z-10 max-w-2xl space-y-4">
+               <h2 className="text-3xl md:text-5xl font-bold">Stay Ahead of the Curve.</h2>
+               <p className="text-white/60 text-lg">
+                 Get exclusive insights on business automation, POS trends, and Vexel updates.
+               </p>
+             </div>
+             <div className="relative z-10 w-full md:w-[80%] max-w-4xl mx-auto">
+                <Newsletter category="General" />
+             </div>
+           </div>
+        </div>
       </MotionWrapper>
 
       <MotionWrapper type="fade" delay={0.2} duration={1.2}>

@@ -15,6 +15,7 @@ import { Briefcase, MapPin, Clock, DollarSign, Upload, Send, ChevronDown, CheckC
 import { toast } from 'sonner';
 import { MotionWrapper } from '@/components/ui/MotionWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
+import Newsletter from '@/components/Newsletter';
 
 export default function CareersClient() {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
@@ -160,7 +161,7 @@ export default function CareersClient() {
                 setSelectedJob('custom');
                 document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-white text-primary px-10 py-4 rounded-2xl font-bold hover:bg-white/90 transition-all"
+              className="w-full bg-white text-primary px-10 py-6 rounded-[24px] font-bold text-xl hover:bg-white/90 transition-all shadow-lg"
             >
               Submit Open Application
             </button>
@@ -169,9 +170,9 @@ export default function CareersClient() {
       </div>
       </MotionWrapper>
 
-      {/* Application Form */}
-      <aside id="apply-form" className="lg:sticky lg:top-32 h-fit">
-        <div className="bg-white dark:bg-white/5 rounded-[40px] border border-black/5 dark:border-white/5 p-10 shadow-2xl shadow-primary/5">
+      {/* Application Form & Newsletter Column */}
+      <div className="lg:col-start-2 h-fit flex flex-col gap-8">
+        <aside id="apply-form" className="bg-white dark:bg-white/5 rounded-[40px] border border-black/5 dark:border-white/5 p-10 shadow-2xl shadow-primary/5">
           <h3 className="text-2xl font-bold mb-2">Apply Now</h3>
           <p className="text-foreground/70 text-sm mb-8">
             {selectedJob === 'custom' 
@@ -304,8 +305,11 @@ export default function CareersClient() {
               )}
             </form>
           )}
-        </div>
-      </aside>
+        </aside>
+
+        {/* Newsletter - Separate Card */}
+        <Newsletter category="Careers" className="bg-zinc-900 text-white rounded-[40px]" />
+      </div>
     </div>
   );
 }

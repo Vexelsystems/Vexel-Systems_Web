@@ -13,41 +13,8 @@ import Image from 'next/image';
 import { Calendar, Users, Video, MapPin, Mic, Clock, ArrowRight, Tag } from 'lucide-react';
 import { MotionWrapper } from '@/components/ui/MotionWrapper';
 
-const events = [
-  {
-    id: 1,
-    title: "Vexel Retail Summit 2026",
-    date: "March 15, 2026",
-    time: "09:00 AM - 05:00 PM",
-    category: "Summit",
-    location: "Colombo, Sri Lanka",
-    type: "In-Person",
-    image: "/events/photo-1540575467063-178a50c2df87.jpg",
-    description: "Join industry leaders to discuss the future of retail in the AI era."
-  },
-  {
-    id: 2,
-    title: "Mastering Cloud Migration",
-    date: "April 10, 2026",
-    time: "10:00 AM - 12:00 PM",
-    category: "Webinar",
-    location: "Online (Zoom)",
-    type: "Virtual",
-    image: "/events/photo-1515187029135-18ee286d815b.jpg",
-    description: "A deep dive into strategies for seamless cloud infrastructure upgrades."
-  },
-  {
-    id: 3,
-    title: "AI in Healthcare Workshop",
-    date: "May 22, 2026",
-    time: "02:00 PM - 06:00 PM",
-    category: "Workshop",
-    location: "Tech District, Singapore",
-    type: "Hybrid",
-    image: "/events/photo-1505373877841-8d25f7d46678.jpg",
-    description: "Hands-on session using Vexel's predictive health algorithms."
-  }
-];
+import { events } from '@/lib/events-data';
+import Link from 'next/link';
 
 export default function EventsClient() {
   const [filter, setFilter] = useState("All");
@@ -77,8 +44,9 @@ export default function EventsClient() {
       <MotionWrapper type="slideUp" delay={0.2} duration={1.2}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {filteredEvents.map((event) => (
-            <div key={event.id} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30">
-              <div className="relative h-48 w-full overflow-hidden">
+            <div key={event.id}>
+             <Link href={`/events/${event.slug}`} className="group bg-card border border-primary/10 rounded-2xl overflow-hidden shadow-sm transition-all hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30 h-full flex flex-col">
+              <div className="relative h-48 w-full overflow-hidden shrink-0">
                 <Image
                   src={event.image}
                   alt={event.title}
@@ -86,13 +54,21 @@ export default function EventsClient() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700"
                 />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-black text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-black text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 z-10">
                    <Tag size={12} className="text-primary" />
                    {event.category}
                 </div>
+                
+                {event.status === 'Completed' && (
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-0">
+                        <span className="px-4 py-2 bg-white text-black font-bold uppercase tracking-widest text-xs rounded-full transform -rotate-12 border-2 border-primary">
+                            Completed
+                        </span>
+                    </div>
+                )}
               </div>
               
-              <div className="p-8">
+              <div className="p-8 flex flex-col flex-1 relative">
                 <div className="flex items-center gap-2 text-xs font-bold text-primary mb-3">
                    <Calendar size={14} />
                    <span>{event.date}</span>
@@ -105,7 +81,7 @@ export default function EventsClient() {
                   {event.title}
                 </h3>
                 
-                <p className="text-sm text-foreground/60 mb-6 line-clamp-2">
+                <p className="text-sm text-foreground/60 mb-6 line-clamp-2 flex-1">
                   {event.description}
                 </p>
 
@@ -125,11 +101,12 @@ export default function EventsClient() {
                         +42
                       </div>
                    </div>
-                   <button className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Register Now <ArrowRight size={16} />
-                   </button>
+                   <span className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                      {event.status === 'Completed' ? 'View Recap' : 'Details'} <ArrowRight size={16} />
+                   </span>
                 </div>
               </div>
+             </Link>
             </div>
           ))}
         </div>

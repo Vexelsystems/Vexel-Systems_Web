@@ -14,6 +14,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { Search, Calendar, Clock, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { MotionWrapper } from '@/components/ui/MotionWrapper';
+import Newsletter from '@/components/Newsletter';
 
 const categories = ['All', 'Technology', 'Business', 'POS', 'Guides'] as const;
 
@@ -156,6 +157,19 @@ export default function BlogClient() {
             </p>
           </div>
         )}
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="bg-white dark:bg-zinc-900 rounded-[40px] border border-black/5 dark:border-white/5 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1 space-y-4">
+           <h2 className="text-3xl font-bold">Never miss an update.</h2>
+           <p className="text-foreground/70 text-lg leading-relaxed">
+             Join 2,000+ subscribers and get our latest articles, case studies, and product updates delivered straight to your inbox.
+           </p>
+        </div>
+        <div className="w-full md:w-auto md:min-w-[400px]">
+           <Newsletter category="Blog" />
+        </div>
       </section>
     </div>
   );

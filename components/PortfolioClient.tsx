@@ -222,34 +222,43 @@ export default function PortfolioClient() {
          </div>
       </section>
 
-      {/* 5. Premium CTA */}
+      {/* 5. Premium CTA Redesigned */}
       <section className="pb-32 bg-transparent">
         <div className="w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
-           <div className="relative rounded-[2.5rem] bg-white/40 dark:bg-white/5 backdrop-blur-md overflow-hidden px-6 py-24 text-center">
-               <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_top,var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent -z-10 opacity-50" />
-               <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-black/50 to-transparent"></div>
+           <div className="relative rounded-[3rem] overflow-hidden p-12 md:p-24 text-center group">
+               {/* Animated Backgrounds */}
+               <div className="absolute inset-0 bg-zinc-900/80 backdrop-blur-3xl border border-white/10 dark:border-white/5 shadow-2xl transition-all duration-500 group-hover:bg-zinc-900/90" />
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+               <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
                
-               <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
-                  <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">
-                     Ready to start your <br/>
-                     <span className="text-primary">Success Story?</span>
+               <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-white/70 text-xs font-bold uppercase tracking-widest">Accepting New Projects</span>
+                  </div>
+
+                  <h2 className="text-4xl md:text-7xl font-black text-white tracking-tight leading-none">
+                     Ready to <span className="text-transparent bg-clip-text bg-linear-to-r from-white to-white/50">build</span> your <br/>
+                     <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">Next Big Thing?</span>
                   </h2>
-                  <p className="text-white/60 text-xl">
-                     Whether you need a full-scale platform or a high-performance mobile app, our team is ready to deliver excellence.
+                  
+                  <p className="text-white/60 text-lg md:text-xl max-w-2xl leading-relaxed">
+                     From enterprise platforms to high-performance mobile apps, we turn complex challenges into elegant, scalable solutions.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                     <Link href="/consultation">
+
+                  <div className="flex flex-col sm:flex-row gap-5 pt-8 w-full justify-center">
+                     <Link href="/consultation" className="w-full sm:w-auto">
                         <button 
-                           className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-2xl shadow-white/10"
+                           className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 flex items-center justify-center gap-3"
                         >
-                           Schedule Consultation
+                           Start a Project <ArrowRight size={20} />
                         </button>
                      </Link>
-                     <Link href="/services">
+                     <Link href="/services" className="w-full sm:w-auto">
                         <button 
-                           className="bg-white/5 border border-white/10 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm"
+                           className="w-full sm:w-auto bg-white/5 border border-white/10 hover:border-white/20 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-md flex items-center justify-center gap-3 group/btn"
                         >
-                           Explore Services
+                           View Services 
                         </button>
                      </Link>
                   </div>

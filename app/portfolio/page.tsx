@@ -35,6 +35,7 @@ export const metadata = generatePageMetadata({
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { TypewriterText } from "@/components/hero/TypewriterText";
+import Newsletter from "@/components/Newsletter";
 
 export default function PortfolioPage() {
   return (
@@ -69,6 +70,7 @@ export default function PortfolioPage() {
       <MotionWrapper delay={0.2}>
         <PortfolioClient />
       </MotionWrapper>
+
     </div>
   );
 }

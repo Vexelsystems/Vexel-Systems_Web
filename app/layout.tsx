@@ -160,7 +160,23 @@ export default function RootLayout({
         </GlobalClientWrapper>
 
         {/* Toast notifications container */}
-        <Toaster position="top-right" richColors closeButton />
+        <Toaster 
+          position="top-center" 
+          richColors 
+          closeButton
+          theme="system" 
+          toastOptions={{
+            style: {
+              background: 'rgba(255, 255, 255, 0.8)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(0,0,0,0.05)',
+              borderRadius: '16px',
+              padding: '16px',
+              fontWeight: 500,
+            },
+            className: 'dark:bg-zinc-900/90 dark:border-white/10 dark:text-white',
+          }}
+        />
 
         {/* Structured Data (JSON-LD) for SEO */}
         <script
