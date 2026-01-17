@@ -3,6 +3,7 @@ import { blogPosts } from "@/lib/blog-data";
 import { services } from "@/lib/services";
 import { products } from "@/lib/products";
 import { PRICING_CATEGORIES } from "@/lib/pricing-data";
+import { events } from "@/lib/events-data";
 
 /**
  * SITEMAP GENERATOR
@@ -20,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Static routes with priorities
   const staticRoutes = [
-    { url: "", priority: 1.0, changeFrequency: "daily" as const },
+    { url: "", priority: 1.0, changeFrequency: "yearly" as const },
     { url: "/about", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/services", priority: 0.9, changeFrequency: "monthly" as const },
     { url: "/products", priority: 0.9, changeFrequency: "monthly" as const },
@@ -87,6 +88,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Dynamic event routes
+  const eventRoutes = events.map((event) => ({
+    url: `${baseUrl}/events/${event.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Combine all routes
   const allRoutes = [
     ...staticRoutes.map((route) => ({
@@ -117,6 +126,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         products[idx].mainImage
           ? `${baseUrl}${products[idx].mainImage}`
+          : `${baseUrl}/favicon.ico`,
+      ],
+    })),
+    ...eventRoutes.map((route, idx) => ({
+      ...route,
+      images: [
+        events[idx].image
+          ? `${baseUrl}${events[idx].image}`
           : `${baseUrl}/favicon.ico`,
       ],
     })),
