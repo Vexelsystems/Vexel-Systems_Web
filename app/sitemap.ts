@@ -35,7 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/events", priority: 0.6, changeFrequency: "yearly" as const },
     { url: "/consultation", priority: 0.8, changeFrequency: "yearly" as const },
 
-    { url: "/process", priority: 0.7, changeFrequency: "weekly" as const },
     {
       url: "/company-policy",
       priority: 0.4,
