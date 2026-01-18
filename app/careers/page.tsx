@@ -32,7 +32,8 @@ export const metadata = generatePageMetadata({
     "software intern Sri Lanka",
     "remote software jobs",
     "custom software developer",
-    "software development roles"
+    "software development roles",
+    "software vauniya roles"
   ],
   path: "/careers",
 });
