@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google"; // Google Font for typography
 import Navbar from "@/components/Navbar"; // Main navigation component
 import Footer from "@/components/Footer"; // Footer component
-import Link from "next/link";
+
 import { Toaster } from "sonner"; // Toast notification library
 import { companyDetails } from "@/lib/companydetails"; // Centralized company information
 import { DEFAULT_SEO, BASE_URL } from "@/lib/seo"; // SEO configuration and utilities
@@ -113,6 +113,22 @@ export const metadata: Metadata = {
   // Verification codes for search engines
   verification: {
     google: "your-google-verification-code", // Replace with actual code
+  },
+
+  // Favicons and Icons
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon.png', sizes: '64x64', type: 'image/png' },
+      { url: '/favicon.png', sizes: '48x48', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.ico'],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
   },
 };
 
