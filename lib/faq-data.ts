@@ -405,7 +405,7 @@ export const faqData: FAQItem[] = [
     category: "tech-support",
     question: "Is there a status page for your services?",
     answer:
-      "Yes, you can check system health and scheduled maintenance at status.vexelsystems.com.",
+      "Yes, you can check system health and scheduled maintenance at status.vexelsystems.lk.",
   },
   {
     category: "tech-support",
@@ -417,7 +417,7 @@ export const faqData: FAQItem[] = [
     category: "tech-support",
     question: "Do you provide API documentation?",
     answer:
-      "Yes, full documentation for our public API is available at developers.vexelsystems.com.",
+      "Yes, full documentation for our public API is available at developers.vexelsystems.lk.",
   },
   {
     category: "tech-support",
@@ -798,7 +798,7 @@ export const faqData: FAQItem[] = [
     category: "security",
     question: "Do you have a vulnerability disclosure program?",
     answer:
-      "Yes, we welcome security researchers. Please contact security@vexelsystems.com for our policy.",
+      "Yes, we welcome security researchers. Please contact security@vexelsystems.lk for our policy.",
   },
   {
     category: "security",
@@ -828,7 +828,7 @@ export const faqData: FAQItem[] = [
     category: "security",
     question: "How do I report a security concern?",
     answer:
-      "Please email security@vexelsystems.com immediately with details of your observation.",
+      "Please email security@vexelsystems.lk immediately with details of your observation.",
   },
   {
     category: "security",
@@ -1840,7 +1840,7 @@ export const faqData: FAQItem[] = [
     category: "api",
     question: "Where can I find the API documentation?",
     answer:
-      "Full documentation and testing sandboxes are available at developers.vexelsystems.com.",
+      "Full documentation and testing sandboxes are available at developers..",
   },
   {
     category: "api",
@@ -1912,7 +1912,7 @@ export const faqData: FAQItem[] = [
     category: "api",
     question: "How do I report an API issue?",
     answer:
-      "Please open an issue on our Developer Portal or email dev-support@vexelsystems.com.",
+      "Please open an issue on our Developer Portal or email dev-support@vexelsystems.lk.",
   },
   {
     category: "api",
@@ -1986,7 +1986,7 @@ export const faqData: FAQItem[] = [
     category: "onboarding",
     question: "Where can I find the User Manual?",
     answer:
-      "The 'Master Guide' is available as a searchable portal at help.vexelsystems.com.",
+      "The 'Master Guide' is available as a searchable portal at help.vexelsystems.lk.",
   },
   {
     category: "onboarding",
