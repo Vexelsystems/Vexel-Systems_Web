@@ -4,7 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Facebook, Send, Award, Clock, ArrowRight, User, Instagram } from "lucide-react";
 
-const teamMembers = [
+interface SocialLinks {
+  linkedin: string;
+  instagram: string;
+  facebook: string;
+  email: string;
+  website?: string;
+  github?: string;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  tagline: string;
+  image: string;
+  about: string;
+  quote: string;
+  expertise: string[];
+  socials: SocialLinks;
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: "Jathushan Varnakulasingam",
     role: "Founder, CEO & CTO",
@@ -25,7 +45,8 @@ const teamMembers = [
       instagram: "https://www.instagram.com/im_jathushan/",
       facebook: "https://www.facebook.com/imjathushann",
       email: "jathushan@vexelsystems.lk",
-      website: "https://www.vexelsystems.lk"
+      website: "https://www.vexelsystems.lk",
+      github: "https://github.com/jathuatreya"
     }
   },
   {
@@ -47,7 +68,8 @@ const teamMembers = [
       linkedin: "https://www.linkedin.com/in/kajakaran/",
       instagram: "https://www.instagram.com/kajakaran09/",
       facebook: "https://www.facebook.com/kaja.kajakaran",
-      email: "kajakaran@vexelsystems.lk"
+      email: "kajakaran@vexelsystems.lk",
+      github: "https://github.com/kajakaran09"
     }
   }
 ];
