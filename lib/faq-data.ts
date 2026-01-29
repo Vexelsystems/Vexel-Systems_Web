@@ -381,7 +381,7 @@ export const faqData: FAQItem[] = [
     category: "tech-support",
     question: "How do I contact technical support?",
     answer:
-      "You can reach our support team via email at vexelsystems@gmail.com or call us at +94 74 096 8108. We are available Monday to Friday, 9:00 AM to 5:00 PM.",
+      "You can reach our support team [contact@vexelsystems.lk](mailto:contact@vexelsystems.lk) or call us at +94 74 096 8108. We are available Monday to Friday, 9:00 AM to 5:00 PM.",
   },
   {
     category: "tech-support",

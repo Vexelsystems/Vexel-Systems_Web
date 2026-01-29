@@ -84,9 +84,9 @@ export const companyDetails = {
    * Used in footer, contact page, and metadata
    */
   contact: {
-    email: "vexelsystems@gmail.com", // General inquiries
-    salesEmail: "vexelsystems@gmail.com", // Sales department
-    supportEmail: "vexelsystems@gmail.com", // Technical support
+    email: "contact@vexelsystems.lk", // General inquiries
+    salesEmail: "contact@vexelsystems.lk", // Sales department
+    supportEmail: "contact@vexelsystems.lk", // Technical support
     phone: "+94740968108", // Primary phone number
     whatsapp: "+94740968108", // WhatsApp business number
     website: "https://www.vexelsystems.lk", // Official website URL
@@ -140,6 +140,7 @@ export const companyDetails = {
     linkedin: "https://www.linkedin.com/company/vexelsystems/",
     github: "https://github.com/vexelsystems",
     twitter: "https://x.com/vexelsystems",
+    tiktok: "https://www.tiktok.com/@vexelsystems",
   },
 
   /**

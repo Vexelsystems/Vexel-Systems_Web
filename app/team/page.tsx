@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail, Facebook, Send, Award, Clock, ArrowRight, User } from "lucide-react";
+import { Github, Linkedin, Mail, Facebook, Send, Award, Clock, ArrowRight, User, Instagram } from "lucide-react";
 
 const teamMembers = [
   {
@@ -21,9 +21,10 @@ const teamMembers = [
       "System Design & Scalability"
     ],
     socials: {
-      linkedin: "#",
-      github: "#",
-      email: "vexelsystems@gmail.com",
+      linkedin: "https://www.linkedin.com/in/jathushanvarnakulasingam/",
+      instagram: "https://www.instagram.com/im_jathushan/",
+      facebook: "https://www.facebook.com/imjathushann",
+      email: "jathushan@vexelsystems.lk",
       website: "https://www.vexelsystems.lk"
     }
   },
@@ -43,9 +44,10 @@ const teamMembers = [
       "Partnership & Vendor Management"
     ],
     socials: {
-      linkedin: "#",
-      email: "vexelsystems@gmail.com",
-      facebook: "#"
+      linkedin: "https://www.linkedin.com/in/kajakaran/",
+      instagram: "https://www.instagram.com/kajakaran09/",
+      facebook: "https://www.facebook.com/kaja.kajakaran",
+      email: "kajakaran@vexelsystems.lk"
     }
   }
 ];
@@ -183,6 +185,11 @@ export default function TeamPage() {
                               {member.socials.github && (
                                   <Link href={member.socials.github} className="p-3 bg-foreground/5 rounded-full hover:bg-[#333] hover:text-white transition-all transform hover:-translate-y-1">
                                       <Github size={20} />
+                                  </Link>
+                              )}
+                              {member.socials.instagram && (
+                                  <Link href={member.socials.instagram} className="p-3 bg-foreground/5 rounded-full hover:bg-linear-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white transition-all transform hover:-translate-y-1">
+                                      <Instagram size={20} />
                                   </Link>
                               )}
                               {member.socials.facebook && (

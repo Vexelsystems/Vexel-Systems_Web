@@ -199,7 +199,7 @@ export default function Terms() {
                   <div className="flex items-center gap-2 p-4 rounded-lg bg-primary/5 border border-primary/10 mt-4">
                       <HelpCircle className="text-primary shrink-0" size={20} />
                       <p className="text-sm m-0">
-                          If you have any questions about these Terms, please contact us at <a href="mailto:vexelsystems@gmail.com" className="text-primary font-bold hover:underline">vexelsystems@gmail.com</a>.
+                          If you have any questions about these Terms, please contact us at <a href="mailto:contact@vexelsystems.lk" className="text-primary font-bold hover:underline">contact@vexelsystems.lk</a>.
                       </p>
                   </div>
               </div>

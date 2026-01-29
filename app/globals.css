@@ -13,6 +13,7 @@
   /* Core Theme Colors */
   --background: #ffffff;
   --foreground: #1d1d1f;
+  --dark-black: #000000;
   --primary: #0077ed;
   --primary-rgb: 0, 119, 237;
   --secondary: #9333ea; /* purple-600 */
@@ -29,7 +30,8 @@
   --nav-dark: #1a1a1a;
 
   --card: #f5f5f7;
-  --card-light: #f5f5f7;
+  --card-light: #f5f5f7; 
+  
   --card-dark: #121212;
 
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -92,6 +94,7 @@ body {
     --card: #121212;
     --nav-bg: #1a1a1a;
     --ui-background: #0a0a0a;
+    --dark-black: #ffffff;
   }
 
   /* Specific overrides for dark mode */
@@ -120,6 +123,10 @@ body {
 /* Primary color enforcement */
 .text-primary {
   color: var(--primary);
+}
+
+.text-dark-black {
+  color: var(--dark-black);
 }
 
 /* Scrollbar styling */

@@ -139,12 +139,17 @@ export default function Footer() {
                  <h4 className="text-xs font-bold uppercase tracking-widest text-primary/80 hidden md:block">Connect</h4>
                  
                  {/* Social Grid */}
-                  <div className="grid grid-cols-4 gap-2 mb-4 max-w-[240px] mx-auto md:mx-0">
+                  <div className="grid grid-cols-5 gap-2 mb-4 max-w-[240px] mx-auto md:mx-0">
                     {[
                       { href: companyDetails.socialLinks.twitter, icon: <Twitter size={18} />, color: "hover:text-[#1DA1F2] hover:shadow-[0_0_15px_rgba(29,161,242,0.4)]", label: "Twitter" },
                       { href: companyDetails.socialLinks.linkedin, icon: <Linkedin size={18} />, color: "hover:text-[#0077B5] hover:shadow-[0_0_15px_rgba(0,119,181,0.4)]", label: "LinkedIn" },
                       { href: companyDetails.socialLinks.instagram, icon: <Instagram size={18} />, color: "hover:text-[#E4405F] hover:shadow-[0_0_15px_rgba(228,64,95,0.4)]", label: "Instagram" },
-                      { href: companyDetails.socialLinks.facebook, icon: <Facebook size={18} />, color: "hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.4)]", label: "Facebook" }
+                      { href: companyDetails.socialLinks.facebook, icon: <Facebook size={18} />, color: "hover:text-[#1877F2] hover:shadow-[0_0_15px_rgba(24,119,242,0.4)]", label: "Facebook" },
+                      { href: companyDetails.socialLinks.tiktok, icon: (
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a8.312 8.312 0 0 1-1.87-1.42v7.14c.04 5.4-4.5 9.87-9.87 9.87-5.37 0-9.87-4.5-9.87-9.87 0-5.37 4.5-9.87 9.87-9.87.11 0 .22 0 .33.01V8.56c-.11-.01-.22-.01-.33-.01-3.17 0-5.84 2.67-5.84 5.84 0 3.17 2.67 5.84 5.84 5.84 3.17 0 5.84-2.67 5.84-5.84V.02z"/>
+                        </svg>
+                      ), color: "hover:text-black dark:hover:text-white hover:shadow-[0_0_15px_rgba(0,0,0,0.4)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]", label: "TikTok" }
                     ].map((social, idx) => (
                       <a 
                         key={idx}
@@ -234,7 +239,7 @@ export default function Footer() {
 
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-foreground/60 font-medium">
+        <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-dark-black font-bold">
            <div className="flex flex-col gap-2 items-center">
              <div className="flex flex-col md:flex-row items-center gap-4">
                <p>© {currentYear} {companyDetails.legalName}. All rights reserved.</p>
