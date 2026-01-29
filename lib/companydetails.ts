@@ -121,7 +121,7 @@ export const companyDetails = {
     businessType: "Technology & Software Solutions", // Industry classification
     workingHours: {
       days: "Monday - Friday", // Operating days
-      time: "9:00 AM - 17:00 PM", // Operating hours (24-hour format)
+      time: "09:00 - 17:00", // Operating hours (Digital format)
       timezone: "IST (Sri Lanka)", // Indian Standard Time
     },
   },

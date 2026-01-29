@@ -58,7 +58,7 @@ export default function Footer() {
       <div className="px-6 lg:px-12 relative z-10 text-center md:text-left">
         
         {/* Main Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 gap-y-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 gap-y-12 mb-16">
           
           {/* Column 1: Brand Identity (Always Visible) */}
           <div className="col-span-1 lg:col-span-1 flex flex-col gap-4 items-center md:items-start text-center md:text-left bg-foreground/5 p-6 rounded-3xl border border-primary/10 lg:border-none lg:bg-transparent lg:p-0">
@@ -77,7 +77,7 @@ export default function Footer() {
             </div>
           </div>
 
-            <div className="col-span-1 lg:col-span-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0 md:gap-8 lg:gap-8">
+            <div className="col-span-1 lg:col-span-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0 md:gap-8 lg:gap-8">
              
               {/* Column 2: Quick Nav */}
               <FooterSection title="Quick Nav">
@@ -135,7 +135,7 @@ export default function Footer() {
               </FooterSection>
 
               {/* Column 6: Contact & Socials */}
-              <div className="flex flex-col gap-4 mt-8 md:mt-0">
+              <div className="flex flex-col gap-4 mt-8 md:mt-0 lg:col-span-2">
                  <h4 className="text-xs font-bold uppercase tracking-widest text-primary/80 hidden md:block">Connect</h4>
                  
                  {/* Social Grid */}
@@ -167,7 +167,7 @@ export default function Footer() {
                         <div className="p-2 bg-blue-500/10 text-blue-600 rounded-lg group-hover:shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-colors shrink-0 shadow-[inset_0_0_10px_rgba(37,99,235,0.1)]">
                             <Mail size={18} />
                         </div>
-                        <span className="text-sm font-bold text-foreground/80 group-hover:text-blue-600 whitespace-nowrap overflow-hidden text-ellipsis">{companyDetails.contact.email}</span>
+                        <span className="text-sm font-bold text-foreground/80 group-hover:text-blue-600 whitespace-nowrap">{companyDetails.contact.email}</span>
                     </a>
                     
                     <a 
@@ -195,20 +195,36 @@ export default function Footer() {
                         <span className="text-sm font-bold text-foreground/80 group-hover:text-[#25D366] whitespace-nowrap">{companyDetails.contact.whatsapp}</span>
                      </a>
 
-                     {/* Office Address - Vertically Stacked */}
-                     <div className="flex items-start gap-4 p-3 rounded-2xl bg-foreground/5 border border-primary/5">
-                        <div className="p-2 bg-primary/10 text-primary rounded-lg shrink-0">
-                           <Globe size={18} />
+                     {/* Interactive Office Address Card */}
+                     <a 
+                        href="https://maps.google.com/?q=Vexel+Systems+Vairavapuliyankulam+Vavuniya"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/address flex items-start gap-4 p-4 rounded-3xl bg-foreground/5 border border-primary/10 hover:border-primary/40 hover:bg-primary/5 hover:shadow-[0_20px_40px_-15px_rgba(0,119,237,0.3)] transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+                     >
+                        {/* Interactive Background Glow */}
+                        <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover/address:opacity-100 transition-opacity duration-500" />
+                        
+                        <div className="p-2.5 bg-primary/10 text-primary rounded-xl shrink-0 group-hover/address:scale-110 group-hover/address:rotate-12 transition-transform duration-500 shadow-[inset_0_0_15px_rgba(0,119,237,0.1)] relative z-10">
+                           <Globe size={20} className="animate-pulse" />
                         </div>
-                        <div className="flex flex-col text-xs font-black uppercase tracking-widest text-foreground/70 leading-tight">
-                           <span>Office</span>
-                           <span className="text-primary mt-1">Vairava</span>
-                           <span>puliyankulam</span>
-                           <span className="text-primary">Vavuniya</span>
-                           <span>43000</span>
-                           <span className="text-primary">Sri Lanka</span>
+                        
+                        <div className="flex flex-col gap-1 relative z-10">
+                           <span className="text-[11px] font-black uppercase tracking-[0.2em] text-primary mb-1">Office Address</span>
+                           <div className="flex flex-col text-[11px] font-black uppercase tracking-widest text-foreground leading-tight space-y-0.5">
+                              <span className="flex items-center gap-1 whitespace-nowrap">Vairavapuliyankulam <ArrowRight size={10} className="text-primary opacity-0 group-hover/address:opacity-100 -translate-x-2 group-hover/address:translate-x-0 transition-all" /></span>
+                              <span>Vavuniya</span>
+                              <span>Northern Province</span>
+                              <span>Sri Lanka</span>
+                              <span className="opacity-80">43000</span>
+                           </div>
+                           
+                           <div className="mt-2 flex items-center gap-1.5 text-[10px] font-bold text-primary opacity-0 group-hover/address:opacity-100 transition-opacity translate-y-2 group-hover/address:translate-y-0 duration-500">
+                             <Globe size={10} />
+                             <span>Open in Maps</span>
+                           </div>
                         </div>
-                     </div>
+                     </a>
                  </div>
               </div>
 

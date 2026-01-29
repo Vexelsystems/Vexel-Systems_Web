@@ -19,7 +19,7 @@ type Message = {
  * LIVE CHAT COMPONENT
  * 
  * Functional Overview:
- * - Availability Logic: Determines online status based on Sri Lanka Time (UTC+5.5) business hours (Mon-Fri, 9-6).
+ * - Availability Logic: Determines online status based on Sri Lanka Time (UTC+5.5) business hours (Mon-Fri, 09:00 - 17:00).
  * - Identity: Persists user details (Name/Email) to `localStorage` to bypass lead capture on return visits.
  * - Responses: Uses a lightweight keyword matching algorithm to provide instant answers from `faqData` or fallbacks.
  * - Notifications: Integrates browser Notifications API and local sound playback (Chime) for alerts.
@@ -59,7 +59,7 @@ export default function LiveChat() {
     };
   }, []);
 
-  // Check operating hours (9 AM - 6 PM Colombo Time)
+  // Check operating hours (09:00 - 17:00 Colombo Time)
   useEffect(() => {
     if (!isInitialized) return;
 
@@ -71,7 +71,7 @@ export default function LiveChat() {
       const day = colomboTime.getDay(); // 0 = Sunday, 6 = Saturday
       
       const isWorkingDay = day >= 1 && day <= 5;
-      const isWorkingHour = hours >= 9 && hours < 18;
+      const isWorkingHour = hours >= 9 && hours < 17;
       
       setIsOnline(isWorkingDay && isWorkingHour);
     };
@@ -236,7 +236,7 @@ export default function LiveChat() {
                 <h3 className="font-bold">Vexel Chat</h3>
                 <div className="flex items-center gap-2 text-xs opacity-80">
                   <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-red-400'}`}></span>
-                  {isOnline ? 'Online | Support Assistant' : 'Offline | 09:00 - 18:00 LKT'}
+                  {isOnline ? 'Online | Support Assistant' : 'Offline | 09:00 - 17:00 LKT'}
                 </div>
               </div>
             </div>

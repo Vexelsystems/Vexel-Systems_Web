@@ -176,10 +176,9 @@ export default function Contact() {
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-foreground mb-1">Phone</h3>
+                    <h3 className="text-lg font-bold text-foreground mb-1">Phone & WhatsApp</h3>
                     <p className="text-foreground/60 leading-relaxed">
-                      {companyDetails.contact.phone}<br/>
-                      {companyDetails.contact.whatsapp}
+                      {companyDetails.contact.phone}
                     </p>
                   </div>
                 </div>
@@ -190,8 +189,7 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-bold text-foreground mb-1">Email</h3>
                     <p className="text-foreground/60 leading-relaxed">
-                      {companyDetails.contact.email}<br/>
-                      {companyDetails.contact.salesEmail}
+                      {companyDetails.contact.email}
                     </p>
                   </div>
                 </div>
@@ -233,7 +231,7 @@ export default function Contact() {
             <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-foreground/60 text-sm">
                 <Clock size={16} />
-                <span>Opening Hours: Mon - Fri, 9:00 AM - 6:00 PM (IST)</span>
+                <span>Opening Hours: {companyDetails.business.workingHours.days}, {companyDetails.business.workingHours.time} ({companyDetails.business.workingHours.timezone.split(' ')[0]})</span>
               </div>
               <a className="text-primary font-bold text-sm hover:underline flex items-center gap-1" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
                 Get Directions
