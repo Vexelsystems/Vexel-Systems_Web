@@ -23,7 +23,7 @@ export function HeroSocials() {
       </div>
       <p className="text-xs font-bold text-foreground/70 uppercase tracking-widest flex items-center gap-2">
         <Zap size={12} className="text-primary" />
-        Trusted by 50+ Global Enterprises
+        50+ Loyal Customers
       </p>
     </div>
   );

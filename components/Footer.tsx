@@ -194,6 +194,21 @@ export default function Footer() {
                         </div>
                         <span className="text-sm font-bold text-foreground/80 group-hover:text-[#25D366] whitespace-nowrap">{companyDetails.contact.whatsapp}</span>
                      </a>
+
+                     {/* Office Address - Vertically Stacked */}
+                     <div className="flex items-start gap-4 p-3 rounded-2xl bg-foreground/5 border border-primary/5">
+                        <div className="p-2 bg-primary/10 text-primary rounded-lg shrink-0">
+                           <Globe size={18} />
+                        </div>
+                        <div className="flex flex-col text-xs font-black uppercase tracking-widest text-foreground/70 leading-tight">
+                           <span>Office</span>
+                           <span className="text-primary mt-1">Vairava</span>
+                           <span>puliyankulam</span>
+                           <span className="text-primary">Vavuniya</span>
+                           <span>43000</span>
+                           <span className="text-primary">Sri Lanka</span>
+                        </div>
+                     </div>
                  </div>
               </div>
 
@@ -201,13 +216,6 @@ export default function Footer() {
 
         </div>
 
-        {/* Office Address Section - Positioned below nav collection */}
-        <div className="pt-12 pb-8 border-t border-foreground/5 text-center md:text-left">
-           <p className="text-sm font-bold text-foreground/80 flex items-center justify-center md:justify-start gap-2">
-             <Globe size={16} className="text-primary" />
-             Office: {companyDetails.address.fullAddress}
-           </p>
-        </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-foreground/60 font-medium">

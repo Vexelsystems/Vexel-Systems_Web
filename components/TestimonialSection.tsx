@@ -74,7 +74,7 @@ export const TestimonialSection = () => {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest mb-6">
                <Star className="w-4 h-4" /> Client Success
             </div>
-            <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Trusted by Industry <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Leaders</span></h2>
+            <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">Our Loyal <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Customers</span></h2>
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
               We don't just build software; we build lasting partnerships. Here's what our clients have to say about their journey with Vexel.
             </p>
