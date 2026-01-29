@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Generate metadata with 'article' type for specific social card rendering
   return generateDynamicMetadata({
-    title: post.title, // This will be used as-is for Open Graph, with company name appended for page title
-    description: post.excerpt,
+    title: post.title,
+    description: "Tech Insights - Vexel Systems",
     keywords: [post.category, 'Blog', 'Insights', post.author, 'Vexel Systems'],
     path: `/blog/${post.slug}`,
     image: post.image,

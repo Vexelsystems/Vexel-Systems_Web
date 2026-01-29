@@ -13,8 +13,8 @@ import CareersClient from "@/components/CareersClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Careers - Join the Vexel Team",
-  description: "Do you love building things? We're always looking for smart, creative people to join our team in Vavuniya.",
+  title: "Careers",
+  description: "Vexel Systems",
   keywords: [
     "careers Vexel Systems",
     "software jobs Sri Lanka",

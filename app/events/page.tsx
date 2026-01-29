@@ -15,8 +15,8 @@ import Newsletter from "@/components/Newsletter";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Events & Webinars - Community & Learning",
-  description: "Join us at our next workshop or meetup. We love connecting with the local tech community and sharing what we know.",
+  title: "Events",
+  description: "Vexel Systems",
   keywords: [
     "tech events Sri Lanka",
     "Vexel Systems events",

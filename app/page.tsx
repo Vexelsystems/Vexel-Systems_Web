@@ -22,8 +22,8 @@ const ContactSection = dynamic(() => import("@/components/ContactSection").then(
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Vexel Systems - Smart Software for Sri Lankan Businesses",
-  description: "We build sensible software for growing businesses. Based in Vavuniya, we help Sri Lankan companies thrive with custom websites, POS systems, and reliable tech support.",
+  title: "Vexel Systems",
+  description: "Web Development & POS Software in Vavuniya",
   keywords: [
     "Vexel Systems",
     "Vexel Systems Sri Lanka",

@@ -537,7 +537,7 @@ export const services: ServiceData[] = [
       {
         title: "CMS & E-Commerce",
         description:
-          "Manage content easily with WordPress or Headless CMS solutions.",
+          "Manage content easily with WordPress or Headless CMS solutions including E-commerce Websites.",
         icon: ShoppingCart,
         features: ["Inventory Management", "Payment Gateways", "SEO Tools"],
       },
@@ -718,6 +718,8 @@ export const services: ServiceData[] = [
       "digital solutions Sri Lanka",
       "website maintenance services",
       "Vavuniya web developers",
+      "E-commerce websites Vavuniya",
+      "Online shop development Sri Lanka",
     ],
   },
   {
@@ -1501,6 +1503,131 @@ export const services: ServiceData[] = [
       "AI + IoT solutions",
       "IoT monitoring systems",
       "digital transformation IoT",
+    ],
+  },
+  {
+    slug: "custom-business-software",
+    title: "Custom Business Software",
+    subtitle:
+      "Tailor-made software solutions (POS, ERP, School Systems) to automate your unique business processes.",
+    description:
+      "Stop adapting to off-the-shelf software. We build systems (like School Management and Inventory Management) that adapt to you.",
+    aboutDetail:
+      "Vexel Systems specializes in developing custom enterprise-grade software solutions including POS Systems, Inventory Management, and School Management Systems. We solve the problem of fragmented workflows by creating unified platforms that automate everything from inventory tracking to student records. Our custom software is built to scale, ensuring your business operations remain efficient as you grow.",
+    heroImage: "/services/custom-software-hero.jpg",
+    subServices: [
+      {
+        title: "School Management Systems",
+        description:
+          "Complete automation for schools, including fee management, attendance, and result tracking.",
+        icon: GraduationCap,
+        features: ["Student Database", "Fee Tracking", "Exam Management"],
+      },
+      {
+        title: "Inventory & POS",
+        description:
+          "Custom Point of Sale and Inventory Management solutions tailored to your retail or wholesale business.",
+        icon: PointOfSale,
+        features: ["Barcode Scanning", "Stock Alerts", "Sales Reports"],
+      },
+      {
+        title: "Enterprise ERP",
+        description:
+          "Unified systems to manage your entire business operations from HR to Finance.",
+        icon: Landmark,
+        features: ["HR Management", "Accounting", "Workflow Automation"],
+      },
+    ],
+    techStack: [
+      {
+        name: "Backend",
+        iconName: "Server",
+        explanation: "Node.js, Laravel, Python (Django/FastAPI)",
+      },
+      {
+        name: "Frontend",
+        iconName: "LayoutGrid",
+        explanation: "Next.js, React, Vue.js",
+      },
+      {
+        name: "Database",
+        iconName: "Database",
+        explanation: "PostgreSQL, MySQL, MongoDB",
+      },
+    ],
+    process: [
+      {
+        title: "Requirement Gathering",
+        description: "Deep dive into your business processes and pain points.",
+      },
+      {
+        title: "System Architecture",
+        description: "Designing a scalable and secure technical blueprint.",
+      },
+      {
+        title: "Development & Testing",
+        description:
+          "Building your software with iterative feedback and rigorous QA.",
+      },
+      {
+        title: "Deployment & Training",
+        description: "Launching the system and training your team for success.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Tailor-Made",
+        description: "Software that fits your business like a glove.",
+        icon: Settings,
+      },
+      {
+        title: "Ownership",
+        description:
+          "You own the solution, no recurring per-user licensing fees.",
+        icon: ShieldCheck,
+      },
+    ],
+    testimonial: {
+      quote:
+        "The custom inventory system Vexel built saved us hundreds of hours of manual work every month.",
+      author: "Arun K.",
+      role: "Managing Director, Global Trades",
+    },
+    pricing: {
+      title: "Custom Investment",
+      description: "Bespoke pricing based on your project scope.",
+      options: [
+        {
+          name: "Small Business System",
+          price: "Starting from LKR 250,000",
+          features: ["Core Business Modules", "Basic Reporting", "Simple UI"],
+        },
+        {
+          name: "Enterprise Solution",
+          price: "Contact Sales",
+          features: [
+            "Complex Workflows",
+            "Third-party Integrations",
+            "Advanced Security",
+          ],
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Do we own the source code?",
+        answer: "Yes, for custom projects, you own the solution and its code.",
+      },
+    ],
+    status: "active",
+    keywords: [
+      "custom software development Sri Lanka",
+      "business process automation",
+      "School Management Systems Vavuniya",
+      "Inventory Management Software Sri Lanka",
+      "POS systems development",
+      "ERP solutions Sri Lanka",
+      "custom billing software",
     ],
   },
 ];

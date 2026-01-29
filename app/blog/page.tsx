@@ -13,8 +13,8 @@ import BlogClient from "@/components/BlogClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Blog - Insights, News & Tech Trends",
-  description: "Insights, updates, and tech tips from our team. Read about the latest in software, business automation, and digital growth in Sri Lanka.",
+  title: "Blog",
+  description: "Vexel Systems",
   keywords: [
     "Vexel Systems blog",
     "software blog Sri Lanka",

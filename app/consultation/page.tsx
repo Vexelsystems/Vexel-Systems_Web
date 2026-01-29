@@ -11,8 +11,8 @@ import ConsultationClient from "./ConsultationClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Schedule a Consultation - Let's Build Your Future",
-  description: "Not sure where to start? Let's sit down and talk. We offer expert advice on how technology can solve your specific business problems.",
+  title: "Book a Free Consultation",
+  description: "Vexel Systems",
   keywords: [
     "software consultation Sri Lanka",
     "IT consulting Vavuniya",

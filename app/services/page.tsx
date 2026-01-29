@@ -18,8 +18,8 @@ import { TypewriterText } from "@/components/hero/TypewriterText";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Our Services - Web, Mobile & AI Solutions",
-  description: "From custom websites to complex software, we build it all. Explore how our engineering team can help upgrade your business.",
+  title: "Our Services",
+  description: "Web Design, App Dev & POS Solutions",
   keywords: [
     "Vexel Systems services",
     "software services Sri Lanka",

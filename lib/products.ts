@@ -449,12 +449,12 @@ export const products: Product[] = [
   {
     id: "vexel-pos",
     slug: "vexel-pos",
-    title: "Vexel POS",
-    tagline: "Run Your Business Smoothly, Fast & Secure",
+    title: "Vexel POS (Point of Sale System)",
+    tagline: "Shop Billing & Inventory Management Software",
     badge: "Market Benchmark",
     category: "RETAIL & WHOLESALE SOLUTION",
     shortDescription:
-      "Run your shop without the stress. A smart, easy-to-use point of sale that handles sales, inventory, and customers so you can focus on growth.",
+      "Run your shop without the stress. A smart, easy-to-use Point of Sale (POS System) that handles shop billing, inventory management, and customers.",
     fullDescription:
       "Vexel POS is the nervous system of modern retail. We've reimagined the point of sale from a passive recorder to an active growth engine. Built on a hybrid architecture, it ensures your business never stops—processing transactions offline and syncing to the cloud instantly when connectivity returns. From predicting inventory needs to automating customer loyalty via WhatsApp, Vexel POS gives you the data-driven superpowers previously reserved for retail giants.",
     mainImage: "/products/photo-1556742502-ec7c0e9f34b1.jpg",

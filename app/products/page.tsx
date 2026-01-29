@@ -18,8 +18,8 @@ import { TypewriterText } from "@/components/hero/TypewriterText";
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Our Products - Proprietary Software Solutions",
-  description: "Tools that work as hard as you do. Explore our range of POS systems, tracking software, and hiring tools designed for Sri Lankan businesses.",
+  title: "Our Products",
+  description: "Business Software & POS Systems",
   keywords: [
     "Vexel Systems products",
     "Vexel POS",

@@ -12,8 +12,8 @@ import PortfolioClient from "@/components/PortfolioClient";
 import { Star } from 'lucide-react';
 
 export const metadata = generatePageMetadata({
-  title: "Portfolio - Our Success Stories",
-  description: "See what we've built. From local shops to global enterprises, check out the projects we're proud of.",
+  title: "Our Portfolio",
+  description: "Success Stories & Case Studies",
   keywords: [
     "Vexel Systems portfolio",
     "software case studies Sri Lanka",

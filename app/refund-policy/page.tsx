@@ -4,8 +4,8 @@ import { generatePageMetadata } from "@/lib/seo";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export const metadata = generatePageMetadata({
-  title: "Refund & Cancellation Policy",
-  description: "Our promise to you. Read our clear, fair refund and cancellation policy for software and services.",
+  title: "Refund Policy",
+  description: "Vexel Systems",
   keywords: [
     "refund policy Vexel Systems",
     "cancellation policy software",

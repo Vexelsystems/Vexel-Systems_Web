@@ -10,8 +10,8 @@ import ContactClient from "./ContactClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Contact Us - Get in Touch",
-  description: "Have a project in mind? We'd love to hear about it. Reach out to our team in Vavuniya and let’s start a conversation.",
+  title: "Contact / Quote",
+  description: "Web & Software Development",
   keywords: [
     "contact Vexel Systems",
     "software company contact Sri Lanka",

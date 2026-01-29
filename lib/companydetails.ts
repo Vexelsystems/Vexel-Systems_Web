@@ -1,17 +1,17 @@
 /**
  * COMPANY DETAILS CONFIGURATION
- * 
+ *
  * This file serves as the single source of truth for all company information
  * across the entire application. Centralizing this data ensures consistency
  * and makes updates easier.
- * 
+ *
  * Used by:
  * - Layout (metadata, JSON-LD schema)
  * - Footer (contact info, social links)
  * - Contact pages (address, phone, email)
  * - SEO utilities (company name, description)
  * - All components that display company information
- * 
+ *
  * Benefits of centralization:
  * - Update once, reflect everywhere
  * - Prevents inconsistencies
@@ -29,9 +29,9 @@ export const companyDetails = {
    * Core company identification information
    */
   name: "Vexel Systems", // Display name used throughout the site
-  legalName: "Vexel Systems (Pvt) Ltd", // Legal business name for official documents
+  legalName: "Vexel Systems", // Legal business name for official documents
   tagline: "Technology Made Simple", // Company slogan/tagline
-  
+
   /**
    * LOGO PATHS
    * Centralized logo file paths for easy management
@@ -40,7 +40,7 @@ export const companyDetails = {
   logos: {
     main: "/VLogo.png", // Primary logo file
   },
-  
+
   /**
    * COMPANY DESCRIPTION
    * Used for meta descriptions, about sections, and SEO
@@ -58,8 +58,7 @@ export const companyDetails = {
   vision:
     "To become a globally trusted technology partner delivering intelligent digital solutions that shape the future.",
 
-  philosophy:
-    "Build simple. Think smart. Deliver impact.",
+  philosophy: "Build simple. Think smart. Deliver impact.",
 
   /**
    * FOUNDERS / LEADERSHIP
@@ -103,13 +102,14 @@ export const companyDetails = {
    * - Google Maps integration
    */
   address: {
-    street: "Vavuniya Town",                            
+    street: "Vairavapuliyankulam",
     city: "Vavuniya",
     district: "Vavuniya",
     country: "Sri Lanka",
     province: "Northern Province",
     postalCode: "43000",
-    fullAddress: "Vavuniya, Sri Lanka", // Formatted full address
+    fullAddress:
+      "Vairavapuliyankulam, Vavuniya, 43000, Northern Province, Sri Lanka.", // Formatted full address
   },
 
   /**

@@ -10,8 +10,8 @@ import LoginClient from "@/components/LoginClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Login - Vexel Nexus",
-  description: "Secure login portal for Vexel Systems clients and staff.",
+  title: "Client Portal Login",
+  description: "Vexel Systems",
   path: "/login",
 });
 

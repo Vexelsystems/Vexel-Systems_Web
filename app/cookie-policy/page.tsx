@@ -14,7 +14,7 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Cookie Policy",
-  description: "We value your privacy. Learn how we use cookies to improve your experience on Vexel Systems.",
+  description: "Vexel Systems",
   keywords: [
     "cookie policy",
     "website cookies Vexel Systems",

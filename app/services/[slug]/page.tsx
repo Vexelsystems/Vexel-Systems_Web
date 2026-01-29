@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
 
   return generateDynamicMetadata({
-    title: service.title,
-    description: service.description,
+    title: `${service.title} Services in Vavuniya`,
+    description: "Vexel Systems",
     keywords: [
       service.title,
       ...(service.techStack?.map(t => t.name) || []),

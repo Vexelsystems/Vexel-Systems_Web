@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/seo";
 import VexelHireClient from "./client";
 
 export const metadata = generatePageMetadata({
-  title: "Vexel Hire",
-  description: "Stop drowning in resumes. Just upload your CVs, tell us who you're looking for, and let our AI find the perfect candidate for you in seconds.",
+  title: "Vexel Hire - Best Price in Sri Lanka",
+  description: "Vexel Systems",
   keywords: [
     "Vexel Hire",
     "AI recruitment software",

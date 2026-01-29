@@ -68,8 +68,8 @@ const milestones = [
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Our Team - The People Behind Vexel",
-  description: "The people behind the code. Meet the developers, designers, and thinkers who make Vexel Systems tick.",
+  title: "Meet the Team",
+  description: "Developers at Vexel Systems",
   keywords: [
     "Vexel Systems team",
     "software developers Sri Lanka",

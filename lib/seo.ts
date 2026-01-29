@@ -51,7 +51,7 @@ export const DEFAULT_SEO = {
   siteName: companyDetails.name,
   title: `${companyDetails.name} | ${companyDetails.tagline}`,
   description:
-    "We build sensible software for growing businesses. Based in Vavuniya, we help Sri Lankan companies thrive with custom websites, POS systems, and reliable tech support.",
+    "Web Development & POS Software in Vavuniya. We build sensible software for growing businesses in Sri Lanka.",
 
   /**
    * KEYWORDS
@@ -74,11 +74,13 @@ export const DEFAULT_SEO = {
     "Vexel Systems Vavuniya",
     "software company in Sri Lanka",
     "custom software development Sri Lanka",
+    "web development Vavuniya",
     "technology solutions Sri Lanka",
 
     // Core Services
     "POS Systems",
     "Point of Sale",
+    "Web Development",
     "Software Development",
     "Custom Software",
     "Business Automation",
@@ -92,6 +94,7 @@ export const DEFAULT_SEO = {
     "Vavuniya",
     "Sri Lanka",
     "Northern Province",
+    "Vavuniya Web Development",
     "Sri Lankan Tech Company",
     "Vavuniya Software",
     "Best Web Design Company Vavuniya",
@@ -208,7 +211,12 @@ export function generatePageMetadata({
     : DEFAULT_SEO.openGraph.images[0].url;
 
   return {
-    title: title, // Use raw title to allow layout template to apply suffix without duplication
+    title: {
+      absolute:
+        title.includes("|") || title === companyDetails.name
+          ? title
+          : `${title} | ${companyDetails.name}`,
+    },
     description,
     keywords: [...DEFAULT_SEO.keywords, ...keywords],
     authors: DEFAULT_SEO.authors,
@@ -286,8 +294,11 @@ export function generateDynamicMetadata({
   author?: string;
   section?: string;
 }): Metadata {
-  // User request: "page name | descritopn or company name"
-  const fullTitle = `${title} | ${companyDetails.name}`;
+  // Use logic similar to generatePageMetadata to respect custom title formats
+  const fullTitle =
+    title.includes("|") || title.includes("-") || title === companyDetails.name
+      ? title
+      : `${title} | ${companyDetails.name}`;
   const url = `${BASE_URL}${path}`;
   const ogImage = image || DEFAULT_SEO.openGraph.images[0].url;
 

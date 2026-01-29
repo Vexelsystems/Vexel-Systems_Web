@@ -225,7 +225,7 @@ export default function Contact() {
                 className="w-full h-full relative z-10 border-0 transition-all duration-700" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade" 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63044.15242337628!2d80.461621370217!3d9.040989065604473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3af9642531d054e7%3A0x6a0c5c366e6c4331!2sVavuniya%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15773.187154846024!2d80.47891718975535!3d8.758121568317518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afc1507cf1514a3%3A0xbc356c1f5bf8b349!2sVairavapuliyankulam%2C%20Vavuniya!5e0!3m2!1sen!2slk!4v1769667800972!5m2!1sen!2slk" 
                 title="Office Location Map"
               >
               </iframe>

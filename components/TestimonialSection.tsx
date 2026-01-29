@@ -7,49 +7,49 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Sivalingam Ragavan",
-    role: "Owner, Vanni Hardware",
-    content: "We tracked our inventory in notebooks for 20 years. Vexel built us a system that handles everything automatically. Now I can check my stock from home.",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d622ca?w=400&h=400&fit=crop",
+    name: "Salujah",
+    role: "Student, South Eastern University",
+    content: "I worked with Vexel Systems on my ML project for South Eastern University’s biology department, and the experience was amazing! They helped me build the Triang model to analyze biological data, and the results were impressive. The team was patient, explained complex concepts clearly, and made sure everything worked perfectly.",
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
     rating: 5
   },
   {
     id: 2,
-    name: "Dilshan Perera",
-    role: "Manager, City Bakers",
-    content: "Managing orders during festival times was a nightmare. The new POS system is fast and simple. Our staff learned it in one day.",
+    name: "Pavishan Sivakumaran",
+    role: "Owner, Skywix E-commerce",
+    content: "Vexel Systems transformed our old website into a sleek, responsive platform. Their team handled our e-commerce site and corporate portal projects flawlessly. They also helped integrate AI features for better user recommendations. Professional, friendly, and always available to assist!",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     rating: 5
   },
   {
     id: 3,
-    name: "Fathima Rihana",
-    role: "Director, EduSmart Academy",
-    content: "We needed a way for students to check exam results online. Vexel built a secure portal that works perfectly on every phone.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop",
-    rating: 5
-  },
-  {
-    id: 4,
-    name: "Kumara Bandara",
-    role: "CEO, Lanka Logistics",
-    content: "Tracking our delivery trucks used to be phone calls and guess work. Now we see everything in real-time. It saved us so much time.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-    rating: 5
-  },
-  {
-    id: 5,
-    name: "Meera Jasmine",
-    role: "Founder, Style House",
-    content: "I wanted a website that looks international but feels local. Vexel understood exactly what I needed. Sales increased immediately.",
+    name: "Kosika",
+    role: "Student, Open University",
+    content: "Vexel Systems with Jathushan has been a valuable learning experience. While not every project goes perfectly, we faced real challenges during an AI project involving a customer FAQ-based chatbot. The environment encourages transparency, problem-solving, and growth, making it a great place to develop real-world skills.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
     rating: 5
   },
   {
+    id: 4,
+    name: "Mathushi",
+    role: "Creative Professional",
+    content: "I hired Vexel Systems to create my personal portfolio website, and I’m beyond happy! They understood my style perfectly, made the design elegant and modern, and even added subtle interactive features that make my work stand out. The team was friendly, patient, and guided me through every step.",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+    rating: 5
+  },
+  {
+    id: 5,
+    name: "Vinoshika",
+    role: "Photographer",
+    content: "Vexel Systems built my personal portfolio website, and I couldn’t be happier! The design is chic, easy to navigate, and really highlights my photography work. They listened to all my ideas and even suggested improvements that made it look more professional. Highly recommend them!",
+    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop",
+    rating: 5
+  },
+  {
     id: 6,
-    name: "Mohamed Afran",
-    role: "Owner, Afran Motors",
-    content: "Simple, fast, and no errors. The booking system they made for our service station sends automatic reminders to customers. Brilliant.",
+    name: "Tharshan",
+    role: "Client, United Kingdom",
+    content: "Vexel Systems delivered a stylish, modern site that truly represents my brand. The design is easy to navigate and very professional. They listened to all my ideas and the team was patient and guided me through every step. Highly recommend them for anyone wanting a premium web presence!",
     image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop",
     rating: 5
   },

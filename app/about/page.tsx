@@ -15,8 +15,8 @@ import { HeroBackground } from "@/components/hero/HeroBackground";
 import { TypewriterText } from "@/components/hero/TypewriterText";
 
 export const metadata = generatePageMetadata({
-  title: "About Us - Our Story, Mission & Vision",
-  description: "Get to know the team behind Vexel Systems. We’re a group of passionate developers in Vavuniya dedicated to building software that actually solves real problems.",
+  title: "About Us",
+  description: "Top Tech Company in Vavuniya - Vexel Systems",
   keywords: [
     "About Vexel Systems",
     "Software Company Sri Lanka",

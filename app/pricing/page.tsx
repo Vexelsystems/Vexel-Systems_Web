@@ -10,8 +10,8 @@ import PricingClient from "@/components/PricingClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Pricing Packages - Transparent & Flexible",
-  description: "Transparent pricing for honest work. No hidden fees, just clear costs for your websites, apps, and software.",
+  title: "Pricing Plans",
+  description: "Affordable Web & Software Packages",
   keywords: [
     "software pricing Sri Lanka",
     "Vexel Systems pricing",

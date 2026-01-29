@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/seo";
 import QuoteClient from "./client";
 
 export const metadata = generatePageMetadata({
-  title: "Request a Quote - Start Your Project",
-  description: "Ready to start? Tell us about your project, and we'll give you a fair, detailed estimate.",
+  title: "Get a Free Quote",
+  description: "Web & Software Development",
   keywords: [
     "get a quote Vexel Systems",
     "software project estimate",

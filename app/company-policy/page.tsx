@@ -15,8 +15,8 @@ import { companyDetails } from '@/lib/companydetails';
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Company Policy - Corporate Governance",
-  description: "Learn about Vexel Systems' commitment to ethics, sustainability, and social responsibility. Our policies guide our operations and ensure integrity.",
+  title: "Company Policy",
+  description: "Vexel Systems",
   keywords: [
     "Company Policy",
     "Corporate Governance",

@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/seo";
 import VexelTrackClient from "./client";
 
 export const metadata = generatePageMetadata({
-  title: "Vexel Track",
-  description: "Know exactly where your vehicles are, anytime. A simple, reliable GPS tracking system designed to help Sri Lankan businesses save fuel and reduce delays.",
+  title: "Vexel Track - Best Price in Sri Lanka",
+  description: "Vexel Systems",
   keywords: [
     "Vexel Track",
     "GPS fleet tracking Sri Lanka",

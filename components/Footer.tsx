@@ -95,11 +95,11 @@ export default function Footer() {
               {/* Column 3: Services */}
               <FooterSection title="Services">
                  <ul className="space-y-3 text-sm font-medium">
-                    <li><Link href="/services/web-development" className="text-foreground/70 hover:text-primary transition-colors">Web Development</Link></li>
-                    <li><Link href="/services/mobile-app-development" className="text-foreground/70 hover:text-primary transition-colors">Mobile App Development</Link></li>
-                    <li><Link href="/services/ai-ml-solutions" className="text-foreground/70 hover:text-primary transition-colors">AI & Machine Learning</Link></li>
-                    <li><Link href="/services/cloud-devops-infrastructure" className="text-foreground/70 hover:text-primary transition-colors">Cloud & DevOps</Link></li>
-                    <li><Link href="/services/cybersecurity" className="text-foreground/70 hover:text-primary transition-colors">Cybersecurity</Link></li>
+                    <li><Link href="/services/web-development" className="text-foreground/70 hover:text-primary transition-colors">E-commerce Websites</Link></li>
+                    <li><Link href="/products/vexel-pos" className="text-foreground/70 hover:text-primary transition-colors">POS Systems (Point of Sale)</Link></li>
+                    <li><Link href="/services/custom-business-software" className="text-foreground/70 hover:text-primary transition-colors">School Management Systems</Link></li>
+                    <li><Link href="/products/vexel-pos" className="text-foreground/70 hover:text-primary transition-colors">Inventory Management</Link></li>
+                    <li><Link href="/services/ai-ml-solutions" className="text-foreground/70 hover:text-primary transition-colors">AI Automation</Link></li>
                     <li><Link href="/services/custom-business-software" className="text-foreground/70 hover:text-primary transition-colors">Custom Software</Link></li>
                     <li><Link href="/services/api-development-integration" className="text-foreground/70 hover:text-primary transition-colors">API & Integration</Link></li>
                     <li><Link href="/services/digital-marketing" className="text-foreground/70 hover:text-primary transition-colors">Digital Marketing</Link></li>
@@ -201,11 +201,23 @@ export default function Footer() {
 
         </div>
 
+        {/* Office Address Section - Positioned below nav collection */}
+        <div className="pt-12 pb-8 border-t border-foreground/5 text-center md:text-left">
+           <p className="text-sm font-bold text-foreground/80 flex items-center justify-center md:justify-start gap-2">
+             <Globe size={16} className="text-primary" />
+             Office: {companyDetails.address.fullAddress}
+           </p>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-center items-center gap-4 text-center text-xs text-foreground/60 font-medium">
-           <p>© {currentYear} {companyDetails.legalName}. All rights reserved.</p>
-           <span className="hidden md:inline">•</span>
-           <p>Made with ❤️ in Sri Lanka</p>
+           <div className="flex flex-col gap-2 items-center">
+             <div className="flex flex-col md:flex-row items-center gap-4">
+               <p>© {currentYear} {companyDetails.legalName}. All rights reserved.</p>
+               <span className="hidden md:inline">•</span>
+               <p>Made with ❤️ in Sri Lanka</p>
+             </div>
+           </div>
         </div>
       </div>
     </footer>

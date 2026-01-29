@@ -16,8 +16,8 @@ import { companyDetails } from '@/lib/companydetails';
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Privacy Policy - Your Data is Safe",
-  description: "Your data is safe with us. Read our privacy policy to understand how we collect, use, and protect your information.",
+  title: "Privacy Policy",
+  description: "Vexel Systems",
   keywords: [
     "privacy policy Vexel Systems",
     "data protection Sri Lanka",

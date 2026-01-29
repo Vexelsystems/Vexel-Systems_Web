@@ -10,8 +10,8 @@ import FaqClient from "@/components/FaqClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "FAQ Center - Common Questions & Support",
-  description: "Got questions? We've got answers. Find quick help on our services, pricing, and support.",
+  title: "FAQ",
+  description: "Vexel Systems",
   keywords: [
     "Vexel Systems FAQ",
     "POS system questions",

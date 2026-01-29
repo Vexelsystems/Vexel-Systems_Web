@@ -14,8 +14,8 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Terms of Service - The Rules",
-  description: "The rules of the road. Read the terms and conditions for using Vexel Systems' websites and services.",
+  title: "Terms & Conditions",
+  description: "Vexel Systems",
   keywords: [
     "terms of service Vexel Systems",
     "software usage agreement",

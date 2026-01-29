@@ -3,8 +3,8 @@ import { generatePageMetadata } from "@/lib/seo";
 import VexelPOSClient from "./client";
 
 export const metadata = generatePageMetadata({
-  title: "Vexel POS",
-  description: "Run your shop without the stress. A smart, easy-to-use point of sale that handles sales, inventory, and customers so you can focus on growth.",
+  title: "Vexel POS - Best Price in Sri Lanka",
+  description: "Vexel Systems",
   keywords: [
     "Vexel POS",
     "point of sale Sri Lanka",
