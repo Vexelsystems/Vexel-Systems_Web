@@ -1,59 +1,92 @@
 "use client";
 
-import React from 'react';
-import { Search, PenTool, Code, CheckSquare, Rocket, FileText, Layout, Keyboard, Flag, Cloud } from 'lucide-react';
+import React from "react";
+import {
+  Search,
+  PenTool,
+  Code,
+  CheckSquare,
+  Rocket,
+  FileText,
+  Layout,
+  Keyboard,
+  Flag,
+  Cloud,
+} from "lucide-react";
 
 const phases = [
   {
     number: "01",
     title: "We Listen",
-    description: "We start by sitting down with you to understand your real problems and goals.",
+    description:
+      "We start by sitting down with you to understand your real problems and goals.",
     icon: <Search className="w-10 h-10" />,
-    activities: ["Honest Conversations", "Market Check", "Clear Goals"]
+    activities: ["Honest Conversations", "Market Check", "Clear Goals"],
   },
   {
     number: "02",
     title: "We Plan",
-    description: "We map out exactly what your software needs to do to succeed.",
+    description:
+      "We map out exactly what your software needs to do to succeed.",
     icon: <PenTool className="w-10 h-10" />,
-    activities: ["Smart Blueprints", "Interactive Models", "Technology Choice"]
+    activities: ["Smart Blueprints", "Interactive Models", "Technology Choice"],
   },
   {
     number: "03",
     title: "We Build",
-    description: "Our experts code your system using the latest secure technology.",
+    description:
+      "Our experts code your system using the latest secure technology.",
     icon: <Code className="w-10 h-10" />,
-    activities: ["Fast Progress", "Quality Checks", "Weekly Updates"]
+    activities: ["Fast Progress", "Quality Checks", "Weekly Updates"],
   },
   {
     number: "04",
     title: "We Test",
-    description: "We make sure everything works perfectly before your customers see it.",
+    description:
+      "We make sure everything works perfectly before your customers see it.",
     icon: <CheckSquare className="w-10 h-10" />,
-    activities: ["Bug Stomping", "Speed Tests", "Human Verification"]
+    activities: ["Bug Stomping", "Speed Tests", "Human Verification"],
   },
   {
     number: "05",
     title: "You Launch",
     description: "We help you go live and stay by your side to ensure success.",
     icon: <Rocket className="w-10 h-10" />,
-    activities: ["Go-Live Support", "Monitoring", "Always Helping"]
-  }
+    activities: ["Go-Live Support", "Monitoring", "Always Helping"],
+  },
 ];
 
 const outcomes = [
-  { title: "Understanding", description: "A clear plan for your business growth", icon: <FileText className="w-8 h-8" /> },
-  { title: "Visuals", description: "Seeing your idea come to life", icon: <Layout className="w-8 h-8" /> },
-  { title: "Software", description: "A powerful, working system", icon: <Keyboard className="w-8 h-8" /> },
-  { title: "Quality", description: "No bugs, just smooth operation", icon: <Flag className="w-8 h-8" /> },
-  { title: "Success", description: "Your business running better", icon: <Cloud className="w-8 h-8" /> }
+  {
+    title: "Understanding",
+    description: "A clear plan for your business growth",
+    icon: <FileText className="w-8 h-8" />,
+  },
+  {
+    title: "Visuals",
+    description: "Seeing your idea come to life",
+    icon: <Layout className="w-8 h-8" />,
+  },
+  {
+    title: "Software",
+    description: "A powerful, working system",
+    icon: <Keyboard className="w-8 h-8" />,
+  },
+  {
+    title: "Quality",
+    description: "No bugs, just smooth operation",
+    icon: <Flag className="w-8 h-8" />,
+  },
+  {
+    title: "Success",
+    description: "Your business running better",
+    icon: <Cloud className="w-8 h-8" />,
+  },
 ];
-
-
 
 /**
  * PROCESS SECTION
- * 
+ *
  * Functional Overview:
  * - Data Structure: Iterates through static `phases` (Timeline) and `outcomes` (Grid) arrays.
  * - Layout: Responsive grid system that stacks vertically on mobile and expands to 5 columns on desktop.
@@ -67,34 +100,38 @@ export const ProcessSection = () => {
         <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
           <div className="flex flex-col items-center text-center mb-16">
             <h2 className="text-foreground text-3xl md:text-5xl font-black mb-4 tracking-tight">
-              Our Strategic <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Process</span>
+              Our Strategic{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                Process
+              </span>
             </h2>
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              We combine agile methodology with enterprise-grade standards to deliver software that scales.
+              We combine agile methodology with enterprise-grade standards to
+              deliver software that scales.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {phases.map((phase) => (
-              <div 
-                key={phase.number} 
+              <div
+                key={phase.number}
                 className="flex flex-col items-center group cursor-default hover:-translate-y-2 transition-transform duration-300"
               >
-                <div 
-                  className="size-20 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md border-4 border-background group-hover:bg-purple-600 transition-colors duration-300"
-                >
+                <div className="size-20 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md border-4 border-background group-hover:bg-purple-600 transition-colors duration-300">
                   {phase.icon}
                 </div>
                 <div className="text-center px-2">
-                  <span className="text-primary font-bold text-sm tracking-widest uppercase mb-1 block">Phase {phase.number}</span>
+                  <span className="text-primary font-bold text-sm tracking-widest uppercase mb-1 block">
+                    Phase {phase.number}
+                  </span>
                   <h3 className="text-xl font-bold mb-3">{phase.title}</h3>
                   <p className="text-sm text-foreground/80 leading-relaxed mb-6 min-h-10">
                     {phase.description}
                   </p>
                   <div className="space-y-2 text-left bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-4 rounded-xl border border-primary/5 shadow-sm group-hover:border-primary/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5">
                     {phase.activities.map((act, i) => (
-                      <div 
-                        key={act} 
+                      <div
+                        key={act}
                         className="flex items-center gap-2 text-[11px] font-bold text-foreground/70"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
@@ -115,22 +152,31 @@ export const ProcessSection = () => {
         <div className="max-w-[1000px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-              Tangible <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Outcomes</span>
+              Tangible{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                Outcomes
+              </span>
             </h2>
-            <p className="text-foreground/80">What you can expect at every checkpoint of the engagement.</p>
+            <p className="text-foreground/80">
+              What you can expect at every checkpoint of the engagement.
+            </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {outcomes.map((outcome, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40 hover:shadow-2xl hover:-translate-y-1 duration-300"
               >
                 <div className="text-primary group-hover:text-purple-600 transition-colors">
                   {outcome.icon}
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h3 className="text-base font-bold leading-tight">{outcome.title}</h3>
-                  <p className="text-xs text-foreground/70 leading-snug">{outcome.description}</p>
+                  <h3 className="text-base font-bold leading-tight">
+                    {outcome.title}
+                  </h3>
+                  <p className="text-xs text-foreground/70 leading-snug">
+                    {outcome.description}
+                  </p>
                 </div>
               </div>
             ))}

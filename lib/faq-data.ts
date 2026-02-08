@@ -13,125 +13,42 @@ export interface FAQItem {
 }
 
 export const faqData: FAQItem[] = [
-  // --- GENERAL (20) ---
+  // --- GENERAL (6) ---
   {
     category: "general",
-    question: "What actually is Vexel Systems?",
+    question: "What services does Vexel Systems offer?",
     answer:
-      "We are a tech company in Vavuniya that builds software and systems. Basically, if your business uses paper or old excel sheets to track things, we build custom tools to automate that work for you.",
+      "We specialize in AI/ML solutions, web development, mobile app development, custom software, POS systems, and digital marketing. Our team delivers end-to-end technology solutions tailored to your business needs.",
   },
   {
     category: "general",
-    question: "Is there a mobile app?",
+    question: "How long does it take to build a website or app?",
     answer:
-      "Yes. You can see your sales and reports on your phone (iPhone or Android) from anywhere. You don't need to be at the shop.",
+      "Timelines vary based on complexity. A simple website takes 2-4 weeks, while custom web applications or mobile apps typically take 8-16 weeks. We provide detailed timelines during our initial consultation.",
   },
   {
     category: "general",
-    question: "Do you work with small businesses?",
+    question: "Do you offer support after project completion?",
     answer:
-      "Yes, that is our main focus. We work with hardware stores, bakeries, pharmacies, and tuition centers.",
+      "Yes! We provide ongoing maintenance, updates, and technical support. Our support packages include bug fixes, security updates, feature enhancements, and 24/7 emergency assistance.",
   },
   {
     category: "general",
-    question: "Where are you located?",
+    question: "What is your pricing structure?",
     answer:
-      "We are local. Our office is in Vavuniya, Sri Lanka. If you need us, we are right here.",
+      "We offer transparent, project-based pricing and flexible payment plans. Costs depend on project scope, features, and timeline. Visit our pricing page or contact us for a detailed quote tailored to your needs.",
   },
   {
     category: "general",
-    question: "How long have you been doing this?",
+    question: "Can you integrate with existing systems?",
     answer:
-      "We started in 2025 with a team of experienced engineers who wanted to bring real technology to our local area.",
+      "Absolutely! We specialize in seamless integrations with existing CRMs, ERPs, payment gateways, and third-party APIs. Our team ensures smooth data migration and system compatibility.",
   },
   {
     category: "general",
-    question: "Can I use Vexel for a non-profit organization?",
+    question: "Do you work with startups or only established businesses?",
     answer:
-      "Absolutely! We have specialized features and pricing for NGOs and charitable organizations.",
-  },
-  {
-    category: "general",
-    question: "Do you offer custom software development?",
-    answer:
-      "Yes, besides our standard products, we provide bespoke software engineering through our 'Product Engineering' service.",
-  },
-  {
-    category: "general",
-    question: "Is training provided for new users?",
-    answer:
-      "Yes, we provide comprehensive onboarding and training sessions for you and your staff.",
-  },
-  {
-    category: "general",
-    question: "Can I manage multiple locations from one account?",
-    answer:
-      "Yes, our 'Multi-store Sync' feature is designed specifically for businesses with multiple branches.",
-  },
-  {
-    category: "general",
-    question: "Does Vexel support international currencies?",
-    answer:
-      "Yes, the system supports multi-currency transactions and reporting.",
-  },
-  {
-    category: "general",
-    question: "What makes Vexel different from competitors?",
-    answer:
-      "Our focus on simplicity, premium UI/UX, and deep integration between hardware and software sets us apart.",
-  },
-  {
-    category: "general",
-    question: "Can I export my data from Vexel?",
-    answer:
-      "Yes, you can export reports and data in various formats including CSV, Excel, and PDF.",
-  },
-  {
-    category: "general",
-    question: "Is Vexel compatible with Mac and Windows?",
-    answer:
-      "Our management dashboard is web-based and works on any modern browser. Our POS app is optimized for specific hardware and tablets.",
-  },
-  {
-    category: "general",
-    question: "Do you offer white-labeling options?",
-    answer:
-      "Yes, for enterprise clients, we offer white-labeling and custom branding solutions.",
-  },
-  {
-    category: "general",
-    question: "What is your mission statement?",
-    answer:
-      "To simplify technology through innovative, reliable, and scalable solutions that empower businesses and individuals.",
-  },
-  {
-    category: "general",
-    question: "How do I get started with a demo?",
-    answer:
-      "You can book a live demo through our 'Get Started' or 'Quote' page.",
-  },
-  {
-    category: "general",
-    question: "Is there a limit to the number of products I can add?",
-    answer:
-      "Most of our plans allow for unlimited products, though some entry-level plans may have soft limits.",
-  },
-  {
-    category: "general",
-    question: "Can I use Vexel for an online-only business?",
-    answer:
-      "Yes, while we excel at retail, our platform is perfect for e-commerce and digital services too.",
-  },
-  {
-    category: "general",
-    question: "Are you hiring?",
-    answer:
-      "Check our 'Careers' page for current openings in engineering, sales, and support.",
-  },
-  {
-    category: "general",
-    question: "What are your working hours for support?",
-    answer: "We provide 24/7 technical support for business-critical issues.",
+      "We work with both! From startups needing MVPs to enterprises requiring complex systems, we scale our solutions to match your stage and budget. We've helped businesses of all sizes achieve their digital goals.",
   },
 
   // --- POS SERVICES (20) ---

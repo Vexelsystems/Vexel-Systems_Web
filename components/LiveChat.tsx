@@ -1,246 +1,157 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, User, ChevronRight, MessageSquare, ExternalLink, Headphones } from 'lucide-react';
-import { faqData } from '@/lib/faq-data';
-import { toast } from 'sonner';
+import React, { useState, useEffect } from "react";
+import {
+  X,
+  Send,
+  User,
+  Mail,
+  MessageSquare,
+  ChevronDown,
+  ChevronRight,
+  HelpCircle,
+  Phone,
+} from "lucide-react";
+import { toast } from "sonner";
 import { companyDetails } from "@/lib/companydetails";
 
-const CHIME_URL = 'https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3';
-
-type Message = {
-  id: string;
-  type: 'user' | 'bot';
-  text: string;
-  timestamp: Date;
-};
-
 /**
- * LIVE CHAT COMPONENT
- * 
- * Functional Overview:
- * - Availability Logic: Determines online status based on Sri Lanka Time (UTC+5.5) business hours (Mon-Fri, 09:00 - 17:00).
- * - Identity: Persists user details (Name/Email) to `localStorage` to bypass lead capture on return visits.
- * - Responses: Uses a lightweight keyword matching algorithm to provide instant answers from `faqData` or fallbacks.
- * - Notifications: Integrates browser Notifications API and local sound playback (Chime) for alerts.
+ * WHATSAPP LEAD FORM COMPONENT
+ *
+ * Logic Overview:
+ * 1. Form Collection: Collects Name, Email, Purpose, and Message.
+ * 2. Redirection: Formats the data into a WhatsApp link and opens it in a new tab.
+ * 3. Persistence: Optional persistence of user info in localStorage for convenience.
  */
 
 export default function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isIdentified, setIsIdentified] = useState(false);
-  const [userData, setUserData] = useState({ name: '', email: '' });
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [isOnline, setIsOnline] = useState(false);
-  // Optimization: Delay initialization
-  const [isInitialized, setIsInitialized] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    purpose: "General Inquiry",
+    message: "",
+  });
 
+  // Pre-fill from localStorage if available
   useEffect(() => {
-    // Delay heavy logic until 5s after mount or interaction
-    const init = () => {
-      setIsInitialized(true);
-      window.removeEventListener('mousemove', init);
-      window.removeEventListener('scroll', init);
-      window.removeEventListener('touchstart', init);
-    };
-
-    const timer = setTimeout(init, 5000);
-    window.addEventListener('mousemove', init);
-    window.addEventListener('scroll', init);
-    window.addEventListener('touchstart', init);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('mousemove', init);
-      window.removeEventListener('scroll', init);
-      window.removeEventListener('touchstart', init);
-    };
-  }, []);
-
-  // Check operating hours (09:00 - 17:00 Colombo Time)
-  useEffect(() => {
-    if (!isInitialized) return;
-
-    const checkStatus = () => {
-      const now = new Date();
-      // Colombo is UTC +5.5
-      const colomboTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Colombo' }));
-      const hours = colomboTime.getHours();
-      const day = colomboTime.getDay(); // 0 = Sunday, 6 = Saturday
-      
-      const isWorkingDay = day >= 1 && day <= 5;
-      const isWorkingHour = hours >= 9 && hours < 17;
-      
-      setIsOnline(isWorkingDay && isWorkingHour);
-    };
-
-    checkStatus();
-    const interval = setInterval(checkStatus, 60000); // Re-check every minute
-    return () => clearInterval(interval);
-  }, [isInitialized]);
-
-  // Global event listener for opening chat
-  useEffect(() => {
-    if (!isInitialized) return;
-    const handleToggle = () => setIsOpen(true);
-    window.addEventListener('vexel-chat-open', handleToggle);
-    return () => window.removeEventListener('vexel-chat-open', handleToggle);
-  }, [isInitialized]);
-
-  // Load identity from localStorage
-  useEffect(() => {
-    const savedLine = localStorage.getItem('vexel_chat_user');
-    if (savedLine) {
-      setUserData(JSON.parse(savedLine));
-      setIsIdentified(true);
-    }
-  }, []);
-
-  // Scroll to bottom
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
-
-  // Request browser notification permission
-  useEffect(() => {
-    if (typeof window !== 'undefined' && 'Notification' in window) {
-      if (Notification.permission === 'default') {
-        Notification.requestPermission();
+    const saved = localStorage.getItem("vexel_lead_info");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setFormData((prev) => ({
+          ...prev,
+          name: parsed.name,
+          email: parsed.email,
+        }));
+      } catch (e) {
+        console.error("Failed to parse saved lead info");
       }
     }
   }, []);
 
-  const playChime = () => {
-    const audio = new Audio(CHIME_URL);
-    audio.volume = 0.4;
-    audio.play().catch(() => {}); // Catch if browser blocks auto-play
+  const playSuccessSound = () => {
+    const audio = new Audio("/sounds/notification.wav");
+    audio.volume = 0.5;
+    audio.play().catch((e) => console.error("Error playing success sound:", e));
   };
 
-  const sendNotification = (text: string) => {
-    if (typeof window !== 'undefined' && document.hidden && Notification.permission === 'granted') {
-      new Notification('Vexel Support', {
-        body: text,
-        icon: companyDetails.logos.main
-      });
-    }
+  const playErrorSound = () => {
+    const audio = new Audio("/sounds/error.mp3");
+    audio.volume = 0.5;
+    audio.play().catch((e) => console.error("Error playing error sound:", e));
   };
 
-  const handleIdentification = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (userData.name && userData.email) {
-      localStorage.setItem('vexel_chat_user', JSON.stringify(userData));
-      setIsIdentified(true);
-      // Add welcome message
-      setMessages([
-        {
-          id: 'welcome',
-          type: 'bot',
-          text: `Hi ${userData.name}! ${isOnline ? "How can I help you today?" : "We're currently offline, but you can still search our FAQs or leave a message below."}`,
-          timestamp: new Date()
-        }
-      ]);
-    }
-  };
 
-  const findBestAnswer = (query: string) => {
-    const q = query.toLowerCase();
-    // Search in FAQ
-    const match = faqData.find(f => 
-      f.question.toLowerCase().includes(q) || 
-      q.includes(f.question.toLowerCase())
+    // Manual Validation for Sounds
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all required fields", {
+        description: "Your name, email, and message are required.",
+      });
+      playErrorSound();
+      return;
+    }
+
+    // Save info for next time
+    localStorage.setItem(
+      "vexel_lead_info",
+      JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+      }),
     );
 
-    if (match) return match.answer;
+    // Format WhatsApp Message
+    const text = `━━━━━━━━━━━━━━━━━━━━
+🎯 *${formData.purpose.toUpperCase()}*
+━━━━━━━━━━━━━━━━━━━━
 
-    // Keyword matching fallback
-    const keywords = [
-      { keys: ['price', 'pricing', 'cost', 'plan'], answer: "You can find our detailed pricing at vexelsystems.lk/pricing. We offer Starter, Professional, and Enterprise plans." },
-      { keys: ['contact', 'human', 'person', 'support', 'care'], answer: "I can connect you with our customer care team! Just click the 'Talk to Human' button below." },
-      { keys: ['pos', 'hardware', 'register', 'terminal'], answer: "Vexel POS works both online and offline. We support a wide range of hardware bundles. Check out our 'POS Services' category for more details." },
-      { keys: ['hi', 'hello', 'hey'], answer: "Hello! How can I assist you with Vexel Systems today?" }
-    ];
+👤 *FULL NAME:* 
+${formData.name}
 
-    for (const k of keywords) {
-      if (k.keys.some(key => q.includes(key))) return k.answer;
-    }
+📧 *EMAIL:* 
+${formData.email}
 
-    return "I'm not sure I have a specific answer for that. Would you like to check our full FAQ section or talk to a member of our customer care team?";
+💬 *MESSAGE:* 
+${formData.message}
+
+━━━━━━━━━━━━━━━━━━━━
+🌐 _Sent via Vexel Systems_`;
+
+    const encodedText = encodeURIComponent(text);
+    // Use api.whatsapp.com for better cross-device reliability
+    const phoneNumber = companyDetails.contact.whatsapp.replace(/[^0-9]/g, "");
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+    // Play success sound and show toast
+    playSuccessSound();
+    toast.success("Ready to send!", {
+      description: "We're redirecting you to WhatsApp now...",
+    });
+
+    setIsOpen(false);
+
+    // Reset message only
+    setFormData((prev) => ({ ...prev, message: "" }));
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      type: 'user',
-      text: inputValue,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMessage]);
-    const query = inputValue;
-    setInputValue('');
-    setIsTyping(true);
-
-    // Simulate bot response delay
-    setTimeout(() => {
-      const responseText = findBestAnswer(query);
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        type: 'bot',
-        text: responseText,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, botResponse]);
-      setIsTyping(false);
-      
-      // Auditory & Visual Notifications
-      playChime();
-      sendNotification(responseText);
-      
-      // If window is minimized or tab is backgrounded
-      if (!isOpen || document.hidden) {
-        toast("New message from Vexel Support", {
-          description: responseText.slice(0, 60) + (responseText.length > 60 ? '...' : ''),
-          action: {
-            label: "Open Chat",
-            onClick: () => setIsOpen(true)
-          },
-          duration: 5000,
-          icon: <MessageSquare size={16} className="text-primary" />
-        });
-      }
-    }, 1000);
-  };
+  const purposes = [
+    "Custom Software Development",
+    "AI & Intelligent Systems",
+    "IoT & Smart Solutions",
+    "Vexel Track (Lead GPS Tracking)",
+    "Vexel POS (Point of Sale)",
+    "Vexel Hire (Fleet & Resource)",
+    "Web & Mobile App Development",
+    "Digital Transformation",
+    "Technical Support",
+    "Careers",
+    "Other Inquiry",
+  ];
 
   return (
-    <div className="fixed bottom-8 right-8 z-100 font-sans">
-      {/* Delayed Render */}
-      {!isInitialized ? null : (
-      <>
-      {/* Chat Window */}
+    <div className="fixed bottom-8 right-8 z-100 font-sans no-scrollbar">
+      {/* Form Popup */}
       {isOpen && (
-        <div
-          className="absolute bottom-24 right-0 w-[300px] h-[540px] bg-white dark:bg-[#0a0a0a] rounded-3xl shadow-2xl shadow-primary/20 border border-black/5 dark:border-white/5 flex flex-col overflow-hidden"
-        >
+        <div className="absolute bottom-24 right-0 w-[350px] bg-background dark:bg-[#0a0a0a] rounded-3xl shadow-2xl shadow-primary/20 border border-black/5 dark:border-white/5 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
-          <div className={`p-6 text-white flex items-center justify-between transition-colors duration-500 ${isOnline ? 'bg-primary' : 'bg-zinc-800'}`}>
+          <div className="p-6 bg-primary text-white flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <MessageSquare size={20} />
+                <Phone size={20} />
               </div>
               <div>
-                <h3 className="font-bold">Vexel Chat</h3>
-                <div className="flex items-center gap-2 text-xs opacity-80">
-                  <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-red-400'}`}></span>
-                  {isOnline ? 'Online | Support Assistant' : 'Offline | 09:00 - 17:00 LKT'}
-                </div>
+                <h3 className="font-bold">Contact Us</h3>
+                <p className="text-[10px] opacity-80 uppercase tracking-widest">
+                  Via WhatsApp
+                </p>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="p-2 hover:bg-white/10 rounded-full transition-colors"
             >
@@ -248,140 +159,128 @@ export default function LiveChat() {
             </button>
           </div>
 
-          {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-6 scroll-smooth">
-            {!isIdentified ? (
-              // Lead Capture Form
-              <div className="h-full flex flex-col justify-center">
-                <div className="text-center mb-8">
-                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <User size={32} />
-                  </div>
-                  <h4 className="text-xl font-bold mb-2">Welcome!</h4>
-                  <p className="text-foreground/60">Please let us know who you are to start the conversation.</p>
-                </div>
-                
-                <form onSubmit={handleIdentification} className="space-y-4">
-                  <div>
-                    <label className="text-sm font-bold mb-1.5 block">Full Name</label>
-                    <input 
-                      required
-                      type="text"
-                      placeholder="John Doe"
-                      value={userData.name}
-                      onChange={e => setUserData({...userData, name: e.target.value})}
-                      className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-sm font-bold mb-1.5 block">Email Address</label>
-                    <input 
-                      required
-                      type="email"
-                      placeholder="john@example.com"
-                      value={userData.email}
-                      onChange={e => setUserData({...userData, email: e.target.value})}
-                      className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 outline-none focus:border-primary transition-colors"
-                    />
-                  </div>
-                  <button 
-                    type="submit"
-                    className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group"
-                  >
-                    Start Chatting
-                    <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </form>
-              </div>
-            ) : (
-              // Chat Interface
-              <div className="space-y-4">
-                {messages.map((msg) => (
-                  <div 
-                    key={msg.id}
-                    className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                  >
-                    <div className={`max-w-[80%] p-4 rounded-2xl ${
-                      msg.type === 'user' 
-                      ? 'bg-primary text-white rounded-tr-none' 
-                      : 'bg-black/5 dark:bg-white/5 text-foreground rounded-tl-none'
-                    }`}>
-                      <p className="text-sm leading-relaxed">{msg.text}</p>
-                      <span className="text-[10px] opacity-40 mt-1 block">
-                        {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-                {isTyping && (
-                  <div className="flex justify-start">
-                    <div className="bg-black/5 dark:bg-white/5 p-4 rounded-2xl rounded-tl-none flex gap-1">
-                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
-                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
-                      <span className="w-1.5 h-1.5 bg-foreground/20 rounded-full"></span>
-                    </div>
-                  </div>
-                )}
-                <div ref={messagesEndRef} />
-              </div>
-            )}
-          </div>
-
-          {/* Footer / Input */}
-          {isIdentified && (
-            <div className="p-4 border-t border-black/5 dark:border-white/5 bg-black/5 dark:bg-white/5">
-              <div className="mb-3">
-                <div 
-                  className="w-full flex items-center justify-center gap-2 py-2 px-4 bg-green-500/10 text-green-500 rounded-lg text-sm font-bold transition-all border border-green-500/20"
-                >
-                  <ExternalLink size={14} />
-                  Not satisfied? Talk to Human
-                </div>
-              </div>
-              <form onSubmit={handleSendMessage} className="flex gap-2">
-                <input 
-                  type="text"
-                  value={inputValue}
-                  onChange={e => setInputValue(e.target.value)}
-                  placeholder="Type your question..."
-                  className="flex-1 bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary transition-all"
-                />
-                <button 
-                  type="submit"
-                  className="p-2 bg-primary text-white rounded-xl transition-all"
-                >
-                  <Send size={18} />
-                </button>
-              </form>
+          {/* Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="p-6 space-y-4 max-h-[500px] overflow-y-auto no-scrollbar"
+          >
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold flex items-center gap-2 text-foreground/70">
+                <User size={14} /> Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 outline-none focus:border-primary transition-all text-sm"
+              />
             </div>
-          )}
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold flex items-center gap-2 text-foreground/70">
+                <Mail size={14} /> Email Address
+              </label>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 outline-none focus:border-primary transition-all text-sm"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold flex items-center gap-2 text-foreground/70">
+                <HelpCircle size={14} /> Inquiry Purpose
+              </label>
+              <div className="relative group">
+                <select
+                  value={formData.purpose}
+                  onChange={(e) =>
+                    setFormData({ ...formData, purpose: e.target.value })
+                  }
+                  className="w-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 rounded-xl px-4 py-2.5 outline-none focus:border-primary transition-all text-sm appearance-none cursor-pointer"
+                >
+                  {purposes.map((p) => (
+                    <option
+                      key={p}
+                      value={p}
+                      className="dark:bg-[#0a0a0a] dark:text-white"
+                    >
+                      {p}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={16}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground/40 pointer-events-none group-focus-within:text-primary transition-colors"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold flex items-center gap-2 text-foreground/70">
+                <MessageSquare size={14} /> Message
+              </label>
+              <textarea
+                rows={3}
+                placeholder="How can we help you?"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 outline-none focus:border-primary transition-all text-sm resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              onClick={() => {
+                if (!formData.name || !formData.email || !formData.message) {
+                  playErrorSound();
+                  toast.error("Required fields missing", {
+                    description: "Please complete the form before sending.",
+                  });
+                }
+              }}
+              className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:brightness-105 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group mt-2"
+            >
+              Send on WhatsApp
+              <ChevronRight
+                size={18}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </button>
+            <p className="text-[10px] text-center text-foreground/40">
+              Clicking send will redirect you to WhatsApp.
+            </p>
+          </form>
         </div>
       )}
 
-      {/* Floating Button */}
+      {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 group relative"
+        className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-105 transition-all group"
+        aria-label="Contact on WhatsApp"
       >
         {isOpen ? (
-          <div>
-            <X size={28} />
-          </div>
+          <X size={28} />
         ) : (
-          <div>
-            <MessageCircle size={28} />
+          <div className="relative">
+            <MessageSquare size={28} />
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            </span>
           </div>
-        )}
-        
-        {/* Unread Badge (Simulated) */}
-        {!isOpen && !isIdentified && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white dark:border-[#0a0a0a]">
-            1
-          </span>
         )}
       </button>
-      </>
-      )}
     </div>
   );
 }

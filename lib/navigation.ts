@@ -29,6 +29,7 @@ export const navigation = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Our Process", href: "/process" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
 
@@ -55,6 +56,5 @@ export const navLinks = [
     hasPage: true,
   },
   { id: "pricing", label: "Pricing", href: "/pricing" },
-  { id: "portfolio", label: "Portfolio", href: "/portfolio" },
   { id: "company", label: "Company", href: "/company", isDropdown: true },
 ];

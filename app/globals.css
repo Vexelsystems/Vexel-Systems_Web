@@ -16,7 +16,7 @@
   --dark-black: #000000;
   --primary: #0077ed;
   --primary-rgb: 0, 119, 237;
-  --secondary: #9333ea; /* purple-600 */
+  --secondary: #9333ea; /* premium purple */
 
   /* Additional Palette Variables required by tailwind.config.ts */
   --background-light: #ffffff;
@@ -30,12 +30,12 @@
   --nav-dark: #1a1a1a;
 
   --card: #f5f5f7;
-  --card-light: #f5f5f7; 
-  
+  --card-light: #f5f5f7;
+
   --card-dark: #121212;
 
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --card-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
   /* Helper variables for easy overriding if needed */
   --nav-bg: #f5f5f7;
@@ -60,13 +60,12 @@
 html {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
 }
 
 body {
   scroll-behavior: smooth;
-  overflow-x: hidden;
   width: 100%;
+  overflow-x: clip;
 }
 
 h1,
@@ -83,17 +82,19 @@ body {
   color: var(--foreground);
   font-weight: 400;
 
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   position: relative;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
+    --background: #000000;
+    --foreground: #e5e7eb;
     --card: #121212;
-    --nav-bg: #1a1a1a;
-    --ui-background: #0a0a0a;
+    --nav-bg: #111111;
+    --ui-background: #000000;
     --dark-black: #ffffff;
   }
 
@@ -194,12 +195,16 @@ button:disabled,
   margin: 3rem 0;
 }
 
-/* No-scrollbar utility */
+/* No-scrollbar utility and global scrollbar hiding */
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
+  .no-scrollbar::-webkit-scrollbar,
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
     display: none;
   }
-  .no-scrollbar {
+  .no-scrollbar,
+  html,
+  body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

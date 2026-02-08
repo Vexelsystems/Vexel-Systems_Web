@@ -8,7 +8,14 @@ interface MotionWrapperProps {
   className?: string;
   delay?: number;
   duration?: number;
-  type?: "fade" | "scale" | "stagger" | "slideLeft" | "slideRight" | "slideUp" | "slideDown";
+  type?:
+    | "fade"
+    | "scale"
+    | "stagger"
+    | "slideLeft"
+    | "slideRight"
+    | "slideUp"
+    | "slideDown";
 }
 
 export const MotionWrapper = ({
@@ -19,24 +26,27 @@ export const MotionWrapper = ({
   type = "fade",
 }: MotionWrapperProps) => {
   const [isMounted, setIsMounted] = React.useState(false);
+  const [isInView, setIsInView] = React.useState(false);
 
   React.useEffect(() => {
-    // Small delay to ensure "main thing" is loaded
-    // Optimization: On mobile, we can skip the mounting animation or keep it simple
-    // For now, we just proceed as normal but the delay helps main thread
-    const timer = setTimeout(() => setIsMounted(true), 100);
+    // Defer animation initialization to reduce TBT
+    // Only mount animations after critical content is rendered
+    const timer = setTimeout(() => setIsMounted(true), 150);
     return () => clearTimeout(timer);
   }, []);
 
+  // Show content immediately without animation on first render
   if (!isMounted) {
-    return <div className={className} style={{ opacity: 0 }}>{children}</div>;
+    return <div className={className}>{children}</div>;
   }
+
   if (type === "stagger") {
     return (
       <motion.div
-        initial="hidden"
+        initial={false} // Don't animate on first render
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-100px", amount: 0.2 }}
+        onViewportEnter={() => setIsInView(true)}
         variants={{
           hidden: {},
           visible: {
@@ -58,32 +68,32 @@ export const MotionWrapper = ({
       visible: { opacity: 1, y: 0 },
     },
     scale: {
-      hidden: { opacity: 0, scale: 0.9 },
+      hidden: { opacity: 0, scale: 0.95 },
       visible: { opacity: 1, scale: 1 },
     },
     slideLeft: {
-      hidden: { opacity: 0, x: -50 },
+      hidden: { opacity: 0, x: -30 },
       visible: { opacity: 1, x: 0 },
     },
     slideRight: {
-      hidden: { opacity: 0, x: 50 },
+      hidden: { opacity: 0, x: 30 },
       visible: { opacity: 1, x: 0 },
     },
     slideUp: {
-      hidden: { opacity: 0, y: 50 },
+      hidden: { opacity: 0, y: 30 },
       visible: { opacity: 1, y: 0 },
     },
     slideDown: {
-      hidden: { opacity: 0, y: -50 },
+      hidden: { opacity: 0, y: -30 },
       visible: { opacity: 1, y: 0 },
     },
   };
 
   return (
     <motion.div
-      initial="hidden"
+      initial={false} // Critical: Don't animate on first render
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-100px", amount: 0.2 }}
       variants={variants[type]}
       transition={{ duration, delay, ease: "easeOut" }}
       className={className}

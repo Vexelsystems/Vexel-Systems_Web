@@ -1,6 +1,6 @@
 /**
  * ROOT LAYOUT COMPONENT
- * 
+ *
  * This is the root layout for the entire Next.js application.
  * It wraps all pages and provides:
  * - Global metadata for SEO
@@ -23,10 +23,13 @@ import { PageTransition } from "@/components/ui/PageTransition"; // Smooth page 
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
 import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
+import GoogleReviewFloater from "@/components/GoogleReviewFloater"; // Google Review Floater component
+import ScrollNavButtons from "@/components/ScrollNavButtons"; // Scroll navigation buttons
+import ScrollToTop from "@/components/ScrollToTop"; // Scroll to top on navigation
 
 /**
  * FONT CONFIGURATION
- * 
+ *
  * Loads the Inter font from Google Fonts with:
  * - Latin character subset for optimal loading
  * - CSS variable (--font-inter) for use in Tailwind config
@@ -39,7 +42,7 @@ const inter = Inter({
 
 /**
  * GLOBAL METADATA
- * 
+ *
  * Defines SEO metadata for the entire site. Individual pages can override these defaults.
  * This metadata is used by:
  * - Search engines (Google, Bing, etc.)
@@ -49,22 +52,22 @@ const inter = Inter({
 export const metadata: Metadata = {
   // Base URL for all relative URLs in metadata
   metadataBase: new URL(BASE_URL),
-  
+
   // Title template for children pages: "Page Name | Vexel Systems"
   title: {
     default: DEFAULT_SEO.title,
     template: `%s | ${companyDetails.name}`,
   },
-  
+
   // Default SEO descriptions and keywords
   description: DEFAULT_SEO.description,
   keywords: DEFAULT_SEO.keywords,
-  
+
   // Authorship
   authors: [{ name: companyDetails.name, url: BASE_URL }],
   creator: companyDetails.name,
   publisher: companyDetails.name,
-  
+
   // Robots crawling instructions
   robots: {
     index: true,
@@ -72,9 +75,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 
@@ -118,17 +121,15 @@ export const metadata: Metadata = {
   // Favicons and Icons
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
-      { url: '/favicon-64x64.png', sizes: '64x64', type: 'image/png' },
-      { url: '/favicon-x48.png', sizes: '48x48', type: 'image/png' },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-x48.png", sizes: "48x48", type: "image/png" },
     ],
-    shortcut: ['/favicon.ico'],
-    apple: [
-      { url: '/apple-touch-icon.png' },
-    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
 };
 
@@ -154,21 +155,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased selection:bg-primary/20`}>
+      <body
+        className={`${inter.variable} font-sans bg-background text-foreground antialiased selection:bg-primary/20`}
+      >
         {/* Google Analytics - Loaded after interactivity */}
         <GoogleAnalytics GA_MEASUREMENT_ID="G-XXXXXXXXXX" />
 
         {/* Global Client Components Wrapper (Bg, Toast, etc) */}
         <GlobalClientWrapper>
+          <ScrollToTop />
+          <GoogleReviewFloater />
+          <ScrollNavButtons />
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
-            
+
             {/* Main content area */}
             <main className="flex-1">
               <Breadcrumbs />
-              <PageTransition>
-                {children}
-              </PageTransition>
+              <PageTransition>{children}</PageTransition>
             </main>
 
             <Footer />
@@ -176,21 +180,22 @@ export default function RootLayout({
         </GlobalClientWrapper>
 
         {/* Toast notifications container */}
-        <Toaster 
-          position="top-center" 
-          richColors 
+        <Toaster
+          position="top-center"
+          richColors
           closeButton
-          theme="system" 
+          theme="system"
           toastOptions={{
             style: {
-              background: 'rgba(255, 255, 255, 0.8)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(0,0,0,0.05)',
-              borderRadius: '16px',
-              padding: '16px',
+              background: "rgba(255, 255, 255, 0.8)",
+              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(0,0,0,0.05)",
+              borderRadius: "16px",
+              padding: "16px",
               fontWeight: 500,
             },
-            className: 'dark:bg-zinc-900/90 dark:border-white/10 dark:text-white',
+            className:
+              "dark:bg-zinc-900/90 dark:border-white/10 dark:text-white",
           }}
         />
 
@@ -198,27 +203,27 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-             __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": companyDetails.name,
-                "url": BASE_URL,
-                "logo": `${BASE_URL}${companyDetails.logos.main}`,
-                "contactPoint": {
-                   "@type": "ContactPoint",
-                   "telephone": companyDetails.contact.phone,
-                   "contactType": "customer service",
-                   "email": companyDetails.contact.email,
-                   "areaServed": "LK",
-                   "availableLanguage": "en"
-                },
-                "sameAs": [
-                   companyDetails.socialLinks.twitter,
-                   companyDetails.socialLinks.linkedin,
-                   companyDetails.socialLinks.instagram,
-                   companyDetails.socialLinks.facebook
-                ]
-             })
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: companyDetails.name,
+              url: BASE_URL,
+              logo: `${BASE_URL}${companyDetails.logos.main}`,
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: companyDetails.contact.phone,
+                contactType: "customer service",
+                email: companyDetails.contact.email,
+                areaServed: "LK",
+                availableLanguage: "en",
+              },
+              sameAs: [
+                companyDetails.socialLinks.twitter,
+                companyDetails.socialLinks.linkedin,
+                companyDetails.socialLinks.instagram,
+                companyDetails.socialLinks.facebook,
+              ],
+            }),
           }}
         />
       </body>

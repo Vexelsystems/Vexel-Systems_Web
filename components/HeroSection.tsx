@@ -8,6 +8,7 @@ import { HeroActions } from "@/components/hero/HeroActions";
 import { HeroSocials } from "@/components/hero/HeroSocials";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { TypewriterText } from "@/components/hero/TypewriterText";
+import Link from "next/link";
 
 /**
  * HERO SECTION PARENT

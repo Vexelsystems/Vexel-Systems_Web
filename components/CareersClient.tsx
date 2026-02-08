@@ -1,6 +1,6 @@
 /**
  * CAREERS CLIENT COMPONENT
- * 
+ *
  * Functional Overview:
  * - Interaction: Handles job selection and expands details (accordion style).
  * - Form Handling: Manages application form state, validation, and file uploads.
@@ -9,13 +9,22 @@
 
 "use client";
 
-import React, { useState } from 'react';
-import { jobPositions } from '@/lib/career-data';
-import { Briefcase, MapPin, Clock, DollarSign, Upload, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
-import { toast } from 'sonner';
-import { MotionWrapper } from '@/components/ui/MotionWrapper';
-import { motion, AnimatePresence } from 'framer-motion';
-import Newsletter from '@/components/Newsletter';
+import React, { useState } from "react";
+import { jobPositions } from "@/lib/career-data";
+import {
+  Briefcase,
+  MapPin,
+  Clock,
+  DollarSign,
+  Upload,
+  Send,
+  ChevronDown,
+  CheckCircle2,
+} from "lucide-react";
+import { toast } from "sonner";
+import { MotionWrapper } from "@/components/ui/MotionWrapper";
+import { motion, AnimatePresence } from "framer-motion";
+import Newsletter from "@/components/Newsletter";
 
 export default function CareersClient() {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
@@ -24,39 +33,57 @@ export default function CareersClient() {
 
   // Form State
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    mobile: '',
-    portfolio: '',
-    talent: '',
-    file: null as File | null
+    fullName: "",
+    email: "",
+    mobile: "",
+    portfolio: "",
+    talent: "",
+    file: null as File | null,
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData(prev => ({ ...prev, file: e.target.files![0] }));
+      setFormData((prev) => ({ ...prev, file: e.target.files![0] }));
     }
   };
 
   // Basic Validation
-  const isFormValid = selectedJob && formData.fullName && formData.mobile && formData.talent && formData.file;
+  const isFormValid =
+    selectedJob &&
+    formData.fullName &&
+    formData.mobile &&
+    formData.talent &&
+    formData.file;
 
   const handleApply = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid) return;
-    
+
     setIsSubmitting(true);
     // Simulate API call delay
     setTimeout(() => {
+      const audio = new Audio("/sounds/notification.wav");
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+
       setIsSubmitting(false);
       setIsSuccess(true);
       toast.success("Application submitted successfully!");
-      setFormData({ fullName: '', email: '', mobile: '', portfolio: '', talent: '', file: null }); // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        mobile: "",
+        portfolio: "",
+        talent: "",
+        file: null,
+      }); // Reset form
       setSelectedJob(null);
     }, 2000);
   };
@@ -67,133 +94,154 @@ export default function CareersClient() {
       <MotionWrapper type="slideUp" duration={1.2}>
         <div className="flex flex-col gap-6">
           <h2 className="text-3xl font-bold mb-4">Open Positions</h2>
-        {jobPositions.map((job) => (
-          <div 
-            key={job.id}
-            className="bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all shadow-xl shadow-primary/5 hover:shadow-2xl hover:border-primary/20 hover:-translate-y-1"
-          >
-            <button 
-              onClick={() => setSelectedJob(selectedJob === job.id ? null : job.id)}
-              className="w-full p-8 text-left flex flex-col md:flex-row md:items-center justify-between gap-6"
+          {jobPositions.map((job) => (
+            <div
+              key={job.id}
+              className="bg-white dark:bg-white/5 rounded-[32px] border border-black/5 dark:border-white/5 overflow-hidden transition-all shadow-xl shadow-primary/5 hover:shadow-2xl hover:border-primary/20 hover:-translate-y-1"
             >
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-sm font-bold text-primary uppercase tracking-widest">{job.department}</span>
-                  <span className="w-1 h-1 bg-black/20 dark:bg-white/20 rounded-full"></span>
-                  <span className="text-sm font-medium text-foreground/70">{job.type}</span>
-                </div>
-                <h3 className="text-2xl font-bold">{job.title}</h3>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="text-right hidden md:block">
-                  <p className="text-sm font-bold text-foreground/80">{job.salary}</p>
-                  <p className="text-xs text-foreground/70">{job.location}</p>
-                </div>
-                <div className={`p-2 rounded-full transition-all duration-300 ${selectedJob === job.id ? 'bg-primary text-white rotate-180' : 'bg-black/5 dark:bg-white/5 text-foreground/70'}`}>
-                  <ChevronDown size={24} />
-                </div>
-              </div>
-            </button>
-
-            {selectedJob === job.id && (
-              <div className="overflow-hidden">
-                <div className="px-8 pb-8 pt-4 border-t border-black/5 dark:border-white/5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
-                    <div>
-                      <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                        <Briefcase size={18} className="text-primary" />
-                        Requirements
-                      </h4>
-                      <ul className="space-y-3">
-                        {job.requirements.map((req, i) => (
-                          <li key={i} className="flex gap-3 text-foreground/80 text-sm leading-relaxed">
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0"></span>
-                            {req}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                        <CheckCircle2 size={18} className="text-primary" />
-                        Responsibilities
-                      </h4>
-                      <ul className="space-y-3">
-                        {job.responsibilities.map((res, i) => (
-                          <li key={i} className="flex gap-3 text-foreground/80 text-sm leading-relaxed">
-                            <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0"></span>
-                            {res}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+              <button
+                onClick={() =>
+                  setSelectedJob(selectedJob === job.id ? null : job.id)
+                }
+                className="w-full p-8 text-left flex flex-col md:flex-row md:items-center justify-between gap-6"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-bold text-primary uppercase tracking-widest">
+                      {job.department}
+                    </span>
+                    <span className="w-1 h-1 bg-black/20 dark:bg-white/20 rounded-full"></span>
+                    <span className="text-sm font-medium text-foreground/70">
+                      {job.type}
+                    </span>
                   </div>
-                  
-                  <div className="flex justify-end">
-                    <button 
-                      onClick={() => {
-                        const form = document.getElementById('apply-form');
-                        form?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="bg-primary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-primary/20"
-                    >
-                      Apply for this role
-                    </button>
+                  <h3 className="text-2xl font-bold">{job.title}</h3>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="text-right hidden md:block">
+                    <p className="text-sm font-bold text-foreground/80">
+                      {job.salary}
+                    </p>
+                    <p className="text-xs text-foreground/70">{job.location}</p>
+                  </div>
+                  <div
+                    className={`p-2 rounded-full transition-all duration-300 ${selectedJob === job.id ? "bg-primary text-white rotate-180" : "bg-black/5 dark:bg-white/5 text-foreground/70"}`}
+                  >
+                    <ChevronDown size={24} />
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
+              </button>
 
-        {/* Hidden Talent CTA */}
-        <div className="p-12 bg-black text-white rounded-[40px] text-center mt-12 overflow-hidden relative">
-          <div className="absolute inset-0 bg-primary/10 blur-[100px]"></div>
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4">Don't see your role?</h3>
-            <p className="text-white/80 mb-8 max-w-xl mx-auto">
-              We're always looking for exceptional talent. Tell us what you're passionate about 
-              and we'll let you know when the perfect spot opens up.
-            </p>
-            <button 
-              onClick={() => {
-                setSelectedJob('custom');
-                document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full bg-white text-primary px-10 py-6 rounded-[24px] font-bold text-xl hover:bg-white/90 transition-all shadow-lg"
-            >
-              Submit Open Application
-            </button>
+              {selectedJob === job.id && (
+                <div className="overflow-hidden">
+                  <div className="px-8 pb-8 pt-4 border-t border-black/5 dark:border-white/5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8">
+                      <div>
+                        <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+                          <Briefcase size={18} className="text-primary" />
+                          Requirements
+                        </h4>
+                        <ul className="space-y-3">
+                          {job.requirements.map((req, i) => (
+                            <li
+                              key={i}
+                              className="flex gap-3 text-foreground/80 text-sm leading-relaxed"
+                            >
+                              <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0"></span>
+                              {req}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+                          <CheckCircle2 size={18} className="text-primary" />
+                          Responsibilities
+                        </h4>
+                        <ul className="space-y-3">
+                          {job.responsibilities.map((res, i) => (
+                            <li
+                              key={i}
+                              className="flex gap-3 text-foreground/80 text-sm leading-relaxed"
+                            >
+                              <span className="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 shrink-0"></span>
+                              {res}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end">
+                      <button
+                        onClick={() => {
+                          const form = document.getElementById("apply-form");
+                          form?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="bg-primary text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-primary/20"
+                      >
+                        Apply for this role
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Hidden Talent CTA */}
+          <div className="p-12 bg-black text-white rounded-[40px] text-center mt-12 overflow-hidden relative">
+            <div className="absolute inset-0 bg-primary/10 blur-[100px]"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4">Don't see your role?</h3>
+              <p className="text-white/80 mb-8 max-w-xl mx-auto">
+                We're always looking for exceptional talent. Tell us what you're
+                passionate about and we'll let you know when the perfect spot
+                opens up.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedJob("custom");
+                  document
+                    .getElementById("apply-form")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-full bg-white text-primary px-10 py-6 rounded-[24px] font-bold text-xl hover:bg-white/90 transition-all shadow-lg"
+              >
+                Submit Open Application
+              </button>
+            </div>
           </div>
         </div>
-      </div>
       </MotionWrapper>
 
       {/* Application Form & Newsletter Column */}
       <div className="lg:col-start-2 h-fit flex flex-col gap-8">
-        <aside id="apply-form" className="bg-white dark:bg-white/5 rounded-[40px] border border-black/5 dark:border-white/5 p-10 shadow-2xl shadow-primary/5">
+        <aside
+          id="apply-form"
+          className="bg-white dark:bg-white/5 rounded-[40px] border border-black/5 dark:border-white/5 p-10 shadow-2xl shadow-primary/5"
+        >
           <h3 className="text-2xl font-bold mb-2">Apply Now</h3>
           <p className="text-foreground/70 text-sm mb-8">
-            {selectedJob === 'custom' 
-              ? "Tell us about your unique talents and how you can help Vexel." 
-              : selectedJob 
-                ? `Applying for ${jobPositions.find(j => j.id === selectedJob)?.title}` 
+            {selectedJob === "custom"
+              ? "Tell us about your unique talents and how you can help Vexel."
+              : selectedJob
+                ? `Applying for ${jobPositions.find((j) => j.id === selectedJob)?.title}`
                 : "Select a position from the left to begin your application."}
           </p>
 
           {isSuccess ? (
-            <div
-              className="text-center py-12"
-            >
+            <div className="text-center py-12">
               <div className="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 size={40} />
               </div>
               <h4 className="text-xl font-bold mb-2">Application Received!</h4>
               <p className="text-foreground/80 text-sm mb-8">
-                Thank you for applying. Our HR team will review your application and get back to you within 3-5 business days.
+                Thank you for applying. Our HR team will review your application
+                and get back to you within 3-5 business days.
               </p>
-              <button 
+              <button
                 onClick={() => setIsSuccess(false)}
                 className="text-primary font-bold hover:underline"
               >
@@ -203,56 +251,66 @@ export default function CareersClient() {
           ) : (
             <form onSubmit={handleApply} className="space-y-6">
               <div>
-                <label className="text-sm font-bold mb-2 block">Full Name</label>
-                <input 
+                <label className="text-sm font-bold mb-2 block">
+                  Full Name
+                </label>
+                <input
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  required 
-                  type="text" 
-                  placeholder="Jane Perera" 
-                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  required
+                  type="text"
+                  placeholder="Jane Perera"
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>
               <div>
-                <label className="text-sm font-bold mb-2 block">Email Address</label>
-                <input 
+                <label className="text-sm font-bold mb-2 block">
+                  Email Address
+                </label>
+                <input
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required 
-                  type="email" 
-                  placeholder="jane@example.com" 
-                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  required
+                  type="email"
+                  placeholder="jane@example.com"
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>
               <div>
-                <label className="text-sm font-bold mb-2 block">Mobile Number</label>
-                <input 
+                <label className="text-sm font-bold mb-2 block">
+                  Mobile Number
+                </label>
+                <input
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleInputChange}
-                  required 
-                  type="tel" 
-                  placeholder="+94 77 123 4567" 
-                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  required
+                  type="tel"
+                  placeholder="+94 77 123 4567"
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>
               <div>
-                <label className="text-sm font-bold mb-2 block">Portfolio / LinkedIn URL</label>
-                <input 
+                <label className="text-sm font-bold mb-2 block">
+                  Portfolio / LinkedIn URL
+                </label>
+                <input
                   name="portfolio"
                   value={formData.portfolio}
                   onChange={handleInputChange}
-                  type="url" 
-                  placeholder="https://..." 
-                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all" 
+                  type="url"
+                  placeholder="https://..."
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>
-              
+
               <div className="space-y-2">
-                <label className="text-sm font-bold mb-2 block">Tell us your talent</label>
-                <textarea 
+                <label className="text-sm font-bold mb-2 block">
+                  Tell us your talent
+                </label>
+                <textarea
                   name="talent"
                   value={formData.talent}
                   onChange={handleInputChange}
@@ -263,30 +321,53 @@ export default function CareersClient() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-bold mb-2 block">Upload Resume (PDF)</label>
+                <label className="text-sm font-bold mb-2 block">
+                  Upload Resume (PDF)
+                </label>
                 <div className="relative group">
-                  <input 
+                  <input
                     required
-                    type="file" 
+                    type="file"
                     accept=".pdf"
                     onChange={handleFileChange}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                   />
-                  <div className={`w-full border-2 border-dashed ${formData.file ? 'border-primary/50 bg-primary/5' : 'border-black/10 dark:border-white/10'} rounded-2xl p-6 text-center group-hover:bg-primary/5 group-hover:border-primary/50 transition-all`}>
+                  <div
+                    className={`w-full border-2 border-dashed ${formData.file ? "border-primary/50 bg-primary/5" : "border-black/10 dark:border-white/10"} rounded-2xl p-6 text-center group-hover:bg-primary/5 group-hover:border-primary/50 transition-all`}
+                  >
                     <div className="bg-primary/10 text-primary p-3 rounded-full w-fit mx-auto mb-3">
-                      {formData.file ? <CheckCircle2 size={20} /> : <Upload size={20} />}
+                      {formData.file ? (
+                        <CheckCircle2 size={20} />
+                      ) : (
+                        <Upload size={20} />
+                      )}
                     </div>
                     <p className="text-xs font-bold text-foreground/80 uppercase tracking-widest">
-                      {formData.file ? (formData.file as File).name : "Click to upload CV"}
+                      {formData.file
+                        ? (formData.file as File).name
+                        : "Click to upload CV"}
                     </p>
-                    <p className="text-[10px] text-foreground/70 mt-1">Max file size: 5MB</p>
+                    <p className="text-[10px] text-foreground/70 mt-1">
+                      Max file size: 5MB
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <button 
-                disabled={isSubmitting || !isFormValid}
+              <button
+                disabled={isSubmitting}
                 type="submit"
+                onClick={() => {
+                  if (!isFormValid) {
+                    const audio = new Audio("/sounds/error.mp3");
+                    audio.volume = 0.5;
+                    audio.play().catch(() => {});
+                    toast.error("Application incomplete", {
+                      description:
+                        "Please select a job and fill all required fields.",
+                    });
+                  }
+                }}
                 className="w-full bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-primary/20 hover:brightness-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
@@ -308,7 +389,10 @@ export default function CareersClient() {
         </aside>
 
         {/* Newsletter - Separate Card */}
-        <Newsletter category="Careers" className="bg-zinc-900 text-white rounded-[40px]" />
+        <Newsletter
+          category="Careers"
+          className="bg-zinc-900 text-white rounded-[40px]"
+        />
       </div>
     </div>
   );
