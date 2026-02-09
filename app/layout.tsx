@@ -200,6 +200,8 @@ export default function RootLayout({
         />
 
         {/* Structured Data (JSON-LD) for SEO */}
+
+        {/* SoftwareBusiness Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -275,6 +277,236 @@ export default function RootLayout({
                   },
                 ],
               },
+            }),
+          }}
+        />
+
+        {/* WebSite Schema with SearchAction */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://vexelsystems.lk/#website",
+              url: "https://vexelsystems.lk",
+              name: "Vexel Systems",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://vexelsystems.lk/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://vexelsystems.lk/#organization",
+              name: companyDetails.name,
+              url: companyDetails.contact.website,
+              logo: `${BASE_URL}/VLogo.png`,
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: companyDetails.contact.phone,
+                contactType: "customer support",
+                areaServed: "LK",
+              },
+              sameAs: [
+                companyDetails.socialLinks.facebook,
+                companyDetails.socialLinks.linkedin,
+              ],
+            }),
+          }}
+        />
+
+        {/* SoftwareApplication Schema for Vexel POS */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Vexel POS System",
+              operatingSystem: "Windows, Web",
+              applicationCategory: "BusinessApplication",
+              description:
+                "Vexel POS is a retail and wholesale billing system with inventory, customer management, and reporting.",
+              offers: {
+                "@type": "Offer",
+                priceCurrency: "LKR",
+                availability: "https://schema.org/InStock",
+              },
+            }),
+          }}
+        />
+
+        {/* BreadcrumbList Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://vexelsystems.lk",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Vexel POS",
+                  item: "https://vexelsystems.lk/products/vexel-pos",
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* LocalBusiness Schema for Local SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": "https://vexelsystems.lk/#localbusiness",
+              name: companyDetails.name,
+              url: companyDetails.contact.website,
+              logo: `${BASE_URL}/VLogo.png`,
+              image: `${BASE_URL}/VLogo.png`,
+              description:
+                "Vexel Systems is a Sri Lankan software company offering POS systems, billing software, and inventory management solutions.",
+              email: companyDetails.contact.email,
+              telephone: companyDetails.contact.phone,
+              priceRange: "LKR",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: companyDetails.address.street,
+                addressLocality: companyDetails.address.city,
+                addressRegion: companyDetails.address.province,
+                postalCode: companyDetails.address.postalCode,
+                addressCountry: "LK",
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "Sri Lanka",
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ],
+                  opens: "09:00",
+                  closes: "17:00",
+                },
+              ],
+              sameAs: [
+                companyDetails.socialLinks.facebook,
+                companyDetails.socialLinks.linkedin,
+              ],
+            }),
+          }}
+        />
+
+        {/* Service Schema - Multiple Services */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: "POS System Development",
+                provider: {
+                  "@type": "Organization",
+                  name: companyDetails.name,
+                  url: companyDetails.contact.website,
+                },
+                areaServed: {
+                  "@type": "Country",
+                  name: "Sri Lanka",
+                },
+                serviceType: "Retail and Wholesale POS Software",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: "Web Development Services",
+                provider: {
+                  "@type": "Organization",
+                  name: companyDetails.name,
+                  url: companyDetails.contact.website,
+                },
+                areaServed: {
+                  "@type": "Country",
+                  name: "Sri Lanka",
+                },
+                serviceType: "Custom Web Development and E-commerce Solutions",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: "AI Integration Services",
+                provider: {
+                  "@type": "Organization",
+                  name: companyDetails.name,
+                  url: companyDetails.contact.website,
+                },
+                areaServed: {
+                  "@type": "Country",
+                  name: "Sri Lanka",
+                },
+                serviceType: "Artificial Intelligence and Business Automation",
+              },
+            ]),
+          }}
+        />
+
+        {/* ContactPoint Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              telephone: companyDetails.contact.phone,
+              email: companyDetails.contact.email,
+              availableLanguage: ["English", "Tamil"],
+              areaServed: "LK",
+            }),
+          }}
+        />
+
+        {/* SiteNavigationElement Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SiteNavigationElement",
+              name: ["Home", "POS System", "Pricing", "Contact"],
+              url: [
+                "https://vexelsystems.lk",
+                "https://vexelsystems.lk/pos",
+                "https://vexelsystems.lk/pricing",
+                "https://vexelsystems.lk/contact",
+              ],
             }),
           }}
         />
