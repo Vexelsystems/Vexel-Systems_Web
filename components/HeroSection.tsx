@@ -30,7 +30,7 @@ export function HeroSection() {
 
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
-            Web Development & AI Software Experts in Vavuniya
+            Software as a Service (SaaS) & AI Experts in Vavuniya
           </h2>
 
           {/* bg-clip-text creates gradient text effect */}

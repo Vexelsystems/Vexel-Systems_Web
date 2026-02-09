@@ -23,7 +23,6 @@ import { PageTransition } from "@/components/ui/PageTransition"; // Smooth page 
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
 import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
-import GoogleReviewFloater from "@/components/GoogleReviewFloater"; // Google Review Floater component
 import ScrollNavButtons from "@/components/ScrollNavButtons"; // Scroll navigation buttons
 import ScrollToTop from "@/components/ScrollToTop"; // Scroll to top on navigation
 
@@ -164,7 +163,6 @@ export default function RootLayout({
         {/* Global Client Components Wrapper (Bg, Toast, etc) */}
         <GlobalClientWrapper>
           <ScrollToTop />
-          <GoogleReviewFloater />
           <ScrollNavButtons />
           <div className="relative flex min-h-screen flex-col">
             <Navbar />

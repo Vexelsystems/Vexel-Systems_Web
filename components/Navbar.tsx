@@ -203,13 +203,7 @@ export default function Navbar() {
                 isDropdown: true,
                 hasPage: true,
               },
-              {
-                id: "products",
-                label: "Products",
-                href: "/products",
-                isDropdown: true,
-                hasPage: true,
-              },
+              { id: "products", label: "Products", href: "/products" },
               { id: "pricing", label: "Pricing", href: "/pricing" },
               {
                 id: "company",
@@ -436,49 +430,18 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Products Dropdown */}
-          <div>
-            <button
-              onClick={() => toggleMobileDropdown("products")}
-              className={`w-full flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
-                mobileOpenDropdown === "products" ||
-                pathname.startsWith("/products")
-                  ? "bg-primary/10 text-primary font-bold"
-                  : "text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold"
-              }`}
-            >
-              Products
-              <ChevronDown
-                size={20}
-                className={`transition-transform duration-300 ${mobileOpenDropdown === "products" ? "rotate-180" : ""}`}
-              />
-            </button>
-            {mobileOpenDropdown === "products" && (
-              <div className="mt-2 ml-4 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                <Link
-                  href="/products"
-                  className="block p-2 text-sm text-primary font-bold hover:underline"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  View All Products
-                </Link>
-                {navigation.products.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`block p-2 pl-4 text-sm border-l-2 transition-all duration-300 ${
-                      pathname === item.href
-                        ? "border-primary text-primary font-bold"
-                        : "border-gray-200 dark:border-gray-800 text-foreground/70 hover:border-primary hover:text-primary"
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Products */}
+          <Link
+            href="/products"
+            className={`flex items-center justify-between p-3 rounded-xl text-base font-medium transition-all duration-300 ${
+              pathname.startsWith("/products")
+                ? "bg-primary/10 text-primary font-bold"
+                : "text-foreground/80 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:font-bold"
+            }`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Products
+          </Link>
 
           {/* Pricing */}
           <Link

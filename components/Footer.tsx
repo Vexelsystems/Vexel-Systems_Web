@@ -149,6 +149,22 @@ export default function Footer() {
                     Schedule Consultation
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/quote"
+                    className="block py-1 text-primary font-bold hover:underline"
+                  >
+                    Get Quote
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="block py-1 text-primary font-bold hover:underline"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
               </ul>
             </FooterSection>
 
@@ -241,6 +257,62 @@ export default function Footer() {
                     className="text-foreground/70 hover:text-primary transition-colors"
                   >
                     IT Consulting
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/erp-system"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    ERP System
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/erp-sri-lanka"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    ERP in Sri Lanka
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/fingerprint-attendance"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Fingerprint Attendance System
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/employee-management"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Employee Management System
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/student-management"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Student Management System
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/lms"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Learning Management System
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/products/tuition-management"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Tuition Class Management System
                   </Link>
                 </li>
               </ul>

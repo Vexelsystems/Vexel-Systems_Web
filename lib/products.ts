@@ -21,6 +21,52 @@ import {
   List,
   UploadCloud,
   FileText,
+  Activity,
+  Cloud,
+  CreditCard,
+  Store,
+  ShoppingBag,
+  Utensils,
+  Bed,
+  HeartPulse,
+  Wrench,
+  Ticket,
+  Scissors,
+  Coffee,
+  Beer,
+  Music,
+  Anchor,
+  Home,
+  Monitor,
+  Printer,
+  Smartphone,
+  Tag,
+  Gift,
+  Truck,
+  Box,
+  Car,
+  Palette,
+  Flower,
+  Droplets,
+  Dumbbell,
+  Stethoscope,
+  Film,
+  BookOpen,
+  Book,
+  Building,
+  Factory,
+  Cpu,
+  Scale,
+  TreePine,
+  Gem,
+  Music2,
+  Sofa,
+  PawPrint,
+  Gamepad2,
+  Bike,
+  Hammer,
+  GraduationCap,
+  Banknote,
 } from "lucide-react";
 
 /**
@@ -126,13 +172,15 @@ export interface Product {
   caseStudies?: CaseStudyItem[]; // New: Case Studies
   partners?: PartnerItem[]; // New: Partners/Integrations
   process?: { step: string; description: string; icon?: LucideIcon }[]; // New: Workflow steps
+  startingPrice?: number; // LKR base price
+  maintenanceFee?: number; // LKR annual fee
 }
 
 export const products: Product[] = [
   {
     id: "vexel-track",
     slug: "vexel-track",
-    title: "Vexel Track",
+    title: "Vexel Track Fleet Management",
     tagline: "Real-Time Fleet & Asset Tracking",
     badge: "Logistics Engine",
     category: "MANAGEMENT SOLUTION",
@@ -315,7 +363,7 @@ export const products: Product[] = [
       {
         title: "Operational Efficiency",
         description:
-          "know exactly when deliveries will arrive and optimize driver schedules in real-time.",
+          "Know exactly when deliveries will arrive and optimize driver schedules in real-time.",
       },
     ],
     process: [
@@ -383,7 +431,7 @@ export const products: Product[] = [
           "98% On-time Deliveries",
           "Zero Unauthorized Trips",
         ],
-        image: "/products/Logistics.jpg", // Placeholder
+        image: "/products/Logistics.jpg",
       },
       {
         title: "City Cabs",
@@ -396,7 +444,7 @@ export const products: Product[] = [
           "Automated Maintenance",
           "25% Admin Time Saved",
         ],
-        image: "/products/Taxi.jpg", // Placeholder
+        image: "/products/Taxi.jpg",
       },
     ],
     testimonials: [
@@ -445,483 +493,390 @@ export const products: Product[] = [
       { name: "Dialog", logo: "/partners/dialog.png" },
     ],
     status: "development",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
   },
   {
-    id: "vexel-pos",
-    slug: "vexel-pos",
-    title: "Vexel POS (Point of Sale System)",
-    tagline: "Shop Billing & Inventory Management Software",
-    badge: "Market Benchmark",
-    category: "RETAIL & WHOLESALE SOLUTION",
+    id: "vexel-retail-pos",
+    slug: "vexel-retail-pos",
+    title: "Vexel Retail POS",
+    tagline: "Ultra-Fast Shop Billing & Inventory Management",
+    badge: "Market Standard",
+    category: "RETAIL SOLUTION",
     shortDescription:
-      "Run your shop without the stress. A smart, easy-to-use Point of Sale (POS System) that handles shop billing, inventory management, and customers.",
+      "A complete billing and inventory system for Grocery, Fashion, Electronics, Pharmacy, Hardware, Salon, Spa, Bar, Pub, Bookstore, Toy store, Pet store, Art store, Music Store, Garden center, Furniture shop, Beauty supply, and Bike shops.",
     fullDescription:
-      "Vexel POS is the nervous system of modern retail. We've reimagined the point of sale from a passive recorder to an active growth engine. Built on a hybrid architecture, it ensures your business never stops—processing transactions offline and syncing to the cloud instantly when connectivity returns. From predicting inventory needs to automating customer loyalty via WhatsApp, Vexel POS gives you the data-driven superpowers previously reserved for retail giants.",
+      "Vexel Retail POS is the ultimate point-of-sale solution for modern retail formats. It combines high-speed billing, intelligent inventory management, and deep customer analytics into one seamless platform. Whether you run a boutique, a pharmacy, or a bustling bar, Vexel Retail POS scales with you, offering hybrid offline/online capability and automated stock alerts.",
     mainImage: "/products/photo-1556742502-ec7c0e9f34b1.jpg",
     icon: ShoppingCart,
     checklist: [
-      "Online & Offline Hybrid Mode",
-      "Multi-Store Real-time Sync",
-      "WhatsApp & SMS Receipts",
-      "AI Inventory Prediction",
+      "High-Speed Barcode Billing",
+      "Real-time Inventory & Expiry Tracking",
+      "Multi-Store & Branch Sync",
+      "WhatsApp & SMS Digital Receipts",
     ],
     idealFor: [
-      "Supermarkets",
-      "Pharmacies",
-      "Fashion Retail",
-      "Multi-location Franchises",
+      "Grocery & Supermarkets",
+      "Fashion & Clothing Stores",
+      "Electronics & Tech Shops",
+      "Pharmacies & Drug Stores",
+      "Hardware & Building Materials",
+      "Salons & Spas",
+      "Bars & Pubs",
+      "Bookstores & Stationery",
+      "Toy & Game Stores",
+      "Pet Stores & Garden Centers",
+      "Furniture & Home Decor",
+      "Beauty & Cosmetics Supply",
+      "Art & Music Stores",
+      "Bike & Sports Shops",
     ],
     features: [
       {
-        title: "Speed",
+        title: "Industry Specific",
         description:
-          "Process transactions in under 3 seconds with our optimized checkout flow.",
+          "Pre-configured modules for 20+ retail sectors including unit conversion and serial tracking.",
         icon: Zap,
       },
       {
-        title: "Accuracy",
+        title: "Inventory Intelligence",
         description:
-          "Eliminate human error with barcode scanning and automated inventory deduction.",
-        icon: Target,
+          "Automatic stock level monitoring, low-stock alerts, and batch-wise expiry tracking.",
+        icon: Barcode,
       },
       {
-        title: "Security",
+        title: "Hybrid Performance",
         description:
-          "Role-based access control and encrypted data storage keep your business safe.",
+          "Fully functional offline billing that syncs instantly when internet is available.",
         icon: Shield,
       },
       {
-        title: "Analytics",
+        title: "Customer Loyalty",
         description:
-          "Real-time dashboards showing profit/loss, top sellers, and peak hours.",
-        icon: TrendingUp,
-      },
-    ],
-    detailedFeatures: [
-      {
-        category: "Sales & Checkout",
-        icon: ShoppingCart,
-        features: [
-          "Quick Sale Shortcuts",
-          "Multiple Payment Modes (Cash, Card, QR)",
-          "Split Bill Functionality",
-          "Park & Retrieve Sales",
-          "Digital Receipts (SMS/WhatsApp)",
-        ],
-      },
-      {
-        category: "Inventory Command",
-        icon: Barcode,
-        features: [
-          "Real-time Stock Tracking",
-          "Low Stock & Expiry Alerts",
-          "Batch & Serial Number Management",
-          "Supplier Purchase Orders",
-          "Stock Transfer Between Branches",
-        ],
-      },
-      {
-        category: "Customer & Loyalty",
+          "Built-in CRM to track purchase history, manage credit, and reward loyal customers.",
         icon: Users,
-        features: [
-          "Built-in CRM",
-          "Loyalty Points Program",
-          "Purchase History Tracking",
-          "Store Credit Management",
-          "Personalized Offers",
-        ],
-      },
-      {
-        category: "Reporting & Intelligence",
-        icon: TrendingUp,
-        features: [
-          "Daily Sales Reports (Email/App)",
-          "Profit & Loss Statements",
-          "Product Performance Analytics",
-          "Employee Sales Activity",
-          "GST/VAT Tax Reports",
-        ],
       },
     ],
     benefits: [
       {
-        title: "Zero Downtime",
+        title: "Efficiency Boost",
         description:
-          "Our hybrid mode ensures you keep selling even when the internet goes dark. Data syncs automatically.",
+          "Reduce billing time and eliminate manual inventory errors with automated workflows.",
       },
       {
-        title: "360° Control",
+        title: "Data-Driven Growth",
         description:
-          "From warehouse to checkout, see every item's journey in real-time across all your locations.",
+          "Make informed decisions with real-time sales analytics and customer behavior insights.",
       },
     ],
-    pricing: {
-      description:
-        "Scalable investment tiers designed for every stage of your business growth.",
-      options: [
-        {
-          name: "Starter",
-          price: "Free",
-          features: [
-            "Single User",
-            "1000 Products",
-            "Basic Reporting",
-            "Email Support",
-          ],
-        },
-        {
-          name: "Pro",
-          price: "LKR 12,500/mo",
-          features: [
-            "Unlimited Products",
-            "Inventory Alerts",
-            "Customer Loyalty",
-            "Cloud Backup",
-            "Accounting Integration",
-          ],
-          isPopular: true,
-        },
-        {
-          name: "Enterprise",
-          price: "Contact Sales",
-          features: [
-            "Multi-location Sync",
-            "Advanced Analytics",
-            "Custom Reporting",
-            "Dedicated Account Manager",
-            "API Access",
-          ],
-        },
-      ],
-    },
-    process: [
-      {
-        step: "Onboarding",
-        description:
-          "Add your store details, configure tax settings, and import your product list via Excel/CSV.",
-        icon: Zap,
-      },
-      {
-        step: "Selling",
-        description:
-          "Start processing sales instantly using the intuitive POS interface. Scan, tap, and print.",
-        icon: ShoppingCart,
-      },
-      {
-        step: "Management",
-        description:
-          "Track inventory levels in real-time as sales happen. Receive alerts for low stock.",
-        icon: Barcode,
-      },
-      {
-        step: "Insights",
-        description:
-          "View end-of-day reports to understand sales trends, peak hours, and top-performing staff.",
-        icon: TrendingUp,
-      },
-    ],
-    comparison: [
-      {
-        feature: "Cloud Backup",
-        vexel: true,
-        others: false,
-      },
-      {
-        feature: "Multi-location Sync",
-        vexel: true,
-        others: true,
-      },
-      {
-        feature: "Offline Reliability",
-        vexel: "Hybrid Core",
-        others: "Limited",
-      },
-      {
-        feature: "Inventory Alerts",
-        vexel: true,
-        others: true,
-      },
-      {
-        feature: "Customer Loyalty",
-        vexel: true,
-        others: false,
-      },
-    ],
-    caseStudies: [
-      {
-        title: "SuperMart One",
-        problem:
-          "Experienced frequent stockouts and slow checkout queues during peak hours.",
-        solution:
-          "Deployed Vexel POS with 3 terminals and automated inventory reordering.",
-        results: [
-          "40% Faster Checkouts",
-          "Zero Unplanned Stockouts",
-          "15% Increase in Sales",
-        ],
-        image: "/products/SuperMart.jpg", // Placeholder path
-      },
-      {
-        title: "City Pharmacy Chain",
-        problem:
-          "Struggled to manage expiry dates and stock transfers between 5 branches.",
-        solution:
-          "Implemented Vexel Enterprise with centralized multi-branch dashboard.",
-        results: [
-          "Real-time Expiry Alerts",
-          "Seamless Inter-branch Transfers",
-          "Unified Customer Data",
-        ],
-        image: "/products/Pharmacy.jpg", // Placeholder path
-      },
-    ],
-    testimonials: [
-      {
-        quote:
-          "Vexel POS transformed how we handle our rush hour. The offline mode is a lifesaver.",
-        author: "Nimal Perera",
-        role: "Owner",
-        company: "FreshGrocers",
-        rating: 5,
-      },
-      {
-        quote:
-          "The analytics are incredible. I finally know exactly which products are making me money.",
-        author: "Sarah J.",
-        role: "Manager",
-        company: "StyleHub Boutique",
-        rating: 5,
-      },
-    ],
-    faq: [
-      {
-        question: "Can I use Vexel POS offline?",
-        answer:
-          "Yes! Vexel POS works perfectly without an internet connection. All data is stored locally and syncs to the cloud automatically once you're back online.",
-      },
-      {
-        question: "Is my data backed up securely?",
-        answer:
-          "Absolutely. We use military-grade encryption and perform automated daily backups to secure cloud servers to ensure your data is never lost.",
-      },
-      {
-        question: "Does it support multiple stores?",
-        answer:
-          "Yes, our Enterprise plan is built for multi-location businesses. You can manage inventory, staff, and reports for all branches from a single dashboard.",
-      },
-      {
-        question: "How long does setup take?",
-        answer:
-          "Most businesses are up and running within 24 hours. Our team assists with product import and hardware setup to ensure a smooth transition.",
-      },
-    ],
-    partners: [
-      { name: "Stripe", logo: "/partners/stripe.png" },
-      { name: "Xero", logo: "/partners/xero.png" },
-      { name: "QuickBooks", logo: "/partners/quickbooks.png" },
-    ],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
     status: "production",
+  },
+  {
+    id: "vexel-wholesale-pos",
+    slug: "vexel-wholesale-pos",
+    title: "Vexel Wholesale POS",
+    tagline: "B2B Distribution & Bulk Billing Management",
+    badge: "B2B Standard",
+    category: "WHOLESALE SOLUTION",
+    shortDescription:
+      "Specialized for wholesalers and distributors with tiered pricing, credit management, and bulk order processing.",
+    fullDescription:
+      "Vexel Wholesale POS is engineered for the complexities of B2B distribution. Manage large-scale inventories, complex pricing tiers, and customer credit limits with ease. Integrated with delivery route optimization and bulk invoice generation to streamline your distribution network.",
+    mainImage: "/products/pos/wholesale.jpg",
+    icon: Building,
+    checklist: [
+      "Tiered Pricing & Bulk Discounts",
+      "Customer Credit & Limit Control",
+      "Route Optimization for Delivery",
+      "Full Inventory Synchronisation",
+    ],
+    idealFor: [
+      "Wholesalers",
+      "Distributors",
+      "B2B Suppliers",
+      "Warehouse Outlets",
+    ],
+    features: [
+      {
+        title: "Credit Control",
+        description:
+          "Manage customer credit limits and outstanding payments automatically.",
+        icon: Banknote,
+      },
+      {
+        title: "Bulk Billing",
+        description:
+          "Generate hundreds of invoices and packing slips in seconds.",
+        icon: Receipt,
+      },
+    ],
+    benefits: [
+      {
+        title: "Scale Operations",
+        description: "Handle high-volume orders without manual data entry.",
+      },
+    ],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
   },
   {
     id: "vexel-hire",
     slug: "vexel-hire",
     title: "Vexel Hire",
-    tagline: "The AI That Reads Resumes.",
-    badge: "Recruitment Intelligence",
-    badgeColor: "bg-purple-500",
-    category: "RECRUITMENT TECH",
+    tagline: "AI CV Filtering & Smart Recruitment",
+    badge: "Efficiency Pro",
+    category: "MANAGEMENT SOLUTION",
     shortDescription:
-      "Stop drowning in resumes. Just upload your CVs, tell us who you're looking for, and let our AI find the perfect candidate for you in seconds.",
+      "Filter thousands of CVs instantly and identify the best candidates for your job descriptions using our smart recruitment engine.",
     fullDescription:
-      "Vexel Hire turns your dormant folder of PDF resumes into a searchable, intelligent talent pool. Stop manually screening hundreds of CVs. Simply drag-and-drop your bulk resume files, and our AI indexes every skill, experience, and nuance. When a new role opens, just describe your ideal candidate in plain English, and Vexel Hire instantly filters and ranks the best matches from your own database. It's not just an ATS; it's a recruitment brain.",
-    mainImage: "/products/photo-1551288049-bebda4e38f71.jpg",
-    icon: Filter,
+      "Vexel Hire streamlines your recruitment process. Upload batches of CVs, define your job descriptions, and let our engine filter through the noise to find the perfect match. Manage bookings, interviews, and payments in one centralized platform.",
+    mainImage: "/products/photo-1586769852836-bc069f19e1b6.jpg",
+    icon: Fingerprint,
     checklist: [
-      "Bulk CV Parsing",
-      "Semantic Candidate Search",
-      "Instant AI Shortlisting",
-      "Talent Pool Analytics",
+      "Automated CV Filtering",
+      "Job Description Matching",
+      "Candidate Ranking System",
+      "Interview & Booking Management",
     ],
     idealFor: [
-      "Recruitment Agencies",
       "HR Departments",
-      "Headhunters",
-      "Rapid Scaling Startups",
+      "Recruitment Agencies",
+      "Logistics Companies hiring drivers",
+      "Growing Businesses",
     ],
-    features: [
-      {
-        title: "Bulk Upload",
-        description:
-          "Drag and drop thousands of CVs (PDF/Docx) at once. We handle the parsing and indexing automatically.",
-        icon: UploadCloud,
-      },
-      {
-        title: "Semantic Filter",
-        description:
-          "Search by intent, not just keywords. 'Find a React dev who knows AWS' works instantly.",
-        icon: Search,
-      },
-      {
-        title: "Smart Shortlist",
-        description:
-          "Create a job profile and let the system rank your existing candidates by relevance score.",
-        icon: List,
-      },
-      {
-        title: "CV Bank",
-        description:
-          "Build a permanent, searchable asset of talent. Never pay to find the same candidate twice.",
-        icon: Database,
-      },
+    features: [],
+    benefits: [],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
+  },
+  {
+    id: "restaurant-pos",
+    slug: "restaurant-pos",
+    title: "Vexel Restaurant POS",
+    tagline: "Fine Dining & Quick Service",
+    badge: "Hospitality",
+    category: "Food & Beverage",
+    shortDescription: "Table management and kitchen order system.",
+    fullDescription:
+      "Complete restaurant management with table layouts, kitchen display system, recipe costing, and reservation management.",
+    mainImage: "/products/pos/restaurant.jpg",
+    icon: Utensils,
+    checklist: [
+      "Table Management",
+      "Kitchen Display System",
+      "Recipe Costing",
+      "Reservation System",
     ],
-    roadmap: [
-      {
-        phase: "Phase 1: Parsing Engine",
-        date: "Q1 2025",
-        description:
-          "Development of PDF/Word parsing algorithm and text extraction.",
-        items: [
-          "OCR Integration",
-          "Format Normalization",
-          "Keyword Extraction",
-        ],
-        status: "current",
-      },
-      {
-        phase: "Phase 2: Semantic Core",
-        date: "Q3 2025",
-        description:
-          "Implementation of vector database for context-aware searching.",
-        items: [
-          "Vector Embeddings",
-          "Natural Language Search",
-          "Matching Algorithm",
-        ],
-        status: "future",
-      },
-      {
-        phase: "Phase 3: Beta Launch",
-        date: "Early 2026",
-        description: "Closed beta for select recruitment partners.",
-        items: ["UI Dashboard", "Batch Processing", "Export Tools"],
-        status: "future",
-      },
-      {
-        phase: "Phase 4: Public Release",
-        date: "Start 2027",
-        description: "Full commercial availability with API for job boards.",
-        items: ["API Gateway", "LinkedIn Integration", "White-labeling"],
-        status: "future",
-      },
+    idealFor: ["Restaurants", "Fine Dining", "Quick Service"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "cafe-pos",
+    slug: "cafe-pos",
+    title: "Vexel Cafe POS",
+    tagline: "Quick Serve",
+    badge: "Hospitality",
+    category: "Food & Beverage",
+    shortDescription: "Modifier management & barista workflows.",
+    fullDescription:
+      "Specialized cafe system with drink modifiers, barista stations, loyalty programs, and mobile ordering.",
+    mainImage: "/products/pos/cafe.jpg",
+    icon: Coffee,
+    checklist: [
+      "Drink Modifiers",
+      "Barista Station Management",
+      "Loyalty Programs",
+      "Mobile Ordering",
     ],
-    benefits: [
-      {
-        title: "Instant Recall",
-        description:
-          "Find candidates you met 2 years ago who are perfect for today's job.",
-      },
-      {
-        title: "Bias Reduction",
-        description:
-          "Filter based on skills and match score, ignoring formatting or photos.",
-      },
+    idealFor: ["Cafes", "Coffee Shops", "Juice Bars"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "hotel-pos",
+    slug: "hotel-pos",
+    title: "Vexel Hotel/Resort POS",
+    tagline: "Hospitality Management Suite",
+    badge: "Hospitality",
+    category: "Hospitality & Travel",
+    shortDescription: "Room service & amenities billing management.",
+    fullDescription:
+      "Complete hotel management system integrating room service, amenities billing, minibar tracking, and guest folio management.",
+    mainImage: "/products/pos/hotel.jpg",
+    icon: Bed,
+    checklist: [
+      "Room Service Integration",
+      "Minibar Tracking",
+      "Guest Folio Management",
+      "Amenities Billing",
     ],
-    pricing: {
-      description: "Pay for storage and processing power, not per seat.",
-      options: [
-        {
-          name: "Standard",
-          price: "LKR 15,000/mo",
-          features: ["Store 1,000 CVs", "Unlimited Searches", "Basic Parsing"],
-        },
-        {
-          name: "Agency",
-          price: "LKR 45,000/mo",
-          features: [
-            "Store 10,000 CVs",
-            "Advanced Semantic Search",
-            "bulk Export",
-          ],
-          isPopular: true,
-        },
-        {
-          name: "Enterprise",
-          price: "Custom",
-          features: [
-            "Unlimited Storage",
-            "On-Premise Deployment",
-            "Custom ML Models",
-          ],
-        },
-      ],
-    },
-    comparison: [
-      {
-        feature: "Search Type",
-        vexel: "Semantic (Meaning)",
-        others: "Keyword (Exact)",
-      },
-      { feature: "Bulk Processing", vexel: "Unlimited", others: "Capped" },
-      { feature: "Re-ranking", vexel: "AI-Powered", others: "Manual" },
-      { feature: "Setup Time", vexel: "Instant", others: "Weeks" },
+    idealFor: ["Hotels", "Resorts", "Hospitality Businesses"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "cinema-pos",
+    slug: "cinema-pos",
+    title: "Vexel Cinema/Theater POS",
+    tagline: "Entertainment Venue Management",
+    badge: "Entertainment",
+    category: "Entertainment & Events",
+    shortDescription: "Seat selection & concession sales management.",
+    fullDescription:
+      "Specialized cinema management with seat selection, showtime scheduling, concession combo deals, and loyalty programs.",
+    mainImage: "/products/pos/cinema.jpg",
+    icon: Film,
+    checklist: [
+      "Seat Selection System",
+      "Showtime Management",
+      "Concession Combo Deals",
+      "Movie Club Loyalty",
     ],
-    caseStudies: [
-      {
-        title: "SwiftRecruit",
-        problem: "Database of 50,000 CVs was unsearchable.",
-        solution: "Indexed typically using Vexel Hire.",
-        results: [
-          "Found 15 Placements Instantly",
-          "Saved 100+ Hours Screening",
-        ],
-      },
+    idealFor: ["Cinemas", "Movie Theaters", "Entertainment Venues"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "event-pos",
+    slug: "event-pos",
+    title: "Vexel Event/Ticketing POS",
+    tagline: "Ticketing & Venue Management",
+    badge: "Events",
+    category: "Entertainment & Events",
+    shortDescription: "Ticketing & venue management features.",
+    fullDescription:
+      "Specialized event management with ticketing, access control, merchandise sales, and sponsorship management.",
+    mainImage: "/products/pos/event.jpg",
+    icon: Ticket,
+    checklist: [
+      "Ticketing System",
+      "Access Control Integration",
+      "Merchandise Sales",
+      "Sponsorship Management",
     ],
-    testimonials: [
-      {
-        quote:
-          "I used to spend half my day scheduling calls. Vexel Hire does it for me now. Game changer.",
-        author: "Ashini D.",
-        role: "HR Manager",
-        company: "SoftSolutions",
-        rating: 5,
-      },
-      {
-        quote:
-          "The ability to move a candidate to 'Hired' and instantly create their employee file is brilliant.",
-        author: "Rohan S.",
-        role: "Director",
-        company: "Apex Logistics",
-        rating: 5,
-      },
+    idealFor: ["Event Venues", "Concert Halls", "Stadiums", "Theaters"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "rental-pos",
+    slug: "rental-pos",
+    title: "Vexel Rental/Equipment POS",
+    tagline: "Asset Rental Management",
+    badge: "Rental",
+    category: "Automotive & Industrial",
+    shortDescription: "Asset rental management and period tracking.",
+    fullDescription:
+      "Specialized rental business management with rental period tracking, deposit management, late fee calculation, and asset maintenance scheduling.",
+    mainImage: "/products/pos/rental.jpg",
+    icon: Calendar,
+    checklist: [
+      "Rental Period Tracking",
+      "Deposit Management",
+      "Late Fee Calculation",
+      "Asset Maintenance Scheduling",
     ],
-    faq: [
-      {
-        question: "Can I post jobs to multiple platforms?",
-        answer:
-          "Yes, Vexel Hire integrates with major job boards and social media. You create the post once, and we distribute it.",
-      },
-      {
-        question: "Is candidate data secure?",
-        answer:
-          "Absolutely. We adhere to strict data privacy regulations (GDPR compliant) and use end-to-end encryption for all personal data.",
-      },
-      {
-        question: "Does it work for small teams?",
-        answer:
-          "Yes! Our Basic plan is specifically designed for startups and small businesses to professionalize their hiring without breaking the bank.",
-      },
-      {
-        question: "Can I migrate existing data?",
-        answer:
-          "Yes, we offer bulk import tools for CSV/Excel files to bring your existing candidate database and employee records into Vexel Hire.",
-      },
+    idealFor: ["Equipment Rentals", "Car Rentals", "Tool Rentals"],
+    features: [],
+    benefits: [],
+    status: "active",
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+  },
+  {
+    id: "vexel-education",
+    slug: "education-pos",
+    title: "Vexel Education Institution POS",
+    tagline: "Campus Commerce Management",
+    badge: "Education",
+    category: "Education",
+    shortDescription: "Student billing and campus store management.",
+    fullDescription:
+      "Specialized education institution management with student billing, campus store sales, cafeteria management, and event ticketing.",
+    mainImage: "/products/pos/education.jpg",
+    icon: GraduationCap,
+    checklist: [
+      "Student Billing System",
+      "Campus Store Management",
+      "Cafeteria Sales",
+      "Event Ticketing",
     ],
-    partners: [
-      { name: "LinkedIn", logo: "/partners/linkedin.png" },
-      { name: "Zoom", logo: "/partners/zoom.png" },
-      { name: "Slack", logo: "/partners/slack.png" },
+    idealFor: ["Universities", "Colleges", "Schools", "Training Centers"],
+    features: [],
+    benefits: [],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
+  },
+  {
+    id: "vexel-attendance",
+    slug: "vexel-attendance",
+    title: "Vexel St Attendance",
+    tagline: "Secure & Automated Monitoring",
+    badge: "Smart Campus",
+    category: "MANAGEMENT SOLUTION",
+    shortDescription: "Advanced QR and Fingerprint based attendance tracking.",
+    fullDescription:
+      "Ensure student safety and accuracy in records. Our attendance system integrates with QR codes, RFID cards, and biometric devices to provide real-time entry/exit logs with instant parent notifications.",
+    mainImage: "/products/attendance.jpg",
+    icon: Users,
+    checklist: [
+      "Biometric/QR Integration",
+      "Real-time Entry Alerts",
+      "Latecomer Management",
+      "Automated Reports",
     ],
-    status: "development",
+    idealFor: ["Schools", "Universities", "St Attendance Centers"],
+    features: [],
+    benefits: [],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
+  },
+  {
+    id: "vexel-transport",
+    slug: "vexel-transport",
+    title: "Vexel Transport Management System",
+    tagline: "Unified Fleet Operations",
+    badge: "Logistics Pro",
+    category: "MANAGEMENT SOLUTION",
+    shortDescription: "End-to-end transport and fleet management solution.",
+    fullDescription:
+      "Specifically designed for Sri Lankan transport providers. Manage vehicle maintenance, driver assignments, fuel tracking, and route efficiency in one powerful dashboard.",
+    mainImage: "/products/transport.jpg",
+    icon: Truck,
+    checklist: [
+      "Vehicle Maintenance Logs",
+      "Driver Performance Tracking",
+      "Fuel Consumption Analytics",
+      "Route Profitability Mapping",
+    ],
+    idealFor: ["Transport Companies", "School Bus Services", "Cargo Providers"],
+    features: [],
+    benefits: [],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
   },
 ];
 

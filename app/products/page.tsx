@@ -1,252 +1,362 @@
+"use client";
+
 /**
  * PRODUCTS LIST PAGE
  *
  * Layout Strategy:
  * - Responsive design: Standard stack on mobile, flexible grid on desktop
- * - SnapCarousel used for product cards to allow swipeable list on mobile, grid on desktop
- * - Images optimized with 'priority' for LCP candidates
+ * - Search & Filter: Real-time product discovery
+ * - Schema.org: SoftwareApplication rich snippets for SEO
  */
 
+import { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   CheckCircle,
   ArrowRight,
-  Activity,
-  Calendar,
-  Cloud,
-  Store,
+  Search as SearchIcon,
+  Filter as FilterIcon,
+  X,
   CreditCard,
-  ChevronRight,
+  Zap,
 } from "lucide-react";
-import { products } from "@/lib/products";
+import { products, type Product } from "@/lib/products";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { TypewriterText } from "@/components/hero/TypewriterText";
-
-import { generatePageMetadata } from "@/lib/seo";
-
-export const metadata = generatePageMetadata({
-  title: "Our Products",
-  description: "Business Software & POS Systems",
-  keywords: [
-    "Vexel Systems products",
-    "Vexel POS",
-    "Vexel Track",
-    "Vexel Hire",
-    "business software suite",
-    "enterprise solutions Sri Lanka",
-    "startup software tools",
-    "ready-made software solutions",
-    "SaaS products Sri Lanka",
-    "HR software",
-    "inventory management system",
-    "fleet tracking software",
-    "Vexel software ecosystem",
-  ],
-  path: "/products",
-});
-
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
+const CATEGORIES = [
+  "All",
+  "MANAGEMENT SOLUTION",
+  "Retail & Specialty Stores",
+  "Food & Beverage",
+  "Hospitality & Travel",
+  "Healthcare & Wellness",
+  "Automotive & Industrial",
+  "Entertainment & Events",
+  "Service & Personal Care",
+  "Education",
+];
+
+// List of Sri Lankan Districts for SEO Context
+const SL_DISTRICTS = [
+  "Colombo",
+  "Gampaha",
+  "Kalutara",
+  "Kandy",
+  "Matale",
+  "Nuwara Eliya",
+  "Galle",
+  "Matara",
+  "Hambantota",
+  "Jaffna",
+  "Kilinochchi",
+  "Mannar",
+  "Vavuniya",
+  "Mullaitivu",
+  "Batticaloa",
+  "Ampara",
+  "Trincomalee",
+  "Kurunegala",
+  "Puttalam",
+  "Anuradhapura",
+  "Polonnaruwa",
+  "Badulla",
+  "Moneragala",
+  "Ratnapura",
+  "Kegalle",
+];
+
 export default function Products() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesCategory =
+        activeCategory === "All" || product.category.includes(activeCategory);
+      return matchesCategory;
+    });
+  }, [activeCategory]);
+
+  // Schema.org SoftwareApplication markup
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Vexel Systems | Premium Business Suite",
+    description: `Premium enterprise software solutions for businesses in ${SL_DISTRICTS.slice(0, 5).join(", ")} and across Sri Lanka.`,
+    itemListElement: filteredProducts.slice(0, 10).map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: product.title,
+        operatingSystem: "Web, Windows, Android, iOS",
+        applicationCategory: "BusinessApplication",
+        offers: {
+          "@type": "Offer",
+          price: product.startingPrice || "60000",
+          priceCurrency: "LKR",
+        },
+        description: product.shortDescription,
+      },
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-transparent">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+      />
+
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
+      <section className="relative min-h-[70vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
-        {/* Background Gradients & Grid */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
         <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
-          {/* Hero Badge Replicated */}
           <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
             <div className="size-2 rounded-full bg-primary"></div>
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80 transition-colors">
-              Our Products
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80">
+              Sri Lanka's Prime Software Hub
             </span>
           </div>
 
           <MotionWrapper type="slideLeft" duration={1.2}>
             <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-              <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
-                Proprietary Solutions
-              </h2>
-
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
-                <span className="text-foreground">Powerful Software</span>
+                <span className="text-foreground">
+                  Vexel Systems Business Suite
+                </span>
                 <TypewriterText
                   phrases={[
-                    "For Your Growth.",
-                    "For Efficiency.",
+                    "For All 25 Districts.",
+                    "For Smart Tuition.",
+                    "For Better Logistics.",
                     "For Modern Retail.",
-                    "For Scale.",
                   ]}
                 />
               </h1>
-
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                Proprietary solutions designed to streamline your{" "}
-                <Link href="/services" className="text-primary hover:underline">
-                  business management
-                </Link>{" "}
-                and retail operations with cutting-edge technology.
+                Leading software provider for businesses in Colombo, Vavuniya,
+                Kandy and nationwide. Custom-built solutions starting from{" "}
+                <span className="text-primary font-bold">LKR 60,000</span>.
               </p>
             </div>
           </MotionWrapper>
 
-          {/* Hero Actions Replicated */}
-          <MotionWrapper delay={0.2}>
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-2">
-              <button className="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-black transition-all shadow-2xl shadow-primary/30 flex items-center gap-3 group relative overflow-hidden">
-                Explore Products
-                <ArrowRight
-                  size={20}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </button>
-
-              <Link href="/contact">
-                <button className="px-10 py-5 rounded-2xl text-lg font-black border-2 border-foreground/10 hover:border-primary/30 transition-all backdrop-blur-sm">
-                  Book Demo
-                </button>
-              </Link>
+          {/* Search & Filter Bar */}
+          <MotionWrapper delay={0.2} className="w-full max-w-3xl mt-8">
+                <div className="flex-1 px-6">
+                  <span className="text-foreground/60 font-medium">Browse our comprehensive software collection</span>
+                </div>
+                <div className="h-10 w-[1px] bg-white/10 hidden md:block"></div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-2xl border border-primary/20 min-w-fit">
+                  <FilterIcon size={18} className="text-primary" />
+                  <span className="text-sm font-bold text-primary uppercase tracking-wider">
+                    {filteredProducts.length} Results
+                  </span>
+                </div>
+              </div>
             </div>
           </MotionWrapper>
         </div>
       </section>
 
-      {/* Section Header */}
-      <div className="w-full max-w-[1200px] px-6 mt-12 mx-auto">
-        <MotionWrapper delay={0.2}>
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-1 bg-primary rounded-full"></div>
-            <h2 className="text-2xl font-bold leading-tight tracking-tight text-foreground">
-              Our Proprietary Solutions
-            </h2>
-          </div>
-        </MotionWrapper>
+      {/* Category Chips */}
+      <div className="w-full max-w-[1400px] px-6 mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 py-4">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all border ${
+                activeCategory === cat
+                  ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105"
+                  : "bg-white/5 text-foreground/60 border-white/10 hover:border-primary/50 hover:text-primary"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Product Grid - Mobile Horizontal Scroll, Desktop Grid */}
-      <div className="w-full max-w-[1200px] px-6 py-8 mx-auto">
-        <MotionWrapper type="slideRight" delay={0.3} duration={1.2}>
-          <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-2 gap-8">
-            {products.map((product) => {
+      {/* Product Grid */}
+      <div className="w-full max-w-[1400px] px-6 py-12 mx-auto">
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {filteredProducts.map((product) => {
               const Icon = product.icon;
               return (
-                <div
-                  key={product.id}
-                  className="min-w-[85vw] md:min-w-0 snap-center flex flex-col rounded-2xl shadow-xl shadow-black/5 bg-white dark:bg-black/20 overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100 dark:border-gray-800"
-                >
-                  <div className="w-full h-64 relative">
-                    <Image
-                      src={product.mainImage}
-                      alt={product.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 85vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
-                    <div className="absolute bottom-4 left-6 flex items-center gap-2">
-                      <span className="bg-black/50 p-2 rounded-lg backdrop-blur-sm">
-                        <Icon className="text-primary" size={24} />
-                      </span>
-                      <span className="bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        {product.badge}
-                      </span>
+                <MotionWrapper type="slideUp" key={product.id}>
+                  <div className="flex flex-col rounded-3xl shadow-xl shadow-black/5 bg-white dark:bg-zinc-900/50 overflow-hidden group hover:-translate-y-3 transition-all duration-500 border border-gray-100 dark:border-white/5 relative hover:shadow-2xl hover:shadow-primary/20">
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute top-0 right-0 p-4">
+                      <div className="px-3 py-1.5 rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20">
+                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">
+                          {product.badge}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col p-6 gap-4 grow">
-                    <div>
-                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">
-                        {product.category}
-                      </p>
-                      <h3 className="text-2xl font-bold text-foreground">
-                        {product.title}
-                      </h3>
-                      <p className="text-sm opacity-70 mt-1 font-medium italic text-foreground/80">
-                        {product.tagline}
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {/* Limit checklist on mobile to save space? keeping full for now as card is swipeable */}
-                      {product.checklist.slice(0, 4).map((item, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3 text-sm opacity-80 text-foreground"
-                        >
-                          <CheckCircle className="text-primary" size={18} />
-                          {item}
-                        </div>
-                      ))}
-                      {product.checklist.length > 4 && (
-                        <p className="text-xs text-primary font-bold pl-8">
-                          + {product.checklist.length - 4} more features
+
+                    <div className="p-8 pb-0">
+                      <div className="size-14 rounded-2xl bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-primary/5">
+                        <Icon size={32} />
+                      </div>
+
+                      <div className="min-h-[120px]">
+                        <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-2 opacity-80">
+                          {product.category}
                         </p>
-                      )}
-                    </div>
-                    <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
-                      <p className="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tighter mb-2">
-                        Ideal For
-                      </p>
-                      <div className="flex gap-2 flex-wrap">
-                        {product.idealFor.map((tag) => (
+                        <h3 className="text-2xl font-black text-foreground leading-tight group-hover:text-primary transition-colors">
+                          {product.title}
+                        </h3>
+                        <div className="mt-2 flex flex-wrap gap-1">
+                          <span className="text-[10px] font-bold text-foreground/40 uppercase">
+                            Ideal for:
+                          </span>
+                          {product.idealFor.slice(0, 3).map((target, idx) => (
+                            <span
+                              key={idx}
+                              className="text-[10px] font-bold text-primary/80 uppercase"
+                            >
+                              {target}
+                              {idx < Math.min(product.idealFor.length, 3) - 1
+                                ? ","
+                                : ""}
+                            </span>
+                          ))}
+                        </div>
+                        <p className="text-sm opacity-70 mt-3 font-medium text-foreground/80 line-clamp-2 leading-relaxed">
+                          {product.tagline}
+                        </p>
+                      </div>
+
+                      <div className="mt-6 flex flex-col gap-3">
+                        {product.checklist.slice(0, 5).map((item, i) => (
                           <div
-                            key={tag}
-                            className="flex h-7 items-center justify-center rounded-lg bg-primary/10 px-3 text-[12px] font-semibold text-primary"
+                            key={i}
+                            className="flex items-center gap-3 text-[13px] font-medium text-foreground/80"
                           >
-                            {tag}
+                            <CheckCircle
+                              className="text-primary shrink-0"
+                              size={16}
+                            />
+                            <span className="truncate">{item}</span>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <Link
-                      href={`/products/${product.slug}`}
-                      className="w-full mt-4 flex items-center justify-center gap-2 rounded-xl h-11 bg-primary text-white text-sm font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20"
-                    >
-                      View Details
-                      <ArrowRight size={18} />
-                    </Link>
+
+                    <div className="mt-8 p-8 pt-6 bg-zinc-50 dark:bg-zinc-900/80 border-t border-gray-100 dark:border-white/5">
+                      <div className="flex items-end justify-between mb-6">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                            Starting from
+                          </span>
+                          <p className="text-lg font-black text-foreground italic">
+                            LKR{" "}
+                            {product.startingPrice?.toLocaleString() ||
+                              "60,000"}
+                            +
+                          </p>
+                        </div>
+                        <div className="flex flex-col items-end gap-1">
+                          <span className="text-[10px] font-black text-primary/60 uppercase tracking-widest">
+                            Maintenance
+                          </span>
+                          <p className="text-xs font-bold text-primary">
+                            LKR{" "}
+                            {product.maintenanceFee?.toLocaleString() ||
+                              "15,000"}
+                            /yr
+                          </p>
+                        </div>
+                      </div>
+
+                      <Link
+                        href={`/contact?subject=Get Quote: ${product.title}`}
+                        className="w-full flex items-center justify-center gap-2 rounded-2xl h-14 bg-primary text-white text-sm font-black hover:brightness-110 transition-all shadow-xl shadow-primary/30 uppercase tracking-[0.2em] overflow-hidden relative group/btn"
+                      >
+                        <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
+                        Get Quote
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </MotionWrapper>
               );
             })}
-          </SnapCarousel>
-        </MotionWrapper>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
+            <div className="size-20 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <SearchIcon size={40} />
+            </div>
+            <h3 className="text-2xl font-black text-foreground">
+              No Solutions Found
+            </h3>
+            <p className="text-foreground/60 max-w-md">
+              We couldn't find any products matching "{searchQuery}" in the{" "}
+              {activeCategory} category. Try adjusting your search or contact us
+              for a custom solution.
+            </p>
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setActiveCategory("All");
+              }}
+              className="mt-4 text-primary font-bold hover:underline"
+            >
+              Clear all filters
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Custom Solution CTA */}
-      <div className="w-full max-w-[1200px] px-6 py-20 mx-auto">
+      <div className="w-full max-w-[1400px] px-6 py-20 mx-auto">
         <MotionWrapper type="scale" delay={0.5}>
-          <div className="relative rounded-3xl bg-black dark:bg-[#1a3330] p-12 overflow-hidden border border-white/5">
-            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-primary opacity-10 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-primary opacity-10 rounded-full blur-[80px]"></div>
+          <div className="relative rounded-[3rem] bg-zinc-950 p-12 md:p-20 overflow-hidden border border-white/5">
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[600px] h-[600px] bg-primary opacity-10 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-primary opacity-10 rounded-full blur-[100px]"></div>
 
-            <div className="relative flex flex-col items-center text-center gap-6 z-10">
-              <h2 className="text-3xl md:text-4xl font-black text-white max-w-2xl">
-                Need a{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">
-                  Custom Product
+            <div className="relative flex flex-col items-center text-center gap-8 z-10">
+              <div className="flex items-center gap-3 px-4 py-2 rounded-xl bg-primary/20 border border-primary/30">
+                <Zap size={20} className="text-primary fill-primary" />
+                <span className="text-xs font-black text-primary uppercase tracking-[0.2em]">
+                  Custom Engineering
                 </span>
-                ? <br />
-                <span className="text-primary">We Build It for You.</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-white max-w-3xl leading-[1.1]">
+                Need a Unique <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-400">
+                  Business System
+                </span>
+                ?
               </h2>
-              <p className="text-gray-400 max-w-lg text-lg">
-                Have a unique business challenge? Our engineering team
-                specializes in crafting{" "}
-                <Link href="/services" className="text-primary hover:underline">
-                  tailored software solutions
-                </Link>{" "}
-                for complex workflows.
+              <p className="text-gray-400 max-w-2xl text-lg md:text-xl leading-relaxed">
+                From Transport tracking to tailored ERPs, our Colombo-based
+                engineering team builds high-performance software for Sri
+                Lanka's leading companies.
               </p>
-              <Link
-                href="/contact"
-                className="flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-white dark:bg-zinc-900 text-primary text-base font-bold hover:bg-primary hover:text-white transition-colors"
-              >
-                Book a Consultation
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-6 mt-4">
+                <Link
+                  href="/contact"
+                  className="flex min-w-[240px] cursor-pointer items-center justify-center rounded-2xl h-16 px-10 bg-primary text-white text-base font-black hover:brightness-110 transition-all shadow-2xl shadow-primary/40 uppercase tracking-widest"
+                >
+                  Book Consultation
+                </Link>
+                <Link
+                  href="/services"
+                  className="flex min-w-[240px] cursor-pointer items-center justify-center rounded-2xl h-16 px-10 bg-white/5 text-white border border-white/10 text-base font-black hover:bg-white/10 transition-all uppercase tracking-widest"
+                >
+                  View Services
+                </Link>
+              </div>
             </div>
           </div>
         </MotionWrapper>
