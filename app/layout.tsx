@@ -371,20 +371,20 @@ export default function RootLayout({
           }}
         />
 
-        {/* LocalBusiness Schema for Local SEO */}
+        {/* LocalBusiness Schema for Multi-Region Local SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "@id": "https://vexelsystems.lk/#localbusiness",
+              "@id": "https://vexelsystems.lk/#vavuniya",
               name: companyDetails.name,
               url: companyDetails.contact.website,
               logo: `${BASE_URL}/VLogo.png`,
               image: `${BASE_URL}/VLogo.png`,
               description:
-                "Vexel Systems is a Sri Lankan software company offering POS systems, billing software, and inventory management solutions.",
+                "Vexel Systems provides POS systems, billing software, and inventory management solutions in Vavuniya and across Northern Province, Eastern Province, and Colombo, Sri Lanka.",
               email: companyDetails.contact.email,
               telephone: companyDetails.contact.phone,
               priceRange: "LKR",
@@ -396,10 +396,68 @@ export default function RootLayout({
                 postalCode: companyDetails.address.postalCode,
                 addressCountry: "LK",
               },
-              areaServed: {
-                "@type": "Country",
-                name: "Sri Lanka",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.7514",
+                longitude: "80.4971",
               },
+              areaServed: [
+                // Western Province
+                { "@type": "City", name: "Colombo" },
+                { "@type": "City", name: "Gampaha" },
+                { "@type": "City", name: "Kalutara" },
+                // Central Province
+                { "@type": "City", name: "Kandy" },
+                { "@type": "City", name: "Matale" },
+                { "@type": "City", name: "Nuwara Eliya" },
+                // Southern Province
+                { "@type": "City", name: "Galle" },
+                { "@type": "City", name: "Matara" },
+                { "@type": "City", name: "Hambantota" },
+                // Northern Province
+                { "@type": "City", name: "Jaffna" },
+                { "@type": "City", name: "Kilinochchi" },
+                { "@type": "City", name: "Mannar" },
+                { "@type": "City", name: "Vavuniya" },
+                { "@type": "City", name: "Mullaitivu" },
+                // Eastern Province
+                { "@type": "City", name: "Trincomalee" },
+                { "@type": "City", name: "Batticaloa" },
+                { "@type": "City", name: "Ampara" },
+                // North Western Province
+                { "@type": "City", name: "Kurunegala" },
+                { "@type": "City", name: "Puttalam" },
+                // North Central Province
+                { "@type": "City", name: "Anuradhapura" },
+                { "@type": "City", name: "Polonnaruwa" },
+                // Uva Province
+                { "@type": "City", name: "Badulla" },
+                { "@type": "City", name: "Monaragala" },
+                // Sabaragamuwa Province
+                { "@type": "City", name: "Ratnapura" },
+                { "@type": "City", name: "Kegalle" },
+                // Provinces
+                { "@type": "AdministrativeArea", name: "Western Province" },
+                { "@type": "AdministrativeArea", name: "Central Province" },
+                { "@type": "AdministrativeArea", name: "Southern Province" },
+                { "@type": "AdministrativeArea", name: "Northern Province" },
+                { "@type": "AdministrativeArea", name: "Eastern Province" },
+                {
+                  "@type": "AdministrativeArea",
+                  name: "North Western Province",
+                },
+                {
+                  "@type": "AdministrativeArea",
+                  name: "North Central Province",
+                },
+                { "@type": "AdministrativeArea", name: "Uva Province" },
+                {
+                  "@type": "AdministrativeArea",
+                  name: "Sabaragamuwa Province",
+                },
+                // Country
+                { "@type": "Country", name: "Sri Lanka" },
+              ],
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
@@ -412,7 +470,7 @@ export default function RootLayout({
                     "Saturday",
                   ],
                   opens: "09:00",
-                  closes: "17:00",
+                  closes: "18:00",
                 },
               ],
               sameAs: [
@@ -423,7 +481,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* Service Schema - Multiple Services */}
+        {/* Service Schema - Multiple Services with Regional Targeting */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -437,10 +495,34 @@ export default function RootLayout({
                   name: companyDetails.name,
                   url: companyDetails.contact.website,
                 },
-                areaServed: {
-                  "@type": "Country",
-                  name: "Sri Lanka",
-                },
+                areaServed: [
+                  { "@type": "City", name: "Colombo" },
+                  { "@type": "City", name: "Gampaha" },
+                  { "@type": "City", name: "Kalutara" },
+                  { "@type": "City", name: "Kandy" },
+                  { "@type": "City", name: "Matale" },
+                  { "@type": "City", name: "Nuwara Eliya" },
+                  { "@type": "City", name: "Galle" },
+                  { "@type": "City", name: "Matara" },
+                  { "@type": "City", name: "Hambantota" },
+                  { "@type": "City", name: "Jaffna" },
+                  { "@type": "City", name: "Kilinochchi" },
+                  { "@type": "City", name: "Mannar" },
+                  { "@type": "City", name: "Vavuniya" },
+                  { "@type": "City", name: "Mullaitivu" },
+                  { "@type": "City", name: "Trincomalee" },
+                  { "@type": "City", name: "Batticaloa" },
+                  { "@type": "City", name: "Ampara" },
+                  { "@type": "City", name: "Kurunegala" },
+                  { "@type": "City", name: "Puttalam" },
+                  { "@type": "City", name: "Anuradhapura" },
+                  { "@type": "City", name: "Polonnaruwa" },
+                  { "@type": "City", name: "Badulla" },
+                  { "@type": "City", name: "Monaragala" },
+                  { "@type": "City", name: "Ratnapura" },
+                  { "@type": "City", name: "Kegalle" },
+                  { "@type": "Country", name: "Sri Lanka" },
+                ],
                 serviceType: "Retail and Wholesale POS Software",
               },
               {
@@ -452,10 +534,34 @@ export default function RootLayout({
                   name: companyDetails.name,
                   url: companyDetails.contact.website,
                 },
-                areaServed: {
-                  "@type": "Country",
-                  name: "Sri Lanka",
-                },
+                areaServed: [
+                  { "@type": "City", name: "Colombo" },
+                  { "@type": "City", name: "Gampaha" },
+                  { "@type": "City", name: "Kalutara" },
+                  { "@type": "City", name: "Kandy" },
+                  { "@type": "City", name: "Matale" },
+                  { "@type": "City", name: "Nuwara Eliya" },
+                  { "@type": "City", name: "Galle" },
+                  { "@type": "City", name: "Matara" },
+                  { "@type": "City", name: "Hambantota" },
+                  { "@type": "City", name: "Jaffna" },
+                  { "@type": "City", name: "Kilinochchi" },
+                  { "@type": "City", name: "Mannar" },
+                  { "@type": "City", name: "Vavuniya" },
+                  { "@type": "City", name: "Mullaitivu" },
+                  { "@type": "City", name: "Trincomalee" },
+                  { "@type": "City", name: "Batticaloa" },
+                  { "@type": "City", name: "Ampara" },
+                  { "@type": "City", name: "Kurunegala" },
+                  { "@type": "City", name: "Puttalam" },
+                  { "@type": "City", name: "Anuradhapura" },
+                  { "@type": "City", name: "Polonnaruwa" },
+                  { "@type": "City", name: "Badulla" },
+                  { "@type": "City", name: "Monaragala" },
+                  { "@type": "City", name: "Ratnapura" },
+                  { "@type": "City", name: "Kegalle" },
+                  { "@type": "Country", name: "Sri Lanka" },
+                ],
                 serviceType: "Custom Web Development and E-commerce Solutions",
               },
               {
@@ -467,10 +573,34 @@ export default function RootLayout({
                   name: companyDetails.name,
                   url: companyDetails.contact.website,
                 },
-                areaServed: {
-                  "@type": "Country",
-                  name: "Sri Lanka",
-                },
+                areaServed: [
+                  { "@type": "City", name: "Colombo" },
+                  { "@type": "City", name: "Gampaha" },
+                  { "@type": "City", name: "Kalutara" },
+                  { "@type": "City", name: "Kandy" },
+                  { "@type": "City", name: "Matale" },
+                  { "@type": "City", name: "Nuwara Eliya" },
+                  { "@type": "City", name: "Galle" },
+                  { "@type": "City", name: "Matara" },
+                  { "@type": "City", name: "Hambantota" },
+                  { "@type": "City", name: "Jaffna" },
+                  { "@type": "City", name: "Kilinochchi" },
+                  { "@type": "City", name: "Mannar" },
+                  { "@type": "City", name: "Vavuniya" },
+                  { "@type": "City", name: "Mullaitivu" },
+                  { "@type": "City", name: "Trincomalee" },
+                  { "@type": "City", name: "Batticaloa" },
+                  { "@type": "City", name: "Ampara" },
+                  { "@type": "City", name: "Kurunegala" },
+                  { "@type": "City", name: "Puttalam" },
+                  { "@type": "City", name: "Anuradhapura" },
+                  { "@type": "City", name: "Polonnaruwa" },
+                  { "@type": "City", name: "Badulla" },
+                  { "@type": "City", name: "Monaragala" },
+                  { "@type": "City", name: "Ratnapura" },
+                  { "@type": "City", name: "Kegalle" },
+                  { "@type": "Country", name: "Sri Lanka" },
+                ],
                 serviceType: "Artificial Intelligence and Business Automation",
               },
             ]),
@@ -507,6 +637,542 @@ export default function RootLayout({
                 "https://vexelsystems.lk/pricing",
                 "https://vexelsystems.lk/contact",
               ],
+            }),
+          }}
+        />
+
+        {/* City Schemas for All 25 Districts in Sri Lanka */}
+
+        {/* Western Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-colombo",
+              name: "Colombo",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.9271",
+                longitude: "79.8612",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Western Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-gampaha",
+              name: "Gampaha",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.0840",
+                longitude: "80.0098",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Western Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-kalutara",
+              name: "Kalutara",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.5854",
+                longitude: "79.9607",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Western Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Central Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-kandy",
+              name: "Kandy",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.2906",
+                longitude: "80.6337",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Central Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-matale",
+              name: "Matale",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.4675",
+                longitude: "80.6234",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Central Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-nuwara-eliya",
+              name: "Nuwara Eliya",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.9497",
+                longitude: "80.7891",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Central Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Southern Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-galle",
+              name: "Galle",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.0535",
+                longitude: "80.2210",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Southern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-matara",
+              name: "Matara",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "5.9549",
+                longitude: "80.5550",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Southern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-hambantota",
+              name: "Hambantota",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.1429",
+                longitude: "81.1212",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Southern Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Northern Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-jaffna",
+              name: "Jaffna",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "9.6615",
+                longitude: "80.0255",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Northern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-kilinochchi",
+              name: "Kilinochchi",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "9.3967",
+                longitude: "80.4033",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Northern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-mannar",
+              name: "Mannar",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.9810",
+                longitude: "79.9044",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Northern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-vavuniya",
+              name: "Vavuniya",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.7514",
+                longitude: "80.4971",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Northern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-mullaitivu",
+              name: "Mullaitivu",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "9.2671",
+                longitude: "80.8142",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Northern Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Eastern Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-trincomalee",
+              name: "Trincomalee",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.5874",
+                longitude: "81.2152",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Eastern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-batticaloa",
+              name: "Batticaloa",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.7310",
+                longitude: "81.6747",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Eastern Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-ampara",
+              name: "Ampara",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.2974",
+                longitude: "81.6747",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Eastern Province",
+              },
+            }),
+          }}
+        />
+
+        {/* North Western Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-kurunegala",
+              name: "Kurunegala",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.4863",
+                longitude: "80.3623",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "North Western Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-puttalam",
+              name: "Puttalam",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.0362",
+                longitude: "79.8283",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "North Western Province",
+              },
+            }),
+          }}
+        />
+
+        {/* North Central Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-anuradhapura",
+              name: "Anuradhapura",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "8.3114",
+                longitude: "80.4037",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "North Central Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-polonnaruwa",
+              name: "Polonnaruwa",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.9403",
+                longitude: "81.0188",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "North Central Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Uva Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-badulla",
+              name: "Badulla",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.9934",
+                longitude: "81.0550",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Uva Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-monaragala",
+              name: "Monaragala",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.8728",
+                longitude: "81.3507",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Uva Province",
+              },
+            }),
+          }}
+        />
+
+        {/* Sabaragamuwa Province */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-ratnapura",
+              name: "Ratnapura",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "6.7056",
+                longitude: "80.3847",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Sabaragamuwa Province",
+              },
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "City",
+              "@id": "https://vexelsystems.lk/#city-kegalle",
+              name: "Kegalle",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "7.2513",
+                longitude: "80.3464",
+              },
+              containedInPlace: {
+                "@type": "AdministrativeArea",
+                name: "Sabaragamuwa Province",
+              },
             }),
           }}
         />
