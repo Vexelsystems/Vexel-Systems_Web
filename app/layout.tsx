@@ -205,24 +205,76 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "SoftwareBusiness",
+              "@id": "https://vexelsystems.lk/#softwarebusiness",
               name: companyDetails.name,
-              url: BASE_URL,
-              logo: `${BASE_URL}${companyDetails.logos.main}`,
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: companyDetails.contact.phone,
-                contactType: "customer service",
-                email: companyDetails.contact.email,
-                areaServed: "LK",
-                availableLanguage: "en",
+              url: companyDetails.contact.website,
+              logo: `${BASE_URL}/VLogo.png`,
+              image: `${BASE_URL}/VLogo.png`,
+              description:
+                "Vexel Systems is a Sri Lankan software company providing POS systems, billing software, inventory management, and custom business solutions.",
+              email: companyDetails.contact.email,
+              telephone: companyDetails.contact.phone,
+              priceRange: "LKR",
+              foundingDate: companyDetails.business.establishedYear.toString(),
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: companyDetails.address.street,
+                addressLocality: companyDetails.address.city,
+                addressRegion: companyDetails.address.province,
+                postalCode: companyDetails.address.postalCode,
+                addressCountry: "LK",
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "Sri Lanka",
               },
               sameAs: [
-                companyDetails.socialLinks.twitter,
+                companyDetails.socialLinks.facebook,
                 companyDetails.socialLinks.linkedin,
                 companyDetails.socialLinks.instagram,
-                companyDetails.socialLinks.facebook,
+                companyDetails.socialLinks.twitter,
               ],
+              founder: [
+                {
+                  "@type": "Person",
+                  name: companyDetails.founders[0].name,
+                  jobTitle: companyDetails.founders[0].role,
+                },
+                {
+                  "@type": "Person",
+                  name: companyDetails.founders[1].name,
+                  jobTitle: companyDetails.founders[1].role,
+                },
+              ],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Software Solutions",
+                itemListElement: [
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "SoftwareApplication",
+                      name: "Vexel POS System",
+                      applicationCategory: "BusinessApplication",
+                      operatingSystem: "Windows, Web",
+                      description:
+                        "Wholesale and retail POS system with billing, inventory, and reporting.",
+                    },
+                  },
+                  {
+                    "@type": "Offer",
+                    itemOffered: {
+                      "@type": "SoftwareApplication",
+                      name: "Inventory Management System",
+                      applicationCategory: "BusinessApplication",
+                      operatingSystem: "Web",
+                      description:
+                        "Stock control, supplier management, and analytics.",
+                    },
+                  },
+                ],
+              },
             }),
           }}
         />
