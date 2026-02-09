@@ -28,6 +28,7 @@ export const metadata = generatePageMetadata({
     "client confidentiality agreement",
   ],
   path: "/privacy",
+  noIndex: true,
 });
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";

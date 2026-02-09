@@ -37,6 +37,7 @@ export const metadata = generatePageMetadata({
     "Vexel legal terms",
   ],
   path: "/terms",
+  noIndex: true,
 });
 
 export default function Terms() {

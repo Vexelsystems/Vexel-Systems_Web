@@ -26,7 +26,6 @@ export default function robots(): MetadataRoute.Robots {
           "/*.json$",
           "/quote/success",
         ],
-        crawlDelay: 15,
       },
       {
         userAgent: "Googlebot",
