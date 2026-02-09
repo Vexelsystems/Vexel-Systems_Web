@@ -502,7 +502,7 @@ export const products: Product[] = [
     title: "Vexel Retail POS",
     tagline: "Ultra-Fast Shop Billing & Inventory Management",
     badge: "Market Standard",
-    category: "RETAIL SOLUTION",
+    category: "Retail & Specialty Stores",
     shortDescription:
       "A complete billing and inventory system for Grocery, Fashion, Electronics, Pharmacy, Hardware, Salon, Spa, Bar, Pub, Bookstore, Toy store, Pet store, Art store, Music Store, Garden center, Furniture shop, Beauty supply, and Bike shops.",
     fullDescription:
@@ -579,7 +579,7 @@ export const products: Product[] = [
     title: "Vexel Wholesale POS",
     tagline: "B2B Distribution & Bulk Billing Management",
     badge: "B2B Standard",
-    category: "WHOLESALE SOLUTION",
+    category: "MANAGEMENT SOLUTION",
     shortDescription:
       "Specialized for wholesalers and distributors with tiered pricing, credit management, and bulk order processing.",
     fullDescription:

@@ -147,42 +147,26 @@ export default function Products() {
             </div>
           </MotionWrapper>
 
-          {/* Search & Filter Bar */}
-          <MotionWrapper delay={0.2} className="w-full max-w-3xl mt-8">
-                <div className="flex-1 px-6">
-                  <span className="text-foreground/60 font-medium">Browse our comprehensive software collection</span>
-                </div>
-                <div className="h-10 w-[1px] bg-white/10 hidden md:block"></div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-2xl border border-primary/20 min-w-fit">
-                  <FilterIcon size={18} className="text-primary" />
-                  <span className="text-sm font-bold text-primary uppercase tracking-wider">
-                    {filteredProducts.length} Results
-                  </span>
-                </div>
-              </div>
+          {/* Moved Category Chips here */}
+          <div className="w-full max-w-4xl px-6 mt-12">
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all border ${
+                    activeCategory === cat
+                      ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105"
+                      : "bg-white/5 text-foreground/60 border-white/10 hover:border-primary/50 hover:text-primary"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
-          </MotionWrapper>
+          </div>
         </div>
       </section>
-
-      {/* Category Chips */}
-      <div className="w-full max-w-[1400px] px-6 mx-auto">
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 py-4">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all border ${
-                activeCategory === cat
-                  ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105"
-                  : "bg-white/5 text-foreground/60 border-white/10 hover:border-primary/50 hover:text-primary"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
 
       {/* Product Grid */}
       <div className="w-full max-w-[1400px] px-6 py-12 mx-auto">
@@ -300,18 +284,18 @@ export default function Products() {
               No Solutions Found
             </h3>
             <p className="text-foreground/60 max-w-md">
-              We couldn't find any products matching "{searchQuery}" in the{" "}
-              {activeCategory} category. Try adjusting your search or contact us
-              for a custom solution.
+              We couldn't find any products in the{" "}
+              <span className="text-primary font-bold">{activeCategory}</span>{" "}
+              category. Try selecting a different industry or contact us for a
+              custom solution.
             </p>
             <button
               onClick={() => {
-                setSearchQuery("");
                 setActiveCategory("All");
               }}
               className="mt-4 text-primary font-bold hover:underline"
             >
-              Clear all filters
+              Back to all solutions
             </button>
           </div>
         )}
