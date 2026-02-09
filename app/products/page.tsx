@@ -116,7 +116,7 @@ export default function Products() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
-        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+        <div className="w-[92%] md:w-[85%] mx-auto max-w-[1400px] relative z-10 flex flex-col items-center gap-6">
           <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
             <div className="size-2 rounded-full bg-primary"></div>
             <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] text-primary/80">
@@ -192,23 +192,23 @@ export default function Products() {
                       </div>
 
                       <div className="min-h-[120px]">
-                        <p className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-2 opacity-80">
+                        <p className="text-card-label text-[12px] font-medium uppercase tracking-[0.25em] mb-3">
                           {product.category}
                         </p>
-                        <h3 className="text-2xl font-black text-foreground leading-tight group-hover:text-primary transition-colors">
+                        <h3 className="text-2xl font-black text-primary leading-tight">
                           {product.title}
                         </h3>
                         <div className="mt-2 flex flex-wrap gap-1">
-                          <span className="text-[10px] font-bold text-foreground/40 uppercase">
+                          <span className="text-[11px] font-medium text-card-label uppercase tracking-tight">
                             Ideal for:
                           </span>
-                          {product.idealFor.slice(0, 3).map((target, idx) => (
+                          {product.idealFor.slice(0, 5).map((target, idx) => (
                             <span
                               key={idx}
-                              className="text-[10px] font-bold text-primary/80 uppercase"
+                              className="text-[11px] font-medium text-card-label uppercase tracking-tight"
                             >
                               {target}
-                              {idx < Math.min(product.idealFor.length, 3) - 1
+                              {idx < Math.min(product.idealFor.length, 5) - 1
                                 ? ","
                                 : ""}
                             </span>
@@ -263,7 +263,7 @@ export default function Products() {
 
                       <Link
                         href={`/contact?subject=Get Quote: ${product.title}`}
-                        className="w-full flex items-center justify-center gap-2 rounded-2xl h-14 bg-primary text-white text-sm font-black hover:brightness-110 transition-all shadow-xl shadow-primary/30 uppercase tracking-[0.2em] overflow-hidden relative group/btn"
+                        className="w-full flex items-center justify-center gap-2 rounded-2xl h-14 bg-primary text-white text-sm font-black hover:brightness-110 transition-all uppercase tracking-[0.2em] overflow-hidden relative group/btn"
                       >
                         <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
                         Get Quote
@@ -330,7 +330,7 @@ export default function Products() {
               <div className="flex flex-wrap items-center justify-center gap-6 mt-4">
                 <Link
                   href="/contact"
-                  className="flex min-w-[240px] cursor-pointer items-center justify-center rounded-2xl h-16 px-10 bg-primary text-white text-base font-black hover:brightness-110 transition-all shadow-2xl shadow-primary/40 uppercase tracking-widest"
+                  className="flex min-w-[240px] cursor-pointer items-center justify-center rounded-2xl h-16 px-10 bg-primary text-white text-base font-black hover:brightness-110 transition-all uppercase tracking-widest"
                 >
                   Book Consultation
                 </Link>

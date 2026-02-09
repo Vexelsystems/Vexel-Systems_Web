@@ -21,11 +21,6 @@ const navigation = {
     name: service.navTitle || service.title,
     href: `/services/${service.slug}`,
   })),
-  products: [
-    { name: "Vexel Track", href: "/products/vexel-track" },
-    { name: "Vexel POS", href: "/products/vexel-pos" },
-    { name: "Vexel Hire", href: "/products/vexel-hire" },
-  ],
   company: [
     //{ name: "Our Team", href: "/team" },
     { name: "Portfolio", href: "/portfolio" },
@@ -129,8 +124,6 @@ export default function Navbar() {
     // Check if current path belongs to a specific dropdown category
     if (navigation.services.some((item) => pathname === item.href))
       return "services";
-    if (navigation.products.some((item) => pathname === item.href))
-      return "products";
     if (navigation.company.some((item) => pathname === item.href))
       return "company";
 
@@ -258,7 +251,9 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${isShowingActive ? "text-primary font-bold" : "text-foreground/70 hover:text-primary"}`}
-                      onMouseEnter={() => setActiveDropdown(item.id)}
+                      onMouseEnter={() =>
+                        item.isDropdown && setActiveDropdown(item.id)
+                      }
                     >
                       {item.label}
                       {item.isDropdown && (
@@ -279,16 +274,6 @@ export default function Navbar() {
                       viewAllLink={{
                         text: "Explore All Services",
                         href: "/services",
-                      }}
-                    />
-                  )}
-                  {item.id === "products" && activeDropdown === "products" && (
-                    <DropdownContent
-                      items={navigation.products}
-                      width="w-[240px]"
-                      viewAllLink={{
-                        text: "View All Products",
-                        href: "/products",
                       }}
                     />
                   )}

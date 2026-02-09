@@ -224,7 +224,7 @@ export default function PricingClient() {
                             <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-foreground/80 text-[10px] font-bold rounded-full uppercase tracking-wider w-fit">
                               {option.timeline}
                             </span>
-                            <span className="text-[10px] font-bold text-primary/60 px-1 uppercase tracking-tight">
+                            <span className="text-[10px] font-medium text-card-label px-1 uppercase tracking-tight">
                               {category.title.split(":")[0]}
                             </span>
                           </div>
@@ -243,10 +243,10 @@ export default function PricingClient() {
                             <Target size={14} />
                           </div>
                           <div className="flex flex-col">
-                            <span className="text-[10px] font-bold text-foreground/70 uppercase tracking-widest leading-none mb-0.5">
+                            <span className="text-[10px] font-medium text-card-label uppercase tracking-widest leading-none mb-0.5">
                               Ideal For
                             </span>
-                            <span className="text-xs font-bold text-foreground/80 leading-tight">
+                            <span className="text-xs font-bold text-foreground/80 dark:text-white leading-tight">
                               {option.bestFor}
                             </span>
                           </div>
@@ -344,7 +344,7 @@ export default function PricingClient() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
               <Link
                 href="/consultation"
-                className="w-full md:w-auto px-8 py-4 rounded-xl bg-white text-gray-900 font-bold hover:bg-gray-100 transition-all shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+                className="w-full md:w-auto px-8 py-4 rounded-xl bg-white text-gray-900 font-bold hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
               >
                 Schedule Consultation
               </Link>
