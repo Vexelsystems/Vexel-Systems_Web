@@ -1,93 +1,178 @@
 "use client";
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
-import { Globe, Smartphone, Store, Building, Bot, Timer, ShieldCheck, CheckCircle, Shield, Users, Phone, CloudUpload } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+import {
+  Globe,
+  Smartphone,
+  Store,
+  Building,
+  Bot,
+  Timer,
+  ShieldCheck,
+  CheckCircle,
+  Shield,
+  Users,
+  Phone,
+  CloudUpload,
+  Loader2,
+  CheckCircle2,
+} from "lucide-react";
+import { useState, FormEvent } from "react";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "sonner";
 
 export default function QuoteClient() {
-  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    const formData = new FormData(e.target as HTMLFormElement);
+    const form = e.currentTarget;
+    setIsSubmitting(true);
+
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
-    
-    // Generate a random Quote ID
+
+    // Remove attachment file object as it cannot be stored directly in Firestore
+    // TODO: Implement file upload to Storage if needed later
+    const { attachment, ...submissionData } = data;
+
+    // Generate a random Quote ID (optional, but good for reference if needed locally)
     const quoteId = "Q-" + Math.floor(1000 + Math.random() * 9000);
-    const submission = { 
-        ...data, 
-        quoteId, 
-        timestamp: new Date().toISOString() 
-    };
-    
-    sessionStorage.setItem("latest_quote", JSON.stringify(submission));
-    router.push("/quote/success");
+
+    try {
+      await addDoc(collection(db, "quotes"), {
+        ...submissionData,
+        quoteId,
+        status: "pending",
+        timestamp: serverTimestamp(),
+      });
+
+      const audio = new Audio("/sounds/notification.wav");
+      audio.volume = 0.5;
+      audio.play().catch(() => {});
+
+      setShowSuccessModal(true);
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast.error("Submission failed", {
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <main className="flex-1 flex justify-center py-10 px-4 md:px-10 lg:px-20">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <main className="flex-1 flex justify-center py-10 px-4 md:px-10 lg:px-20 relative">
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-12 gap-10 relative z-10">
         {/* Main Form Column */}
         <div className="lg:col-span-8 flex flex-col gap-8">
           {/* Page Heading */}
           <MotionWrapper type="scale">
             <div className="flex flex-col gap-3">
-              <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">Let's Build Something <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Great</span></h1>
-              <p className="text-foreground/80 text-lg font-normal leading-normal">Tell us about your project and get a detailed response within 24 hours.</p>
+              <h1 className="text-foreground text-4xl font-black leading-tight tracking-[-0.033em]">
+                Let's Build Something{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                  Great
+                </span>
+              </h1>
+              <p className="text-foreground/80 text-lg font-normal leading-normal">
+                Tell us about your project and get a detailed response within 24
+                hours.
+              </p>
             </div>
           </MotionWrapper>
-          
+
           <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
             {/* Section 1: Project Type */}
             <MotionWrapper delay={0.2}>
               <div className="flex flex-col gap-5">
-                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">1. What type of project is it?</h2>
+                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">
+                  1. What type of project is it?
+                </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                   <label className="cursor-pointer group">
-                    <input defaultChecked className="hidden peer" name="project_type" type="radio" value="Web Development"/>
+                    <input
+                      defaultChecked
+                      className="hidden peer"
+                      name="project_type"
+                      type="radio"
+                      value="Web Development"
+                    />
                     <div className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-sm transition-all peer-checked:border-primary peer-checked:bg-primary/5">
                       <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                         <Globe size={32} />
                       </div>
-                      <p className="text-foreground text-sm font-medium text-center">Web Dev</p>
+                      <p className="text-foreground text-sm font-medium text-center">
+                        Web Dev
+                      </p>
                     </div>
                   </label>
                   <label className="cursor-pointer group">
-                    <input className="hidden peer" name="project_type" type="radio" value="Mobile Apps"/>
+                    <input
+                      className="hidden peer"
+                      name="project_type"
+                      type="radio"
+                      value="Mobile Apps"
+                    />
                     <div className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-sm transition-all peer-checked:border-primary peer-checked:bg-primary/5">
                       <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                         <Smartphone size={32} />
                       </div>
-                      <p className="text-foreground text-sm font-medium text-center">Mobile Apps</p>
+                      <p className="text-foreground text-sm font-medium text-center">
+                        Mobile Apps
+                      </p>
                     </div>
                   </label>
                   <label className="cursor-pointer group">
-                    <input className="hidden peer" name="project_type" type="radio" value="POS Systems"/>
+                    <input
+                      className="hidden peer"
+                      name="project_type"
+                      type="radio"
+                      value="POS Systems"
+                    />
                     <div className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-sm transition-all peer-checked:border-primary peer-checked:bg-primary/5">
                       <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                         <Store size={32} />
                       </div>
-                      <p className="text-foreground text-sm font-medium text-center">POS Systems</p>
+                      <p className="text-foreground text-sm font-medium text-center">
+                        POS Systems
+                      </p>
                     </div>
                   </label>
                   <label className="cursor-pointer group">
-                    <input className="hidden peer" name="project_type" type="radio" value="Enterprise"/>
+                    <input
+                      className="hidden peer"
+                      name="project_type"
+                      type="radio"
+                      value="Enterprise"
+                    />
                     <div className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-sm transition-all peer-checked:border-primary peer-checked:bg-primary/5">
                       <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                         <Building size={32} />
                       </div>
-                      <p className="text-foreground text-sm font-medium text-center">Enterprise</p>
+                      <p className="text-foreground text-sm font-medium text-center">
+                        Enterprise
+                      </p>
                     </div>
                   </label>
                   <label className="cursor-pointer group">
-                    <input className="hidden peer" name="project_type" type="radio" value="AI & Data"/>
+                    <input
+                      className="hidden peer"
+                      name="project_type"
+                      type="radio"
+                      value="AI & Data"
+                    />
                     <div className="flex flex-col items-center gap-3 p-4 rounded-xl border-2 border-transparent bg-white dark:bg-gray-800 shadow-sm transition-all peer-checked:border-primary peer-checked:bg-primary/5">
                       <div className="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
                         <Bot size={32} />
                       </div>
-                      <p className="text-foreground text-sm font-medium text-center">AI & Data</p>
+                      <p className="text-foreground text-sm font-medium text-center">
+                        AI & Data
+                      </p>
                     </div>
                   </label>
                 </div>
@@ -97,34 +182,70 @@ export default function QuoteClient() {
             {/* Section 2: Logistics */}
             <MotionWrapper delay={0.3}>
               <div className="flex flex-col gap-6">
-                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">2. Project Logistics</h2>
+                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">
+                  2. Project Logistics
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
                   <div className="flex flex-col gap-4">
-                    <label htmlFor="budget" className="text-foreground text-sm font-bold">Estimated Budget</label>
-                    <select id="budget" name="budget" className="w-full rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm focus:border-primary focus:ring-primary h-12 outline-none px-3">
+                    <label
+                      htmlFor="budget"
+                      className="text-foreground text-sm font-bold"
+                    >
+                      Estimated Budget
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      className="w-full rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-sm focus:border-primary focus:ring-primary h-12 outline-none px-3"
+                    >
                       <option>LKR 0 - 100,000</option>
                       <option>LKR 100,000 - 300,000</option>
                       <option>LKR 300,000 - 600,000</option>
                       <option>LKR 600,000 - 1,000,000</option>
                       <option>LKR 1,000,000+</option>
-                     
                     </select>
-                    <p className="text-xs text-foreground/70">Prices are indicative and based on general project scale.</p>
+                    <p className="text-xs text-foreground/70">
+                      Prices are indicative and based on general project scale.
+                    </p>
                   </div>
                   <div className="flex flex-col gap-4">
-                    <label className="text-foreground text-sm font-bold">Timeline Picker</label>
+                    <label className="text-foreground text-sm font-bold">
+                      Timeline Picker
+                    </label>
                     <div className="flex flex-wrap gap-2">
                       <label className="flex-1">
-                        <input defaultChecked className="hidden peer" name="timeline" type="radio" value="Urgent"/>
-                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">Urgent</div>
+                        <input
+                          defaultChecked
+                          className="hidden peer"
+                          name="timeline"
+                          type="radio"
+                          value="Urgent"
+                        />
+                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">
+                          Urgent
+                        </div>
                       </label>
                       <label className="flex-1">
-                        <input className="hidden peer" name="timeline" type="radio" value="1-3 Months"/>
-                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">1-3 Mo</div>
+                        <input
+                          className="hidden peer"
+                          name="timeline"
+                          type="radio"
+                          value="1-3 Months"
+                        />
+                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">
+                          1-3 Mo
+                        </div>
                       </label>
                       <label className="flex-1">
-                        <input className="hidden peer" name="timeline" type="radio" value="3-6 Months"/>
-                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">3-6 Mo</div>
+                        <input
+                          className="hidden peer"
+                          name="timeline"
+                          type="radio"
+                          value="3-6 Months"
+                        />
+                        <div className="flex h-12 items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-xs font-semibold cursor-pointer transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-gray-100 dark:hover:bg-gray-800">
+                          3-6 Mo
+                        </div>
                       </label>
                     </div>
                   </div>
@@ -135,32 +256,59 @@ export default function QuoteClient() {
             {/* Section 3: Details & Files */}
             <MotionWrapper delay={0.4}>
               <div className="flex flex-col gap-6">
-                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">3. Requirements & Files</h2>
+                <h2 className="text-foreground text-[22px] font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-4">
+                  3. Requirements & Files
+                </h2>
                 <div className="flex flex-col gap-4">
-                  <label htmlFor="project_details" className="text-foreground text-sm font-bold">Project Details</label>
-                  <textarea id="project_details" name="project_details" className="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm focus:border-primary focus:ring-primary outline-none p-4" placeholder="Describe your project goals, features, and any specific requirements..." rows={4}></textarea>
+                  <label
+                    htmlFor="project_details"
+                    className="text-foreground text-sm font-bold"
+                  >
+                    Project Details
+                  </label>
+                  <textarea
+                    id="project_details"
+                    name="project_details"
+                    className="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm focus:border-primary focus:ring-primary outline-none p-4"
+                    placeholder="Describe your project goals, features, and any specific requirements..."
+                    rows={4}
+                  ></textarea>
                 </div>
                 <div className="flex flex-col gap-4">
-                  <label className="text-foreground text-sm font-bold">Upload BRD or Wireframes (Optional)</label>
+                  <label className="text-foreground text-sm font-bold">
+                    Upload BRD or Wireframes (Optional)
+                  </label>
                   <label className="border-2 border-dashed border-primary/30 bg-primary/5 rounded-xl p-10 flex flex-col items-center justify-center gap-3 transition-colors hover:bg-primary/10 cursor-pointer relative group">
-                    <input 
-                      type="file" 
-                      name="attachment" 
-                      className="hidden" 
+                    <input
+                      type="file"
+                      name="attachment"
+                      className="hidden"
                       accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file) {
-                          const fileNameDisplay = document.getElementById('file-name-display');
-                          if (fileNameDisplay) fileNameDisplay.textContent = `Selected: ${file.name}`;
+                          const fileNameDisplay =
+                            document.getElementById("file-name-display");
+                          if (fileNameDisplay)
+                            fileNameDisplay.textContent = `Selected: ${file.name}`;
                         }
                       }}
                     />
-                    <CloudUpload className="text-primary group-hover:scale-110 transition-transform" size={40} />
+                    <CloudUpload
+                      className="text-primary group-hover:scale-110 transition-transform"
+                      size={40}
+                    />
                     <div className="text-center">
-                      <p className="text-sm font-semibold text-foreground">Click to upload or drag and drop</p>
-                      <p className="text-xs text-foreground/50 mt-1">PDF, DOCX, PNG, JPG (Max 10MB)</p>
-                      <p id="file-name-display" className="text-sm font-bold text-primary mt-2 min-h-[20px]"></p>
+                      <p className="text-sm font-semibold text-foreground">
+                        Click to upload or drag and drop
+                      </p>
+                      <p className="text-xs text-foreground/50 mt-1">
+                        PDF, DOCX, PNG, JPG (Max 10MB)
+                      </p>
+                      <p
+                        id="file-name-display"
+                        className="text-sm font-bold text-primary mt-2 min-h-[20px]"
+                      ></p>
                     </div>
                   </label>
                 </div>
@@ -172,10 +320,23 @@ export default function QuoteClient() {
               <div className="bg-primary/10 p-6 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex flex-col gap-1">
                   <p className="text-foreground font-bold">Almost ready!</p>
-                  <p className="text-sm text-foreground/60">By submitting, you agree to our privacy policy.</p>
+                  <p className="text-sm text-foreground/60">
+                    By submitting, you agree to our privacy policy.
+                  </p>
                 </div>
-                <button className="flex w-full md:w-auto min-w-[240px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-black leading-normal shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-95" type="submit">
-                  <span>Submit Quote Request</span>
+                <button
+                  className="flex w-full md:w-auto min-w-[240px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-base font-black leading-normal shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin mr-2" />
+                      Processing...
+                    </>
+                  ) : (
+                    <span>Submit Quote Request</span>
+                  )}
                 </button>
               </div>
             </MotionWrapper>
@@ -192,10 +353,14 @@ export default function QuoteClient() {
                   <div className="size-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600">
                     <Timer size={24} />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">Fast Response</h3>
+                  <h3 className="text-lg font-bold text-foreground">
+                    Fast Response
+                  </h3>
                 </div>
                 <p className="text-sm text-foreground/70 leading-relaxed mb-4">
-                  Our team of architects will review your project and provide a preliminary estimate and technical consultation within <span className="text-primary font-bold">24 hours</span>.
+                  Our team of architects will review your project and provide a
+                  preliminary estimate and technical consultation within{" "}
+                  <span className="text-primary font-bold">24 hours</span>.
                 </p>
                 <div className="flex items-center gap-2 text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
                   <ShieldCheck size={18} />
@@ -205,15 +370,24 @@ export default function QuoteClient() {
 
               {/* Why Choose Us Card */}
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <h3 className="text-lg font-bold text-foreground mb-6">Why work <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">with us?</span></h3>
+                <h3 className="text-lg font-bold text-foreground mb-6">
+                  Why work{" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                    with us?
+                  </span>
+                </h3>
                 <ul className="flex flex-col gap-5">
                   <li className="flex gap-4">
                     <div className="text-primary mt-1">
                       <CheckCircle size={24} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-foreground">100+ Projects Delivered</p>
-                      <p className="text-xs text-foreground/70">From startups to Fortune 500 companies.</p>
+                      <p className="text-sm font-bold text-foreground">
+                        100+ Projects Delivered
+                      </p>
+                      <p className="text-xs text-foreground/70">
+                        From startups to Fortune 500 companies.
+                      </p>
                     </div>
                   </li>
                   <li className="flex gap-4">
@@ -221,8 +395,12 @@ export default function QuoteClient() {
                       <Shield size={24} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-foreground">Data Privacy Guaranteed</p>
-                      <p className="text-xs text-foreground/70">Full NDA protection for your ideas.</p>
+                      <p className="text-sm font-bold text-foreground">
+                        Data Privacy Guaranteed
+                      </p>
+                      <p className="text-xs text-foreground/70">
+                        Full NDA protection for your ideas.
+                      </p>
                     </div>
                   </li>
                   <li className="flex gap-4">
@@ -230,8 +408,12 @@ export default function QuoteClient() {
                       <Users size={24} />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-foreground">Dedicated Team</p>
-                      <p className="text-xs text-foreground/70">Fixed development squads for every project.</p>
+                      <p className="text-sm font-bold text-foreground">
+                        Dedicated Team
+                      </p>
+                      <p className="text-xs text-foreground/70">
+                        Fixed development squads for every project.
+                      </p>
                     </div>
                   </li>
                 </ul>
@@ -241,19 +423,28 @@ export default function QuoteClient() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded-xl text-center">
                   <p className="text-2xl font-black text-primary">98%</p>
-                  <p className="text-[10px] uppercase font-bold text-foreground/70">Success Rate</p>
+                  <p className="text-[10px] uppercase font-bold text-foreground/70">
+                    Success Rate
+                  </p>
                 </div>
                 <div className="bg-gray-100 dark:bg-gray-900 p-4 rounded-xl text-center">
                   <p className="text-2xl font-black text-primary">15+</p>
-                  <p className="text-[10px] uppercase font-bold text-foreground/70">Countries Served</p>
+                  <p className="text-[10px] uppercase font-bold text-foreground/70">
+                    Countries Served
+                  </p>
                 </div>
               </div>
 
               {/* Support Card */}
               <div className="bg-primary p-6 rounded-xl text-white">
                 <h4 className="font-bold mb-2">Need immediate help?</h4>
-                <p className="text-sm opacity-90 mb-4">Talk to an expert right now about your technical architecture.</p>
-                <a className="inline-flex items-center gap-2 text-sm font-bold bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors" href="#">
+                <p className="text-sm opacity-90 mb-4">
+                  Talk to an expert right now about your technical architecture.
+                </p>
+                <a
+                  className="inline-flex items-center gap-2 text-sm font-bold bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                  href="#"
+                >
                   <Phone size={18} />
                   Book a 15min Call
                 </a>
@@ -262,6 +453,29 @@ export default function QuoteClient() {
           </MotionWrapper>
         </aside>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-zinc-900 rounded-[24px] shadow-2xl max-w-sm w-full p-8 border border-green-100 dark:border-green-900/30 animate-in zoom-in-95 duration-200 text-center">
+            <div className="size-20 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-500 mb-6 mx-auto">
+              <CheckCircle2 size={40} />
+            </div>
+            <h3 className="text-2xl font-black text-foreground mb-2">
+              Quote Request Sent!
+            </h3>
+            <p className="text-foreground/70 leading-relaxed mb-6">
+              Our agent will contact you as quickly as possible.
+            </p>
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full py-3 rounded-xl bg-green-600 text-white font-bold hover:bg-green-700 transition-colors shadow-lg shadow-green-600/20"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

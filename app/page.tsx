@@ -93,9 +93,12 @@ export const metadata = generatePageMetadata({
   path: "/",
 });
 
+import HomePreloader from "@/components/ui/HomePreloader";
+
 export default function Home() {
   return (
     <main className="flex-1">
+      <HomePreloader />
       {/* Local Business Schema */}
       <script
         type="application/ld+json"

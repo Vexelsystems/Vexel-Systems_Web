@@ -22,6 +22,7 @@ export default function LoginClient() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showError, setShowError] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,24 +43,27 @@ export default function LoginClient() {
       }
     }, 16);
 
+    // Simulate request to non-working endpoint
+    try {
+      await fetch("https://api.vexelsystems.invalid/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
+    } catch (e) {
+      // Ignore network error
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 900));
 
     // Ensure final state
     setProgress(100);
     setIsLoading(false);
 
-    const audio = new Audio("/sounds/notification.wav");
+    const audio = new Audio("/sounds/error.mp3");
     audio.volume = 0.5;
     audio.play().catch(() => {});
 
-    toast.success("Welcome back!", {
-      description: "Redirecting to your dashboard...",
-    });
-
-    // Redirect mock
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 500);
+    setShowError(true);
   };
 
   return (
@@ -169,16 +173,33 @@ export default function LoginClient() {
             )}
           </button>
         </form>
-
-        <div className="mt-8 text-center">
-          <p className="text-sm font-bold text-foreground/60">
-            Don't have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline">
-              Apply for Access
-            </Link>
-          </p>
-        </div>
       </div>
+
+      {/* Error Modal Popup */}
+      {showError && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-zinc-900 rounded-[24px] shadow-2xl max-w-sm w-full p-6 border border-red-100 dark:border-red-900/30 animate-in zoom-in-95 duration-200">
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="size-16 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center text-red-600 dark:text-red-500 mb-2">
+                <Lock size={32} />
+              </div>
+              <h3 className="text-xl font-black text-foreground">
+                Access Denied
+              </h3>
+              <p className="text-sm text-foreground/70 leading-relaxed">
+                Invalid credentials provided. This access attempt has been
+                logged for security purposes.
+              </p>
+              <button
+                onClick={() => setShowError(false)}
+                className="w-full py-3 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition-colors mt-2"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

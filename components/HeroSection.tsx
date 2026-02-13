@@ -26,11 +26,13 @@ export function HeroSection() {
       <HeroBackground />
       <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
         {/* Client component with animation */}
-        <HeroBadge />
+        <div className="mt-20">
+          <HeroBadge />
+        </div>
 
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
-            Software as a Service (SaaS) & AI Experts in Vavuniya
+            Software Solutions & AI Experts in Vavuniya
           </h2>
 
           {/* bg-clip-text creates gradient text effect */}

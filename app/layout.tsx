@@ -179,21 +179,26 @@ export default function RootLayout({
 
         {/* Toast notifications container */}
         <Toaster
-          position="top-center"
+          position="top-right"
           richColors
           closeButton
           theme="system"
           toastOptions={{
-            style: {
-              background: "rgba(255, 255, 255, 0.8)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(0,0,0,0.05)",
-              borderRadius: "16px",
-              padding: "16px",
-              fontWeight: 500,
+            classNames: {
+              error: "bg-red-500 text-white border-red-600",
+              success: "bg-green-500 text-white border-green-600",
+              warning: "bg-yellow-500 text-white border-yellow-600",
+              info: "bg-blue-500 text-white border-blue-600",
+              toast:
+                "bg-white/80 backdrop-blur-md border border-gray-200 dark:bg-zinc-900/90 dark:border-white/10 dark:text-white shadow-xl rounded-2xl p-4",
+              title: "font-bold text-sm",
+              description: "text-xs opacity-90",
+              actionButton:
+                "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900",
+              cancelButton: "bg-orange-400",
+              closeButton:
+                "bg-transparent hover:bg-black/5 dark:hover:bg-white/10",
             },
-            className:
-              "dark:bg-zinc-900/90 dark:border-white/10 dark:text-white",
           }}
         />
 
