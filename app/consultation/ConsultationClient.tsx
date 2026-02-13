@@ -17,8 +17,6 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { toast } from "sonner";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 /**
  * CONSULTATION CLIENT COMPONENT
@@ -90,12 +88,8 @@ export default function ConsultationClient() {
     }, intervalTime);
 
     try {
-      // Save to Firebase concurrently with simulation
-      await addDoc(collection(db, "appointments"), {
-        ...formData,
-        status: "pending",
-        timestamp: serverTimestamp(),
-      });
+      // Logic for saving to a real backend would go here
+      console.log("Mock appointment submission:", formData);
 
       // Wait for usage simulation to finish
       await new Promise((resolve) => setTimeout(resolve, duration));

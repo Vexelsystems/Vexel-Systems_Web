@@ -11,8 +11,6 @@ import {
 } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";
 import { toast } from "sonner";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export function ContactSection() {
@@ -41,12 +39,10 @@ export function ContactSection() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Use client-side timestamp to avoid potential server-side constraints during debug
-      await addDoc(collection(db, "contact_messages"), {
-        ...data,
-        status: "pending",
-        timestamp: new Date().toISOString(), // Changed from serverTimestamp()
-      });
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      console.log("Mock submission success:", data);
 
       const audio = new Audio("/sounds/notification.wav");
       audio.volume = 0.5;

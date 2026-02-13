@@ -18,8 +18,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { useState, FormEvent } from "react";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from "sonner";
 
 export default function QuoteClient() {
@@ -42,12 +40,10 @@ export default function QuoteClient() {
     const quoteId = "Q-" + Math.floor(1000 + Math.random() * 9000);
 
     try {
-      await addDoc(collection(db, "quotes"), {
-        ...submissionData,
-        quoteId,
-        status: "pending",
-        timestamp: serverTimestamp(),
-      });
+      // Simulate API call delay
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      console.log("Mock quote submission success:", submissionData);
 
       const audio = new Audio("/sounds/notification.wav");
       audio.volume = 0.5;
