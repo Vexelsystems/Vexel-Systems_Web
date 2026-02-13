@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   if (!event) {
     return {
-      title: "Event Not Founded - Vexel Systems",
+      title: "Event Not Found - Vexel Systems",
     };
   }
 
