@@ -22,7 +22,7 @@ import Link from "next/link";
 export function HeroSection() {
   return (
     <section className="relative min-h-screen pt-16 pb-12 flex flex-col items-center justify-center text-center">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-[150px] pointer-events-none" />
       <HeroBackground />
       <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
         {/* Client component with animation */}
@@ -48,9 +48,9 @@ export function HeroSection() {
           </h1>
 
           <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-            We build websites, mobile apps, and business software (POS) that
-            save you time and money. The only tech team in Vairavapuliyankulam
-            dedicated to your growth.
+            We build the websites, apps, and POS software you need to automate
+            your business. Your local Vavuniya tech partners, focused on your
+            bottom line.
           </p>
         </div>
 

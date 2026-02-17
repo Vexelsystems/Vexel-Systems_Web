@@ -67,19 +67,12 @@ export default function About() {
 
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
                 <span className="text-foreground">Real People Building</span>
-                <TypewriterText
-                  phrases={[
-                    "Real Solutions.",
-                    "Better Future.",
-                    "Modern Software.",
-                    "Digital Growth.",
-                  ]}
-                />
+                <TypewriterText phrases={["Real Solutions."]} />
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                We are a technology team from Sri Lanka. We don't just write
-                code; we build{" "}
+                We are a Tech team from Sri Lanka. We don't just write code; we
+                build{" "}
                 <Link href="/services" className="text-primary hover:underline">
                   software
                 </Link>{" "}

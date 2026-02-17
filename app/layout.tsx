@@ -19,7 +19,6 @@ import { Toaster } from "sonner"; // Toast notification library
 import { companyDetails } from "@/lib/companydetails"; // Centralized company information
 import { DEFAULT_SEO, BASE_URL } from "@/lib/seo"; // SEO configuration and utilities
 import GlobalClientWrapper from "@/components/GlobalClientWrapper"; // Wrapper for global client components
-import { PageTransition } from "@/components/ui/PageTransition"; // Smooth page transition component
 import "./globals.css"; // Global CSS styles
 import GoogleAnalytics from "@/components/GoogleAnalytics"; // Google Analytics component
 import Breadcrumbs from "@/components/Breadcrumbs"; // Breadcrumbs component
@@ -170,7 +169,7 @@ export default function RootLayout({
             {/* Main content area */}
             <main className="flex-1">
               <Breadcrumbs />
-              <PageTransition>{children}</PageTransition>
+              {children}
             </main>
 
             <Footer />

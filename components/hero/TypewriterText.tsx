@@ -5,54 +5,57 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * TYPEWRITER TEXT COMPONENT
- * 
+ *
  * Performance:
  * - Client-side only to avoid hydration mismatches.
  * - Uses Framer Motion for smooth, hardware-accelerated animations.
  * - Optimized with AnimatePresence for clean entry/exit of strings.
  */
 
-const defaultPhrases = [
-  "Grows Your Business.",
-  "Solves Complex Problems.",
-  "Saves You Time.",
-  "Drives Real ROI.",
-];
+const defaultPhrases = ["Grows Your Business.", "Solves Complex Problems ."];
 
-export function TypewriterText({ phrases = defaultPhrases, className = "" }: { phrases?: string[]; className?: string }) {
+export function TypewriterText({
+  phrases = defaultPhrases,
+  className = "",
+}: {
+  phrases?: string[];
+  className?: string;
+}) {
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
 
   useEffect(() => {
-    const handleType = () => {
-      const currentPhrase = phrases[index];
-      
-      if (!isDeleting) {
-        // Typing
-        setDisplayText(currentPhrase.substring(0, displayText.length + 1));
-        setTypingSpeed(100);
+    const currentPhrase = phrases[index];
+    let timeout: NodeJS.Timeout;
 
-        if (displayText === currentPhrase) {
-          // Pause at the end
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
+    if (!isDeleting) {
+      if (displayText === currentPhrase) {
+        // Full phrase displayed, wait then start deleting
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2000);
       } else {
-        // Deleting
-        setDisplayText(currentPhrase.substring(0, displayText.length - 1));
-        setTypingSpeed(50);
-
-        if (displayText === "") {
-          setIsDeleting(false);
-          setIndex((prev) => (prev + 1) % phrases.length);
-        }
+        // Still typing
+        timeout = setTimeout(() => {
+          setDisplayText(currentPhrase.substring(0, displayText.length + 1));
+        }, 70); // Increased typing speed
       }
-    };
+    } else {
+      if (displayText === "") {
+        // Fully deleted, move to next phrase
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % phrases.length);
+      } else {
+        // Still deleting
+        timeout = setTimeout(() => {
+          setDisplayText(currentPhrase.substring(0, displayText.length - 1));
+        }, 30); // Increased deleting speed
+      }
+    }
 
-    const timer = setTimeout(handleType, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, typingSpeed]);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, index, phrases]);
 
   return (
     <span className={`relative inline-flex items-center ${className}`}>

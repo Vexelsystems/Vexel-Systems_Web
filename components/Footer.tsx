@@ -74,8 +74,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-primary/10 pt-16 pb-8 relative overflow-hidden">
       {/* Global Glow Effect */}
-      <div className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/15 blur-[120px] pointer-events-none -z-10 dark:hidden" />
-      <div className="absolute -bottom-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-purple-600/10 blur-[120px] pointer-events-none -z-10 dark:hidden" />
+      <div className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/5 blur-[160px] pointer-events-none -z-10 dark:hidden" />
+      <div className="absolute -bottom-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-purple-600/5 blur-[160px] pointer-events-none -z-10 dark:hidden" />
       <div className="px-6 lg:px-12 relative z-10 text-center md:text-left">
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 gap-y-12 mb-16">

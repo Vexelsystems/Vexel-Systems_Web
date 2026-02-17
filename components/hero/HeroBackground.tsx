@@ -40,18 +40,17 @@ export function HeroBackground() {
         The gradient now has a default fallback (centered) via CSS variables.
       */}
       <div
-        className="absolute inset-0 opacity-40 dark:opacity-20"
+        className="absolute inset-0 opacity-20 dark:opacity-10"
         style={{
           background: `
             radial-gradient(
               800px circle at calc(var(--mouse-x, 0.5) * 100%) calc(var(--mouse-y, 0.5) * 100%),
-              rgba(var(--primary-rgb), 0.15),
+              rgba(var(--primary-rgb), 0.08),
               transparent 40%
             )
           `,
         }}
       />
-      
     </div>
   );
 }
