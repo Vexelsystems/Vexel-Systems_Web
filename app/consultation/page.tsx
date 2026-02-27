@@ -3,7 +3,7 @@ import ConsultationClient from "./ConsultationClient";
 
 /**
  * CONSULTATION ROOT PAGE
- * 
+ *
  * Functional Overview:
  * - Role: Server-side entry point for the Consultation booking flow.
  * - Logic: Delegates all interactivity (form, progress tracking) to `ConsultationClient`.
@@ -30,14 +30,13 @@ export const metadata = generatePageMetadata({
     "SaaS consulting Sri Lanka",
     "IT advisory services",
     "software project consulting",
-    "enterprise software consulting"
+    "enterprise software consulting",
   ],
   path: "/consultation",
 });
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
 
 export default function ConsultationPage() {
   return (
@@ -46,15 +45,16 @@ export default function ConsultationPage() {
       <section className="relative pt-32 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
         <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
-            <MotionWrapper type="scale">
-              <h1 className="text-4xl md:text-6xl font-black mb-6 flex flex-col items-center gap-2">
-                <span className="text-foreground">Schedule a</span>
-                <TypewriterText phrases={["Discovery Call.", "Strategy Session.", "Growth Audit.", "Consultation."]} />
-              </h1>
-              <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
-                Discuss your project requirements, technology needs, and digital transformation goals with our team.
-              </p>
-            </MotionWrapper>
+          <MotionWrapper type="scale">
+            <h1 className="text-4xl md:text-6xl font-black mb-6 flex flex-col items-center gap-2">
+              <span className="text-foreground">Schedule a</span>
+              <span className="text-primary mt-2">Discovery Call.</span>
+            </h1>
+            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
+              Discuss your project requirements, technology needs, and digital
+              transformation goals with our team.
+            </p>
+          </MotionWrapper>
         </div>
       </section>
 

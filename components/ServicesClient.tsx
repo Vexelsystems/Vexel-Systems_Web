@@ -305,17 +305,17 @@ export default function ServicesClient() {
                   className="group relative rounded-4xl border border-gray-100 dark:border-zinc-800 bg-white/40 dark:bg-white/5 backdrop-blur-md p-2 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 h-full"
                 >
                   {/* Gradient Hover Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-linear-to-b from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div className="relative h-full rounded-[1.7rem] bg-gray-50/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 flex flex-col gap-6 overflow-hidden">
                     {/* Decorative Blur Blob */}
-                    <div className="absolute -right-10 -top-10 size-40 bg-zinc-500/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all duration-500"></div>
+                    <div className="absolute -right-10 -top-10 size-40 bg-zinc-500/5 rounded-full blur-3xl group-hover:bg-purple-500/10 transition-all duration-500"></div>
 
                     <div className="flex items-start justify-between relative z-10">
-                      <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                      <div className="size-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-primary group-hover:scale-110 group-hover:rotate-3 group-hover:text-purple-600 transition-all duration-500">
                         <IconComponent size={32} strokeWidth={1.5} />
                       </div>
-                      <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/40 group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+                      <div className="size-8 rounded-full bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-foreground/40 group-hover:text-purple-600 group-hover:border-purple-500/20 transition-all duration-300">
                         <ArrowRight
                           size={14}
                           className="-rotate-45 group-hover:rotate-0 transition-transform duration-300"
@@ -324,7 +324,7 @@ export default function ServicesClient() {
                     </div>
 
                     <div className="flex flex-col gap-3 relative z-10 grow">
-                      <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
+                      <h3 className="text-foreground text-2xl font-bold tracking-tight group-hover:text-purple-600 transition-colors">
                         {service.title}
                       </h3>
                       <p className="text-foreground/80 leading-relaxed font-medium line-clamp-3">
@@ -341,7 +341,7 @@ export default function ServicesClient() {
                               key={idx}
                               className="flex items-center gap-2 text-xs font-semibold text-foreground/70"
                             >
-                              <div className="size-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></div>
+                              <div className="size-1.5 rounded-full bg-purple-500/40 group-hover:bg-purple-500 transition-colors"></div>
                               <span className="line-clamp-1">{sub.title}</span>
                             </li>
                           ))}

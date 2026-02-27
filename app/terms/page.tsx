@@ -46,7 +46,7 @@ export default function Terms() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
         {/* Background Gradients & Grid */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
         <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">

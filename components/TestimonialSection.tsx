@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
@@ -101,38 +101,40 @@ export const TestimonialSection = () => {
 
           <SnapCarousel
             className="md:block"
-            scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 md:pb-0"
+            scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-8 md:pb-0"
           >
             {testimonials.map((t) => (
               <div
                 key={t.id}
-                className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full min-w-[85vw] md:min-w-0 snap-center"
+                className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-5 rounded-2xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full min-w-[75vw] md:min-w-0 snap-center"
               >
-                <Quote className="absolute top-8 right-8 text-primary/10 w-16 h-16 transform rotate-180" />
+                <Quote className="absolute top-5 right-5 text-primary/10 w-10 h-10 transform rotate-180" />
 
-                <div className="flex gap-1 mb-6 text-yellow-500">
+                <div className="flex gap-1 mb-4 text-yellow-500">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
+                    <Star key={i} className="w-3 h-3 fill-current" />
                   ))}
                 </div>
 
-                <p className="text-lg font-medium leading-relaxed mb-8 grow relative z-10 text-foreground/80">
+                <p className="text-sm font-medium leading-relaxed mb-6 grow relative z-10 text-foreground/80">
                   "{t.content}"
                 </p>
 
-                <div className="flex items-center gap-4 pt-6 border-t border-dashed border-primary/10">
-                  <div className="relative size-12 rounded-full overflow-hidden border-2 border-primary/20">
+                <div className="flex items-center gap-3 pt-4 border-t border-dashed border-primary/10">
+                  <div className="relative size-10 rounded-full overflow-hidden border border-primary/20">
                     <Image
                       src={t.image}
                       alt={t.name}
                       fill
                       className="object-cover"
-                      sizes="48px"
+                      sizes="40px"
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground">{t.name}</h3>
-                    <p className="text-xs font-bold text-primary uppercase tracking-wide">
+                    <h3 className="font-bold text-sm text-foreground">
+                      {t.name}
+                    </h3>
+                    <p className="text-[10px] font-black text-primary uppercase tracking-wider">
                       {t.role}
                     </p>
                   </div>
@@ -143,91 +145,60 @@ export const TestimonialSection = () => {
         </div>
       </section>
 
-      {/* Client Success Metrics Section */}
-      <section className="py-20 bg-primary/5 backdrop-blur-md border border-primary/10 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden px-6 lg:px-12">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-
-        <div className="relative z-10 text-center mb-12">
-          <h2 className="text-2xl md:text-4xl font-black text-foreground mb-2">
-            Our{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
-              Impact
-            </span>
-          </h2>
-          <p className="text-foreground/80 text-lg max-w-2xl mx-auto leading-relaxed">
-            Numbers that speak louder than words
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
-          {[
-            { number: "25+", label: "Projects Delivered" },
-            { number: "98%", label: "Satisfaction Rate" },
-            { number: "25+", label: "Happy Partners" },
-            { number: "24/7", label: "Support Available" },
-          ].map((stat, idx) => (
-            <div
-              key={idx}
-              className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:border-primary/40 hover:-translate-y-2 transition-all duration-300 text-center"
-            >
-              <h3 className="text-4xl md:text-5xl font-black text-primary mb-2">
-                {stat.number}
-              </h3>
-              <p className="text-sm font-bold text-foreground/80 uppercase tracking-wide">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Industries We Serve Section */}
-      <section className="py-20 w-[90%] md:w-[80%] mx-auto mb-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-            Industries We{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
-              Serve
-            </span>
-          </h2>
-          <p className="text-lg text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            Delivering tailored solutions across diverse sectors
-          </p>
-        </div>
+      <section className="py-24 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-        <SnapCarousel
-          className="md:block"
-          scrollContainerClassName="md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 pb-8 md:pb-0"
-        >
-          {[
-            { name: "Healthcare", icon: "🏥", desc: "Medical Systems" },
-            { name: "E-Commerce", icon: "🛒", desc: "Online Shopping" },
-            { name: "Education", icon: "🎓", desc: "EdTech Solutions" },
-            {
-              name: "Fashion & Retail",
-              icon: "👗",
-              desc: "Dress Shops & Boutiques",
-            },
-            { name: "Restaurants", icon: "🍽️", desc: "Food & Dining" },
-            { name: "Logistics", icon: "🚚", desc: "Supply Chain" },
-            { name: "Hospitality", icon: "🏨", desc: "Hotels & Tourism" },
-            { name: "Entertainment", icon: "🎬", desc: "Media & Streaming" },
-            { name: "Automotive", icon: "🚗", desc: "Auto Services" },
-          ].map((industry, idx) => (
-            <div
-              key={idx}
-              className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 text-center min-w-[70vw] md:min-w-0 snap-center"
-            >
-              <div className="text-4xl mb-3">{industry.icon}</div>
-              <h3 className="text-lg font-black text-foreground mb-1">
-                {industry.name}
-              </h3>
-              <p className="text-xs text-foreground/70 font-medium">
-                {industry.desc}
-              </p>
-            </div>
-          ))}
-        </SnapCarousel>
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl">
+          <div className="flex flex-col items-center text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black text-foreground mb-6 tracking-tight">
+              Industries We{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                Serve
+              </span>
+            </h2>
+            <p className="text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              Delivering high-performance, tailored technology solutions across
+              diverse business sectors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Healthcare", icon: "🏥" },
+              { name: "E-Commerce", icon: "🛒" },
+              { name: "Education", icon: "🎓" },
+              { name: "Fashion & Retail", icon: "👗" },
+              { name: "Restaurants", icon: "🍽️" },
+              { name: "Logistics", icon: "🚚" },
+              { name: "Hospitality", icon: "🏨" },
+              { name: "Entertainment", icon: "🎬" },
+              { name: "Automotive", icon: "🚗" },
+            ].map((industry, idx) => (
+              <div
+                key={idx}
+                className="group relative flex items-center gap-6 p-6 rounded-[2rem] bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-primary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
+              >
+                <div className="size-16 rounded-2xl bg-linear-to-br from-primary/10 to-purple-600/10 flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                  {industry.icon}
+                </div>
+                <div className="flex flex-col">
+                  <h3 className="text-xl font-black text-foreground tracking-tight">
+                    {industry.name}
+                  </h3>
+                  <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">
+                    Tailored Solutions
+                  </span>
+                </div>
+                <div className="ml-auto opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-primary">
+                  <ArrowRight size={20} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="py-20 bg-linear-to-r from-primary to-purple-600 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden">

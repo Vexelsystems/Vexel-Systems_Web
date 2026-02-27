@@ -121,7 +121,7 @@ export default function PricingClient() {
       {/* Hero Section */}
       <section className="relative w-full mb-12 text-center bg-transparent">
         <MotionWrapper type="slideUp" duration={1.2}>
-          <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative">
+          <div className="w-[92%] md:w-[90%] mx-auto max-w-[1400px] relative">
             <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
               Pricing that{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
@@ -136,9 +136,9 @@ export default function PricingClient() {
       </section>
 
       {/* Main Content Layout */}
-      <div className="container w-[92%] sm:w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row items-start gap-12 mb-32 relative overflow-hidden px-1">
+      <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row items-start gap-12 mb-32 relative overflow-visible px-1">
         {/* Sidebar Filters */}
-        <aside className="w-full lg:w-[260px] shrink-0 space-y-6 lg:sticky lg:top-28 z-20">
+        <aside className="w-full lg:w-[260px] shrink-0 space-y-6 lg:sticky lg:top-30 z-20">
           {/* Search */}
           <div className="relative group">
             <Search
@@ -307,11 +307,11 @@ export default function PricingClient() {
       </div>
 
       {/* Maintenance Section */}
-      <section className="relative py-32 mt-32 overflow-hidden bg-transparent">
+      <section className="relative py-32 mt-32 overflow-hidden bg-zinc-950 text-white">
         {/* Background Decor */}
-        <div className="absolute inset-0 bg-nav-bg/80 backdrop-blur-md text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
+        <div className="absolute inset-0 bg-zinc-950 text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
 
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] relative z-10 text-white">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl relative z-10 text-white">
           <div className="text-center mb-20">
             <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">
               Long Term Success

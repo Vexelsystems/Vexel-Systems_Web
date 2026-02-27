@@ -532,49 +532,7 @@ export const products: Product[] = [
     maintenanceFee: 15000,
     status: "active",
   },
-  {
-    id: "vexel-pharmacy-pos",
-    slug: "vexel-pharmacy-pos",
-    title: "Pharmacy POS System",
-    tagline: "Specialized Drug & Expiry Management",
-    badge: "Healthcare",
-    category: "Healthcare & Wellness",
-    shortDescription:
-      "A specialized point-of-sale system for pharmacies. Manage prescriptions, track batch-wise expiry dates, and handle drug classifications with precision.",
-    fullDescription:
-      "the Pharmacy POS system is designed to meet the rigorous demands of pharmaceutical retail. It features sophisticated batch-wise inventory tracking, automatic expiry alerts, prescription history management, and integration with drug databases. Ensure compliance and patient safety while streamlining your billing and stock control.",
-    mainImage: "/products/photo-1576091160550-217359f4ecf8.jpg",
-    icon: Stethoscope,
-    checklist: [
-      "Batch-wise Expiry Tracking",
-      "Prescription Management",
-      "Drug Classification (Schedule C/N)",
-      "Low Stock & Expiry Alerts",
-    ],
-    idealFor: [
-      "Retail Pharmacies",
-      "Hospital Pharmacies",
-      "Drug Stores",
-      "Wellness Centers",
-    ],
-    features: [
-      {
-        title: "Expiry Management",
-        description:
-          "Never sell expired goods with proactive batch-wise alerts.",
-        icon: Zap,
-      },
-    ],
-    benefits: [
-      {
-        title: "Patient Safety",
-        description: "Accurate drug dispensing and expiry control.",
-      },
-    ],
-    startingPrice: 60000,
-    maintenanceFee: 15000,
-    status: "active",
-  },
+
   {
     id: "vexel-hire",
     slug: "vexel-hire",

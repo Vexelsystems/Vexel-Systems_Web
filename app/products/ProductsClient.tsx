@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { products } from "@/lib/products";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 const CATEGORIES = [
@@ -72,7 +71,7 @@ export default function ProductsClient() {
       {/* Hero Section */}
       <section className="relative min-h-[70vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
         <div className="w-[92%] md:w-[85%] mx-auto max-w-[1400px] relative z-10 flex flex-col items-center gap-6">
@@ -89,15 +88,9 @@ export default function ProductsClient() {
                 <span className="text-foreground">
                   Vexel Systems Business Suite
                 </span>
-                <TypewriterText
-                  phrases={[
-                    "For All 25 Districts.",
-                    "For Smart Tuition.",
-                    "For Better Logistics.",
-                    "For Modern Retail.",
-                  ]}
-                  className="max-w-[calc(100vw-4rem)] text-balance"
-                />
+                <span className="max-w-[calc(100vw-4rem)] text-balance text-primary">
+                  For All 25 Districts.
+                </span>
               </h1>
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
                 Leading software provider for businesses in Colombo, Vavuniya,
@@ -129,7 +122,7 @@ export default function ProductsClient() {
       </section>
 
       {/* Product Grid */}
-      <div className="w-full max-w-[1400px] px-6 py-12 mx-auto">
+      <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl py-12">
         {filteredProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {filteredProducts.map((product) => {
@@ -267,12 +260,9 @@ export default function ProductsClient() {
       </div>
 
       {/* Custom Solution CTA */}
-      <div className="w-full max-w-[1400px] px-6 py-20 mx-auto">
+      <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl py-20">
         <MotionWrapper type="scale" delay={0.5}>
           <div className="relative rounded-[3rem] bg-zinc-950 p-12 md:p-20 overflow-hidden border border-white/5">
-            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[600px] h-[600px] bg-primary opacity-10 rounded-full blur-[120px]"></div>
-            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-primary opacity-10 rounded-full blur-[100px]"></div>
-
             <div className="relative flex flex-col items-center text-center gap-8 z-10">
               <div className="flex items-center gap-3 px-4 py-2 rounded-xl bg-primary/20 border border-primary/30">
                 <Zap size={20} className="text-primary fill-primary" />

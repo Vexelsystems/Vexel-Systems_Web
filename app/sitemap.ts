@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/contact", priority: 0.8, changeFrequency: "yearly" as const },
     { url: "/faq", priority: 0.7, changeFrequency: "yearly" as const },
     { url: "/quote", priority: 0.8, changeFrequency: "yearly" as const },
-    { url: "/team", priority: 0.6, changeFrequency: "yearly" as const },
+
     { url: "/events", priority: 0.6, changeFrequency: "yearly" as const },
     { url: "/consultation", priority: 0.8, changeFrequency: "yearly" as const },
     // Legal pages removed from sitemap (still accessible via direct URLs, but excluded from search indexing)

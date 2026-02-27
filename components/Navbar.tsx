@@ -36,20 +36,46 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Toggle glassmorphism effect on scroll > 20px
+  // Smart Navbar: Hide on scroll down, Show on scroll up
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      const currentScrollY = window.scrollY;
 
-  const navContainerClasses = `flex items-center justify-between rounded-4xl transition-all duration-300 backdrop-blur-xl border border-primary/20 shadow-lg shadow-primary/10 px-6 py-3 ${
+      // Handle scrolled state for styling
+      setIsScrolled(currentScrollY > 20);
+
+      // Handle visibility logic
+      const scrollDelta = currentScrollY - lastScrollY;
+
+      if (isMobileMenuOpen) {
+        setIsVisible(true);
+      } else if (scrollDelta > 0 && currentScrollY > 400) {
+        // Scrolling down: Hide ONLY after passing 400px AND a significant downward movement
+        if (scrollDelta > 100) {
+          setIsVisible(false);
+        }
+      } else if (scrollDelta < 0) {
+        // Scrolling up: Show IMMEDIATELY
+        setIsVisible(true);
+      } else if (currentScrollY <= 20) {
+        // At the very top: Always show
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMobileMenuOpen]);
+
+  const navContainerClasses = `flex items-center justify-between rounded-4xl transition-all duration-500 backdrop-blur-2xl border px-6 py-3 ${
     isScrolled
-      ? "bg-background/95 dark:bg-nav-bg/95"
-      : "bg-background/90 dark:bg-nav-bg/90"
+      ? "bg-white/70 dark:bg-zinc-900/70 border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]"
+      : "bg-white/40 dark:bg-zinc-900/40 border-white/10 dark:border-white/5 shadow-none"
   }`;
 
   // Reusable dropdown portal for desktop sub-menus
@@ -151,8 +177,18 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar positioned top on all screens */}
-      <nav
+      <motion.nav
+        initial={false}
+        animate={{
+          y: isVisible ? 0 : -150,
+          opacity: isVisible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8"
+        style={{ pointerEvents: isVisible ? "auto" : "none" }}
         aria-label="Main Navigation"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-24 rounded-full blur-3xl pointer-events-none -z-10 bg-primary/15 transition-colors duration-300"></div>
@@ -207,17 +243,14 @@ export default function Navbar() {
 
               { id: "contact", label: "Contact Us", href: "/contact" },
             ].map((item) => {
-              const isActive = currentActiveId === item.id;
-              const isHovered = activeDropdown === item.id;
-              const isShowingActive = isHovered || isActive;
+              const displayId = activeDropdown || currentActiveId;
+              const isShowingActive = displayId === item.id;
 
               return (
                 <div
                   key={item.id}
                   className="relative group px-1"
-                  onMouseEnter={() =>
-                    item.isDropdown && setActiveDropdown(item.id)
-                  }
+                  onMouseEnter={() => setActiveDropdown(item.id)}
                 >
                   {/* Animated Background Pill */}
                   {isShowingActive && (
@@ -251,9 +284,6 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`relative z-10 flex items-center gap-1.5 text-sm font-medium px-4 py-2 rounded-full transition-colors ${isShowingActive ? "text-primary font-bold" : "text-foreground/70 hover:text-primary"}`}
-                      onMouseEnter={() =>
-                        item.isDropdown && setActiveDropdown(item.id)
-                      }
                     >
                       {item.label}
                       {item.isDropdown && (
@@ -322,7 +352,7 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
@@ -334,14 +364,14 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed top-20 left-2 right-2 sm:left-6 sm:right-6 rounded-2xl shadow-xl z-50 transition-all duration-300 transform origin-top max-h-[80vh] overflow-y-auto ${
+        className={`lg:hidden fixed top-20 left-2 right-2 sm:left-6 sm:right-6 rounded-3xl shadow-2xl z-50 transition-all duration-500 transform origin-top max-h-[80vh] overflow-y-auto backdrop-blur-2xl ${
           isMobileMenuOpen
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 -translate-y-4 pointer-events-none"
         } ${
           isScrolled
-            ? "bg-background/95 dark:bg-nav-bg/95 border border-primary/10 dark:border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
-            : "bg-background/90 dark:bg-nav-bg/90 border border-primary/10 dark:border-primary/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+            ? "bg-white/80 dark:bg-zinc-900/80 border border-white/20 dark:border-white/10"
+            : "bg-white/70 dark:bg-zinc-900/70 border border-white/10 dark:border-white/5"
         }`}
       >
         <div className="flex flex-col p-4 space-y-2">

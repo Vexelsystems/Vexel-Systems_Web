@@ -15,10 +15,6 @@ const LiveChat = dynamic(() => import("@/components/LiveChat"), { ssr: false });
 const CookieConsent = dynamic(() => import("@/components/CookieConsent"), {
   ssr: false,
 });
-const GlowingBackground = dynamic(
-  () => import("@/components/GlowingBackground"),
-  { ssr: false },
-);
 
 export default function GlobalClientWrapper({
   children,
@@ -45,7 +41,6 @@ export default function GlobalClientWrapper({
           <CookieConsent />
         </>
       )}
-      <GlowingBackground />
       {children}
     </>
   );

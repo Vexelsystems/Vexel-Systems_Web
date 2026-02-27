@@ -43,7 +43,7 @@ export function ServicesPreviewSection() {
                 href={`/services/${service.slug}`}
                 className="group flex flex-col gap-4 rounded-3xl border border-primary/10 dark:border-primary/20 bg-card/40 dark:bg-nav-bg/40 backdrop-blur-md p-6 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 min-w-[85vw] md:min-w-0 snap-center"
               >
-                <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary transition-all duration-300 group-hover:bg-purple-500/10 group-hover:text-purple-600">
                   {IconComponent && <IconComponent size={28} />}
                 </div>
                 <div className="flex flex-col gap-2">
@@ -54,7 +54,7 @@ export function ServicesPreviewSection() {
                     {service.description}
                   </p>
                 </div>
-                <div className="mt-auto text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+                <div className="mt-auto text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 group-hover:text-purple-600 transition-all">
                   Learn More <ArrowRight size={16} />
                 </div>
               </Link>

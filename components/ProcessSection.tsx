@@ -2,18 +2,7 @@
 
 import React from "react";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
-import {
-  Search,
-  PenTool,
-  Code,
-  CheckSquare,
-  Rocket,
-  FileText,
-  Layout,
-  Keyboard,
-  Flag,
-  Cloud,
-} from "lucide-react";
+import { Search, PenTool, Code, CheckSquare, Rocket } from "lucide-react";
 
 const phases = [
   {
@@ -54,34 +43,6 @@ const phases = [
     description: "We help you go live and stay by your side to ensure success.",
     icon: <Rocket className="w-10 h-10" />,
     activities: ["Go-Live Support", "Monitoring", "Always Helping"],
-  },
-];
-
-const outcomes = [
-  {
-    title: "Understanding",
-    description: "A clear plan for your business growth",
-    icon: <FileText className="w-8 h-8" />,
-  },
-  {
-    title: "Visuals",
-    description: "Seeing your idea come to life",
-    icon: <Layout className="w-8 h-8" />,
-  },
-  {
-    title: "Software",
-    description: "A powerful, working system",
-    icon: <Keyboard className="w-8 h-8" />,
-  },
-  {
-    title: "Quality",
-    description: "No bugs, just smooth operation",
-    icon: <Flag className="w-8 h-8" />,
-  },
-  {
-    title: "Success",
-    description: "Your business running better",
-    icon: <Cloud className="w-8 h-8" />,
   },
 ];
 
@@ -143,47 +104,6 @@ export const ProcessSection = () => {
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            ))}
-          </SnapCarousel>
-        </div>
-      </section>
-
-      {/* Tangible Outcomes Section */}
-      <section className="py-20 bg-primary/5 backdrop-blur-md rounded-[40px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent pointer-events-none opacity-40" />
-        <div className="max-w-[1000px] mx-auto px-6 lg:px-12 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-              Tangible{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
-                Outcomes
-              </span>
-            </h2>
-            <p className="text-foreground/80">
-              What you can expect at every checkpoint of the engagement.
-            </p>
-          </div>
-          <SnapCarousel
-            className="md:block"
-            scrollContainerClassName="md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 pb-8 md:pb-0"
-          >
-            {outcomes.map((outcome, i) => (
-              <div
-                key={i}
-                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40 hover:shadow-2xl hover:-translate-y-1 duration-300 min-w-[75vw] md:min-w-0 snap-center"
-              >
-                <div className="text-primary group-hover:text-purple-600 transition-colors">
-                  {outcome.icon}
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h3 className="text-base font-bold leading-tight">
-                    {outcome.title}
-                  </h3>
-                  <p className="text-xs text-foreground/70 leading-snug">
-                    {outcome.description}
-                  </p>
                 </div>
               </div>
             ))}

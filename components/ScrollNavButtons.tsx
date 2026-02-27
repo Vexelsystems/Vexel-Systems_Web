@@ -50,7 +50,7 @@ export default function ScrollNavButtons() {
 
   return (
     <div
-      className={`fixed right-4 sm:right-6 bottom-24 sm:bottom-32 z-50 flex flex-col gap-3 transition-all duration-300 ${
+      className={`fixed right-4 sm:right-6 bottom-32 sm:bottom-40 z-[110] flex flex-col gap-3 transition-all duration-300 ${
         isVisible
           ? "opacity-100 translate-x-0"
           : "opacity-0 translate-x-20 pointer-events-none"

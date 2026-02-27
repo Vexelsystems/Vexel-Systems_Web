@@ -11,11 +11,7 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { SectionSkeleton } from "@/components/ui/SectionSkeleton";
 
 // Lazy load sections after initial render to reduce bundle size
-const PortfolioSection = dynamic(
-  () =>
-    import("@/components/PortfolioSection").then((mod) => mod.PortfolioSection),
-  { loading: () => <SectionSkeleton /> },
-);
+
 const ProcessSection = dynamic(
   () => import("@/components/ProcessSection").then((mod) => mod.ProcessSection),
   { loading: () => <SectionSkeleton /> },
@@ -50,45 +46,38 @@ const ServicesPreviewSection = dynamic(
     ),
   { loading: () => <SectionSkeleton /> },
 );
-const FAQSection = dynamic(
-  () => import("@/components/FAQSection").then((mod) => mod.FAQSection),
-  { loading: () => <SectionSkeleton /> },
-);
 
-import { generatePageMetadata, generateProfessionalServiceSchema } from "@/lib/seo";
+import {
+  generatePageMetadata,
+  generateProfessionalServiceSchema,
+} from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title: "Vexel Systems",
-  description: "Web Development & POS Software in Vavuniya",
+  title:
+    "Vexel Systems | Software Company in Sri Lanka | Web, POS & AI Solutions",
+  description:
+    "Vexel Systems is a leading software company in Vavuniya. delivering custom web development, AI-powered systems, and advanced POS solutions. Based in Vavuniya, we help businesses automate operations and scale digitally with secure, high-performance technology.",
   keywords: [
     "Vexel Systems",
     "Vexel Systems Sri Lanka",
-    "Vexel Systems Vavuniya",
-    "software company in Sri Lanka",
-    "software company in Vavuniya",
-    "POS systems Sri Lanka",
-    "ERP software Sri Lanka",
-    "custom software development Sri Lanka",
-    "AI software Sri Lanka",
-    "business automation solutions",
-    "web and mobile app development Sri Lanka",
-    "technology company Sri Lanka",
+    "software company Sri Lanka",
     "software company Vavuniya",
-    "IT company Vavuniya",
-    "tech company Vavuniya",
-    "software developers Vavuniya",
-    "web design Vavuniya",
-    "software solutions Sri Lanka",
-    "digital transformation Sri Lanka",
-    "technology solutions global",
-    "business management software",
-    "startup software solutions",
+    "web development Sri Lanka",
+    "mobile app development Sri Lanka",
+    "POS systems Sri Lanka",
+    "POS software Vavuniya",
+    "AI software solutions Sri Lanka",
     "custom software development",
-    "web and mobile app development",
-    "Best POS System",
-    "Cloud ERP Software",
-    "POS software Sri Lanka",
-    "AI platforms Sri Lanka",
+    "ERP systems Sri Lanka",
+    "inventory management software",
+    "business automation solutions",
+    "IT company Sri Lanka",
+    "technology company Vavuniya",
+    "digital transformation Sri Lanka",
+    "startup software development",
+    "ecommerce development Sri Lanka",
+    "school management system Sri Lanka",
+    "enterprise software solutions",
   ],
   path: "/",
 });
@@ -116,17 +105,11 @@ export default function Home() {
       <MotionWrapper type="scale" delay={0.2} duration={1.2}>
         <WhyChooseUsSection />
       </MotionWrapper>
-      <MotionWrapper type="slideLeft" duration={1.2}>
-        <PortfolioSection />
-      </MotionWrapper>
       <MotionWrapper type="slideRight" delay={0.1} duration={1.2}>
         <TechStackSection />
       </MotionWrapper>
       <MotionWrapper type="stagger" duration={1.2}>
         <TestimonialSection />
-      </MotionWrapper>
-      <MotionWrapper type="slideUp" delay={0.1} duration={1.2}>
-        <FAQSection />
       </MotionWrapper>
       <MotionWrapper type="fade" delay={0.2} duration={1.2}>
         <ContactSection />

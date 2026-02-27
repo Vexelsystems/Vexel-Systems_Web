@@ -24,7 +24,7 @@ export function HeroSection() {
     <section className="relative min-h-[90vh] md:min-h-screen pt-24 pb-12 flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square bg-primary/[0.02] rounded-full blur-[120px] pointer-events-none" />
       <HeroBackground />
-      <div className="w-[95%] sm:w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6 sm:gap-8">
+      <div className="w-[95%] md:w-[92%] mx-auto max-w-7xl relative z-10 flex flex-col items-center gap-6 sm:gap-8">
         {/* Client component with animation */}
         <div className="mt-8 sm:mt-12 md:mt-16">
           <HeroBadge />

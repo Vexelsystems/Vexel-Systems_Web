@@ -24,8 +24,6 @@ import type { Metadata } from "next";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { TechCard } from "@/components/ui/TechCard";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
-
 export async function generateMetadata({
   params,
 }: {
@@ -137,15 +135,9 @@ export default async function ServiceDetail({
               </h1>
 
               <div className="flex flex-col items-center gap-6">
-                <TypewriterText
-                  phrases={[
-                    service.subtitle,
-                    "Bespoke Engineering.",
-                    "Global Standards.",
-                    "Future Ready.",
-                  ]}
-                  className="text-xl md:text-2xl font-bold text-foreground/60"
-                />
+                <span className="text-xl md:text-2xl font-bold text-foreground/60 block">
+                  {service.subtitle}
+                </span>
                 <p className="max-w-2xl text-lg font-medium text-foreground/80 leading-relaxed italic">
                   {service.description}
                 </p>

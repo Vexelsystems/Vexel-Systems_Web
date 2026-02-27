@@ -7,16 +7,22 @@ import Image from "next/image";
 export default function HomePreloader() {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
-    // Prevent scrolling while loading
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+    const hasVisited = sessionStorage.getItem("hasVisitedVexel");
+    if (hasVisited) {
+      setShowPreloader(false);
+      setIsLoading(false);
+      return;
     }
 
-    const duration = 1200; // 1.2 seconds total load time (Faster)
+    sessionStorage.setItem("hasVisitedVexel", "true");
+
+    // Prevent scrolling while loading
+    document.body.style.overflow = "hidden";
+
+    const duration = 1200; // 1.2 seconds total load time
     const interval = 20; // update every 20ms
     const step = 100 / (duration / interval);
 
@@ -33,6 +39,7 @@ export default function HomePreloader() {
 
     const timeout = setTimeout(() => {
       setIsLoading(false);
+      document.body.style.overflow = "auto";
     }, duration + 200); // Wait a bit after 100% before fading out
 
     return () => {
@@ -40,7 +47,9 @@ export default function HomePreloader() {
       clearTimeout(timeout);
       document.body.style.overflow = "auto";
     };
-  }, [isLoading]);
+  }, []);
+
+  if (!showPreloader) return null;
 
   return (
     <AnimatePresence mode="wait">
@@ -57,11 +66,9 @@ export default function HomePreloader() {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
               className="relative size-24 md:size-32"
             >
-              {/* Assuming VLogo.png exists as generally referenced in SEO metadata */}
-              {/* If not, I'll use a text fallback or generic shape, but VLogo.png was referenced in layout.tsx */}
               <Image
                 src="/VLogo.png"
                 alt="Vexel Systems"
@@ -75,7 +82,7 @@ export default function HomePreloader() {
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
               className="text-center space-y-2"
             >
               <h1 className="text-3xl md:text-4xl font-black tracking-tighter">
@@ -86,22 +93,30 @@ export default function HomePreloader() {
               </p>
             </motion.div>
 
-            {/* Progress Bar Container */}
-            <div className="w-64 h-1 bg-foreground/10 rounded-full overflow-hidden mt-4 relative">
-              {/* Progress Fill */}
-              <motion.div
-                className="h-full bg-primary"
-                style={{ width: `${progress}%` }}
-                initial={{ width: "0%" }}
-                animate={{ width: `${progress}%` }}
-                transition={{ ease: "linear", duration: 0.02 }} // Smooth instantaneous updates
-              />
-            </div>
+            {/* Progress Bar & Percentage Container */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.4 }}
+              className="flex flex-col items-center gap-2 mt-4"
+            >
+              {/* Progress Bar Container */}
+              <div className="w-64 h-1 bg-foreground/10 rounded-full overflow-hidden relative">
+                {/* Progress Fill */}
+                <motion.div
+                  className="h-full bg-primary"
+                  style={{ width: `${progress}%` }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ ease: "linear", duration: 0.02 }} // Smooth instantaneous updates
+                />
+              </div>
 
-            {/* Percentage Text */}
-            <div className="text-xs font-bold font-mono opacity-50">
-              {Math.round(progress)}%
-            </div>
+              {/* Percentage Text */}
+              <div className="text-xs font-bold font-mono opacity-50">
+                {Math.round(progress)}%
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       )}

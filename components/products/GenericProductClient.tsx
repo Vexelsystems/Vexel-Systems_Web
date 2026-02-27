@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/lib/types";
 import { RoadmapTimeline } from "@/components/RoadmapTimeline";
@@ -66,14 +65,9 @@ export default function GenericProductClient({
                 </h1>
 
                 {product.tagline && (
-                  <TypewriterText
-                    phrases={[
-                      product.tagline,
-                      "Built for Scale.",
-                      "Engineered for Growth.",
-                    ]}
-                    className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600 mb-8 block uppercase tracking-tight"
-                  />
+                  <span className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600 mb-8 block uppercase tracking-tight">
+                    {product.tagline}
+                  </span>
                 )}
 
                 <p className="text-lg md:text-xl font-medium text-foreground/60 max-w-xl mb-12 leading-relaxed">

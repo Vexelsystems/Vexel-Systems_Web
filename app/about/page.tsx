@@ -21,7 +21,6 @@ import {
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { generatePageMetadata } from "@/lib/seo";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
 
 export const metadata = generatePageMetadata({
   title: "About Us",
@@ -47,10 +46,10 @@ export default function About() {
       <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
         {/* Background Gradients & Grid */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
-        <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
+        <div className="w-[92%] md:w-[90%] mx-auto max-w-[1400px] relative z-10 flex flex-col items-center gap-6">
           {/* Hero Badge Replicated */}
           <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-md border border-primary/20 shadow-2xl shadow-primary/5 group cursor-default">
             <div className="size-2 rounded-full bg-primary"></div>
@@ -67,16 +66,17 @@ export default function About() {
 
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
                 <span className="text-foreground">Real People Building</span>
-                <TypewriterText phrases={["Real Solutions."]} />
+                <span className="text-primary mt-2">Real Solutions.</span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                We are a Tech team from Sri Lanka. We don&apos;t just write code; we
-                build{" "}
+                We are a Tech team from Sri Lanka. We don&apos;t just write
+                code; we build{" "}
                 <Link href="/services" className="text-primary hover:underline">
                   software
                 </Link>{" "}
-                that works, helps you grow, and doesn&apos;t complicate your life.
+                that works, helps you grow, and doesn&apos;t complicate your
+                life.
               </p>
             </div>
           </MotionWrapper>
@@ -104,7 +104,7 @@ export default function About() {
 
       {/* Mission & Vision Section */}
       <section className="mb-24">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl">
           <MotionWrapper delay={0.2} type="slideUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tight text-foreground">
@@ -158,7 +158,7 @@ export default function About() {
 
       {/* Company Timeline */}
       <section className="mb-24 py-16 bg-transparent">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl">
           <div className="max-w-4xl mx-auto">
             <MotionWrapper type="slideUp" delay={0.1}>
               <div className="text-center mb-16">
@@ -266,7 +266,7 @@ export default function About() {
 
       {/* Core Values Section */}
       <section className="mb-24">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl">
           <MotionWrapper delay={0.2} type="slideUp">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-foreground">
@@ -326,7 +326,7 @@ export default function About() {
 
       {/* Final CTA */}
       <section className="mb-12">
-        <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px]">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl">
           <MotionWrapper type="scale" delay={0.4} duration={1.2}>
             <div className="relative bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-2xl p-12 overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm">
               {/* Abstract Background Elements */}

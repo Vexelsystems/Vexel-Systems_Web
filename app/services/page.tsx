@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";
-import { TypewriterText } from "@/components/hero/TypewriterText";
 
 /**
  * SERVICES ROOT PAGE
@@ -47,7 +46,7 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 opacity-50"></div>
+
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
 
         <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
@@ -67,14 +66,7 @@ export default function ServicesPage() {
 
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
                 <span className="text-foreground">Everything You Need</span>
-                <TypewriterText
-                  phrases={[
-                    "to Grow.",
-                    "to Scale.",
-                    "to Innovate.",
-                    "to Succeed.",
-                  ]}
-                />
+                <span className="text-primary">to Succeed.</span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
