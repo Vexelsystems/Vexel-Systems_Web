@@ -147,7 +147,7 @@ export default function ConsultationClient() {
     },
     {
       id: "pos",
-      label: "Vexel POS",
+      label: "POS System",
       icon: <Code size={18} />,
       desc: "Retail & Wholesale systems",
     },

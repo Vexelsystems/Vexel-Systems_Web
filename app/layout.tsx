@@ -259,7 +259,7 @@ export default function RootLayout({
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "SoftwareApplication",
-                      name: "Vexel POS System",
+                      name: "Retail & Wholesale POS System",
                       applicationCategory: "BusinessApplication",
                       operatingSystem: "Windows, Web",
                       description:
@@ -334,11 +334,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: "Vexel POS System",
+              name: "Professional POS System",
               operatingSystem: "Windows, Web",
               applicationCategory: "BusinessApplication",
               description:
-                "Vexel POS is a retail and wholesale billing system with inventory, customer management, and reporting.",
+                "A high-performance retail and wholesale billing system with inventory, customer management, and reporting.",
               offers: {
                 "@type": "Offer",
                 priceCurrency: "LKR",
@@ -365,7 +365,7 @@ export default function RootLayout({
                 {
                   "@type": "ListItem",
                   position: 2,
-                  name: "Vexel POS",
+                  name: "POS System",
                   item: "https://vexelsystems.lk/products/vexel-pos",
                 },
               ],

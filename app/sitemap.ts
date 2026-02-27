@@ -4,6 +4,7 @@ import { services } from "@/lib/services";
 import { products } from "@/lib/products";
 import { PRICING_CATEGORIES } from "@/lib/pricing-data";
 import { events } from "@/lib/events-data";
+import { locations } from "@/lib/locations";
 
 /**
  * SITEMAP GENERATOR
@@ -79,6 +80,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Dynamic location SEO routes
+  const locationRoutes = locations.map((location) => ({
+    url: `${baseUrl}/${location.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   // Combine all routes
   const allRoutes = [
     ...staticRoutes.map((route) => ({
@@ -123,6 +132,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pricingRoutes.map((route) => ({
       ...route,
       images: [`${baseUrl}/favicon.ico`],
+    })),
+    ...locationRoutes.map((route) => ({
+      ...route,
+      images: [`${baseUrl}/products/photo-1556742502-ec7c0e9f34b1.jpg`],
     })),
   ];
 

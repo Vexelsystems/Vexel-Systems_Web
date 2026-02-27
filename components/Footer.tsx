@@ -25,6 +25,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { companyDetails } from "@/lib/companydetails";
+import { locations } from "@/lib/locations";
 import { useState } from "react";
 
 export default function Footer() {
@@ -78,7 +79,7 @@ export default function Footer() {
       <div className="absolute -bottom-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-purple-600/5 blur-[160px] pointer-events-none -z-10 dark:hidden" />
       <div className="px-6 lg:px-12 relative z-10 text-center md:text-left">
         {/* Main Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 gap-y-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 gap-y-12 mb-16">
           {/* Column 1: Brand Identity (Always Visible) */}
           <div className="col-span-1 lg:col-span-1 flex flex-col gap-4 items-center md:items-start text-center md:text-left bg-foreground/5 p-6 rounded-3xl border border-primary/10 lg:border-none lg:bg-transparent lg:p-0">
             <Link href="/" className="flex items-center gap-2">
@@ -104,7 +105,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="col-span-1 lg:col-span-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-0 md:gap-8 lg:gap-8">
+          <div className="col-span-1 lg:col-span-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-0 md:gap-8 lg:gap-8">
             {/* Column 2: Quick Nav */}
             <FooterSection title="Quick Nav">
               <ul className="space-y-3 text-sm font-medium">
@@ -363,7 +364,23 @@ export default function Footer() {
               </ul>
             </FooterSection>
 
-            {/* Column 6: Contact & Socials */}
+            {/* Column 6: Locations */}
+            <FooterSection title="Locations">
+              <ul className="grid grid-cols-2 gap-x-2 gap-y-3 text-xs font-medium">
+                {locations.map((loc) => (
+                  <li key={loc.slug}>
+                    <Link
+                      href={`/${loc.slug}`}
+                      className="text-foreground/70 hover:text-primary transition-colors hover:underline"
+                    >
+                      {loc.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </FooterSection>
+
+            {/* Column 7: Contact & Socials */}
             <div className="flex flex-col gap-4 mt-8 md:mt-0 lg:col-span-2">
               <h4 className="text-xs font-bold uppercase tracking-widest text-primary/80 hidden md:block">
                 Connect

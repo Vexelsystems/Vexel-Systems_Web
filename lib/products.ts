@@ -180,14 +180,14 @@ export const products: Product[] = [
   {
     id: "vexel-track",
     slug: "vexel-track",
-    title: "Vexel Track Fleet Management",
+    title: "Fleet Management & Tracking System",
     tagline: "Real-Time Fleet & Asset Tracking",
     badge: "Logistics Engine",
     category: "MANAGEMENT SOLUTION",
     shortDescription:
       "Know exactly where your vehicles are, anytime. A simple, reliable GPS tracking system designed to help Sri Lankan businesses save fuel and reduce delays.",
     fullDescription:
-      "Vexel Track is more than just a dot on a map. It's a comprehensive fleet intelligence system designed to reduce operational costs and increase efficiency. From logistics companies to corporate fleets, our system provides real-time visibility, automated maintenance alerts, and driver behavior analysis. Stop guessing where your assets are and start optimizing how they move.",
+      "the Fleet Tracking system is more than just a dot on a map. It's a comprehensive fleet intelligence system designed to reduce operational costs and increase efficiency. From logistics companies to corporate fleets, our system provides real-time visibility, automated maintenance alerts, and driver behavior analysis. Stop guessing where your assets are and start optimizing how they move.",
     mainImage: "/products/photo-1551288049-bebda4e38f71.jpg",
     icon: Fingerprint,
     checklist: [
@@ -376,7 +376,7 @@ export const products: Product[] = [
       {
         step: "Connect",
         description:
-          "Devices sync automatically with the Vexel Track encrypted cloud platform.",
+          "Devices sync automatically with the the Fleet Tracking system encrypted cloud platform.",
         icon: Shield,
       },
       {
@@ -425,7 +425,7 @@ export const products: Product[] = [
         problem:
           "Rising fuel costs and inability to track delivery delays accurately.",
         solution:
-          "Implemented Vexel Track with route optimization and idle monitoring.",
+          "Implemented the Fleet Tracking system with route optimization and idle monitoring.",
         results: [
           "15% Reduced Fuel Costs",
           "98% On-time Deliveries",
@@ -467,7 +467,7 @@ export const products: Product[] = [
     ],
     faq: [
       {
-        question: "Does Vexel Track work in remote areas?",
+        question: "Does the Fleet Tracking system work in remote areas?",
         answer:
           "Yes, our device caches data internally when signal is lost and uploads it automatically once connectivity is restored, ensuring no data gaps.",
       },
@@ -499,14 +499,14 @@ export const products: Product[] = [
   {
     id: "vexel-retail-pos",
     slug: "vexel-retail-pos",
-    title: "Vexel Retail POS",
+    title: "Retail POS System",
     tagline: "Ultra-Fast Shop Billing & Inventory Management",
     badge: "Market Standard",
     category: "Retail & Specialty Stores",
     shortDescription:
       "A complete billing and inventory system for Grocery, Fashion, Electronics, Pharmacy, Hardware, Salon, Spa, Bar, Pub, Bookstore, Toy store, Pet store, Art store, Music Store, Garden center, Furniture shop, Beauty supply, and Bike shops.",
     fullDescription:
-      "Vexel Retail POS is the ultimate point-of-sale solution for modern retail formats. It combines high-speed billing, intelligent inventory management, and deep customer analytics into one seamless platform. Whether you run a boutique, a pharmacy, or a bustling bar, Vexel Retail POS scales with you, offering hybrid offline/online capability and automated stock alerts.",
+      "the POS system is the ultimate point-of-sale solution for modern retail formats. It combines high-speed billing, intelligent inventory management, and deep customer analytics into one seamless platform. Whether you run a boutique, a pharmacy, or a bustling bar, the POS system scales with you, offering hybrid offline/online capability and automated stock alerts.",
     mainImage: "/products/photo-1556742502-ec7c0e9f34b1.jpg",
     icon: ShoppingCart,
     checklist: [
@@ -602,14 +602,14 @@ export const products: Product[] = [
   {
     id: "vexel-wholesale-pos",
     slug: "vexel-wholesale-pos",
-    title: "Vexel Wholesale POS",
+    title: "Wholesale POS System",
     tagline: "B2B Distribution & Bulk Billing Management",
     badge: "B2B Standard",
     category: "MANAGEMENT SOLUTION",
     shortDescription:
       "Specialized for wholesalers and distributors with tiered pricing, credit management, and bulk order processing.",
     fullDescription:
-      "Vexel Wholesale POS is engineered for the complexities of B2B distribution. Manage large-scale inventories, complex pricing tiers, and customer credit limits with ease. Integrated with delivery route optimization and bulk invoice generation to streamline your distribution network.",
+      "the Wholesale POS system is engineered for the complexities of B2B distribution. Manage large-scale inventories, complex pricing tiers, and customer credit limits with ease. Integrated with delivery route optimization and bulk invoice generation to streamline your distribution network.",
     mainImage: "/products/pos/wholesale.jpg",
     icon: Building,
     checklist: [
@@ -651,14 +651,14 @@ export const products: Product[] = [
   {
     id: "vexel-pharmacy-pos",
     slug: "vexel-pharmacy-pos",
-    title: "Vexel Pharmacy POS",
+    title: "Pharmacy POS System",
     tagline: "Specialized Drug & Expiry Management",
     badge: "Healthcare",
     category: "Healthcare & Wellness",
     shortDescription:
       "A specialized point-of-sale system for pharmacies. Manage prescriptions, track batch-wise expiry dates, and handle drug classifications with precision.",
     fullDescription:
-      "Vexel Pharmacy POS is designed to meet the rigorous demands of pharmaceutical retail. It features sophisticated batch-wise inventory tracking, automatic expiry alerts, prescription history management, and integration with drug databases. Ensure compliance and patient safety while streamlining your billing and stock control.",
+      "the Pharmacy POS system is designed to meet the rigorous demands of pharmaceutical retail. It features sophisticated batch-wise inventory tracking, automatic expiry alerts, prescription history management, and integration with drug databases. Ensure compliance and patient safety while streamlining your billing and stock control.",
     mainImage: "/products/photo-1576091160550-217359f4ecf8.jpg",
     icon: Stethoscope,
     checklist: [
@@ -694,7 +694,7 @@ export const products: Product[] = [
   {
     id: "vexel-hire",
     slug: "vexel-hire",
-    title: "Vexel Hire",
+    title: "Smart Recruitment AI",
     tagline: "AI CV Filtering & Smart Recruitment",
     badge: "Efficiency Pro",
     category: "MANAGEMENT SOLUTION",
@@ -725,7 +725,7 @@ export const products: Product[] = [
   {
     id: "restaurant-pos",
     slug: "restaurant-pos",
-    title: "Vexel Restaurant POS",
+    title: "Restaurant POS System",
     tagline: "Fine Dining & Quick Service",
     badge: "Hospitality",
     category: "Food & Beverage",
@@ -750,7 +750,7 @@ export const products: Product[] = [
   {
     id: "cafe-pos",
     slug: "cafe-pos",
-    title: "Vexel Cafe POS",
+    title: "Cafe POS System",
     tagline: "Quick Serve",
     badge: "Hospitality",
     category: "Food & Beverage",
@@ -775,7 +775,7 @@ export const products: Product[] = [
   {
     id: "hotel-pos",
     slug: "hotel-pos",
-    title: "Vexel Hotel/Resort POS",
+    title: "Hotel & Resort POS System",
     tagline: "Hospitality Management Suite",
     badge: "Hospitality",
     category: "Hospitality & Travel",

@@ -124,7 +124,7 @@ ${formData.message}
     "AI & Intelligent Systems",
     "IoT & Smart Solutions",
     "Vexel Track (Lead GPS Tracking)",
-    "Vexel POS (Point of Sale)",
+    "pos (Point of Sale)",
     "Vexel Hire (Fleet & Resource)",
     "Web & Mobile App Development",
     "Digital Transformation",

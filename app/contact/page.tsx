@@ -3,7 +3,7 @@ import ContactClient from "./ContactClient";
 
 /**
  * CONTACT ROOT PAGE
- * 
+ *
  * Functional Overview:
  * - Architecture: Wrapper for `ContactClient` to enable SEO metadata injection.
  * - Keyword Targeting: Optimized for location-specific terms ("Vavuniya", "Sri Lanka").
@@ -17,7 +17,7 @@ export const metadata = generatePageMetadata({
     "software company contact Sri Lanka",
     "IT company Vavuniya contact",
     "Vexel Systems address",
-    "Vexel POS contact",
+    "POS systems",
     "ERP software contact",
     "business software contact Sri Lanka",
     "customer support Vexel Systems",
@@ -35,7 +35,7 @@ export const metadata = generatePageMetadata({
     "software support Vavuniya",
     "IT support Vavuniya",
     "visit Vexel Systems Vavuniya",
-    "call Vexel Systems Sri Lanka"
+    "call Vexel Systems Sri Lanka",
   ],
   path: "/contact",
 });
