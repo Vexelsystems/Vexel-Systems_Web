@@ -1,25 +1,7 @@
 import { Store, Code2, Bot } from "lucide-react";
+import type { CoreProduct, LocationData } from "@/lib/types";
 
-export interface CoreProduct {
-  title: string;
-  description: string;
-  icon: any;
-}
-
-export interface LocationData {
-  slug: string;
-  name: string;
-  latitude: number;
-  longitude: number;
-  region: string;
-  metaTitle: string;
-  metaDescription: string;
-  h1Heading: string;
-  localHook: string;
-  coreProducts: CoreProduct[];
-  whyChooseUs: string;
-  ctaText: string;
-}
+export type { CoreProduct, LocationData } from "@/lib/types";
 
 export const locations: LocationData[] = [
   {

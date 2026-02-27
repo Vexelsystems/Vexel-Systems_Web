@@ -1,4 +1,5 @@
-import { generatePageMetadata } from "@/lib/seo";
+import { generatePageMetadata, generateFAQPageSchema } from "@/lib/seo";
+import { faqData } from "@/lib/faq-data";
 import FaqClient from "@/components/FaqClient";
 
 /**
@@ -37,66 +38,20 @@ export const metadata = generatePageMetadata({
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
 export default function FAQPage() {
+  // Generate FAQ schema from centralized data
+  const faqSchema = generateFAQPageSchema(
+    faqData.slice(0, 10).map((item) => ({
+      question: item.question,
+      answer: item.answer,
+    })),
+  );
+
   return (
     <>
-      {/* FAQPage Schema for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What is Vexel POS?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Vexel POS is a billing and inventory management system designed for retail and wholesale businesses in Sri Lanka.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Does Vexel Systems provide web development services?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, Vexel Systems offers custom web development services including modern websites, web applications, and e-commerce solutions using the latest technologies.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What AI integration services does Vexel Systems offer?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Vexel Systems provides AI integration services including chatbots, automated customer support, data analytics, and intelligent business automation solutions.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Does Vexel POS support wholesale businesses?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, Vexel POS supports wholesale pricing, bulk billing, customer credit management, and advanced reporting features.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Can Vexel Systems develop custom software solutions?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, Vexel Systems specializes in custom software development tailored to your business needs, including inventory systems, CRM, and business management tools.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Is Vexel Systems available in Sri Lanka?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes, Vexel Systems is based in Vavuniya, Sri Lanka, and provides services throughout the country with local support in English and Tamil.",
-                },
-              },
-            ],
-          }),
+          __html: JSON.stringify(faqSchema),
         }}
       />
 

@@ -71,12 +71,12 @@ export default function About() {
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
-                We are a Tech team from Sri Lanka. We don't just write code; we
+                We are a Tech team from Sri Lanka. We don&apos;t just write code; we
                 build{" "}
                 <Link href="/services" className="text-primary hover:underline">
                   software
                 </Link>{" "}
-                that works, helps you grow, and doesn't complicate your life.
+                that works, helps you grow, and doesn&apos;t complicate your life.
               </p>
             </div>
           </MotionWrapper>

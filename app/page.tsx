@@ -55,7 +55,7 @@ const FAQSection = dynamic(
   { loading: () => <SectionSkeleton /> },
 );
 
-import { generatePageMetadata } from "@/lib/seo";
+import { generatePageMetadata, generateProfessionalServiceSchema } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Vexel Systems",
@@ -99,47 +99,11 @@ export default function Home() {
   return (
     <main className="flex-1">
       <HomePreloader />
-      {/* Local Business Schema */}
+      {/* Professional Service Schema - Centralized from seo.ts */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            name: "Vexel Systems",
-            image: "https://www.vexelsystems.lk/VLogo.png",
-            url: "https://www.vexelsystems.lk",
-            telephone: "+94740968108",
-            priceRange: "$$",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Vairavapuliyankulam",
-              addressLocality: "Vavuniya",
-              postalCode: "43000",
-              addressCountry: "LK",
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: 8.7515,
-              longitude: 80.4971,
-            },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-              ],
-              opens: "09:00",
-              closes: "17:00",
-            },
-            sameAs: [
-              "https://www.facebook.com/vexelsystems",
-              "https://www.linkedin.com/company/vexelsystems",
-            ],
-          }),
+          __html: JSON.stringify(generateProfessionalServiceSchema()),
         }}
       />
       <HeroSection /> {/* Loaded immediately - No Animation Wrapper for LCP */}

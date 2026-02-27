@@ -218,7 +218,7 @@ export default async function ServiceDetail({
                 <div className="absolute -inset-4 bg-primary/20 rounded-[4rem] blur-2xl -z-10 animate-pulse" />
                 <div className="relative aspect-4/5 rounded-3xl overflow-hidden group">
                   <Image
-                    src={service.heroImage}
+                    src={service.heroImage ?? "/favicon.ico"}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -308,7 +308,7 @@ export default async function ServiceDetail({
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {service.techStack.map((tech, idx) => (
+            {service.techStack?.map((tech, idx) => (
               <TechCard
                 key={idx}
                 name={tech.name}
@@ -353,7 +353,7 @@ export default async function ServiceDetail({
                       {item.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {item.items.map((it, iidx) => (
+                      {item.items?.map((it, iidx) => (
                         <span
                           key={iidx}
                           className="px-2 py-1 rounded bg-white/5 text-[9px] font-bold text-white/50 border border-white/5"
@@ -432,7 +432,7 @@ export default async function ServiceDetail({
                   <div className="group relative rounded-[4rem] overflow-hidden bg-white/5 border border-white/10 hover:border-primary/50 transition-all">
                     <div className="aspect-video relative overflow-hidden">
                       <Image
-                        src={study.image}
+                        src={study.image ?? "/favicon.ico"}
                         alt={study.title}
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"

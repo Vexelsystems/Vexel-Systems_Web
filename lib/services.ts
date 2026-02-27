@@ -1,132 +1,42 @@
-import { type LucideIcon } from "lucide-react";
 import {
-  Bot,
-  Workflow,
-  MessageSquare,
-  BarChart3,
-  Cpu,
-  Code2,
-  TrendingUp,
-  Zap,
-  LineChart,
-  DollarSign,
-  Landmark,
-  Headphones,
-  Factory,
-  Megaphone,
-  Users,
-  Cloud,
-  Smartphone,
-  DraftingCompass,
-  Settings,
-  UploadCloud,
-  PlusCircle,
-  Gauge,
-  Timer,
-  Shield,
-  Container,
-  LayoutGrid,
-  FileText,
-  PenTool,
-  SearchCheck,
-  BarChart,
-  Video,
-  Microscope,
-  LineChart as GraphChart,
-  BrainCircuit,
-  Lock,
-  EyeOff,
-  CloudOff,
-  ShieldCheck,
-  Stethoscope,
-  Send,
-  FlaskConical,
-  UsersRound,
-  IdCard,
-  Fingerprint,
-  FileCheck,
-  Settings2,
-  Building2,
-  GraduationCap,
-  Hospital,
-  Store,
-  Search,
-  Share2,
-  MousePointerClick,
-  Mail,
-  Lightbulb,
-  UserPlus,
-  Rocket,
-  Newspaper,
-  BookOpen,
-  Tractor,
   Activity,
-  MapPin,
-  Clock,
-  Globe,
-  Radio,
-  LayoutDashboard,
-  CircuitBoard,
-  Router,
-  CloudCog,
-  Wifi,
-  Tablet,
-  Sparkles,
-  RefreshCw,
-  Quote,
-  Server,
-  Bug,
-  Star,
-  Map,
-  List,
-  Network,
-  Sliders,
-  Eye,
-  Database,
-  Palette,
-  Webhook,
-  Layers,
-  Tablets,
-  PiggyBank,
-  AppWindow,
-  Blocks,
-  ScanSearch,
-  Laugh,
-  Terminal,
-  PieChart,
-  Link as LinkIcon,
-  Facebook,
-  Instagram,
-  Linkedin,
-  CreditCard,
+  BarChart3,
   Bell,
+  Bot,
+  BrainCircuit,
+  Cloud,
+  Code2,
+  Cpu,
+  DollarSign,
+  GraduationCap,
   HeartPulse,
+  Landmark,
+  Layers,
+  LayoutGrid,
+  Lock,
+  Mail,
+  Megaphone,
+  Network,
+  Palette,
+  PiggyBank,
+  Search,
+  Server,
+  Settings,
+  Share2,
+  Shield,
+  ShieldCheck,
   ShoppingCart,
-  Twitter,
-  Music,
-  Calendar,
-  MessageCircle,
-  MousePointerClick as Click,
-  Award,
-  Store as PointOfSale, // Alias Store for POS
-  Landmark as CorporateFare,
-  Cloud as CloudSync,
-  Network as Hub, // Alias Network for Hub
-  BadgeCheck,
-  Gavel,
-  ShieldCheck as ShieldLock,
-  Languages,
-  Code2 as DataObject, // Alias Code2 for DataObject
-  FilePenLine as EditDocument, // Maps to edit_document
-  Navigation,
-  Coins as Token, // Maps to token
-  Monitor,
-  Briefcase,
-  ChevronRight,
-  ChevronDown,
-  CheckCircle,
-  ShieldAlert,
+  Smartphone,
+  Sparkles,
+  Star,
+  Store,
+  Users,
+  UsersRound,
+  Wifi,
+  Workflow,
+  Zap,
 } from "lucide-react";
+import type { ServiceData } from "@/lib/types";
 
 /**
  * SERVICES DATA
@@ -135,131 +45,24 @@ import {
  * - Comprehensive list of all services offered.
  * - Structure: Rich data model including sub-services, benefits, tech stack, and case studies.
  * - Used by: Services page, Service Detail pages, and Sitemap generation.
+ * - Type definitions imported from centralized types.ts
  */
-export interface SubService {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  features?: string[];
-  image?: string;
-}
 
-export interface Benefit {
-  title: string;
-  description: string;
-  image?: string;
-  icon?: any;
-}
-
-export interface WhyUsPoint {
-  title: string;
-  description: string;
-  icon: any;
-}
-
-export interface WhyUs {
-  title: string;
-  description: string;
-  image: string;
-  points: WhyUsPoint[];
-}
-
-export interface ProcessStep {
-  title: string;
-  description: string;
-}
-
-export interface PrivacyFeature {
-  title: string;
-  icon: any;
-}
-
-export interface CaseStudy {
-  title: string;
-  category: string;
-  stat: string;
-  statDescription: string;
-  image: string;
-}
-
-export interface Industry {
-  name: string;
-  description?: string;
-  icon?: any;
-  image?: string;
-}
-
-export interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  authorImage?: string;
-}
-
-export interface Certification {
-  title: string;
-  icon: any;
-}
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface TechItem {
-  name: string;
-  iconName: string;
-  explanation: string;
-}
-
-export interface RoadmapItem {
-  phase: string;
-  date: string;
-  description: string;
-  items: string[];
-  status: "completed" | "current" | "future";
-}
-
-export interface ServiceData {
-  slug: string;
-  title: string;
-  navTitle?: string;
-  subtitle: string;
-  description: string; // Short tagline
-  aboutDetail?: string; // Point 2: Brief description
-  heroImage: string;
-  subServices: SubService[]; // Point 3: Features / Highlights
-  benefits?: Benefit[]; // Point 7: Why Choose Us / Benefits
-  techStack: TechItem[]; // Point 4: Technologies We Use
-  industries?: Industry[];
-  process?: ProcessStep[]; // Point 5: How It Works
-  whyUs?: WhyUs;
-  caseStudies?: CaseStudy[]; // Point 6: Case Studies
-  testimonial?: Testimonial; // Point 8: Testimonials
-  privacy?: {
-    description: string;
-    features: PrivacyFeature[];
-  };
-  certifications?: Certification[];
-  faq?: FaqItem[]; // Point 10: FAQs
-  pricing?: {
-    title: string;
-    description: string;
-    options: {
-      name: string;
-      price: string;
-      features: string[];
-    }[];
-  }; // Point 9: Pricing
-  comparison?: {
-    feature: string;
-    vexel: boolean | string;
-    others: boolean | string;
-  }[];
-  status?: "active" | "development" | "production";
-  roadmap?: RoadmapItem[];
-  keywords?: string[];
-}
+// Re-export types for backward compatibility
+export type {
+  SubService,
+  Benefit,
+  WhyUsPoint,
+  WhyUs,
+  ProcessStep,
+  PrivacyFeature,
+  Industry,
+  Testimonial,
+  Certification,
+  TechItem,
+  RoadmapItem,
+  ServiceData,
+} from "@/lib/types";
 
 export const services: ServiceData[] = [
   {
@@ -1247,7 +1050,7 @@ export const services: ServiceData[] = [
       {
         title: "Proactive Defense",
         description: "We solve problems before you even know they exist.",
-        icon: ShieldLock,
+        icon: ShieldCheck,
       },
       {
         title: "Cost Transparency",
@@ -1527,7 +1330,7 @@ export const services: ServiceData[] = [
         title: "Inventory & POS",
         description:
           "Custom Point of Sale and Inventory Management solutions tailored to your retail or wholesale business.",
-        icon: PointOfSale,
+        icon: Store,
         features: ["Barcode Scanning", "Stock Alerts", "Sales Reports"],
       },
       {

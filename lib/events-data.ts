@@ -1,4 +1,6 @@
-export const events = [
+import type { Event } from "@/lib/types";
+
+export const events: Event[] = [
   {
     id: 1,
     slug: "vexel-retail-summit-2026",

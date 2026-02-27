@@ -4,19 +4,9 @@
  * Functional Overview:
  * - Defines open positions for the Careers page.
  * - Structure: Optimized for card display and detail modals.
- * - type: Enforces work arrangement types (Remote/Hybrid/On-site).
+ * - Types imported from centralized types.ts
  */
-export type JobPosition = {
-  id: string;
-  title: string;
-  department: string;
-  type: 'Remote' | 'Hybrid' | 'On-site';
-  salary: string;
-  location: string;
-  description: string;
-  requirements: string[];
-  responsibilities: string[];
-};
+import type { JobPosition } from "@/lib/types";
 
 export const jobPositions: JobPosition[] = [
   // --- FRONTEND ---

@@ -9,65 +9,46 @@ import {
   Shield,
   Zap,
   Target,
-  Filter,
-  Calendar,
-  BarChart3,
-  Briefcase,
-  MessageSquare,
-  Globe,
-  CheckCircle,
-  Search,
-  Database,
-  List,
-  UploadCloud,
-  FileText,
-  Activity,
-  Cloud,
-  CreditCard,
-  Store,
-  ShoppingBag,
-  Utensils,
-  Bed,
-  HeartPulse,
-  Wrench,
-  Ticket,
-  Scissors,
-  Coffee,
-  Beer,
-  Music,
-  Anchor,
-  Home,
-  Monitor,
-  Printer,
-  Smartphone,
-  Tag,
-  Gift,
-  Truck,
-  Box,
-  Car,
-  Palette,
-  Flower,
-  Droplets,
-  Dumbbell,
-  Stethoscope,
-  Film,
-  BookOpen,
-  Book,
   Building,
-  Factory,
-  Cpu,
-  Scale,
-  TreePine,
-  Gem,
-  Music2,
-  Sofa,
-  PawPrint,
-  Gamepad2,
-  Bike,
-  Hammer,
-  GraduationCap,
   Banknote,
+  Stethoscope,
+  Utensils,
+  Coffee,
+  Bed,
+  Film,
+  Ticket,
+  Calendar,
+  GraduationCap,
+  Truck,
+  List,
+  Monitor,
 } from "lucide-react";
+import type {
+  ProductFeature,
+  DetailedFeatureCategory,
+  ProductBenefit,
+  RoadmapItem,
+  PricingOption,
+  ComparisonItem,
+  TestimonialItem,
+  CaseStudyItem,
+  PartnerItem,
+  Product,
+} from "@/lib/types";
+
+// Re-export types for backward compatibility
+export type {
+  ProductFeature,
+  DetailedFeatureCategory,
+  ProductBenefit,
+  RoadmapItem,
+  PricingOption,
+  ComparisonItem,
+  TestimonialItem,
+  CaseStudyItem,
+  PartnerItem,
+  Product,
+} from "@/lib/types";
 
 /**
  * PRODUCT CATALOGUE
@@ -76,105 +57,8 @@ import {
  * - Repository for proprietary Vexel Systems products (e.g., POS, Attendance System).
  * - Usage: Populates the Products page and individual product detail pages.
  * - getProductBySlug: Helper to fetch specific product data for dynamic routing.
+ * - Types are imported from centralized types.ts for consistency
  */
-
-export interface ProductFeature {
-  title: string;
-  description: string;
-  icon?: LucideIcon;
-}
-
-export interface DetailedFeatureCategory {
-  category: string;
-  icon: LucideIcon;
-  features: string[];
-}
-
-export interface ProductBenefit {
-  title: string;
-  description: string;
-}
-
-export interface RoadmapItem {
-  phase: string;
-  date: string;
-  description: string;
-  items: string[];
-  status: "completed" | "current" | "future";
-}
-
-export interface PricingOption {
-  name: string;
-  price: string;
-  features: string[];
-  isPopular?: boolean;
-}
-
-export interface ComparisonItem {
-  feature: string;
-  vexel: boolean | string;
-  others: boolean | string;
-}
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface TestimonialItem {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  image?: string;
-  rating: number;
-}
-
-export interface CaseStudyItem {
-  title: string;
-  problem: string;
-  solution: string;
-  results: string[];
-  image?: string;
-}
-
-export interface PartnerItem {
-  name: string;
-  logo: string;
-}
-
-export interface Product {
-  id: string;
-  slug: string;
-  title: string;
-  tagline: string;
-  badge: string; // e.g., "Flagship Solution" or "Retail Standard"
-  badgeColor?: string;
-  category: string; // e.g., "ENTERPRISE SOLUTION"
-  shortDescription: string;
-  fullDescription: string;
-  mainImage: string;
-  icon: LucideIcon; // Lucide icon component
-  checklist: string[];
-  idealFor: string[];
-  features: ProductFeature[];
-  detailedFeatures?: DetailedFeatureCategory[]; // New: Categorized features
-  benefits: ProductBenefit[];
-  status?: "active" | "development" | "production";
-  roadmap?: RoadmapItem[];
-  pricing?: {
-    description: string;
-    options: PricingOption[];
-  };
-  comparison?: ComparisonItem[];
-  faq?: FaqItem[]; // New: FAQs
-  testimonials?: TestimonialItem[]; // New: Testimonials
-  caseStudies?: CaseStudyItem[]; // New: Case Studies
-  partners?: PartnerItem[]; // New: Partners/Integrations
-  process?: { step: string; description: string; icon?: LucideIcon }[]; // New: Workflow steps
-  startingPrice?: number; // LKR base price
-  maintenanceFee?: number; // LKR annual fee
-}
 
 export const products: Product[] = [
   {
@@ -465,7 +349,7 @@ export const products: Product[] = [
         rating: 5,
       },
     ],
-    faq: [
+    faqs: [
       {
         question: "Does the Fleet Tracking system work in remote areas?",
         answer:

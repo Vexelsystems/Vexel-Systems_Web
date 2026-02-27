@@ -4,19 +4,9 @@
  * Functional Overview:
  * - Serves as a static CMS for the blog section.
  * - content: Uses simple string-based content (in a real app, this might be Markdown/MDX).
- * - categories: strictly typed to ensure UI consistency.
+ * - Types imported from centralized types.ts for consistency
  */
-export type BlogPost = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  category: 'Technology' | 'Business' | 'POS' | 'Guides';
-  author: string;
-  date: string;
-  readTime: string;
-  image: string;
-};
+import type { BlogPost } from "@/lib/types";
 
 export const blogPosts: BlogPost[] = [
   {

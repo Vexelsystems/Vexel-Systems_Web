@@ -11,48 +11,17 @@ import {
   Box,
   Plug,
   Server,
+  type LucideIcon,
 } from "lucide-react";
+import type {
+  PackageDeliverable,
+  PricingPackage,
+  PricingCategory,
+  DetailedFeature,
+  WhyChooseItem,
+} from "@/lib/types";
 
-/**
- * PRICING DATA
- *
- * Functional Overview:
- * - Defines all service packages and pricing tiers.
- * - Structure: Hierarchical (Categories -> Packages).
- * - Logic: Used by PricingPage and Quote calculator to display options and cost estimates.
- */
-
-export interface PackageDeliverable {
-  title: string;
-  description: string;
-}
-
-export interface PricingPackage {
-  id: string; // Slug
-  name: string;
-  type?: string; // Standard, Premium...
-  bestFor: string;
-  timeline: string;
-  priceLKR: string;
-  priceUSD: string;
-  features: string[]; // Detailed list for the card
-  detailedFeatures?: { title: string; description: string; icon?: string }[]; // New: Deeper explanations
-  description: string; // Beautiful, interactive description
-  deliverables: string[]; // What the client actually gets (checklist)
-  idealFor: string[]; // Detailed target audience
-  whyChoose: { title: string; description: string }[]; // Benefits
-  monthlyCost?: { lkr: string; usd: string }; // Optional recurring cost
-  relatedProducts?: string[]; // IDs/Slugs of related products
-}
-
-export interface PricingCategory {
-  id: string;
-  title: string;
-  description: string;
-  icon: any;
-  color: string;
-  options: PricingPackage[];
-}
+export type { PackageDeliverable, PricingPackage, PricingCategory } from "@/lib/types";
 
 export const PRICING_CATEGORIES: PricingCategory[] = [
   {

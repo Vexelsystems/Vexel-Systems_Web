@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { locations, getLocationBySlug } from "@/lib/locations";
-import { generateDynamicMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { AnimatedDashboard } from "@/components/AnimatedDashboard";
+import {
+  generateLocationMetadata,
+  generateLocalBusinessSchema,
+  generateLocationBreadcrumbSchema,
+} from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,53 +19,8 @@ export async function generateMetadata({
 
   if (!location) return {};
 
-  const fullTitle = `Best POS System in ${location.name} | POS Software Sri Lanka`;
-  const fullDescription = `Best POS system in ${location.name}, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in ${location.name}. Affordable & reliable.`;
-
-  return {
-    title: fullTitle,
-    description: fullDescription,
-    keywords: [
-      location.name,
-      "Sri Lanka",
-      `Best POS System ${location.name}`,
-      `Affordable POS Software ${location.name}`,
-      `Cheap POS System ${location.name}`,
-      "Point of Sale",
-      "Software Solutions",
-    ],
-    alternates: {
-      canonical: `/${location.slug}`,
-    },
-    openGraph: {
-      title: fullTitle,
-      description: fullDescription,
-      url: `/${location.slug}`,
-      siteName: "Vexel Systems",
-      images: [
-        {
-          url: "/images/products/vexel-pos/hero.png",
-          width: 1200,
-          height: 630,
-          alt: fullTitle,
-        },
-      ],
-      locale: "en_LK",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: fullTitle,
-      description: fullDescription,
-      images: ["/images/products/vexel-pos/hero.png"],
-    },
-    other: {
-      "geo.placename": location.name,
-      "geo.region": "LK",
-      robots:
-        "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-    },
-  };
+  // Use centralized location metadata from seo.ts
+  return generateLocationMetadata({ location, slug });
 }
 
 export async function generateStaticParams() {
@@ -80,54 +39,30 @@ export default async function LocationDetail({
 
   if (!location) notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: `POS System ${location.name}`,
-    description: `Best POS system solutions for businesses in ${location.name}, Sri Lanka`,
-    image: "https://www.vexelsystems.lk/VLogo.png",
-    url: `https://www.vexelsystems.lk/${location.slug}`,
-    areaServed: { "@type": "City", name: location.name },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: location.name,
-      addressCountry: "LK",
+  // Generate schemas from centralized functions
+  const localBusinessSchema = generateLocalBusinessSchema({
+    name: location.name,
+    location: {
+      name: location.name,
+      latitude: location.latitude,
+      longitude: location.longitude,
     },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+94740968108",
-      contactType: "Customer Service",
-    },
-  };
+    slug,
+  });
 
-  const breadcrumbLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.vexelsystems.lk/",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: location.name,
-        item: `https://www.vexelsystems.lk/${location.slug}`,
-      },
-    ],
-  };
+  const breadcrumbSchema = generateLocationBreadcrumbSchema(location.name);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema),
+        }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <main className="bg-white text-[#1d1d1f] dark:bg-black dark:text-[#F5F5F7] font-sans antialiased overflow-x-hidden min-h-screen">
         {/* HeroSection */}
@@ -148,7 +83,7 @@ export default async function LocationDetail({
               className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-10 animate-fade-up"
               style={{ animationDelay: "0.2s" }}
             >
-              Streamline your operations with Sri Lanka's leading enterprise
+              Streamline your operations with Sri Lanka leading enterprise
               software. From retail to fleet management, we deliver precision.
             </p>
             <div
@@ -176,7 +111,7 @@ export default async function LocationDetail({
 
         {/* Local Hook */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto bg-[#F5F5F7] dark:bg-[#121212] rounded-[2rem] p-8 md:p-16 shadow-sm flex flex-col md:flex-row items-center gap-12 border border-gray-200 dark:border-gray-800">
+          <div className="max-w-7xl mx-auto bg-[#F5F5F7] dark:bg-[#121212] rounded-4xl p-8 md:p-16 shadow-sm flex flex-col md:flex-row items-center gap-12 border border-gray-200 dark:border-gray-800">
             <div className="md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Designed for the heartbeat of {location.name}.
@@ -283,7 +218,7 @@ export default async function LocationDetail({
                 Why are we the Preferred Choice in {location.name}?
               </h2>
               <p className="text-gray-600 dark:text-gray-400 text-lg mb-8">
-                We don't just provide software; we provide a foundation for your
+                We dont just provide software; we provide a foundation for your
                 business to scale. Our team combines technical excellence with
                 deep insights into the Sri Lankan commercial landscape.
               </p>
@@ -378,7 +313,7 @@ export default async function LocationDetail({
                 Vertical Specific Solutions
               </h2>
               <p className="text-gray-500">
-                Optimized for {location.name}'s diverse economy.
+                Optimized for {location.name}&apos;s diverse economy.
               </p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -417,9 +352,9 @@ export default async function LocationDetail({
                   connection?
                 </h4>
                 <p className="text-gray-500 text-sm">
-                  Yes, our systems are built with an 'Offline First'
-                  architecture. You can continue sales during internet outages,
-                  and data will automatically sync once connection is restored.
+                  Yes, our systems are built with an Offline First architecture.
+                  You can continue sales during internet outages, and data will
+                  automatically sync once connection is restored.
                 </p>
               </div>
               <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-[#121212]">

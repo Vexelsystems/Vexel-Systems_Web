@@ -1,0 +1,113 @@
+# Workspace File Inventory
+
+Each TypeScript/TSX file is listed with a brief description (from header comments if available).
+
+- `next-env.d.ts` – / <reference types="next" />
+- `next.config.ts` – Next.js configuration and build setup.
+- `app/error.tsx` – Generic error page component (renders on runtime errors).
+- `app/layout.tsx` – Root layout; wraps all pages with global providers, metadata, navbar and footer.
+- `app/not-found.tsx` – Custom 404 not-found page.
+- `app/page.tsx` – HOMEPAGE – Main landing page with hero, services preview, portfolio, testimonials, FAQ and contact section.
+- `app/robots.ts` – Generates robots.txt for crawler rules.
+- `app/sitemap.ts` – Sitemap XML generator route.
+- `app/about/page.tsx` – Company story, mission, vision, and team introduction.
+- `app/blog/page.tsx` – Blog listing page for industry insights and news.
+- `app/blog/[slug]/page.tsx` – Template for individual blog posts (dynamic route).
+- `app/careers/page.tsx` – Careers page listing job openings and company culture.
+- `app/company-policy/page.tsx` – Company policy/legal information page.
+- `app/consultation/ConsultationClient.tsx` – Client component for consultation form with date/time picker, company input, and success modal.
+- `app/consultation/page.tsx` – Consultation booking page (contains client-side form).
+- `app/contact/ContactClient.tsx` – Contact form component with Google Maps integration, social links, and Live Chat trigger.
+- `app/contact/layout.tsx` – Layout wrapper for contact page routes.
+- `app/contact/page-wrapper.tsx` – Utility wrapper component for contact page structure.
+- `app/contact/page.tsx` – Contact form with office details and map integration.
+- `app/cookie-policy/page.tsx` – Cookie policy legal page.
+- `app/events/page.tsx` – Events listing page showing upcoming/past events.
+- `app/events/[slug]/page.tsx` – Event detail page (dynamic slug).
+- `app/faq/layout.tsx` – Layout wrapper for FAQ page.
+- `app/faq/page.tsx` – Frequently Asked Questions page.
+- `app/login/page.tsx` – Login page (likely admin/secure).
+- `app/portfolio/page.tsx` – Portfolio page showcasing past projects (case studies).
+- `app/pricing/ComparisonTable.tsx` – Table component comparing pricing plans side-by-side.
+- `app/pricing/layout.tsx` – Layout wrapper for pricing page routes.
+- `app/pricing/page.tsx` – Pricing overview page listing service tiers.
+- `app/pricing/[slug]/client.tsx` – Client component for individual pricing package detail modal with interactive features.
+- `app/pricing/[slug]/page.tsx` – Dynamic pricing detail page displaying full package breakdown.
+- `app/privacy/page.tsx` – Privacy policy legal page.
+- `app/products/layout.tsx` – Layout wrapper for products page.
+- `app/products/page.tsx` – Products hub listing all static product pages.
+- `app/products/ProductsClient.tsx` – Client component displaying product listings with filtering/search.
+- `app/quote/client.tsx` – Client component for quote request form with dynamic pricing calculation.
+- `app/quote/page.tsx` – Quote request form page.
+- `app/quote/success/client.tsx` – Success confirmation component shown after quote submission.
+- `app/quote/success/page.tsx` – Quote success page.
+- `app/refund-policy/page.tsx` – Refund policy legal page.
+- `app/services/layout.tsx` – Layout wrapper for services page.
+- `app/services/page.tsx` – Services hub listing all offerings.
+- `app/services/[slug]/page.tsx` – Dynamic service detail page using slug.
+- `app/team/page.tsx` – Team introduction page.
+- `app/terms/page.tsx` – Terms & conditions legal page.
+- `app/[slug]/page.tsx` – Catch‑all location page rendering based on slug.
+- `components/AnimatedDashboard.tsx` – Animated dashboard component with real-time data visualization.
+- `components/BlogClient.tsx` – BLOG CLIENT COMPONENT
+- `components/Breadcrumbs.tsx` – Navigation breadcrumbs component for pages.
+- `components/CareersClient.tsx` – CAREERS CLIENT COMPONENT
+- `components/ContactSection.tsx` – Reusable contact section with form and company details.
+- `components/CookieConsent.tsx` – Cookie consent banner displayed on first visit.
+- `components/CoreServicesSection.tsx` – CORE SERVICES SECTION
+- `components/EventsClient.tsx` – EVENTS CLIENT COMPONENT
+- `components/FaqClient.tsx` – Client component for FAQ display with accordion/search functionality.
+- `components/FAQSection.tsx` – Section component displaying frequently asked questions.
+- `components/Footer.tsx` – FOOTER COMPONENT
+- `components/GlobalClientWrapper.tsx` – GLOBAL CLIENT WRAPPER
+- `components/GlowingBackground.tsx` – Animated background with glowing gradient effects.
+- `components/GoogleAnalytics.tsx` – Google Analytics integration component.
+- `components/GoogleReviewFloater.tsx` – Floating widget showing Google reviews.
+- `components/HeroSection.tsx` – HERO SECTION - Homepage landing component
+- `components/LiveChat.tsx` – Live chat widget for customer support.
+- `components/LoginClient.tsx` – Client component for user login form.
+- `components/Navbar.tsx` – NAVBAR COMPONENT
+- `components/Newsletter.tsx` – Newsletter subscription form component.
+- `components/PortfolioClient.tsx` – PORTFOLIO CLIENT COMPONENT
+- `components/PortfolioSection.tsx` – Portfolio showcase section displaying case studies.
+- `components/PricingClient.tsx` – Client component for interactive pricing display with category tabs and carousels.
+- `components/PricingDetailModal.tsx` – Modal for displaying detailed pricing information.
+- `components/PricingPreviewSection.tsx` – Preview section showcasing pricing tiers.
+- `components/ProcessSection.tsx` – Section displaying company process/methodology steps.
+- `components/RoadmapTimeline.tsx` – Timeline component displaying product/project roadmap.
+- `components/ScrollNavButtons.tsx` – Navigation buttons for smooth scroll on page.
+- `components/ScrollToTop.tsx` – Button for scrolling page to top.
+- `components/ServicesClient.tsx` – SERVICES CLIENT COMPONENT
+- `components/ServicesPreviewSection.tsx` – Preview section showing featured services.
+- `components/TechStackSection.tsx` – Section displaying technology stack used.
+- `components/TestimonialSection.tsx` – Section displaying client testimonials/reviews.
+- `components/WhyChooseUsSection.tsx` – Section highlighting reasons to choose company.
+- `components/dynamic-page/DynamicBenefits.tsx` – Dynamic component rendering benefits section.
+- `components/dynamic-page/DynamicFeatures.tsx` – Dynamic component rendering features list.
+- `components/dynamic-page/DynamicHero.tsx` – Dynamic hero section for pages.
+- `components/dynamic-page/DynamicRoadmap.tsx` – Dynamic roadmap/timeline component.
+- `components/dynamic-page/DynamicSection.tsx` – Generic dynamic section component.
+- `components/hero/HeroActions.tsx` – Action buttons (CTA) for hero section.
+- `components/hero/HeroBackground.tsx` – Animated background component for hero.
+- `components/hero/HeroBadge.tsx` – Badge/label component for hero section.
+- `components/hero/HeroSocials.tsx` – Social media links for hero section.
+- `components/hero/TypewriterText.tsx` – Animated typewriter text effect component.
+- `components/products/GenericProductClient.tsx` – Generic product display component with features/specs.
+- `components/ui/HomePreloader.tsx` – Loading/preloader animation for homepage.
+- `components/ui/MotionWrapper.tsx` – Wrapper component applying animations to children.
+- `components/ui/PageTransition.tsx` – Page transition animation component.
+- `components/ui/SectionSkeleton.tsx` – SECTION SKELETON LOADER
+- `components/ui/SnapCarousel.tsx` – SNAP CAROUSEL
+- `components/ui/TechCard.tsx` – Card component displaying technology/tool info.
+- `lib/blog-data.ts` – BLOG DATA
+- `lib/career-data.ts` – CAREER DATA
+- `lib/companydetails.ts` – COMPANY DETAILS CONFIGURATION
+- `lib/events-data.ts` – Events database containing summit/webinar/workshop data.
+- `lib/faq-data.ts` – FAQ DATA
+- `lib/locations.ts` – Location data for service areas (cities/regions with local details).
+- `lib/navigation.ts` – Navigation menu configuration/links.
+- `lib/pricing-data.ts` – Comprehensive pricing data: categories, packages, features, and pricing tiers.
+- `lib/products.ts` – Product information, specs, and features (Vexel Suite).
+- `lib/schema-utils.ts` – SCHEMA UTILITIES
+- `lib/seo.ts` – SEO UTILITIES
+- `lib/services.ts` – All services data: descriptions, features, benefits, case studies, and metadata.

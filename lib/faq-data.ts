@@ -5,12 +5,9 @@
  * - Central repository for Frequently Asked Questions.
  * - Used by: FaqClient component for search and filtering.
  * - categorization: Keys allow for side-bar navigation (e.g., 'general', 'pricing').
+ * - Types imported from centralized types.ts
  */
-export interface FAQItem {
-  category: string;
-  question: string;
-  answer: string;
-}
+import type { FAQItem } from "@/lib/types";
 
 export const faqData: FAQItem[] = [
   // --- GENERAL (6) ---

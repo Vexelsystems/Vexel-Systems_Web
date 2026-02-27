@@ -86,6 +86,30 @@ export default function Breadcrumbs() {
           );
         })}
       </ol>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://vexelsystems.lk",
+              },
+              ...breadcrumbItems.map((item, index) => ({
+                "@type": "ListItem",
+                position: index + 2,
+                name: item.label,
+                item: `https://vexelsystems.lk${item.href}`,
+              })),
+            ],
+          }),
+        }}
+      />
     </nav>
   );
 }

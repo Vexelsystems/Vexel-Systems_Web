@@ -520,3 +520,240 @@ export function generateBreadcrumbSchema(
     })),
   };
 }
+
+/**
+ * Generate metadata for Location Pages (centralized from location data)
+ * @param location - Location data object with metaTitle, metaDescription
+ * @param slug - Location slug for canonical URL
+ */
+export function generateLocationMetadata({
+  location,
+  slug,
+}: {
+  location: {
+    name: string;
+    latitude: number;
+    longitude: number;
+    metaTitle: string;
+    metaDescription: string;
+  };
+  slug: string;
+}): Metadata {
+  const url = `${BASE_URL}/${slug}`;
+
+  return {
+    title: {
+      absolute: location.metaTitle,
+    },
+    description: location.metaDescription,
+    keywords: [
+      location.name,
+      "Sri Lanka",
+      `Best POS System ${location.name}`,
+      `Affordable POS Software ${location.name}`,
+      `Cheap POS System ${location.name}`,
+      "Point of Sale",
+      "Software Solutions",
+      "POS",
+      "Retail Software",
+    ],
+    alternates: {
+      canonical: `/${slug}`,
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_LK",
+      url,
+      siteName: DEFAULT_SEO.openGraph.siteName,
+      title: location.metaTitle,
+      description: location.metaDescription,
+      images: [
+        {
+          url: `${BASE_URL}/VLogo.png`,
+          width: 1200,
+          height: 630,
+          alt: location.metaTitle,
+        },
+      ],
+    },
+    twitter: {
+      ...DEFAULT_SEO.twitter,
+      title: location.metaTitle,
+      description: location.metaDescription,
+      images: [`${BASE_URL}/VLogo.png`],
+    },
+    other: {
+      "geo.placename": location.name,
+      "geo.region": "LK",
+      "geo.latitude": location.latitude.toString(),
+      "geo.longitude": location.longitude.toString(),
+    },
+    robots: DEFAULT_SEO.robots,
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for LocalBusiness (locations)
+ */
+export function generateLocalBusinessSchema({
+  name,
+  location,
+  slug,
+  phone = "+94740968108",
+}: {
+  name: string;
+  location: { name: string; latitude: number; longitude: number };
+  slug: string;
+  phone?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: `POS System ${name}`,
+    description: `Best POS system solutions for businesses in ${name}, Sri Lanka`,
+    image: `${BASE_URL}/VLogo.png`,
+    url: `${BASE_URL}/${slug}`,
+    telephone: phone,
+    areaServed: { "@type": "City", name },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: name,
+      addressCountry: "LK",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: phone,
+      contactType: "Customer Service",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: location.latitude,
+      longitude: location.longitude,
+    },
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for BreadcrumbList (with absolute URLs)
+ */
+export function generateLocationBreadcrumbSchema(locationName: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: locationName,
+        item: BASE_URL,
+      },
+    ],
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for ProfessionalService (homepage)
+ */
+export function generateProfessionalServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: companyDetails.name,
+    image: `${BASE_URL}${companyDetails.logos.main}`,
+    url: companyDetails.contact.website,
+    telephone: companyDetails.contact.phone,
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: companyDetails.address.street,
+      addressLocality: companyDetails.address.city,
+      postalCode: companyDetails.address.postalCode,
+      addressCountry: "LK",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 8.7515,
+      longitude: 80.4971,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+    sameAs: [
+      companyDetails.socialLinks.facebook,
+      companyDetails.socialLinks.linkedin,
+    ],
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for FAQPage
+ */
+export function generateFAQPageSchema(
+  faqItems: Array<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+/**
+ * Generate JSON-LD structured data for ItemList (products, services)
+ */
+export function generateItemListSchema({
+  name,
+  description,
+  items,
+}: {
+  name: string;
+  description: string;
+  items: Array<{
+    name: string;
+    description: string;
+    price?: string;
+    url?: string;
+  }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    description,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: item.name,
+        description: item.description,
+        operatingSystem: "Web, Windows, Android, iOS",
+        applicationCategory: "BusinessApplication",
+        ...(item.price && {
+          offers: {
+            "@type": "Offer",
+            price: item.price,
+            priceCurrency: "LKR",
+          },
+        }),
+        ...(item.url && { url: item.url }),
+      },
+    })),
+  };
+}

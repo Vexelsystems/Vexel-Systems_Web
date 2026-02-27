@@ -23,7 +23,7 @@ import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";
 import { TypewriterText } from "@/components/hero/TypewriterText";
 import { motion, AnimatePresence } from "framer-motion";
-import { Product } from "@/lib/products";
+import { Product } from "@/lib/types";
 import { RoadmapTimeline } from "@/components/RoadmapTimeline";
 
 interface GenericProductClientProps {
@@ -78,7 +78,7 @@ export default function GenericProductClient({
 
                 <p className="text-lg md:text-xl font-medium text-foreground/60 max-w-xl mb-12 leading-relaxed">
                   {product.shortDescription ||
-                    product.fullDescription.substring(0, 150) + "..."}
+                    (product.fullDescription?.substring(0, 150) ?? "") + "..."}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -337,7 +337,7 @@ export default function GenericProductClient({
                   </p>
                   <div className="flex items-center gap-4">
                     <div className="size-12 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center font-bold text-foreground/40">
-                      {t.author.charAt(0)}
+                      {(t.author ?? t.name ?? "").charAt(0)}
                     </div>
                     <div className="text-left">
                       <h5 className="font-black uppercase tracking-wider text-sm">
@@ -390,7 +390,7 @@ export default function GenericProductClient({
                         {study.title}
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {study.results.map((res, r) => (
+                        {study.results?.map((res, r) => (
                           <span
                             key={r}
                             className="px-3 py-1 rounded-full bg-primary text-[10px] font-bold uppercase tracking-widest"
@@ -495,30 +495,32 @@ export default function GenericProductClient({
       )}
 
       {/* 10. FAQ */}
-      {product.faq && (
+      {product.faqs && (
         <section className="py-24 px-6 bg-zinc-50 dark:bg-zinc-900/30">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-black text-center mb-16 uppercase tracking-widest">
               Common Questions
             </h2>
             <div className="space-y-4">
-              {product.faq.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 text-left"
-                >
-                  <h4 className="font-bold text-lg mb-2 flex items-start gap-3">
-                    <HelpCircle
-                      className="text-primary shrink-0 mt-1"
-                      size={18}
-                    />
-                    {item.question}
-                  </h4>
-                  <p className="text-foreground/60 text-sm leading-relaxed pl-8">
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
+              {product.faqs.map(
+                (item: import("@/lib/types").FAQItem, idx: number) => (
+                  <div
+                    key={idx}
+                    className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-black/5 dark:border-white/5 text-left"
+                  >
+                    <h4 className="font-bold text-lg mb-2 flex items-start gap-3">
+                      <HelpCircle
+                        className="text-primary shrink-0 mt-1"
+                        size={18}
+                      />
+                      {item.question}
+                    </h4>
+                    <p className="text-foreground/60 text-sm leading-relaxed pl-8">
+                      {item.answer}
+                    </p>
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </section>

@@ -327,52 +327,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* SoftwareApplication Schema for Vexel POS */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "Professional POS System",
-              operatingSystem: "Windows, Web",
-              applicationCategory: "BusinessApplication",
-              description:
-                "A high-performance retail and wholesale billing system with inventory, customer management, and reporting.",
-              offers: {
-                "@type": "Offer",
-                priceCurrency: "LKR",
-                availability: "https://schema.org/InStock",
-              },
-            }),
-          }}
-        />
-
-        {/* BreadcrumbList Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://vexelsystems.lk",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "POS System",
-                  item: "https://vexelsystems.lk/products/vexel-pos",
-                },
-              ],
-            }),
-          }}
-        />
-
         {/* LocalBusiness Schema for Multi-Region Local SEO */}
         <script
           type="application/ld+json"

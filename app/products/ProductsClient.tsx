@@ -61,7 +61,8 @@ export default function ProductsClient() {
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesCategory =
-        activeCategory === "All" || product.category.includes(activeCategory);
+        activeCategory === "All" ||
+        (product.category ?? "").includes(activeCategory);
       return matchesCategory;
     });
   }, [activeCategory]);
@@ -161,17 +162,20 @@ export default function ProductsClient() {
                           <span className="text-[11px] font-medium text-card-label uppercase tracking-tight">
                             Ideal for:
                           </span>
-                          {product.idealFor.slice(0, 5).map((target, idx) => (
-                            <span
-                              key={idx}
-                              className="text-[11px] font-medium text-card-label uppercase tracking-tight"
-                            >
-                              {target}
-                              {idx < Math.min(product.idealFor.length, 5) - 1
-                                ? ","
-                                : ""}
-                            </span>
-                          ))}
+                          {(product.idealFor ?? [])
+                            .slice(0, 5)
+                            .map((target, idx) => (
+                              <span
+                                key={idx}
+                                className="text-[11px] font-medium text-card-label uppercase tracking-tight"
+                              >
+                                {target}
+                                {idx <
+                                Math.min((product.idealFor ?? []).length, 5) - 1
+                                  ? ","
+                                  : ""}
+                              </span>
+                            ))}
                         </div>
                         <p className="text-sm opacity-70 mt-3 font-medium text-foreground/80 line-clamp-2 leading-relaxed">
                           {product.tagline}
@@ -179,18 +183,20 @@ export default function ProductsClient() {
                       </div>
 
                       <div className="mt-6 flex flex-col gap-3">
-                        {product.checklist.slice(0, 5).map((item, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-3 text-[13px] font-medium text-foreground/80"
-                          >
-                            <CheckCircle
-                              className="text-primary shrink-0"
-                              size={16}
-                            />
-                            <span className="truncate">{item}</span>
-                          </div>
-                        ))}
+                        {(product.checklist ?? [])
+                          .slice(0, 5)
+                          .map((item, i) => (
+                            <div
+                              key={i}
+                              className="flex items-center gap-3 text-[13px] font-medium text-foreground/80"
+                            >
+                              <CheckCircle
+                                className="text-primary shrink-0"
+                                size={16}
+                              />
+                              <span className="truncate">{item}</span>
+                            </div>
+                          ))}
                       </div>
                     </div>
 
