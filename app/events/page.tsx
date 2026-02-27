@@ -1,4 +1,3 @@
-
 import { generatePageMetadata } from "@/lib/seo";
 import EventsClient from "@/components/EventsClient";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
@@ -6,34 +5,26 @@ import Newsletter from "@/components/Newsletter";
 
 /**
  * EVENTS ROOT PAGE
- * 
+ *
  * Functional Overview:
  * - Page Structure: Standard "Server Shell" pattern.
- * - Logic: 
+ * - Logic:
  *   - Fetches no data (currently static/client-side data in `EventsClient`).
  *   - Pre-renders layout skeleton and headers for SEO/performance.
  */
 
 export const metadata = generatePageMetadata({
-  title: "Events",
-  description: "Vexel Systems",
+  title: "Events & Webinars",
+  description:
+    "Join Vexel Systems at our upcoming events, workshops, and webinars. Learn about the latest in software development, AI, and business automation while connecting with industry experts in Sri Lanka.",
   keywords: [
     "tech events Sri Lanka",
     "Vexel Systems events",
     "software workshops Vavuniya",
-    "POS system events",
-    "ERP software events",
-    "business software workshops",
-    "startup tech events",
-    "AI software workshops",
-    "IT training Sri Lanka",
-    "digital transformation events",
-    "technology seminars Sri Lanka",
-    "Vexel Systems workshops",
-    "enterprise software events",
-    "software conference Vavuniya",
-    "software learning Sri Lanka",
-    "technology education events"
+    "POS system workshops",
+    "business tech seminars",
+    "AI workshops Sri Lanka",
+    "Vexel tech community",
   ],
   path: "/events",
 });
@@ -45,19 +36,27 @@ export default function EventsPage() {
         {/* Events Hero */}
         <div className="max-w-[1200px] mx-auto text-center mb-16">
           <MotionWrapper type="scale">
-            <span className="text-primary font-bold text-sm tracking-widest uppercase mb-4 block">Community & Learning</span>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">Events & <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">Webinars</span></h1>
+            <span className="text-primary font-bold text-sm tracking-widest uppercase mb-4 block">
+              Community & Learning
+            </span>
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+              Events &{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                Webinars
+              </span>
+            </h1>
             <p className="text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-              Connect with experts, learn new skills, and stay ahead of the curve.
+              Connect with experts, learn new skills, and stay ahead of the
+              curve.
             </p>
           </MotionWrapper>
-          
+
           <MotionWrapper delay={0.2}>
             <EventsClient />
           </MotionWrapper>
 
           <MotionWrapper delay={0.3} className="mt-20 max-w-2xl mx-auto">
-             <Newsletter category="Events" />
+            <Newsletter category="Events" />
           </MotionWrapper>
         </div>
       </main>

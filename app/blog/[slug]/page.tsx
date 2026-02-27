@@ -1,32 +1,50 @@
 /**
  * BLOG POST PAGE (Dynamic Route)
- * 
+ *
  * Technical Implementation:
  * - Uses generateMetadata with 'article' type for rich social sharing
  * - Implements generateStaticParams for SSG (Static Site Generation)
  * - Resolves async params for Next.js 15 compatibility
  */
 
-import React from 'react';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { blogPosts } from '@/lib/blog-data';
-import { generateDynamicMetadata, generateArticleSchema, BASE_URL } from '@/lib/seo';
-import { Calendar, User, Clock, ChevronLeft, Share2, Facebook, Linkedin, Twitter, MessageCircle } from 'lucide-react';
-import type { Metadata } from 'next';
+import React from "react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { blogPosts } from "@/lib/blog-data";
+import {
+  generateDynamicMetadata,
+  generateArticleSchema,
+  BASE_URL,
+} from "@/lib/seo";
+import {
+  Calendar,
+  User,
+  Clock,
+  ChevronLeft,
+  Share2,
+  Facebook,
+  Linkedin,
+  Twitter,
+  MessageCircle,
+} from "lucide-react";
+import type { Metadata } from "next";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
-import Image from 'next/image';
-import Newsletter from '@/components/Newsletter';
+import Image from "next/image";
+import Newsletter from "@/components/Newsletter";
 
 /**
  * GENERATE METADATA
  * Constructs SEO metadata specifically for articles/blog posts.
  * Includes author, publish date, and section data for Open Graph.
  */
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find(p => p.slug === slug);
-  
+  const post = blogPosts.find((p) => p.slug === slug);
+
   if (!post) {
     return {};
   }
@@ -34,11 +52,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // Generate metadata with 'article' type for specific social card rendering
   return generateDynamicMetadata({
     title: post.title,
-    description: "Tech Insights - Vexel Systems",
-    keywords: [post.category, 'Blog', 'Insights', post.author, 'Vexel Systems'],
+    description: post.excerpt,
+    keywords: [
+      post.category,
+      "Blog",
+      "Insights",
+      post.author,
+      "Vexel Systems",
+      "Software Trends",
+    ],
     path: `/blog/${post.slug}`,
     image: post.image,
-    type: 'article',
+    type: "article",
     publishedTime: post.date,
     author: post.author,
     section: post.category,
@@ -55,23 +80,29 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   // Await params to access slug (Next.js 15 requirement)
   const { slug } = await params;
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return (
       <div className="py-40 text-center">
         <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-        <Link href="/blog" className="text-primary font-bold hover:underline">Back to Hub</Link>
+        <Link href="/blog" className="text-primary font-bold hover:underline">
+          Back to Hub
+        </Link>
       </div>
     );
   }
 
   // Related posts (random 3 excluding current)
   const relatedPosts = blogPosts
-    .filter(p => p.slug !== post.slug)
+    .filter((p) => p.slug !== post.slug)
     .sort(() => 0.5 - Math.random())
     .slice(0, 3);
 
@@ -81,24 +112,29 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateArticleSchema({
-            title: post.title,
-            description: post.excerpt,
-            image: post.image,
-            datePublished: post.date,
-            author: post.author,
-            url: `${BASE_URL}/blog/${post.slug}`,
-          }))
+          __html: JSON.stringify(
+            generateArticleSchema({
+              title: post.title,
+              description: post.excerpt,
+              image: post.image,
+              datePublished: post.date,
+              author: post.author,
+              url: `${BASE_URL}/blog/${post.slug}`,
+            }),
+          ),
         }}
       />
-      
+
       {/* Back Button */}
       <div>
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-foreground/60 hover:text-primary font-bold transition-colors group"
         >
-          <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+          <ChevronLeft
+            size={20}
+            className="group-hover:-translate-x-1 transition-transform"
+          />
           Back to Hub
         </Link>
       </div>
@@ -110,8 +146,10 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <span className="inline-block py-1.5 px-4 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest self-start">
               {post.category}
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight">{post.title}</h1>
-            
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+              {post.title}
+            </h1>
+
             <div className="flex flex-wrap items-center gap-6 text-sm font-bold text-foreground/40 uppercase tracking-widest pb-8 border-b border-black/5 dark:border-white/5">
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xs uppercase">
@@ -132,8 +170,8 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
           {/* Featured Image */}
           <div className="aspect-video relative rounded-[40px] overflow-hidden border border-black/5 dark:border-white/5 shadow-2xl">
-            <Image 
-              src={post.image} 
+            <Image
+              src={post.image}
               alt={post.title}
               fill
               priority
@@ -144,42 +182,46 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-
-            
-            <div dangerouslySetInnerHTML={{ __html: post.content.replace(/### (.*)/g, '<h3>$1</h3>') }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.content.replace(/### (.*)/g, "<h3>$1</h3>"),
+              }}
+            />
           </div>
 
           {/* Sharing */}
           <div className="flex flex-col gap-6 py-12 border-t border-black/5 dark:border-white/5 mt-12">
-            <h4 className="font-bold uppercase tracking-widest text-foreground/40 text-xs">Share this insight:</h4>
+            <h4 className="font-bold uppercase tracking-widest text-foreground/40 text-xs">
+              Share this insight:
+            </h4>
             <SnapCarousel scrollContainerClassName="md:flex md:flex-wrap md:gap-4">
               {[
-                { 
-                  icon: <Facebook size={20} />, 
-                  label: 'Facebook', 
-                  bg: 'hover:bg-[#1877F2]',
-                  url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                {
+                  icon: <Facebook size={20} />,
+                  label: "Facebook",
+                  bg: "hover:bg-[#1877F2]",
+                  url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`,
                 },
-                { 
-                  icon: <Twitter size={20} />, 
-                  label: 'Twitter', 
-                  bg: 'hover:bg-[#1DA1F2]',
-                  url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                {
+                  icon: <Twitter size={20} />,
+                  label: "Twitter",
+                  bg: "hover:bg-[#1DA1F2]",
+                  url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`,
                 },
-                { 
-                  icon: <Linkedin size={20} />, 
-                  label: 'LinkedIn', 
-                  bg: 'hover:bg-[#0A66C2]',
-                  url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`
+                {
+                  icon: <Linkedin size={20} />,
+                  label: "LinkedIn",
+                  bg: "hover:bg-[#0A66C2]",
+                  url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${BASE_URL}/blog/${post.slug}`)}`,
                 },
-                { 
-                  icon: <MessageCircle size={20} />, 
-                  label: 'WhatsApp', 
-                  bg: 'hover:bg-[#25D366]',
-                  url: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${BASE_URL}/blog/${post.slug}`)}`
+                {
+                  icon: <MessageCircle size={20} />,
+                  label: "WhatsApp",
+                  bg: "hover:bg-[#25D366]",
+                  url: `https://wa.me/?text=${encodeURIComponent(`${post.title} ${BASE_URL}/blog/${post.slug}`)}`,
                 },
               ].map((social) => (
-                <a 
+                <a
                   key={social.label}
                   href={social.url}
                   target="_blank"
@@ -201,9 +243,19 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <h4 className="text-xl font-bold mb-8">Related Insights</h4>
             <SnapCarousel scrollContainerClassName="md:flex md:flex-col md:gap-8">
               {relatedPosts.map((rp) => (
-                <Link key={rp.slug} href={`/blog/${rp.slug}`} className="min-w-[80vw] md:min-w-0 snap-center group flex flex-col gap-3">
+                <Link
+                  key={rp.slug}
+                  href={`/blog/${rp.slug}`}
+                  className="min-w-[80vw] md:min-w-0 snap-center group flex flex-col gap-3"
+                >
                   <div className="aspect-video relative rounded-2xl overflow-hidden mb-2">
-                    <Image src={rp.image} alt={rp.title} fill sizes="(max-width: 768px) 80vw, 300px" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Image
+                      src={rp.image}
+                      alt={rp.title}
+                      fill
+                      sizes="(max-width: 768px) 80vw, 300px"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h5 className="font-bold group-hover:text-primary transition-colors line-clamp-2">
                     {rp.title}

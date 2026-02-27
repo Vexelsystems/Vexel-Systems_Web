@@ -12,25 +12,15 @@ import ConsultationClient from "./ConsultationClient";
 
 export const metadata = generatePageMetadata({
   title: "Book a Free Consultation",
-  description: "Vexel Systems",
+  description:
+    "Ready to take your business to the next level? Schedule a free discovery call with Vexel Systems. We’ll discuss your project requirements and provide expert technology strategies for success.",
   keywords: [
     "software consultation Sri Lanka",
     "IT consulting Vavuniya",
-    "business technology consulting",
-    "startup software consultation",
-    "digital strategy consulting",
-    "POS consulting Sri Lanka",
-    "ERP software consulting",
-    "AI software consultation",
-    "IT solutions Vavuniya",
-    "custom software consultation",
-    "technology consulting company",
-    "Vexel consulting",
-    "business process automation",
-    "SaaS consulting Sri Lanka",
-    "IT advisory services",
-    "software project consulting",
-    "enterprise software consulting",
+    "business technology strategy",
+    "startup consultation",
+    "digital transformation advice",
+    "Vexel systems consulting",
   ],
   path: "/consultation",
 });

@@ -1,20 +1,20 @@
-
 import { generatePageMetadata } from "@/lib/seo";
 import BlogClient from "@/components/BlogClient";
 
 /**
  * BLOG ROOT PAGE
- * 
+ *
  * Functional Overview:
  * - Architecture: Server Component acting as a shell.
- * - Responsibility: 
+ * - Responsibility:
  *   1. Generates static SEO metadata via `generatePageMetadata`.
  *   2. Delegates rendering to `BlogClient` for interactive filtering/searching.
  */
 
 export const metadata = generatePageMetadata({
   title: "Blog",
-  description: "Vexel Systems",
+  description:
+    "Explore the latest trends in software development, POS systems, and AI technology. Our blog provides valuable insights and expert updates for businesses navigating the digital era.",
   keywords: [
     "Vexel Systems blog",
     "software blog Sri Lanka",
@@ -24,15 +24,9 @@ export const metadata = generatePageMetadata({
     "technology articles Sri Lanka",
     "business automation blog",
     "software development tips",
-    "startup technology Sri Lanka",
-    "digital transformation",
     "Vavuniya tech blog",
     "business software advice",
-    "software solutions trends",
-    "SaaS tips Sri Lanka",
-    "technology news Sri Lanka",
-    "Vexel insights",
-    "enterprise software articles"
+    "enterprise software articles",
   ],
   path: "/blog",
 });

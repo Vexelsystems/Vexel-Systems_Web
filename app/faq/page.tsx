@@ -12,7 +12,8 @@ import FaqClient from "@/components/FaqClient";
 
 export const metadata = generatePageMetadata({
   title: "FAQ",
-  description: "Vexel Systems",
+  description:
+    "Have questions about our POS systems, software development, or pricing? Find detailed answers and technical support info in our comprehensive FAQ section.",
   keywords: [
     "Vexel Systems FAQ",
     "POS system questions",
@@ -23,14 +24,7 @@ export const metadata = generatePageMetadata({
     "startup software FAQ",
     "IT solution questions Sri Lanka",
     "AI software FAQ",
-    "digital solutions FAQ",
-    "Vavuniya tech FAQ",
-    "software troubleshooting",
-    "user support Vexel Systems",
-    "ERP FAQ Sri Lanka",
-    "POS software FAQ",
-    "SaaS questions",
-    "Vexel customer support FAQ",
+    "troubleshooting Vexel",
   ],
   path: "/faq",
 });

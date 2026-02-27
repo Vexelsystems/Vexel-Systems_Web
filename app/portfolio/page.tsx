@@ -13,7 +13,8 @@ import { Star } from "lucide-react";
 
 export const metadata = generatePageMetadata({
   title: "Our Portfolio",
-  description: "Success Stories & Case Studies",
+  description:
+    "Explore our showcase of successful projects. From revolutionary POS systems to high-performance web applications, see how Vexel Systems drives digital excellence across Sri Lanka.",
   keywords: [
     "Vexel Systems portfolio",
     "software case studies Sri Lanka",
@@ -22,12 +23,7 @@ export const metadata = generatePageMetadata({
     "POS system examples",
     "success stories Vexel",
     "client projects Vavuniya",
-    "software portfolio Sri Lanka",
     "tech project showcase",
-    "innovative software solutions",
-    "enterprise projects Sri Lanka",
-    "startup success stories",
-    "digital transformation examples",
   ],
   path: "/portfolio",
 });

@@ -13,26 +13,16 @@ import CareersClient from "@/components/CareersClient";
 
 export const metadata = generatePageMetadata({
   title: "Careers",
-  description: "Vexel Systems",
+  description:
+    "Join the fastest growing tech team in Vavuniya. Explore career opportunities at Vexel Systems and help us build the next generation of digital solutions for businesses in Sri Lanka.",
   keywords: [
     "careers Vexel Systems",
     "software jobs Sri Lanka",
     "IT jobs Vavuniya",
-    "software developer jobs Sri Lanka",
-    "software engineering careers",
-    "tech jobs Sri Lanka",
-    "ERP developer jobs",
-    "POS system jobs",
-    "AI software developer",
-    "startup jobs Sri Lanka",
-    "IT careers Vavuniya",
-    "business software careers",
-    "Vexel team hiring",
-    "software intern Sri Lanka",
-    "remote software jobs",
-    "custom software developer",
-    "software development roles",
-    "software vauniya roles",
+    "software developer jobs",
+    "Vexel Systems hiring",
+    "internships Vavuniya",
+    "software engineering roles",
   ],
   path: "/careers",
 });

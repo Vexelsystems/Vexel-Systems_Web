@@ -577,7 +577,7 @@ export const locations: LocationData[] = [
     latitude: 7.2912,
     longitude: 81.6747,
     region: "AM",
-    metaTitle: "Best POS System in Ampara | POS Software Sri Lanka",
+    metaTitle: "Ampara | Vexel Systems",
     metaDescription:
       "Best POS system in Ampara, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Ampara. Affordable & reliable.",
     h1Heading: "Intelligent Technology Solutions & POS Systems for Ampara",
@@ -614,7 +614,7 @@ export const locations: LocationData[] = [
     latitude: 8.5711,
     longitude: 81.2335,
     region: "TC",
-    metaTitle: "Best POS System in Trincomalee | POS Software Sri Lanka",
+    metaTitle: "Trincomalee | Vexel Systems",
     metaDescription:
       "Best POS system in Trincomalee, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Trincomalee. Affordable & reliable.",
     h1Heading:
@@ -652,7 +652,7 @@ export const locations: LocationData[] = [
     latitude: 7.4863,
     longitude: 80.3647,
     region: "KG",
-    metaTitle: "Best POS System in Kurunegala | POS Software Sri Lanka",
+    metaTitle: "Kurunegala | Vexel Systems",
     metaDescription:
       "Best POS system in Kurunegala, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Kurunegala. Affordable & reliable.",
     h1Heading: "Powerful POS & Custom Software for Kurunegala's Commercial Hub",
@@ -689,7 +689,7 @@ export const locations: LocationData[] = [
     latitude: 8.033,
     longitude: 79.8333,
     region: "PX",
-    metaTitle: "Best POS System in Puttalam | POS Software Sri Lanka",
+    metaTitle: "Puttalam | Vexel Systems",
     metaDescription:
       "Best POS system in Puttalam, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Puttalam. Affordable & reliable.",
     h1Heading:
@@ -727,7 +727,7 @@ export const locations: LocationData[] = [
     latitude: 8.3114,
     longitude: 80.4037,
     region: "AD",
-    metaTitle: "Best POS System in Anuradhapura | POS Software Sri Lanka",
+    metaTitle: "Anuradhapura | Vexel Systems",
     metaDescription:
       "Best POS system in Anuradhapura, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Anuradhapura. Affordable & reliable.",
     h1Heading:
@@ -765,7 +765,7 @@ export const locations: LocationData[] = [
     latitude: 7.9403,
     longitude: 81.0188,
     region: "PL",
-    metaTitle: "Best POS System in Polonnaruwa | POS Software Sri Lanka",
+    metaTitle: "Polonnaruwa | Vexel Systems",
     metaDescription:
       "Best POS system in Polonnaruwa, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Polonnaruwa. Affordable & reliable.",
     h1Heading: "Cloud Software & POS Solutions Built for Polonnaruwa",
@@ -802,7 +802,7 @@ export const locations: LocationData[] = [
     latitude: 6.9934,
     longitude: 81.055,
     region: "BD",
-    metaTitle: "Best POS System in Badulla | POS Software Sri Lanka",
+    metaTitle: "Badulla | Vexel Systems",
     metaDescription:
       "Best POS system in Badulla, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Badulla. Affordable & reliable.",
     h1Heading: "Advanced Tech Solutions & POS Systems for Badulla's Economy",
@@ -839,7 +839,7 @@ export const locations: LocationData[] = [
     latitude: 6.8718,
     longitude: 81.35,
     region: "MJ",
-    metaTitle: "Best POS System in Moneragala | POS Software Sri Lanka",
+    metaTitle: "Moneragala | Vexel Systems",
     metaDescription:
       "Best POS system in Moneragala, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Moneragala. Affordable & reliable.",
     h1Heading: "Smart POS & Commercial Software Accelerating Moneragala",
@@ -876,7 +876,7 @@ export const locations: LocationData[] = [
     latitude: 6.6828,
     longitude: 80.3992,
     region: "RN",
-    metaTitle: "Best POS System in Ratnapura | POS Software Sri Lanka",
+    metaTitle: "Ratnapura | Vexel Systems",
     metaDescription:
       "Best POS system in Ratnapura, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Ratnapura. Affordable & reliable.",
     h1Heading:
@@ -914,7 +914,7 @@ export const locations: LocationData[] = [
     latitude: 7.2519,
     longitude: 80.3464,
     region: "KE",
-    metaTitle: "Best POS System in Kegalle | POS Software Sri Lanka",
+    metaTitle: "Kegalle | Vexel Systems",
     metaDescription:
       "Best POS system in Kegalle, Sri Lanka. AI-powered point of sale software for retail stores, restaurants & supermarkets in Kegalle. Affordable & reliable.",
     h1Heading:

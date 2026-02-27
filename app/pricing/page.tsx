@@ -11,7 +11,8 @@ import PricingClient from "@/components/PricingClient";
 
 export const metadata = generatePageMetadata({
   title: "Pricing Plans",
-  description: "Affordable Web & Software Packages",
+  description:
+    "Transparent and competitive pricing for all your technology needs. Explore our flexible packages for Web Development, App Development, and the best POS systems in Vavuniya.",
   keywords: [
     "software pricing Sri Lanka",
     "Vexel Systems pricing",
@@ -20,11 +21,8 @@ export const metadata = generatePageMetadata({
     "app development cost Sri Lanka",
     "IT service pricing",
     "affordable software solutions",
-    "transparent pricing",
     "business software rates",
-    "enterprise software pricing",
-    "startup tech packages",
-    "competitive software rates",
+    "POS packages Vavuniya",
   ],
   path: "/pricing",
 });

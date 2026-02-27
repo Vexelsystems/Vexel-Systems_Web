@@ -9,6 +9,7 @@ import { HeroSection } from "@/components/HeroSection";
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { SectionSkeleton } from "@/components/ui/SectionSkeleton";
+import HomePreloader from "@/components/ui/HomePreloader";
 
 // Lazy load sections after initial render to reduce bundle size
 
@@ -53,26 +54,13 @@ import {
 } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
-  title:
-    "Vexel Systems | Software Company in Sri Lanka | Web, POS & AI Solutions",
+  title: "Home",
   description:
-    "Vexel Systems is a leading software company in Vavuniya. delivering custom web development, AI-powered systems, and advanced POS solutions. Based in Vavuniya, we help businesses automate operations and scale digitally with secure, high-performance technology.",
+    "Vexel Systems is a leading software company in Vavuniya, delivering custom web development, AI-powered systems, and advanced POS solutions. We help businesses automate operations and scale digitally with secure, high-performance technology.",
   keywords: [
-    "Vexel Systems",
-    "Vexel Systems Sri Lanka",
-    "software company Sri Lanka",
-    "software company Vavuniya",
-    "web development Sri Lanka",
-    "mobile app development Sri Lanka",
-    "POS systems Sri Lanka",
-    "POS software Vavuniya",
-    "AI software solutions Sri Lanka",
-    "custom software development",
     "ERP systems Sri Lanka",
     "inventory management software",
     "business automation solutions",
-    "IT company Sri Lanka",
-    "technology company Vavuniya",
     "digital transformation Sri Lanka",
     "startup software development",
     "ecommerce development Sri Lanka",
@@ -81,8 +69,6 @@ export const metadata = generatePageMetadata({
   ],
   path: "/",
 });
-
-import HomePreloader from "@/components/ui/HomePreloader";
 
 export default function Home() {
   return (

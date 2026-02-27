@@ -75,9 +75,14 @@ export default async function LocationDetail({
               className="text-5xl md:text-7xl font-bold tracking-tight mb-8 animate-fade-up"
               style={{ animationDelay: "0.1s" }}
             >
-              Smart Tech Solutions &<br />
-              <span className="text-[#0077ED]">POS Systems</span> for{" "}
-              {location.name}
+              {location.h1Heading.split("POS").map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <span className="text-[#0077ED]">POS</span>
+                  )}
+                </span>
+              ))}
             </h1>
             <p
               className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-10 animate-fade-up"

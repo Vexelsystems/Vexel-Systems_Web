@@ -484,6 +484,61 @@ export const products: Product[] = [
     status: "production",
   },
   {
+    id: "vexel-pharmacy-pos",
+    slug: "vexel-pharmacy-pos",
+    title: "Pharmacy POS System",
+    tagline: "Secure & Compliant Medical Retail",
+    badge: "Medical Grade",
+    category: "Healthcare & Pharmacy",
+    shortDescription:
+      "Advanced billing system for pharmacies with drug interaction alerts, expiry management, and wholesale price tracking.",
+    fullDescription:
+      "Vexel Pharmacy POS is specifically designed for the unique needs of Sri Lankan pharmaceutical retailers. It manages batch tracking, drug expiry dates, and wholesale price updates automatically. With built-in doctor database and prescription tracking, it ensures your pharmacy operates with 100% accuracy and regulatory compliance.",
+    mainImage: "/products/pos/pharmacy.jpg",
+    icon: Stethoscope,
+    checklist: [
+      "Batch & Expiry Date Management",
+      "Drug Interaction Alerts",
+      "Prescription Digitization",
+      "Wholesale vs Retail Pricing",
+    ],
+    idealFor: [
+      "Retail Pharmacies",
+      "Hospital Pharmacies",
+      "Medical Supply Stores",
+      "Ayurvedic Dispensaries",
+    ],
+    features: [
+      {
+        title: "Expiry Management",
+        description:
+          "Automated alerts for stocks nearing expiry, preventing losses and ensuring safety.",
+        icon: Shield,
+      },
+      {
+        title: "Fast Billing",
+        description:
+          "Optimized search by brand name, generic name, or barcode for rapid customer service.",
+        icon: Zap,
+      },
+    ],
+    benefits: [
+      {
+        title: "Regulatory Compliance",
+        description:
+          "Maintain accurate records for pharmaceutical regulations and tax requirements.",
+      },
+      {
+        title: "Inventory Accuracy",
+        description:
+          "Track units down to the individual tablet or ml to prevent stock discrepancies.",
+      },
+    ],
+    startingPrice: 60000,
+    maintenanceFee: 15000,
+    status: "active",
+  },
+  {
     id: "vexel-wholesale-pos",
     slug: "vexel-wholesale-pos",
     title: "Wholesale POS System",

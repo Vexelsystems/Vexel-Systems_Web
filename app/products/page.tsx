@@ -41,21 +41,17 @@ const SL_DISTRICTS = [
 ];
 
 export const metadata = generatePageMetadata({
-  title: "Vexel Systems Business Suite",
-  description: `Premium enterprise software solutions for businesses in ${SL_DISTRICTS.slice(0, 5).join(", ")} and across Sri Lanka.`,
+  title: "Our Products",
+  description:
+    "Explore Vexel Systems' suite of high-performance business software. From our revolutionary cloud-based POS systems to custom enterprise ERP solutions, we build software that scales.",
   keywords: [
-    "Vexel Systems",
-    "business software Sri Lanka",
-    "POS systems Sri Lanka",
-    "ERP software Sri Lanka",
-    "custom software development Sri Lanka",
-    "software company Vavuniya",
-    "software company Colombo",
-    "retail software Sri Lanka",
-    "wholesale software Sri Lanka",
-    "inventory management Sri Lanka",
-    "billing software Sri Lanka",
-    "SaaS solutions Sri Lanka",
+    "Vexel Systems products",
+    "cloud POS system Sri Lanka",
+    "enterprise ERP software",
+    "inventory management solutions",
+    "business suite software Sri Lanka",
+    "retail software Vavuniya",
+    "restaurant POS software",
   ],
   path: "/products",
 });

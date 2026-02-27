@@ -12,6 +12,22 @@ import {
   User,
   Instagram,
 } from "lucide-react";
+import { generatePageMetadata } from "@/lib/seo";
+
+export const metadata = generatePageMetadata({
+  title: "Meet the Team",
+  description:
+    "Get to know the passionate developers, strategists, and visionaries at Vexel Systems. Our team in Vavuniya combines expertise and innovation to build high-performance software and drive digital transformation.",
+  keywords: [
+    "Vexel Systems team",
+    "software developers Vavuniya",
+    "Jathushan Varnakulasingam",
+    "Kajakaran Sivananthan",
+    "Vexel Systems leadership",
+    "IT professionals Vavuniya",
+  ],
+  path: "/team",
+});
 
 interface SocialLinks {
   linkedin: string;
@@ -113,26 +129,6 @@ const milestones = [
  * - Layout: Alternating grid layout (zig-zag pattern) for team member profiles using flexbox reversal logic.
  * - Interaction: Hover effects on profile images reveal "Message" CTA overlays.
  */
-
-import { generatePageMetadata } from "@/lib/seo";
-
-export const metadata = generatePageMetadata({
-  title: "Meet the Team",
-  description: "Developers at Vexel Systems",
-  keywords: [
-    "Vexel Systems team",
-    "software developers Sri Lanka",
-    "IT experts Vavuniya",
-    "tech leadership team",
-    "hire software engineers",
-    "Vexel founders",
-    "software company culture",
-    "talented developers Sri Lanka",
-    "tech team Vavuniya",
-    "engineering team Vexel",
-  ],
-  path: "/team",
-});
 
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 import { HeroBackground } from "@/components/hero/HeroBackground";

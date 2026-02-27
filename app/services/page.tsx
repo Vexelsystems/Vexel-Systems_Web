@@ -17,23 +17,19 @@ import { HeroBackground } from "@/components/hero/HeroBackground";
 
 export const metadata = generatePageMetadata({
   title: "Our Services",
-  description: "Web Design, App Dev & POS Solutions",
+  description:
+    "Elevate your business with our specialized services including Custom Software Development, AI-Powered Systems, Cloud Solutions, and industry-leading POS software in Sri Lanka.",
   keywords: [
     "Vexel Systems services",
     "software services Sri Lanka",
     "AI & ML development",
     "mobile app development Sri Lanka",
-    "web development services",
     "IT solutions Sri Lanka",
     "IoT solutions",
-    "digital marketing Sri Lanka",
     "business automation software",
     "custom software solutions",
-    "startup technology services",
-    "enterprise software solutions",
     "AI-powered platforms",
     "Vavuniya software company",
-    "technology solutions global",
     "POS & ERP services",
   ],
   path: "/services",

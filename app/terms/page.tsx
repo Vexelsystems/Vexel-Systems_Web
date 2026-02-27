@@ -24,7 +24,8 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Terms & Conditions",
-  description: "Vexel Systems",
+  description:
+    "Read the terms and conditions for using Vexel Systems' software and services. Our legal center provides clear guidelines on service usage, payments, and liability.",
   keywords: [
     "terms of service Vexel Systems",
     "software usage agreement",

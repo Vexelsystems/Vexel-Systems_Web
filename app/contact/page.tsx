@@ -10,28 +10,17 @@ import ContactClient from "./ContactClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Contact / Quote",
-  description: "Web & Software Development",
+  title: "Contact Us",
+  description:
+    "Experience the best customer support and professional software consultation. Reach out to Vexel Systems today for custom web development, POS systems, and AI solutions in Sri Lanka.",
   keywords: [
     "contact Vexel Systems",
     "software company contact Sri Lanka",
     "IT company Vavuniya contact",
     "Vexel Systems address",
-    "POS systems",
-    "ERP software contact",
-    "business software contact Sri Lanka",
     "customer support Vexel Systems",
     "reach Vexel Systems",
     "software inquiries Sri Lanka",
-    "SaaS company contact",
-    "startup software contact",
-    "digital solutions contact",
-    "Vexel support",
-    "software consultation request",
-    "technology company contact",
-    "business software inquiry",
-    "Vavuniya software contact",
-    "contact Vexel Systems Vavuniya",
     "software support Vavuniya",
     "IT support Vavuniya",
     "visit Vexel Systems Vavuniya",

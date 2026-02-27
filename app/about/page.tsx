@@ -24,16 +24,14 @@ import { HeroBackground } from "@/components/hero/HeroBackground";
 
 export const metadata = generatePageMetadata({
   title: "About Us",
-  description: "Top Tech Company in Vavuniya - Vexel Systems",
+  description:
+    "Discover the story of Vexel Systems. Based in Vavuniya, we are a team of dedicated developers and innovators committed to simplifying technology and driving digital growth for businesses in Sri Lanka.",
   keywords: [
-    "About Vexel Systems",
-    "Software Company Sri Lanka",
-    "Technology Solutions Provider",
-    "Vavuniya Tech Company",
     "Our Mission",
     "Our Vision",
     "Company Story",
-    "Digital Transformation",
+    "Vexel Systems Team",
+    "Software Developers Vavuniya",
   ],
   path: "/about",
 });

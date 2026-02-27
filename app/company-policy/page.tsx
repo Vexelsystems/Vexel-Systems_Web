@@ -21,14 +21,15 @@ import { generatePageMetadata } from "@/lib/seo";
 
 export const metadata = generatePageMetadata({
   title: "Company Policy",
-  description: "Vexel Systems",
+  description:
+    "Explore the core values and operational policies of Vexel Systems. We strive for excellence, integrity, and social responsibility in every project.",
   keywords: [
-    "Company Policy",
-    "Corporate Governance",
-    "Business Ethics",
-    "Sustainability",
-    "Social Responsibility",
-    "Vexel Standards",
+    "Vexel Systems company policy",
+    "corporate governance Sri Lanka",
+    "business ethics software",
+    "social responsibility Vavuniya",
+    "Vexel standards",
+    "operational excellence",
   ],
   path: "/company-policy",
   noIndex: true,
