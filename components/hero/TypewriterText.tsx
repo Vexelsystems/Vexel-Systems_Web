@@ -12,13 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
  * - Optimized with AnimatePresence for clean entry/exit of strings.
  */
 
-const defaultPhrases = [
-  "Scales Your Business.",
-  "Automates Your POS.",
-  "Optimizes Your ERP.",
-  "Drives Your Growth.",
-  "Solves Complex Problems.",
-];
+const defaultPhrases = ["Scales Your Business.", "Solves Complex Problems."];
 
 export function TypewriterText({
   phrases = defaultPhrases,

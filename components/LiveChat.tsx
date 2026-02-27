@@ -134,7 +134,7 @@ ${formData.message}
   ];
 
   return (
-    <div className="fixed bottom-8 right-8 z-100 font-sans no-scrollbar">
+    <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-100 font-sans no-scrollbar px-1">
       {/* Form Popup */}
       {isOpen && (
         <div className="absolute bottom-24 right-0 w-[350px] bg-background dark:bg-[#0a0a0a] rounded-3xl shadow-2xl shadow-primary/20 border border-black/5 dark:border-white/5 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -266,7 +266,7 @@ ${formData.message}
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-105 transition-all group"
+        className="w-14 h-14 sm:w-16 sm:h-16 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-105 transition-all group"
         aria-label="Contact on WhatsApp"
       >
         {isOpen ? (

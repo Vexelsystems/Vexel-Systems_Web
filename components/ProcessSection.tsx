@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import {
   Search,
   PenTool,
@@ -111,11 +112,14 @@ export const ProcessSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <SnapCarousel
+            className="md:block"
+            scrollContainerClassName="md:grid md:grid-cols-3 lg:grid-cols-5 gap-8 pb-8 md:pb-0"
+          >
             {phases.map((phase) => (
               <div
                 key={phase.number}
-                className="flex flex-col items-center group cursor-default hover:-translate-y-2 transition-transform duration-300"
+                className="flex flex-col items-center group cursor-default hover:-translate-y-2 transition-transform duration-300 min-w-[85vw] md:min-w-0 snap-center"
               >
                 <div className="size-20 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md border-4 border-background group-hover:bg-purple-600 transition-colors duration-300">
                   {phase.icon}
@@ -142,7 +146,7 @@ export const ProcessSection = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </SnapCarousel>
         </div>
       </section>
 
@@ -161,11 +165,14 @@ export const ProcessSection = () => {
               What you can expect at every checkpoint of the engagement.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <SnapCarousel
+            className="md:block"
+            scrollContainerClassName="md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 pb-8 md:pb-0"
+          >
             {outcomes.map((outcome, i) => (
               <div
                 key={i}
-                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40 hover:shadow-2xl hover:-translate-y-1 duration-300"
+                className="flex flex-col gap-3 rounded-xl border border-primary/10 bg-white/40 dark:bg-gray-900/40 backdrop-blur-md p-6 transition-all group shadow-sm hover:border-primary/40 hover:shadow-2xl hover:-translate-y-1 duration-300 min-w-[75vw] md:min-w-0 snap-center"
               >
                 <div className="text-primary group-hover:text-purple-600 transition-colors">
                   {outcome.icon}
@@ -180,7 +187,7 @@ export const ProcessSection = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </SnapCarousel>
         </div>
       </section>
     </div>

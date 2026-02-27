@@ -362,14 +362,25 @@ const AnalyticsView = () => (
 export const AnimatedDashboard = () => {
   const [activeScreen, setActiveScreen] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (isHovered) return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || isHovered) return;
     const timer = setInterval(() => {
       setActiveScreen((prev) => (prev + 1) % DASHBOARD_MODES.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [isHovered]);
+  }, [isHovered, mounted]);
+
+  if (!mounted) {
+    return (
+      <div className="mt-16 relative mx-auto max-w-5xl aspect-[16/10] bg-zinc-900 rounded-t-[2.5rem] border-[3px] border-[#3a3a3c] animate-pulse" />
+    );
+  }
 
   return (
     <div

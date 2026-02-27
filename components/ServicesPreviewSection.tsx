@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { ArrowRight } from "lucide-react";
+import { SnapCarousel } from "./ui/SnapCarousel";
 
 /**
  * SERVICES PREVIEW SECTION - Homepage
@@ -30,14 +31,17 @@ export function ServicesPreviewSection() {
           <div className="w-24 h-2 bg-primary rounded-full mt-4"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <SnapCarousel
+          className="lg:block"
+          scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 md:pb-0"
+        >
           {featuredServices.map((service) => {
             const IconComponent = service.subServices[0]?.icon;
             return (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group flex flex-col gap-4 rounded-3xl border border-primary/10 dark:border-primary/20 bg-card/40 dark:bg-nav-bg/40 backdrop-blur-md p-6 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30 transition-all duration-300"
+                className="group flex flex-col gap-4 rounded-3xl border border-primary/10 dark:border-primary/20 bg-card/40 dark:bg-nav-bg/40 backdrop-blur-md p-6 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 min-w-[85vw] md:min-w-0 snap-center"
               >
                 <div className="size-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   {IconComponent && <IconComponent size={28} />}
@@ -56,7 +60,7 @@ export function ServicesPreviewSection() {
               </Link>
             );
           })}
-        </div>
+        </SnapCarousel>
 
         <div className="flex justify-center mt-12">
           <Link

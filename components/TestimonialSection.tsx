@@ -3,6 +3,7 @@
 import React from "react";
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
+import { SnapCarousel } from "@/components/ui/SnapCarousel";
 
 const testimonials = [
   {
@@ -98,11 +99,14 @@ export const TestimonialSection = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SnapCarousel
+            className="md:block"
+            scrollContainerClassName="md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-8 md:pb-0"
+          >
             {testimonials.map((t) => (
               <div
                 key={t.id}
-                className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+                className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-primary/10 p-8 rounded-3xl shadow-lg shadow-primary/5 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full min-w-[85vw] md:min-w-0 snap-center"
               >
                 <Quote className="absolute top-8 right-8 text-primary/10 w-16 h-16 transform rotate-180" />
 
@@ -135,7 +139,7 @@ export const TestimonialSection = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </SnapCarousel>
         </div>
       </section>
 
@@ -191,7 +195,10 @@ export const TestimonialSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <SnapCarousel
+          className="md:block"
+          scrollContainerClassName="md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 pb-8 md:pb-0"
+        >
           {[
             { name: "Healthcare", icon: "🏥", desc: "Medical Systems" },
             { name: "E-Commerce", icon: "🛒", desc: "Online Shopping" },
@@ -209,7 +216,7 @@ export const TestimonialSection = () => {
           ].map((industry, idx) => (
             <div
               key={idx}
-              className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 text-center"
+              className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-md border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 text-center min-w-[70vw] md:min-w-0 snap-center"
             >
               <div className="text-4xl mb-3">{industry.icon}</div>
               <h3 className="text-lg font-black text-foreground mb-1">
@@ -220,7 +227,7 @@ export const TestimonialSection = () => {
               </p>
             </div>
           ))}
-        </div>
+        </SnapCarousel>
       </section>
 
       <section className="py-20 bg-linear-to-r from-primary to-purple-600 rounded-[48px] w-[90%] md:w-[80%] mx-auto mb-20 relative overflow-hidden">

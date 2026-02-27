@@ -136,7 +136,7 @@ export default function PricingClient() {
       </section>
 
       {/* Main Content Layout */}
-      <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row items-start gap-12 mb-32 relative">
+      <div className="container w-[92%] sm:w-[90%] md:w-[80%] mx-auto max-w-[1920px] flex flex-col lg:flex-row items-start gap-12 mb-32 relative overflow-hidden px-1">
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-[260px] shrink-0 space-y-6 lg:sticky lg:top-28 z-20">
           {/* Search */}

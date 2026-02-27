@@ -95,6 +95,7 @@ export default function ProductsClient() {
                     "For Better Logistics.",
                     "For Modern Retail.",
                   ]}
+                  className="max-w-[calc(100vw-4rem)] text-balance"
                 />
               </h1>
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">
