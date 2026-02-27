@@ -337,6 +337,9 @@ export function generateDynamicMetadata({
       images: [ogImage],
     },
     robots: DEFAULT_SEO.robots,
+    icons: {
+      icon: [{ url: "/favicon.ico", sizes: "48x48" }],
+    },
   };
 
   // Add article-specific metadata

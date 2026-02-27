@@ -90,8 +90,7 @@ export default function PricingClient() {
   const filteredCategories = PRICING_CATEGORIES.filter((cat) => {
     // Stage 1: Category Match
     const categoryMatchesSelected =
-      selectedCategory === "All" ||
-      cat.title.split(":")[0] === selectedCategory;
+      selectedCategory === "All" || cat.title === selectedCategory;
     if (!categoryMatchesSelected) return false;
 
     // Stage 2: Option Filtering via Search Term
@@ -111,10 +110,7 @@ export default function PricingClient() {
     return activeOptions.length > 0;
   });
 
-  const categoriesList = [
-    "All",
-    ...PRICING_CATEGORIES.map((c) => c.title.split(":")[0]),
-  ];
+  const categoriesList = ["All", ...PRICING_CATEGORIES.map((c) => c.title)];
 
   return (
     <div className="min-h-screen bg-transparent pb-20 pt-16">
@@ -225,7 +221,7 @@ export default function PricingClient() {
                               {option.timeline}
                             </span>
                             <span className="text-[10px] font-medium text-card-label px-1 uppercase tracking-tight">
-                              {category.title.split(":")[0]}
+                              {category.title}
                             </span>
                           </div>
                           {option.type && (
@@ -271,12 +267,20 @@ export default function PricingClient() {
                           ))}
                         </div>
 
-                        <Link
-                          href="/quote"
-                          className="mt-auto w-full py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-                        >
-                          Get Quote <ArrowRight size={16} />
-                        </Link>
+                        <div className="mt-auto grid grid-cols-2 gap-3">
+                          <Link
+                            href={`/pricing/${option.id}`}
+                            className="w-full py-3 rounded-xl bg-primary/10 text-primary text-xs font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all"
+                          >
+                            Details
+                          </Link>
+                          <Link
+                            href="/quote"
+                            className="w-full py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                          >
+                            Quote <ArrowRight size={14} />
+                          </Link>
+                        </div>
                       </div>
                     );
                   })}
