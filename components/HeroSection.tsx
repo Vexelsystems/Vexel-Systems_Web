@@ -35,15 +35,18 @@ export function HeroSection() {
             Software Solutions & AI Experts in Vavuniya
           </h2>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] sm:leading-tight tracking-tight flex flex-col items-center gap-1 sm:gap-2 mb-6 text-balance">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] sm:leading-tight tracking-tight mb-6 text-balance">
             <span className="text-foreground">
               We Build{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600">
                 App
               </span>{" "}
-              That
+              That{" "}
             </span>
-            <TypewriterText />
+            <br />
+            <span className="inline-block">
+              <TypewriterText />
+            </span>
           </h1>
 
           <p className="text-foreground/80 text-base sm:text-lg md:text-xl font-medium max-w-3xl leading-relaxed text-balance">

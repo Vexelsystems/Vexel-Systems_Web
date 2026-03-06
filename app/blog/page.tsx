@@ -12,21 +12,20 @@ import BlogClient from "@/components/BlogClient";
  */
 
 export const metadata = generatePageMetadata({
-  title: "Blog",
+  title: "Tech Insights & Business Software Blog | Vexel Systems Vavuniya",
   description:
-    "Explore the latest trends in software development, POS systems, and AI technology. Our blog provides valuable insights and expert updates for businesses navigating the digital era.",
+    "Explore the latest trends in software development, POS systems, and AI technology from Vexel Systems in Vavuniya, Sri Lanka. Expert insights for businesses in the digital era.",
   keywords: [
-    "Vexel Systems blog",
-    "software blog Sri Lanka",
-    "POS blog",
-    "ERP blog",
-    "AI software insights",
-    "technology articles Sri Lanka",
-    "business automation blog",
-    "software development tips",
-    "Vavuniya tech blog",
-    "business software advice",
-    "enterprise software articles",
+    "Vavuniya Tech Blog",
+    "Sri Lanka Software Insights",
+    "Northern Province IT News",
+    "Software Development Vavuniya",
+    "Best POS Systems Sri Lanka Blog",
+    "Vexel Systems Articles",
+    "Enterprise AI Blog Sri Lanka",
+    "Business Automation Vavuniya",
+    "Jathushan Blog",
+    "Digital Transformation Sri Lanka",
   ],
   path: "/blog",
 });

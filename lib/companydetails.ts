@@ -120,8 +120,10 @@ export const companyDetails = {
     establishedYear: 2025, // Year company was founded
     businessType: "Technology & Software Solutions", // Industry classification
     workingHours: {
-      days: "Monday - Friday", // Operating days
-      time: "09:00 - 17:00", // Operating hours (Digital format)
+      days: "Monday - Saturday", // Operating days
+      monFri: "09:30 - 18:00",
+      sat: "09:30 - 13:00",
+      time: "Mon-Fri: 09:30 - 18:00, Sat: 09:30 - 13:00", // Operating hours (Digital format)
       timezone: "IST (Sri Lanka)", // Indian Standard Time
     },
   },

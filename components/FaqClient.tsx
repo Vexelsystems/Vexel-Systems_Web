@@ -96,7 +96,7 @@ export default function FaqClient() {
     <div className="flex flex-col">
       {/* Hero Search Section */}
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
+      <section className="relative min-h-[50vh] pt-12 lg:pt-16 pb-12 flex flex-col items-center justify-start text-center">
         {/* Background Gradients & Grid */}
 
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
@@ -112,7 +112,7 @@ export default function FaqClient() {
 
           <MotionWrapper type="slideUp" duration={1.2}>
             <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-wrap items-center justify-center gap-x-4 mb-6">
                 <span className="text-foreground">Master</span>
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-purple-600 pb-2">
                   FAQ Center
@@ -141,10 +141,10 @@ export default function FaqClient() {
         </div>
       </section>
 
-      <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row gap-8 mb-20">
+      <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row items-start gap-8 mb-20">
         {/* Sidebar Navigation */}
         <aside className="w-full lg:w-72 shrink-0">
-          <div className="sticky top-24 space-y-4">
+          <div className="sticky top-20 space-y-4">
             <div className="flex items-center gap-2 mb-4 px-2 text-sm text-foreground/70">
               <Link href="/" className="hover:text-primary">
                 Home
@@ -152,7 +152,7 @@ export default function FaqClient() {
               <span>/</span>
               <span className="font-bold text-foreground">FAQ Center</span>
             </div>
-            <div className="bg-card rounded-xl border border-primary/10 p-4 shadow-sm h-[calc(100vh-200px)] overflow-y-auto scrollbar-hide">
+            <div className="bg-card rounded-xl border border-primary/10 p-4 shadow-sm">
               <h3 className="text-xs font-bold uppercase tracking-widest mb-4 px-3 text-foreground/70">
                 {categories.length} Categories
               </h3>
@@ -164,7 +164,7 @@ export default function FaqClient() {
                       setActiveCategory(cat.id);
                       setOpenIndex(0); // Reset accordion on category change
                     }}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left ${
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all text-left ${
                       activeCategory === cat.id
                         ? "bg-primary/10 text-primary font-bold"
                         : "text-foreground/80 hover:bg-primary/5"
@@ -192,7 +192,7 @@ export default function FaqClient() {
         {/* Main Content Area */}
         <div className="flex-1 space-y-12">
           {/* Active Category Section */}
-          <section className="scroll-mt-24">
+          <section className="scroll-mt-20">
             <div className="flex items-center gap-4 border-b border-primary/20 pb-4 mb-6">
               <div className="bg-primary/10 p-2 rounded-lg text-primary">
                 <span className="text-2xl">

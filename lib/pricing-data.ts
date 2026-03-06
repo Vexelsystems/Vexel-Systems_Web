@@ -21,7 +21,11 @@ import type {
   WhyChooseItem,
 } from "@/lib/types";
 
-export type { PackageDeliverable, PricingPackage, PricingCategory } from "@/lib/types";
+export type {
+  PackageDeliverable,
+  PricingPackage,
+  PricingCategory,
+} from "@/lib/types";
 
 export const PRICING_CATEGORIES: PricingCategory[] = [
   {
@@ -37,7 +41,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "Simple Static",
         type: "Standard",
         bestFor: "Personal portfolios, events",
-        timeline: "3–5 Days",
+        timeline: "2–4 Weeks",
         priceLKR: "LKR 50,000 – 75,000",
         priceUSD: "$130 – $250",
         features: [
@@ -93,9 +97,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "High-End Immersive",
         type: "Premium",
         bestFor: "Product launches, startups",
-        timeline: "2–3 Weeks",
-        priceLKR: "LKR 120,000 – 200,000",
-        priceUSD: "$400 – $670",
+        timeline: "4–6 Weeks",
+        priceLKR: "LKR 80,000",
+        priceUSD: "$250",
         features: [
           "3D Parallax Animations",
           "Interactive Scrolling",
@@ -161,7 +165,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "Standard 5-Page",
         type: "Essential",
         bestFor: "SMEs, NGOs",
-        timeline: "1–2 Weeks",
+        timeline: "2–4 Weeks",
         priceLKR: "LKR 85,000 – 140,000",
         priceUSD: "$280 – $470",
         features: [
@@ -211,71 +215,13 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         ],
       },
       {
-        id: "hybrid-business",
-        name: "Hybrid Business",
-        type: "Growth",
-        bestFor: "Service companies",
-        timeline: "2–3 Weeks",
-        priceLKR: "LKR 160,000 – 220,000",
-        priceUSD: "$530 – $730",
-        features: [
-          "Animated Home Page",
-          "4 Inner Pages",
-          "CMS Integration",
-          "Performance Optimization",
-        ],
-        detailedFeatures: [
-          {
-            title: "Dynamic CMS Power",
-            description:
-              "Take full control of your content. Easily add blog posts, update your portfolio, and manage team members without touching a single line of code.",
-          },
-          {
-            title: "Visual Storytelling",
-            description:
-              "We use subtle animations and high-end transitions to tell your brand story in a way that captures and holds attention.",
-          },
-          {
-            title: "Growth Architecture",
-            description:
-              "Built on a scalable foundation that allows you to add features like e-commerce or booking systems as your business evolves.",
-          },
-        ],
-        description:
-          "A dynamic platform that grows with you. Featuring a powerful Content Management System (CMS), you can easily update your blog, projects, and team members without any coding.",
-        deliverables: [
-          "Custom Animated Homepage",
-          "Dynamic Blog/News Section",
-          "Project/Case Study Portfolio",
-          "Lead Generation Popups",
-          "User-Friendly CMS Training",
-        ],
-        idealFor: [
-          "Marketing Agencies",
-          "Construction Companies",
-          "Interior Designers",
-        ],
-        whyChoose: [
-          {
-            title: "Complete Control",
-            description:
-              "Manage your content effortlessly with a clean, custom dashboard.",
-          },
-          {
-            title: "Lead Generation",
-            description:
-              "Built-in tools to capture inquiries and grow your customer base.",
-          },
-        ],
-      },
-      {
         id: "premium-corporate",
         name: "Premium Corporate",
         type: "Enterprise",
         bestFor: "Luxury brands, Agencies",
         timeline: "4–6 Weeks",
-        priceLKR: "LKR 300,000 – 500,000+",
-        priceUSD: "$1,000 – $1,670+",
+        priceLKR: "LKR 150,000",
+        priceUSD: "$670",
         features: [
           "Full Site Animations",
           "Smooth Page Transitions",
@@ -329,182 +275,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
       },
     ],
   },
-  {
-    id: "cat-3",
-    title: "Industry Solutions",
-    description: "Specialized platforms for retail, food, and real estate.",
-    icon: ShoppingCart,
-    color: "from-orange-500 to-red-500",
-    options: [
-      {
-        id: "ecommerce-platform",
-        name: "E-Commerce",
-        bestFor: "Retail stores, Small businesses",
-        timeline: "3–5 Weeks",
-        priceLKR: "LKR 180,000 – 350,000",
-        priceUSD: "$600 – $1,170",
-        features: [
-          "Product Filters & Search",
-          "Cart & Checkout Flow",
-          "Payment Gateway Setup",
-          "Admin Dashboard",
-        ],
-        detailedFeatures: [
-          {
-            title: "Conversion Optimized Checkout",
-            description:
-              "A friction-less 3-step checkout process designed specifically to reduce cart abandonment and increase sales.",
-          },
-          {
-            title: "Smart Inventory Management",
-            description:
-              "Easily track stock levels, manage variations (size/color), and get automated low-stock alerts from your dashboard.",
-          },
-          {
-            title: "Secure Payment Ecosystem",
-            description:
-              "Seamless integration with local and international gateways like PayHere, Stripe, and PayPal for safe transactions.",
-          },
-        ],
-        description:
-          "Your shop, open 24/7. A robust online store equipped with inventory management, secure payments, and marketing tools to convert visitors into loyal customers.",
-        deliverables: [
-          "Unlimited Product Categories",
-          "Secure Payment Gateway (Visa/Mastercard)",
-          "Inventory Management System",
-          "Customer Accounts & Order History",
-          "Discount Code Engine",
-        ],
-        idealFor: [
-          "Fashion Brands",
-          "Electronics Retailers",
-          "Handicraft Sellers",
-        ],
-        whyChoose: [
-          {
-            title: "Sales Automation",
-            description:
-              "Make money while you sleep with a fully automated sales pipeline.",
-          },
-          {
-            title: "Seamless Checkout",
-            description:
-              "Optimized user flows designed to reduce cart abandonment.",
-          },
-        ],
-      },
-      {
-        id: "restaurant-system",
-        name: "Restaurant",
-        bestFor: "Dining & Cafes",
-        timeline: "2–3 Weeks",
-        priceLKR: "LKR 120,000 – 200,000",
-        priceUSD: "$400 – $670",
-        features: [
-          "Digital QR Menu",
-          "Table Booking System",
-          "Time-based Ordering",
-          "Delivery Integration",
-        ],
-        detailedFeatures: [
-          {
-            title: "Interactive Digital Menu",
-            description:
-              "A beautiful, mobile-first QR menu that allows customers to browse with high-quality images and real-time availability updates.",
-          },
-          {
-            title: "Smart Booking Engine",
-            description:
-              "Automated table reservations with SMS confirmations, helping you manage floor capacity and reduce no-shows.",
-          },
-          {
-            title: "Direct Order Pipeline",
-            description:
-              "Accept orders for delivery or pickup directly through your site, saving you from high commission fees of third-party apps.",
-          },
-        ],
-        description:
-          "Digitize your dining experience. From QR code menus to table reservations, smooth out your front-of-house operations and delight your guests.",
-        deliverables: [
-          "Mobile-first Digital Menu",
-          "Table Reservation System",
-          "Delivery / Pickup Options",
-          "Kitchen Display View (Optional)",
-          "Customer Review Aggregator",
-        ],
-        idealFor: ["Restaurants", "Cafes", "Cloud Kitchens", "Pubs"],
-        whyChoose: [
-          {
-            title: "Efficiency",
-            description:
-              "Reduce wait times and order errors with digital ordering.",
-          },
-          {
-            title: "Direct Sales",
-            description:
-              "Avoid high commissions from third-party delivery apps.",
-          },
-        ],
-      },
-      {
-        id: "real-estate-platform",
-        name: "Real Estate",
-        bestFor: "Real Estate Agencies",
-        timeline: "4–6 Weeks",
-        priceLKR: "LKR 250,000 – 400,000",
-        priceUSD: "$830 – $1,330",
-        features: [
-          "Advanced Property Filters",
-          "Interactive Map View",
-          "Agent Profiles",
-          "Lead Capture Forms",
-        ],
-        detailedFeatures: [
-          {
-            title: "Search Architecture",
-            description:
-              "Advanced filtering by location, price, property type, and amenities, giving buyers exactly what they're looking for instantly.",
-          },
-          {
-            title: "Interactive Geo-Mapping",
-            description:
-              "Integrated Google Maps view with custom markers, allowing users to explore property surroundings and neighborhoods.",
-          },
-          {
-            title: "High-Intent Lead Capture",
-            description:
-              "Strategic call-to-actions and property-specific inquiry forms that funnel leads directly to the assigned agent's dashboard.",
-          },
-        ],
-        description:
-          "The ultimate property marketplace. Allow users to search, filter, and view properties on an interactive map, while you manage leads and agents from the backend.",
-        deliverables: [
-          "Advanced Search & Filter Engine",
-          "Google Maps Property Pinning",
-          "Agent Profiles & Direct Contact",
-          "property comparison Tool",
-          "Virtual Tour Integration Support",
-        ],
-        idealFor: [
-          "Real Estate Agencies",
-          "Property Developers",
-          "Housing Schemes",
-        ],
-        whyChoose: [
-          {
-            title: "Lead Magnet",
-            description:
-              "Capture high-intent leads directly from property listing pages.",
-          },
-          {
-            title: "Visual Clarity",
-            description:
-              "Help buyers decide faster with rich media and map integrations.",
-          },
-        ],
-      },
-    ],
-  },
+
   {
     id: "cat-4",
     title: "News & Media Portals",
@@ -516,9 +287,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         id: "news-portal",
         name: "News Portal",
         bestFor: "News publishers, Media houses",
-        timeline: "2–3 Weeks",
-        priceLKR: "LKR 90,000 – 160,000",
-        priceUSD: "$300 – $530",
+        timeline: "4–6 Weeks",
+        priceLKR: "LKR 100,000",
+        priceUSD: "$340",
         features: [
           "Admin CMS",
           "AdSense Ready",
@@ -572,72 +343,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
       },
     ],
   },
-  {
-    id: "cat-5",
-    title: "Education & LMS Platforms",
-    description: "Learning systems for tuition masters and institutes.",
-    icon: GraduationCap,
-    color: "from-yellow-500 to-amber-500",
-    options: [
-      {
-        id: "lms-platform",
-        name: "LMS Platform",
-        bestFor: "Tuition masters, Institutes",
-        timeline: "4–6 Weeks",
-        priceLKR: "LKR 200,000 – 350,000",
-        priceUSD: "$670 – $1,170",
-        features: [
-          "Student Logins",
-          "Protected Video Content",
-          "Online MCQ Exams",
-          "Payment Slip Upload",
-        ],
-        detailedFeatures: [
-          {
-            title: "Anti-Piracy Video Protection",
-            description:
-              "Secure your valuable course content with encrypted streaming and DRM-level protection that prevents unauthorized downloads and screen recording.",
-          },
-          {
-            title: "Automated MCQ Examination",
-            description:
-              "Create complex quizzes with automated grading, instant results, and performance tracking for every student.",
-          },
-          {
-            title: "Unified Student Portal",
-            description:
-              "A clean dashboard where students can access their courses, track progress, and upload payment slips for easy verification.",
-          },
-        ],
-        description:
-          "Your own digital campus. Securely host video lessons, conduct exams, and manage payments in one unified learning management system.",
-        deliverables: [
-          "Secure Student Portal",
-          "DRM Video Protection (prevent downloads)",
-          "Automated MCQ Grading",
-          "Bank Slip / Gateway Payments",
-          "Attendance Tracking",
-        ],
-        idealFor: [
-          "Tuition Classes",
-          "Vocational Institutes",
-          "Corporate Training",
-        ],
-        whyChoose: [
-          {
-            title: "Content Security",
-            description:
-              "Stop piracy of your valuable valuable course materials.",
-          },
-          {
-            title: "Automated Admin",
-            description:
-              "Let the system handle registrations and payment verifications.",
-          },
-        ],
-      },
-    ],
-  },
+
   {
     id: "cat-6",
     title: "Travel & Hotel Booking",
@@ -649,9 +355,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         id: "travel-booking",
         name: "Booking System",
         bestFor: "Hotels, Travel Agencies",
-        timeline: "3–4 Weeks",
-        priceLKR: "LKR 140,000 – 220,000",
-        priceUSD: "$470 – $730",
+        timeline: "8–10 Weeks",
+        priceLKR: "LKR 100,000",
+        priceUSD: "$340",
         features: [
           "Availability Calendar",
           "WhatsApp Booking",
@@ -710,9 +416,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         id: "appointment-booking",
         name: "Service Booking",
         bestFor: "Salons, Clinics, Service centers",
-        timeline: "4–5 Weeks",
-        priceLKR: "LKR 180,000 – 280,000",
-        priceUSD: "$600 – $930",
+        timeline: "4–6 Weeks",
+        priceLKR: "LKR 100,000",
+        priceUSD: "$340",
         features: [
           "Time Slot Booking",
           "SMS Reminders",
@@ -774,7 +480,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "Smart Chatbot",
         type: "Automation",
         bestFor: "Customer Support",
-        timeline: "2-3 Weeks",
+        timeline: "4–6 Weeks",
         priceLKR: "Rs. 150,000",
         priceUSD: "$500",
         features: [
@@ -809,54 +515,6 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
     ],
   },
   {
-    id: "iot-solutions",
-    title: "IoT Solutions",
-    description:
-      "Connect your physical world to the digital realm with custom IoT systems.",
-    icon: Globe,
-    color: "from-cyan-500 to-teal-500",
-    options: [
-      {
-        id: "smart-monitoring",
-        name: "Industrial Monitoring",
-        type: "IoT Hardware + Soft",
-        bestFor: "Factories",
-        timeline: "8-10 Weeks",
-        priceLKR: "Rs. 950,000",
-        priceUSD: "$3,200",
-        features: [
-          "Custom Sensor Integration",
-          "Real-time Dashboard",
-          "Alert System (SMS/Email)",
-          "Historical Data Analysis",
-          "Remote Control Capabilities",
-          "Predictive Maintenance",
-        ],
-        description:
-          "Monitor your machinery and environment in real-time to prevent downtime and optimize efficiency.",
-        deliverables: [
-          "Hardware Blueprints / Specs",
-          "Firmware Source Code",
-          "Cloud Dashboard",
-          "Mobile App for Monitoring",
-          "Installation Guide",
-        ],
-        idealFor: ["Manufacturing Plants", "Agriculture", "Warehouses"],
-        whyChoose: [
-          {
-            title: "Prevent Downtime",
-            description: "Catch issues before they become failures.",
-          },
-          {
-            title: "Remote Management",
-            description: "Control your facility from anywhere in the world.",
-          },
-        ],
-        monthlyCost: { lkr: "LKR 20,000", usd: "$65" },
-      },
-    ],
-  },
-  {
     id: "integrations-api",
     title: "Integrations & APIs",
     description:
@@ -869,11 +527,11 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "SMS Gateway Setup",
         type: "Communication",
         bestFor: "Alerts & OTPs",
-        timeline: "3-5 Days",
-        priceLKR: "Rs. 25,000",
-        priceUSD: "$85",
+        timeline: "2–4 Weeks",
+        priceLKR: "Rs. 10,000",
+        priceUSD: "$65",
         features: [
-          "Provider Selection (Twilio/Notify)",
+          "Provider Selection (text.lk)",
           "API Integration Code",
           "OTP Logic Implementation",
           "Automated Alerts Configuration",
@@ -906,9 +564,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "WhatsApp API",
         type: "Messaging",
         bestFor: "Customer Engagement",
-        timeline: "1-2 Weeks",
-        priceLKR: "Rs. 45,000",
-        priceUSD: "$150",
+        timeline: "2–4 Weeks",
+        priceLKR: "Rs. 15,000",
+        priceUSD: "$65",
         features: [
           "Meta Business Verification",
           "Template Message Approval",
@@ -944,9 +602,9 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         name: "Payment Gateway",
         type: "Fintech",
         bestFor: "Online Sales",
-        timeline: "1 Week",
-        priceLKR: "Rs. 35,000",
-        priceUSD: "$120",
+        timeline: "2–4 Weeks",
+        priceLKR: "Rs. 15,000",
+        priceUSD: "$65",
         features: [
           "Stripe / PayPal / PayHere",
           "Secure Checkout Flow",
@@ -1027,7 +685,7 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
         type: "Hosting",
         bestFor: "Websites",
         timeline: "Immediate",
-        priceLKR: "Rs. 15,000 /yr",
+        priceLKR: "Rs. 24,000 /yr",
         priceUSD: "$60 /yr",
         features: [
           "NVMe SSD Storage",
@@ -1058,44 +716,6 @@ export const PRICING_CATEGORIES: PricingCategory[] = [
           },
         ],
         monthlyCost: { lkr: "Annual Only", usd: "Annual Only" },
-      },
-      {
-        id: "vps-server-setup",
-        name: "VPS / Cloud Server",
-        type: "Infrastructure",
-        bestFor: "Apps & Systems",
-        timeline: "2 Days",
-        priceLKR: "Rs. 25,000",
-        priceUSD: "$100",
-        features: [
-          "Ubuntu/Linux Setup",
-          "Nginx/Apache Config",
-          "Firewall Security",
-          "Database Optimization",
-          "Docker Environment",
-          "Automated Snapshots",
-        ],
-        description:
-          "Private virtual server setup for giving your applications dedicated power and control.",
-        deliverables: [
-          "Root Access Credentials",
-          "Server Documentation",
-          "Security Hardening Report",
-          "Monitoring Dashboard",
-        ],
-        idealFor: ["SaaS", "High Traffic Sites", "Custom Apps"],
-        whyChoose: [
-          {
-            title: "Total Control",
-            description:
-              "Install any software or library you need without restrictions.",
-          },
-          {
-            title: "Scalable Resources",
-            description: "Upgrade RAM and CPU instantly as you grow.",
-          },
-        ],
-        monthlyCost: { lkr: "Provider Fee + Mgt", usd: "Provider Fee + Mgt" },
       },
     ],
   },

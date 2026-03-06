@@ -31,6 +31,9 @@ export function TypewriterText({
 
     if (!isDeleting) {
       if (displayText === currentPhrase) {
+        // If it's the last phrase, stop here
+        if (index === phrases.length - 1) return;
+
         // Full phrase displayed, wait then start deleting
         timeout = setTimeout(() => {
           setIsDeleting(true);
@@ -39,7 +42,7 @@ export function TypewriterText({
         // Still typing
         timeout = setTimeout(() => {
           setDisplayText(currentPhrase.substring(0, displayText.length + 1));
-        }, 70); // Increased typing speed
+        }, 70);
       }
     } else {
       if (displayText === "") {
@@ -50,7 +53,7 @@ export function TypewriterText({
         // Still deleting
         timeout = setTimeout(() => {
           setDisplayText(currentPhrase.substring(0, displayText.length - 1));
-        }, 30); // Increased deleting speed
+        }, 30);
       }
     }
 

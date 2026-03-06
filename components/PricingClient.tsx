@@ -3,41 +3,21 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowRight, Search, Filter, Target } from "lucide-react";
-import { PRICING_CATEGORIES, PricingCategory } from "@/lib/pricing-data";
+import {
+  PRICING_CATEGORIES,
+  PricingCategory,
+  PricingPackage,
+} from "@/lib/pricing-data";
 import { SnapCarousel } from "@/components/ui/SnapCarousel";
 import { MotionWrapper } from "@/components/ui/MotionWrapper";
 
-// --- Types ---
-interface Package {
-  name: string;
-  price: string;
-  features: string[];
-  color: string;
-}
-
-// --- Data ---
 // --- Helper Components ---
 
 const PriceTag = ({ price }: { price: string }) => {
   const isCustom =
     price.toLowerCase().includes("expert") ||
-    price.toLowerCase().includes("contact");
-
-  if (isCustom) {
-    return (
-      <div className="flex flex-col">
-        <span className="text-xs font-bold text-foreground/50 uppercase tracking-wider mb-1 opacity-0">
-          Start
-        </span>
-        <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
-          {price}
-        </div>
-        <div className="text-sm text-foreground/70 font-medium mt-1">
-          Enterprise Grade
-        </div>
-      </div>
-    );
-  }
+    price.toLowerCase().includes("contact") ||
+    price.toLowerCase().includes("market");
 
   const startPrice = price.split("–")[0].trim();
   return (
@@ -45,97 +25,187 @@ const PriceTag = ({ price }: { price: string }) => {
       <span className="text-xs font-bold text-foreground/50 uppercase tracking-wider mb-1">
         Starting from
       </span>
-      <div className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+      <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
         {startPrice}
       </div>
     </div>
   );
 };
 
-/**
- * PRICING CLIENT COMPONENT
- *
- * Logic Overview:
- * 1. Geo-Location: Fetches user country via IPAPI to auto-set currency (USD vs LKR)
- * 2. Filtering: Multi-layer filtering based on Category selection AND Search query
- * 3. Currency State: Toggles between LKR and USD, updating displayed prices dynamically
- */
+const PricingCard = ({
+  option,
+  category,
+}: {
+  option: PricingPackage;
+  category: PricingCategory;
+}) => {
+  return (
+    <div className="snap-center group relative bg-card/40 dark:bg-nav-bg/10 backdrop-blur-md rounded-3xl p-6 border border-primary/10 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-2 transition-all duration-300 flex flex-col h-full text-left w-full">
+      <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors pointer-events-none" />
+
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex flex-col gap-1">
+          {option.timeline && (
+            <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-foreground/80 text-[10px] font-bold rounded-full uppercase tracking-wider w-fit">
+              {option.timeline}
+            </span>
+          )}
+        </div>
+        {option.type && (
+          <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">
+            {option.type}
+          </span>
+        )}
+      </div>
+
+      <h3 className="text-xl font-bold mb-1">{option.name}</h3>
+      <div className="flex items-center gap-2 mb-4">
+        <div className="p-1.5 rounded-md bg-primary/10 text-primary">
+          <Target size={14} />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-[10px] font-medium text-card-label uppercase tracking-widest leading-none mb-0.5">
+            Ideal For
+          </span>
+          <span className="text-xs font-bold text-foreground/80 dark:text-white leading-tight">
+            {option.bestFor}
+          </span>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <PriceTag price={option.priceLKR} />
+        <div className="mt-2 text-[10px] font-bold text-primary/60 uppercase tracking-widest bg-primary/5 w-fit px-2 py-1 rounded-md border border-primary/10">
+          + Yearly Maintenance
+        </div>
+      </div>
+
+      <ul className="space-y-3 mb-6 grow list-none p-0">
+        {option.features.slice(0, 4).map((feature, fIdx) => (
+          <li
+            key={fIdx}
+            className="flex items-start gap-2 text-xs text-foreground/80"
+          >
+            <CheckCircle size={12} className="mt-0.5 text-green-500 shrink-0" />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto grid grid-cols-2 gap-3">
+        <Link
+          href={`/pricing/${option.id}`}
+          className="w-full py-3 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white text-xs font-bold flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02]"
+        >
+          Details{" "}
+          <ArrowRight
+            size={14}
+            className="opacity-50 group-hover:opacity-100"
+          />
+        </Link>
+        <Link
+          href="/quote"
+          className="w-full py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 hover:scale-[1.02] transition-all"
+        >
+          Quote <ArrowRight size={14} />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const CategoryHeader = ({
+  category,
+  size = "large",
+}: {
+  category: PricingCategory;
+  size?: "small" | "large";
+}) => (
+  <div
+    className={`flex items-start gap-4 text-left ${size === "large" ? "mb-8" : "mb-6"}`}
+  >
+    <div
+      className={`p-3 rounded-xl bg-linear-to-br ${category.color} text-white shadow-lg`}
+    >
+      {React.createElement(category.icon, { size: 24 })}
+    </div>
+    <div className="flex flex-col">
+      <h2 className="text-2xl font-bold leading-tight">{category.title}</h2>
+      <p className="text-sm text-foreground/70 max-w-[320px]">
+        {category.description}
+      </p>
+    </div>
+  </div>
+);
 
 export default function PricingClient() {
-  // Search and Filter State
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Utility to clean and parse price strings for numerical operations if needed
-  const parsePrice = (priceStr: string) => {
-    // Remove non-numeric chars except needed? Actually just remove non-digits.
-    // Handle "LKR 40,000" -> 40000
-    // Handle "$130" -> 130
-    // Handle ranges "LKR 40,000 – 75,000" -> take first one "40000"
-    const firstPart = priceStr.split("–")[0];
-    const clean = firstPart.replace(/[^0-9]/g, "");
-    if (!clean) return 999999999; // Handle "Talk to Expert" or other text
-    return parseInt(clean) || 0;
-  };
-
-  /**
-   * FILTERING ALGORITHM
-   *
-   * Two-stage filtering process:
-   * 1. Category Filter: Checks if top-level category matches selection
-   * 2. Search Filter: Checks if specific options within category match search input
-   *
-   * Returns a subset of categories containing ONLY the matching options.
-   */
   const filteredCategories = PRICING_CATEGORIES.filter((cat) => {
-    // Stage 1: Category Match
     const categoryMatchesSelected =
       selectedCategory === "All" || cat.title === selectedCategory;
     if (!categoryMatchesSelected) return false;
 
-    // Stage 2: Option Filtering via Search Term
     const activeOptions = cat.options.filter((opt) => {
-      // Search Match
       const q = searchQuery.toLowerCase();
-      const matchesSearch =
+      return (
         !searchQuery ||
         opt.name.toLowerCase().includes(q) ||
         opt.bestFor.toLowerCase().includes(q) ||
-        opt.features.some((f) => f.toLowerCase().includes(q));
-
-      return matchesSearch;
+        opt.features.some((f) => f.toLowerCase().includes(q))
+      );
     });
 
-    // Only include the category if it has at least one option that matches both search and budget
     return activeOptions.length > 0;
+  });
+
+  // Grouping logic for industry solutions to put them in the same row
+  const itemsToRender: (PricingCategory | PricingCategory[])[] = [];
+  filteredCategories.forEach((cat) => {
+    const isSingleIndustry =
+      cat.options.length === 1 &&
+      (cat.id === "cat-4" ||
+        cat.id === "cat-6" ||
+        cat.id === "cat-7" ||
+        cat.id === "ai-solutions");
+
+    if (isSingleIndustry) {
+      const last = itemsToRender[itemsToRender.length - 1];
+      if (Array.isArray(last)) {
+        last.push(cat);
+      } else {
+        itemsToRender.push([cat]);
+      }
+    } else {
+      itemsToRender.push(cat);
+    }
   });
 
   const categoriesList = ["All", ...PRICING_CATEGORIES.map((c) => c.title)];
 
   return (
-    <div className="min-h-screen bg-transparent pb-20 pt-16">
+    <div className="min-h-screen bg-transparent pb-20 pt-8">
       {/* Hero Section */}
-      <section className="relative w-full mb-12 text-center bg-transparent">
+      <section className="relative w-full mb-16 text-center bg-transparent">
         <MotionWrapper type="slideUp" duration={1.2}>
           <div className="w-[92%] md:w-[90%] mx-auto max-w-[1400px] relative">
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tight">
               Pricing that{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
                 Fits You.
               </span>
             </h1>
-            <p className="text-xl text-foreground/80 max-w-2xl mx-auto mb-10">
+            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
               Transparent pricing for Sri Lankan businesses.
             </p>
           </div>
         </MotionWrapper>
       </section>
 
-      {/* Main Content Layout */}
-      <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row items-start gap-12 mb-32 relative overflow-visible px-1">
+      <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl flex flex-col lg:flex-row items-start gap-12 mb-32 relative overflow-visible px-1 text-left">
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-[260px] shrink-0 space-y-6 lg:sticky lg:top-30 z-20">
-          {/* Search */}
           <div className="relative group">
             <Search
               className="absolute left-4 top-1/2 -translate-y-1/2 text-primary"
@@ -150,8 +220,7 @@ export default function PricingClient() {
             />
           </div>
 
-          {/* Vertical Category List */}
-          <div className="bg-card/40 dark:bg-nav-bg/10 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-sm">
+          <div className="bg-card/40 dark:bg-nav-bg/10 backdrop-blur-md p-4 rounded-2xl border border-primary/10 shadow-sm text-left">
             <h3 className="font-bold mb-3 px-2 text-[10px] uppercase tracking-widest text-foreground/70">
               Categories
             </h3>
@@ -177,134 +246,46 @@ export default function PricingClient() {
         </aside>
 
         {/* Filtered Results Grid */}
-        <div className="flex-1 space-y-20">
-          {filteredCategories.length > 0 ? (
-            filteredCategories.map((category) => (
-              <div key={category.id} id={category.id}>
-                <div className="flex items-center gap-3 mb-8">
+        <div className="flex-1 space-y-24">
+          {itemsToRender.length > 0 ? (
+            itemsToRender.map((item, idx) => {
+              if (Array.isArray(item)) {
+                // Shared grid system for grouped row to ensure same card width
+                return (
                   <div
-                    className={`p-3 rounded-xl bg-linear-to-br ${category.color} text-white shadow-lg shadow-primary/20`}
+                    key={`grouped-row-${idx}`}
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
                   >
-                    {React.createElement(category.icon, { size: 24 })}
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold">{category.title}</h2>
-                    <p className="text-sm text-foreground/80">
-                      {category.description}
-                    </p>
-                  </div>
-                </div>
-
-                <SnapCarousel scrollContainerClassName="md:grid md:grid-cols-3 gap-6 pb-8 md:pb-0 scrollbar-hide -mr-6 pr-6 md:mr-0 md:pr-0">
-                  {category.options.map((option, idx) => {
-                    // Filter Logic Inside Map (Must match upper filter)
-                    const q = searchQuery.toLowerCase();
-                    const matchesSearch =
-                      !searchQuery ||
-                      option.name.toLowerCase().includes(q) ||
-                      option.features.some((f) => f.toLowerCase().includes(q));
-
-                    if (!matchesSearch) {
-                      return null;
-                    }
-
-                    return (
-                      <div
-                        key={idx}
-                        className="min-w-[85vw] md:min-w-0 snap-center group relative bg-card/40 dark:bg-nav-bg/10 backdrop-blur-md rounded-3xl p-6 border border-primary/10 dark:border-white/10 shadow-xl shadow-gray-200/50 dark:shadow-none hover:-translate-y-2 transition-all duration-300 flex flex-col"
-                      >
-                        <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-3xl transition-colors pointer-events-none" />
-
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="flex flex-col gap-1">
-                            <span className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-foreground/80 text-[10px] font-bold rounded-full uppercase tracking-wider w-fit">
-                              {option.timeline}
-                            </span>
-                            <span className="text-[10px] font-medium text-card-label px-1 uppercase tracking-tight">
-                              {category.title}
-                            </span>
-                          </div>
-                          {option.type && (
-                            <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-md">
-                              {option.type}
-                            </span>
-                          )}
-                        </div>
-
-                        <h3 className="text-xl font-bold mb-1">
-                          {option.name}
-                        </h3>
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="p-1.5 rounded-md bg-primary/10 text-primary">
-                            <Target size={14} />
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[10px] font-medium text-card-label uppercase tracking-widest leading-none mb-0.5">
-                              Ideal For
-                            </span>
-                            <span className="text-xs font-bold text-foreground/80 dark:text-white leading-tight">
-                              {option.bestFor}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="mb-4">
-                          <PriceTag price={option.priceLKR} />
-                        </div>
-
-                        <div className="space-y-3 mb-6 grow">
-                          {option.features.slice(0, 4).map((feature, fIdx) => (
-                            <li
-                              key={fIdx}
-                              className="flex items-start gap-2 text-xs text-foreground/80"
-                            >
-                              <CheckCircle
-                                size={12}
-                                className="mt-0.5 text-green-500 shrink-0"
-                              />
-                              {feature}
-                            </li>
-                          ))}
-                        </div>
-
-                        <div className="mt-auto grid grid-cols-2 gap-3">
-                          <Link
-                            href={`/pricing/${option.id}`}
-                            className="w-full py-3 rounded-xl bg-primary/10 text-primary text-xs font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-all"
-                          >
-                            Details
-                          </Link>
-                          <Link
-                            href="/quote"
-                            className="w-full py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-                          >
-                            Quote <ArrowRight size={14} />
-                          </Link>
+                    {item.map((cat) => (
+                      <div key={cat.id} className="flex flex-col h-full">
+                        <CategoryHeader category={cat} size="small" />
+                        <div className="w-full flex-1">
+                          <PricingCard option={cat.options[0]} category={cat} />
                         </div>
                       </div>
-                    );
-                  })}
-                </SnapCarousel>
-              </div>
-            ))
+                    ))}
+                  </div>
+                );
+              }
+
+              // Standard multi-option categories
+              return (
+                <div key={item.id} id={item.id}>
+                  <CategoryHeader category={item} size="large" />
+                  <SnapCarousel scrollContainerClassName="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-8 md:pb-0 scrollbar-hide -mr-6 pr-6 md:mr-0 md:pr-0">
+                    {item.options.map((option, oIdx) => (
+                      <PricingCard key={oIdx} option={option} category={item} />
+                    ))}
+                  </SnapCarousel>
+                </div>
+              );
+            })
           ) : (
             <div className="text-center py-20 bg-card/40 dark:bg-nav-bg/10 backdrop-blur-md rounded-3xl border border-dashed border-primary/20">
               <Search size={48} className="mx-auto text-foreground/20 mb-4" />
               <h3 className="text-xl font-bold text-foreground/50">
                 No results found
               </h3>
-              <p className="text-foreground/40 text-sm mb-4">
-                Try adjusting your search terms.
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("All");
-                }}
-                className="text-primary font-bold hover:underline"
-              >
-                Clear All Filters
-              </button>
             </div>
           )}
         </div>
@@ -312,11 +293,9 @@ export default function PricingClient() {
 
       {/* Maintenance Section */}
       <section className="relative py-32 mt-32 overflow-hidden bg-zinc-950 text-white">
-        {/* Background Decor */}
         <div className="absolute inset-0 bg-zinc-950 text-white skew-y-3 origin-bottom-left scale-110 -z-10"></div>
-
-        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl relative z-10 text-white">
-          <div className="text-center mb-20">
+        <div className="w-[90%] md:w-[80%] mx-auto max-w-7xl relative z-10 text-white text-center">
+          <div className="mb-20">
             <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/10 text-sm font-bold uppercase tracking-wider mb-6 inline-block backdrop-blur-md">
               Long Term Success
             </span>
@@ -331,38 +310,17 @@ export default function PricingClient() {
               fast, and updated with our dedicated care packages.
             </p>
           </div>
-
-          <div className="max-w-4xl mx-auto bg-gray-950/50 backdrop-blur-md rounded-3xl p-8 md:p-16 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-purple-500/10 to-transparent -z-10" />
-
-            <h3 className="text-3xl md:text-5xl font-black mb-4 text-transparent bg-clip-text bg-linear-to-r from-blue-200 to-purple-200">
-              Yearly Maintenance Starts from <br className="hidden md:block" />
-              <span className="text-white">LKR 10,000</span>
+          <div className="max-w-4xl mx-auto bg-gray-950/50 backdrop-blur-md rounded-3xl p-8 md:p-16 border border-white/10 shadow-2xl relative overflow-hidden">
+            <h3 className="text-3xl md:text-5xl font-black mb-4 text-white">
+              Yearly Maintenance Starts from{" "}
+              <span className="text-primary">LKR 12,000</span>
             </h3>
-
-            <p className="text-white/60 mb-12 text-lg max-w-xl mx-auto">
-              Keep your digital presence secure and up-to-date with our
-              comprehensive annual maintenance plans.
-            </p>
-
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-              <Link
-                href="/consultation"
-                className="w-full md:w-auto px-8 py-4 rounded-xl bg-white text-gray-900 font-bold hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
-              >
-                Schedule Consultation
-              </Link>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10">
               <Link
                 href="/quote"
-                className="w-full md:w-auto px-8 py-4 rounded-xl bg-white/10 text-white font-bold hover:bg-white/20 border border-white/10 transition-all flex items-center justify-center gap-2"
+                className="w-full md:w-auto px-8 py-4 rounded-xl bg-white text-zinc-900 font-bold hover:scale-105 transition-transform flex items-center justify-center gap-2 font-bold"
               >
                 Get Quote <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="/contact"
-                className="w-full md:w-auto px-8 py-4 rounded-xl bg-transparent text-white/70 font-bold hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all flex items-center justify-center gap-2"
-              >
-                Contact Us
               </Link>
             </div>
           </div>

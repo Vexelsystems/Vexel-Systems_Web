@@ -20,7 +20,7 @@ export default function Breadcrumbs() {
   const pathname = usePathname();
 
   // Paths where breadcrumbs should be hidden
-  const hiddenPaths = ["/", "/login", "/consultation", "/quote", "/contact"];
+  const hiddenPaths = ["/", "/login"];
 
   if (hiddenPaths.includes(pathname)) return null;
 
@@ -43,7 +43,7 @@ export default function Breadcrumbs() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="w-[90%] md:w-[80%] mx-auto pt-28 pb-4 relative z-20"
+      className="w-[90%] md:w-[80%] mx-auto pt-36 pb-4 relative z-20"
     >
       <ol className="flex items-center gap-2 text-sm text-foreground/60 overflow-x-auto whitespace-nowrap scrollbar-hide">
         {/* Home Link */}

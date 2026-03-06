@@ -57,18 +57,16 @@ const ServiceIcons: Record<string, any> = {
   "industry-digital-solutions": Factory,
   "iot-solutions": Wifi,
   "it-consulting": Sparkles,
-  "it-maintenance-support": Server,
+
   "local-seo": MapPin,
   "machine-learning-solutions": Network,
   "qa-testing": ShieldCheck,
   "seo-services": LineChart,
   "social-media-marketing": Share2,
   "software-solutions": AppWindow,
-  "cybersecurity-solutions": Shield,
+
   "custom-software": Code2,
   "pos-systems": Store,
-  "cloud-solutions": Cloud,
-  "support-maintenance": Headset,
 };
 
 // Category Data Structure: Defines which services belong to which filter group

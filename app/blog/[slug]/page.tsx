@@ -51,15 +51,19 @@ export async function generateMetadata({
 
   // Generate metadata with 'article' type for specific social card rendering
   return generateDynamicMetadata({
-    title: post.title,
-    description: post.excerpt,
+    title: `${post.title} | Vexel Systems Vavuniya`,
+    description: `${post.excerpt} - Insights from Vexel Systems, the premier software development company in Vavuniya, Sri Lanka.`,
     keywords: [
       post.category,
-      "Blog",
-      "Insights",
+      "Vavuniya",
+      "Sri Lanka",
+      "Vavuniya IT Blog",
+      "Software Development Vavuniya",
+      "Northern Province Technology",
+      "Sri Lankan Software Company",
+      "Vexel Systems Insights",
       post.author,
-      "Vexel Systems",
-      "Software Trends",
+      ...post.title.split(" ").filter((w) => w.length > 4),
     ],
     path: `/blog/${post.slug}`,
     image: post.image,

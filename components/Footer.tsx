@@ -102,9 +102,15 @@ export default function Footer() {
             <p className="text-sm text-foreground/80 leading-relaxed">
               {companyDetails.description}
             </p>
-            <div className="flex items-center gap-2 text-xs font-bold px-3 py-1 w-fit rounded-full bg-green-500/10 text-green-600 border border-green-500/20 mx-auto md:mx-0">
-              <span className="size-2 rounded-full bg-green-500"></span>
-              Systems Operational
+            <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-wider mx-auto md:mx-0">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-600 border border-green-500/20">
+                <span className="size-2 rounded-full bg-green-500"></span>
+                Systems Active
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <Calendar size={12} />
+                Mon-Fri: 9:30 - 6 PM |Sat: 9:30 - 1 PM
+              </div>
             </div>
           </div>
 
@@ -195,33 +201,18 @@ export default function Footer() {
                     href="/services/web-development"
                     className="text-foreground/70 hover:text-primary transition-colors"
                   >
-                    E-commerce Websites
+                    Web development
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/products/vexel-pos"
+                    href="https://pos.vexelsystems.lk"
                     className="text-foreground/70 hover:text-primary transition-colors"
                   >
                     POS Systems (Point of Sale)
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/services/custom-business-software"
-                    className="text-foreground/70 hover:text-primary transition-colors"
-                  >
-                    School Management Systems
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/products/vexel-pos"
-                    className="text-foreground/70 hover:text-primary transition-colors"
-                  >
-                    Inventory Management
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href="/services/ai-ml-solutions"
@@ -238,14 +229,7 @@ export default function Footer() {
                     Custom Software
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/services/api-development-integration"
-                    className="text-foreground/70 hover:text-primary transition-colors"
-                  >
-                    API & Integration
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href="/services/digital-marketing"
@@ -262,20 +246,21 @@ export default function Footer() {
                     IoT Solutions
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/services/qa-testing"
-                    className="text-foreground/70 hover:text-primary transition-colors"
-                  >
-                    QA & Testing
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href="/services/it-consulting-support"
                     className="text-foreground/70 hover:text-primary transition-colors"
                   >
                     IT Consulting
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/mobile-app-development"
+                    className="text-foreground/70 hover:text-primary transition-colors"
+                  >
+                    Mobile App Development
                   </Link>
                 </li>
                 <li></li>
@@ -331,6 +316,14 @@ export default function Footer() {
                     className="text-foreground/80 hover:text-primary transition-colors"
                   >
                     FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-foreground/80 hover:text-primary transition-colors"
+                  >
+                    Blogs
                   </Link>
                 </li>
               </ul>

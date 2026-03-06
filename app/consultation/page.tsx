@@ -32,15 +32,15 @@ export default function ConsultationPage() {
   return (
     <main className="min-h-screen bg-transparent">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-12 flex flex-col items-center justify-start text-center">
+      <section className="relative pt-8 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
         <div className="w-[90%] md:w-[80%] mx-auto max-w-5xl relative z-10 flex flex-col items-center gap-6">
           <MotionWrapper type="scale">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 flex flex-col items-center gap-2">
-              <span className="text-foreground">Schedule a</span>
-              <span className="text-primary mt-2">Discovery Call.</span>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 flex flex-wrap items-center justify-center gap-4">
+              <span className="text-white">Schedule a</span>
+              <span className="text-primary">Discovery Call.</span>
             </h1>
-            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
+            <p className="text-xl text-zinc-300 max-w-2xl mx-auto font-medium">
               Discuss your project requirements, technology needs, and digital
               transformation goals with our team.
             </p>
@@ -48,7 +48,7 @@ export default function ConsultationPage() {
         </div>
       </section>
 
-      <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] py-12">
+      <div className="container w-[90%] md:w-[80%] mx-auto max-w-[1920px] py-4">
         <MotionWrapper delay={0.2}>
           <ConsultationClient />
         </MotionWrapper>

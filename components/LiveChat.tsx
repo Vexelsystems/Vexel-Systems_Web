@@ -48,6 +48,11 @@ export default function LiveChat() {
         console.error("Failed to parse saved lead info");
       }
     }
+
+    // Listener for custom open event
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("vexel-chat-open", handleOpen);
+    return () => window.removeEventListener("vexel-chat-open", handleOpen);
   }, []);
 
   const playSuccessSound = () => {

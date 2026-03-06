@@ -40,7 +40,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-transparent">
       {/* Hero Section */}
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
+      <section className="relative min-h-[65vh] pt-16 pb-12 flex flex-col items-center justify-center text-center">
         <HeroBackground />
 
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 -z-10 bg-center"></div>
@@ -56,13 +56,15 @@ export default function ServicesPage() {
 
           <MotionWrapper type="slideUp" duration={1.2}>
             <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-              <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
+              <h2 className="text-primary text-sm md:text-base font-bold uppercase tracking-[0.2em] mb-4">
                 What We Do
               </h2>
 
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
-                <span className="text-foreground">Everything You Need</span>
-                <span className="text-primary">to Succeed.</span>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1] tracking-tight mb-8 uppercase flex flex-col">
+                <span className="text-foreground">Everything You Need </span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                  to Succeed.
+                </span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">

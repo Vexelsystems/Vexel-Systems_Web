@@ -992,17 +992,6 @@ export const services: ServiceData[] = [
           "Compliance Audits",
         ],
       },
-      {
-        title: "Cyber Resilience",
-        description:
-          "Hardening your company's infrastructure against the next generation of digital threats.",
-        icon: ShieldCheck,
-        features: [
-          "Penetration Testing",
-          "Disaster Recovery",
-          "Zero-Trust Deployment",
-        ],
-      },
     ],
     techStack: [
       {

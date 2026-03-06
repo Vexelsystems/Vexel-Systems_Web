@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function QuoteClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -200,7 +201,7 @@ export default function QuoteClient() {
                       <option>LKR 600,000 - 1,000,000</option>
                       <option>LKR 1,000,000+</option>
                     </select>
-                    <p className="text-xs text-foreground/70">
+                    <p className="text-xs text-foreground/60">
                       Prices are indicative and based on general project scale.
                     </p>
                   </div>
@@ -379,10 +380,10 @@ export default function QuoteClient() {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-foreground">
-                        100+ Projects Delivered
+                        50+ Projects Done.
                       </p>
                       <p className="text-xs text-foreground/70">
-                        From startups to Fortune 500 companies.
+                        From startups to Fortune
                       </p>
                     </div>
                   </li>
@@ -432,18 +433,18 @@ export default function QuoteClient() {
               </div>
 
               {/* Support Card */}
-              <div className="bg-primary p-6 rounded-xl text-white">
+              <div className="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
                 <h4 className="font-bold mb-2">Need immediate help?</h4>
                 <p className="text-sm opacity-90 mb-4">
                   Talk to an expert right now about your technical architecture.
                 </p>
-                <a
+                <Link
                   className="inline-flex items-center gap-2 text-sm font-bold bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-                  href="#"
+                  href="/contact"
                 >
                   <Phone size={18} />
                   Book a 15min Call
-                </a>
+                </Link>
               </div>
             </div>
           </MotionWrapper>

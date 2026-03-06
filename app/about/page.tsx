@@ -41,7 +41,7 @@ export default function About() {
     <main className="min-h-[60vh] md:min-h-screen">
       {/* Hero Section */}
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] pt-20 lg:pt-24 pb-12 flex flex-col items-center justify-start text-center">
+      <section className="relative min-h-[85vh] pt-16 lg:pt-20 pb-12 flex flex-col items-center justify-start text-center">
         <HeroBackground />
         {/* Background Gradients & Grid */}
 
@@ -57,14 +57,16 @@ export default function About() {
           </div>
 
           <MotionWrapper type="scale" duration={1.2}>
-            <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+            <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
               <h2 className="text-primary text-lg md:text-xl font-bold uppercase tracking-widest mb-4">
                 We Are Vexel Systems
               </h2>
 
-              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight flex flex-col items-center gap-2 mb-6">
-                <span className="text-foreground">Real People Building</span>
-                <span className="text-primary mt-2">Real Solutions.</span>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-black leading-[1] tracking-tight flex flex-col items-center justify-center mb-8">
+                <span className="text-foreground">Real People Building </span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                  Real Solutions.
+                </span>
               </h1>
 
               <p className="text-foreground/80 text-lg md:text-xl font-medium max-w-3xl leading-relaxed">

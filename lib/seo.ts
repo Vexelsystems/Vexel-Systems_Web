@@ -684,12 +684,20 @@ export function generateProfessionalServiceSchema() {
       latitude: 8.7515,
       longitude: 80.4971,
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
-    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:30",
+        closes: "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "09:30",
+        closes: "13:00",
+      },
+    ],
     sameAs: [
       companyDetails.socialLinks.facebook,
       companyDetails.socialLinks.linkedin,

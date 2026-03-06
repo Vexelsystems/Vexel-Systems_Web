@@ -163,11 +163,18 @@ export default function RootLayout({
         <GlobalClientWrapper>
           <ScrollToTop />
           <ScrollNavButtons />
+          {/* Global Background Glows - Light Mode Only - Position Restored */}
+          <div className="dark:hidden fixed top-[-20%] left-[-15%] w-[70%] h-[70%] bg-primary/25 rounded-full blur-[160px] pointer-events-none z-0" />
+          <div className="dark:hidden fixed top-[-10%] left-[-5%] w-[30%] h-[30%] bg-primary/25 rounded-full blur-[100px] pointer-events-none z-0" />
+
+          <div className="dark:hidden fixed bottom-[-20%] right-[-15%] w-[70%] h-[70%] bg-purple-600/20 rounded-full blur-[160px] pointer-events-none z-0" />
+          <div className="dark:hidden fixed bottom-[-10%] right-[-5%] w-[30%] h-[30%] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none z-0" />
+
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
 
             {/* Main content area */}
-            <main className="flex-1">
+            <main className="flex-1 relative z-10">
               <Breadcrumbs />
               {children}
             </main>
@@ -423,10 +430,15 @@ export default function RootLayout({
                     "Wednesday",
                     "Thursday",
                     "Friday",
-                    "Saturday",
                   ],
-                  opens: "09:00",
+                  opens: "09:30",
                   closes: "18:00",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Saturday"],
+                  opens: "09:30",
+                  closes: "13:00",
                 },
               ],
               sameAs: [

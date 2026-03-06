@@ -237,7 +237,7 @@ export default function Navbar() {
               {
                 id: "company",
                 label: "Company",
-                href: "/company",
+                href: "/about",
                 isDropdown: true,
               },
 

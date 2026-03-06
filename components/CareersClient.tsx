@@ -37,6 +37,7 @@ export default function CareersClient() {
     email: "",
     mobile: "",
     portfolio: "",
+    github: "",
     talent: "",
     file: null as File | null,
   });
@@ -81,6 +82,7 @@ export default function CareersClient() {
         email: "",
         mobile: "",
         portfolio: "",
+        github: "",
         talent: "",
         file: null,
       }); // Reset form
@@ -89,7 +91,7 @@ export default function CareersClient() {
   };
 
   return (
-    <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-12">
+    <div className="container w-[90%] md:w-[80%] mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-[1fr_400px] items-start gap-12">
       {/* Job Listings */}
       <MotionWrapper type="slideUp" duration={1.2}>
         <div className="flex flex-col gap-6">
@@ -217,7 +219,7 @@ export default function CareersClient() {
       </MotionWrapper>
 
       {/* Application Form & Newsletter Column */}
-      <div className="lg:col-start-2 h-fit flex flex-col gap-8">
+      <div className="lg:col-start-2 h-fit flex flex-col gap-8 sticky top-[120px]">
         <aside
           id="apply-form"
           className="bg-white dark:bg-white/5 rounded-[40px] border border-black/5 dark:border-white/5 p-10 shadow-2xl shadow-primary/5"
@@ -260,21 +262,7 @@ export default function CareersClient() {
                   onChange={handleInputChange}
                   required
                   type="text"
-                  placeholder="Jane Perera"
-                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-bold mb-2 block">
-                  Email Address
-                </label>
-                <input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  type="email"
-                  placeholder="jane@example.com"
+                  placeholder="Sivanesan Kumar"
                   className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>
@@ -294,14 +282,28 @@ export default function CareersClient() {
               </div>
               <div>
                 <label className="text-sm font-bold mb-2 block">
-                  Portfolio / LinkedIn URL
+                  LinkedIn URL
                 </label>
                 <input
                   name="portfolio"
                   value={formData.portfolio}
                   onChange={handleInputChange}
                   type="url"
-                  placeholder="https://..."
+                  placeholder="https://linkedin.com/in/..."
+                  className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-bold mb-2 block">
+                  GitHub Profile
+                </label>
+                <input
+                  name="github"
+                  value={formData.github}
+                  onChange={handleInputChange}
+                  type="url"
+                  placeholder="https://github.com/..."
                   className="w-full bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-xl px-4 py-3 outline-none focus:border-primary transition-all"
                 />
               </div>

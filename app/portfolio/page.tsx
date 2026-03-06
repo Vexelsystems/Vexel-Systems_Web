@@ -36,17 +36,19 @@ export default function PortfolioPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-20 bg-transparent">
+      <section className="relative pt-16 pb-20 bg-transparent text-center">
         <HeroBackground />
 
-        <div className="w-[92%] md:w-[90%] mx-auto max-w-[1400px] relative z-10 text-center flex flex-col items-center">
+        <div className="w-[92%] md:w-[90%] mx-auto max-w-7xl relative z-10 flex flex-col items-center">
           <MotionWrapper type="scale" duration={1.2}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest mb-10">
               <Star size={12} className="fill-primary" /> Curated Work
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground mb-8 leading-[0.9] flex flex-col items-center gap-2">
-              <span className="text-foreground">We Build</span>
-              <span className="text-primary mt-2">Digital Futures.</span>
+            <h1 className="text-4xl md:text-6xl lg:text-[92px] font-black tracking-tight mb-8 uppercase text-balance leading-none">
+              <span className="text-foreground">We Build </span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
+                Digital Futures.
+              </span>
             </h1>
             <p className="text-foreground/60 text-lg md:text-xl max-w-2xl leading-relaxed">
               Explore how we've helped ambitious brands transform complex

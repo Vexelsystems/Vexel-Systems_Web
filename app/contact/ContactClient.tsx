@@ -34,7 +34,7 @@ export default function Contact() {
   return (
     <main className="min-h-screen bg-transparent">
       {/* Page Heading */}
-      <section className="bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md py-12 lg:py-20 border-b border-gray-100 dark:border-gray-800">
+      <section className="bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md pt-16 pb-12 lg:pt-28 lg:pb-20 border-b border-gray-100 dark:border-gray-800">
         <div className="w-[92%] md:w-[90%] mx-auto max-w-[1400px]">
           <MotionWrapper type="slideUp" duration={1.2}>
             <h1 className="text-foreground text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
@@ -107,7 +107,7 @@ export default function Contact() {
                     id="name"
                     name="name"
                     required
-                    placeholder="John Doe"
+                    placeholder="Sivanesan Kumar"
                     className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
@@ -160,7 +160,7 @@ export default function Contact() {
                     id="subject"
                     name="subject"
                     required
-                    placeholder="How can we help you?"
+                    placeholder="Ex: Inquiry about POS System"
                     className="w-full px-4 py-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                   />
                 </div>
@@ -246,8 +246,28 @@ export default function Contact() {
                     <h3 className="text-lg font-bold text-foreground mb-1">
                       Email
                     </h3>
-                    <p className="text-foreground/60 leading-relaxed">
+                    <p className="text-foreground/60 leading-relaxed font-bold">
                       {companyDetails.contact.email}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                    <Clock size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground mb-1">
+                      Working Hours
+                    </h3>
+                    <p className="text-foreground/60 leading-relaxed uppercase text-[10px] font-black tracking-widest">
+                      {companyDetails.business.workingHours.days}
+                      <br />
+                      <span className="text-primary text-[11px] font-bold">
+                        Mon-Fri: {companyDetails.business.workingHours.monFri}
+                        <br />
+                        Sat: {companyDetails.business.workingHours.sat}
+                      </span>
                     </p>
                   </div>
                 </div>
